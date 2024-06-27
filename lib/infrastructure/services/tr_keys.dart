@@ -393,4 +393,7 @@ class TrKeys {
   static const String survey = "survey";
   static const String statistics = "Statistics";
   static const String surveys = "Surveys";
+ 
+  static const String received = "received";
+   
 }

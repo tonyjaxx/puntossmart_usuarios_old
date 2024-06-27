@@ -27,7 +27,6 @@ import 'package:puntossmart/application/like/like_provider.dart';
 import 'package:puntossmart/presentation/pages/friends/friends.dart';
 import 'package:puntossmart/presentation/pages/profile/currency_page.dart';
 import 'package:puntossmart/presentation/pages/profile/delete_screen.dart';
-import 'package:puntossmart/presentation/pages/survey/survey_page.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -220,19 +219,21 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                                 );
                               },
                             ),
-                           LocalStorage.getToken().isNotEmpty?
-                            ProfileItem(
-                              isLtr: isLtr,
-                              title: AppHelpers.getTranslation(TrKeys.friends),
-                              icon: FlutterRemix.user_settings_line,
-                              onTap: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => FriendScreen(),
-                                  ),
-                                );
-                              },
-                            ):Container(),
+                            LocalStorage.getToken().isNotEmpty
+                                ? ProfileItem(
+                                    isLtr: isLtr,
+                                    title: AppHelpers.getTranslation(
+                                        TrKeys.friends),
+                                    icon: FlutterRemix.user_settings_line,
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => FriendScreen(),
+                                        ),
+                                      );
+                                    },
+                                  )
+                                : Container(),
                             // ProfileItem(
                             //   isLtr: isLtr,
                             //   title: AppHelpers.getTranslation(TrKeys.survey),

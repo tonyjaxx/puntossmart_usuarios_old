@@ -18,25 +18,25 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      ref.read(splashProvider.notifier).getTranslations(context);
-      ref.read(splashProvider.notifier).getToken(context, goMain: () {
-        FlutterNativeSplash.remove();
-        context.replaceRoute(const MainRoute());
-      }, goLogin: () {
-        FlutterNativeSplash.remove();
-        context.replaceRoute(const LoginRoute());
-      }, goNoInternet: () {
-        FlutterNativeSplash.remove();
-        context.replaceRoute(const NoConnectionRoute());
+      Future.delayed(Duration(seconds: 7), () {
+        ref.read(splashProvider.notifier).getTranslations(context);
+        ref.read(splashProvider.notifier).getToken(context, goMain: () {
+          FlutterNativeSplash.remove();
+          context.replaceRoute(const MainRoute());
+        }, goLogin: () {
+          FlutterNativeSplash.remove();
+          context.replaceRoute(const LoginRoute());
+        }, goNoInternet: () {
+          FlutterNativeSplash.remove();
+          context.replaceRoute(const NoConnectionRoute());
+        });
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      "assets/images/splash.png",
-      fit: BoxFit.fill,
-    );
+    FlutterNativeSplash.remove();
+    return Image.asset("assets/images/splash.gif", fit: BoxFit.cover);
   }
 }
