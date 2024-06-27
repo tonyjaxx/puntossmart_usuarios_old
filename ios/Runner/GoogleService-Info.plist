@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>425054115382-uqlnchmvvr4t9hjrl0s2uiineh7u960d.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.425054115382-uqlnchmvvr4t9hjrl0s2uiineh7u960d</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>425054115382-2r8e4beooo33iq0nun9aelj9pgld6b4p.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBk8bkWJyOKu-7UPQdZdWWxoLUilL8AD6I</string>
+	<key>GCM_SENDER_ID</key>
+	<string>425054115382</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.puntossmart.puntosmart.v2</string>
+	<key>PROJECT_ID</key>
+	<string>puntos-smart-650e5</string>
+	<key>STORAGE_BUCKET</key>
+	<string>puntos-smart-650e5.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:425054115382:ios:d983fe057becff5cebea97</string>
+</dict>
+</plist>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "425054115382",
+    "project_id": "puntos-smart-650e5",
+    "storage_bucket": "puntos-smart-650e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425054115382:android:5213f0193525e182ebea97",
+        "android_client_info": {
+          "package_name": "com.puntossmart.puntossmart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNbVXIBe6pw3gtJD-86D1DDDEfOlud260"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
