@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:puntossmart/application/currency/currency_provider.dart';
 import 'package:puntossmart/application/home/home_notifier.dart';
@@ -14,6 +15,7 @@ import 'package:puntossmart/application/main/main_provider.dart';
 import 'package:puntossmart/application/map/view_map_provider.dart';
 import 'package:puntossmart/application/profile/profile_provider.dart';
 import 'package:puntossmart/application/shop_order/shop_order_provider.dart';
+import 'package:puntossmart/infrastructure/services/app_constants.dart';
 import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/local_storage.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
@@ -22,6 +24,7 @@ import 'package:puntossmart/presentation/components/market_item.dart';
 import 'package:puntossmart/presentation/components/title_icon.dart';
 import 'package:puntossmart/presentation/pages/home/app_bar_home.dart';
 import 'package:puntossmart/presentation/pages/home/category_screen.dart';
+import 'package:puntossmart/presentation/pages/home/controller/shop_survey_controller.dart';
 import 'package:puntossmart/presentation/pages/home/filter_category_shop.dart';
 import 'package:puntossmart/presentation/pages/home_one/widget/door_to_door.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
@@ -128,6 +131,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             controller: _restaurantController, isRefresh: true);
   }
 
+  ShopSurveyController shopSurveyController = Get.put(ShopSurveyController());
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(homeProvider);
@@ -155,6 +159,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               child: Padding(
                 padding: EdgeInsets.only(bottom: 56.h),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppBarHome(state: state, event: event),
                     24.verticalSpace,
@@ -171,6 +176,120 @@ class _HomePageState extends ConsumerState<HomePage> {
                             event: event,
                             shopController: _restaurantController,
                           ),
+                    Container(
+                      padding: const EdgeInsets.only(bottom: 5),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 9),
+                      height: MediaQuery.of(context).size.height * 0.24,
+                      child: Stack(
+                        alignment: AlignmentDirectional.topStart,
+                        children: [
+                          Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10.0)),
+                            ),
+                            height: MediaQuery.of(context).size.height * 0.20,
+                            width: MediaQuery.of(context).size.width,
+                            child: Image.asset(
+                              "assets/images/survey.png",
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Text(
+                              "ANSWER NOW",
+                              style: AppStyle.interSemi(
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15.0),
+                      child: Text(
+                        "Surveys",
+                        style: AppStyle.interBold(
+                          size: 18,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    Obx(() {
+                      return shopSurveyController.isLoading.value
+                          ? Container(
+                              margin: const EdgeInsets.only(right: 5),
+                              decoration: const BoxDecoration(
+                                color: AppStyle.textGrey,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
+                              ),
+                            )
+                          : Container(
+                              margin: const EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 9),
+                              padding: const EdgeInsets.all(5),
+                              height: MediaQuery.of(context).size.height * 0.22,
+                              child: ListView.builder(
+                                itemCount: shopSurveyController
+                                    .shopSurveyModelList.length,
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  final survey = shopSurveyController
+                                      .shopSurveyModelList[index];
+                                  return Container(
+                                    margin: const EdgeInsets.only(right: 5),
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10.0)),
+                                    ),
+                                    height: MediaQuery.of(context).size.height *
+                                        0.20,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.50,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Image.network(
+                                          survey.logoImg ??
+                                              AppConstants.emptyImage,
+                                          fit: BoxFit.contain,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.14,
+                                          width: double.infinity,
+                                        ),
+                                        Container(
+                                          padding: const EdgeInsets.all(8),
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.05,
+                                          child: Text(
+                                            survey.shopTitle ?? "",
+                                            style: AppStyle.interRegular(),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
+                            );
+                    })
                   ],
                 ),
               ),

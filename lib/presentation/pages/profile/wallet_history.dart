@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:puntossmart/application/profile/profile_notifier.dart';
 import 'package:puntossmart/application/profile/profile_provider.dart';
@@ -13,7 +14,9 @@ import 'package:puntossmart/presentation/components/app_bars/common_app_bar.dart
 import 'package:intl/intl.dart' as intl;
 import 'package:puntossmart/presentation/components/buttons/pop_button.dart';
 import 'package:puntossmart/presentation/components/loading.dart';
+import 'package:puntossmart/presentation/pages/profile/controller/send_transaction_controller.dart';
 import '../../theme/app_style.dart';
+import 'package:flutter/material.dart' as refersh;
 
 @RoutePage()
 class WalletHistoryPage extends ConsumerStatefulWidget {
@@ -30,6 +33,8 @@ class _WalletHistoryState extends ConsumerState<WalletHistoryPage>
   late ProfileNotifier event;
   final bool isLtr = LocalStorage.getLangLtr();
   late TabController _tabController;
+  SendTransactionController sendTransactionController =
+      Get.put(SendTransactionController());
 
   @override
   void initState() {
@@ -243,137 +248,187 @@ class _WalletHistoryState extends ConsumerState<WalletHistoryPage>
                             },
                           ),
                         ),
-                        ListView.builder(
-                            padding: EdgeInsets.all(16.r),
-                            itemCount: dummyTransactions.length,
-                            itemBuilder: (context, index) {
-                              final transaction = dummyTransactions[index];
-                              return Container(
-                                margin: EdgeInsets.only(bottom: 16.h),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12.r),
-                                  color: AppStyle.white,
+                        Obx(() {
+                          final isLoading =
+                              sendTransactionController.isLoading.value;
+                          final transactions = sendTransactionController
+                              .sendTransactionModel.value?.transactions;
+
+                          Future<void> _refresh() async {
+                            await sendTransactionController
+                                .getSendTrasactions();
+                          }
+
+                          if (isLoading) {
+                            return Center(
+                              child: CircularProgressIndicator(
+                                color: AppStyle.brandGreen,
+                              ),
+                            );
+                          } else if (transactions == null ||
+                              transactions.isEmpty) {
+                            return Center(
+                              child: Text(
+                                "No Data Found",
+                                style: AppStyle.interBold(
+                                  size: 14.sp,
+                                  color: AppStyle.textGrey,
                                 ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.all(16.r),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            intl.DateFormat(
-                                                    "MMM dd,yyyy h:mm a")
-                                                .format(
-                                              DateTime.tryParse(transaction[
-                                                          'createdAt'])
-                                                      ?.toLocal() ??
-                                                  DateTime.now(),
-                                            ),
-                                            style: AppStyle.interRegular(
-                                              size: 12.sp,
-                                              color: AppStyle.textGrey,
-                                            ),
-                                          ),
-                                          SizedBox(height: 4.h),
-                                          Text(
-                                            transaction['note'],
-                                            style: AppStyle.interRegular(
-                                              size: 16.sp,
-                                              color: AppStyle.black,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                              ),
+                            );
+                          } else {
+                            return refersh.RefreshIndicator(
+                              color: AppStyle.brandGreen,
+                              onRefresh: _refresh,
+                              child: ListView.builder(
+                                padding: EdgeInsets.all(16.r),
+                                itemCount: transactions.length,
+                                itemBuilder: (context, index) {
+                                  final transaction = transactions[index];
+                                  return Container(
+                                    margin: EdgeInsets.only(bottom: 16.h),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12.r),
+                                      color: AppStyle.white,
                                     ),
-                                    const Divider(color: AppStyle.textGrey),
-                                    Padding(
-                                      padding: EdgeInsets.all(16.r),
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.all(16.r),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                AppHelpers.getTranslation(
-                                                    TrKeys.paymentDate),
-                                                style: AppStyle.interRegular(
-                                                  size: 12.sp,
-                                                  color: AppStyle.textGrey,
-                                                ),
-                                              ),
-                                              Text(
-                                                intl.DateFormat("MM/dd/yyyy")
+                                                intl.DateFormat(
+                                                        "MMM dd,yyyy h:mm a")
                                                     .format(
-                                                  DateTime.tryParse(transaction[
-                                                              'createdAt'])
+                                                  DateTime.tryParse(transaction
+                                                                  .createdAt ??
+                                                              "")
                                                           ?.toLocal() ??
                                                       DateTime.now(),
                                                 ),
                                                 style: AppStyle.interRegular(
-                                                  size: 16.sp,
-                                                  color: AppStyle.black,
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                          SizedBox(height: 16.h),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                AppHelpers.getTranslation(
-                                                    TrKeys.receiver),
-                                                style: AppStyle.interRegular(
                                                   size: 12.sp,
                                                   color: AppStyle.textGrey,
                                                 ),
                                               ),
+                                              SizedBox(height: 4.h),
                                               Text(
-                                                transaction['author']
-                                                    ['firstname'],
+                                                transaction.note ?? "",
                                                 style: AppStyle.interRegular(
                                                   size: 16.sp,
                                                   color: AppStyle.black,
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                          SizedBox(height: 16.h),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                AppHelpers.getTranslation(
-                                                    TrKeys.send),
-                                                style: AppStyle.interRegular(
-                                                  size: 12.sp,
-                                                  color: AppStyle.textGrey,
                                                 ),
                                               ),
-                                              Text(
-                                                AppHelpers.numberFormat(
-                                                    number:
-                                                        transaction['price']),
-                                                style: AppStyle.interRegular(
-                                                  size: 16.sp,
-                                                  color: AppStyle.black,
-                                                ),
-                                              )
                                             ],
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                        const Divider(color: AppStyle.textGrey),
+                                        Padding(
+                                          padding: EdgeInsets.all(16.r),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    AppHelpers.getTranslation(
+                                                        TrKeys.paymentDate),
+                                                    style:
+                                                        AppStyle.interRegular(
+                                                      size: 12.sp,
+                                                      color: AppStyle.textGrey,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    intl.DateFormat(
+                                                            "MM/dd/yyyy")
+                                                        .format(
+                                                      DateTime.tryParse(transaction
+                                                                      .createdAt ??
+                                                                  "")
+                                                              ?.toLocal() ??
+                                                          DateTime.now(),
+                                                    ),
+                                                    style:
+                                                        AppStyle.interRegular(
+                                                      size: 16.sp,
+                                                      color: AppStyle.black,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(height: 16.h),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    AppHelpers.getTranslation(
+                                                        TrKeys.receiver),
+                                                    style:
+                                                        AppStyle.interRegular(
+                                                      size: 12.sp,
+                                                      color: AppStyle.textGrey,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    transaction.userFirstname ??
+                                                        "",
+                                                    style:
+                                                        AppStyle.interRegular(
+                                                      size: 16.sp,
+                                                      color: AppStyle.black,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(height: 16.h),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    AppHelpers.getTranslation(
+                                                        TrKeys.send),
+                                                    style:
+                                                        AppStyle.interRegular(
+                                                      size: 12.sp,
+                                                      color: AppStyle.textGrey,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    AppHelpers.numberFormat(
+                                                        number:
+                                                            transaction.price ??
+                                                                0),
+                                                    style:
+                                                        AppStyle.interRegular(
+                                                      size: 16.sp,
+                                                      color: AppStyle.black,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                              );
-                            }),
+                                  );
+                                },
+                              ),
+                            );
+                          }
+                        })
                       ],
                     ),
             ),

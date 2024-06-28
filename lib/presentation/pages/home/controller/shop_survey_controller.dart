@@ -4,18 +4,18 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:puntossmart/infrastructure/services/app_constants.dart';
 import 'package:puntossmart/infrastructure/services/local_storage.dart';
-import 'package:puntossmart/presentation/pages/profile/model/send_transaction_model.dart';
+import 'package:puntossmart/presentation/pages/home/model/shop_survey_model.dart';
 import 'package:http/http.dart' as http;
 
-class SendTransactionController extends GetxController {
+class ShopSurveyController extends GetxController {
   RxBool isLoading = false.obs;
-  Rx<SendTransactionModel?> sendTransactionModel = Rx(null);
-  getSendTrasactions() async {
+  RxList<SurveyShopModel> shopSurveyModelList = RxList<SurveyShopModel>();
+
+  getSurveyShops() async {
     try {
       isLoading(true);
-      String url =
-          "${AppConstants.baseUrl}/api/v1/dashboard/user/walletSendHistories";
-      print("------$url-----");
+      String url = "${AppConstants.baseUrl}/api/v1/rest/getShopsWithSurveys";
+      log("------$url-----");
       var response = await http.get(
         Uri.parse(url),
         headers: {
@@ -24,14 +24,15 @@ class SendTransactionController extends GetxController {
       );
       var responseData = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        sendTransactionModel.value =
-            SendTransactionModel.fromJson(responseData);
-        log("$responseData");
+        shopSurveyModelList.value = responseData
+            .map<SurveyShopModel>((json) => SurveyShopModel.fromJson(json))
+            .toList();
+        print("URL :: $url :: RESPONSE :: $responseData");
       } else {
         log('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      log('Error in send transactions: $e');
+      log('Error in get Survey Shops: $e');
     } finally {
       isLoading(false);
     }
@@ -39,7 +40,7 @@ class SendTransactionController extends GetxController {
 
   @override
   void onInit() {
+    getSurveyShops();
     super.onInit();
-    getSendTrasactions();
   }
 }

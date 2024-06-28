@@ -15,7 +15,7 @@ class FriendController extends GetxController {
   RxBool sendPointLoading = false.obs;
   TextEditingController noteController = TextEditingController();
   Rx<GetFriendModel?> getFriendModel = Rx<GetFriendModel?>(null);
-  Future<void> getFriends() async {
+  Future<void> getFriends({required String searchName}) async {
     try {
       addFriendLoading(true);
       String url =
@@ -28,6 +28,7 @@ class FriendController extends GetxController {
         },
         body: {
           'user_id': LocalStorage.getUserId().toString(),
+          'search_name': searchName,
         },
       );
       var responseData = json.decode(response.body);
@@ -45,7 +46,7 @@ class FriendController extends GetxController {
   }
 
   Rx<GetUserModel?> getUserModel = Rx<GetUserModel?>(null);
-  Future<void> getAllUsers() async {
+  Future<void> getAllUsers({required String searchName}) async {
     try {
       isLoading(true);
       String url =
@@ -58,6 +59,7 @@ class FriendController extends GetxController {
         },
         body: {
           'user_id': LocalStorage.getUserId().toString(),
+          'search_name': searchName,
         },
       );
       var responseData = json.decode(response.body);
@@ -97,8 +99,8 @@ class FriendController extends GetxController {
 
       if (response.statusCode == 200) {
         print("URL: $url, DATA: $data, AUTH: $token");
-        getAllUsers();
-        getFriends();
+        getAllUsers(searchName: '');
+        getFriends(searchName: '');
       } else {
         print('Request failed with status: ${response.statusCode}');
       }
@@ -146,8 +148,8 @@ class FriendController extends GetxController {
           print("URL: $url, DATA: $data, AUTH: $token");
           noteController.clear();
 
-          getAllUsers();
-          getFriends();
+          getAllUsers(searchName: '');
+          getFriends(searchName: '');
         } else {
           print('Request failed with status: ${response.statusCode}');
         }
@@ -159,10 +161,45 @@ class FriendController extends GetxController {
     }
   }
 
+  RxBool deleteFriendLoading = false.obs;
+  Future<void> deleteFriend(context, {required String friendID}) async {
+    try {
+      deleteFriendLoading(true);
+      String? token = LocalStorage.getToken();
+
+      String url =
+          "${AppConstants.baseUrl}/api/v1/dashboard/user/profile/deleteFriend";
+      var data = {
+        'friend_id': friendID,
+      };
+
+      var response = await http.post(
+        Uri.parse(url),
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+        body: data,
+      );
+
+      if (response.statusCode == 200) {
+        print("URL: $url, DATA: $data, AUTH: $token");
+        getAllUsers(searchName: '');
+        getFriends(searchName: '');
+        Navigator.pop(context);
+      } else {
+        print('Request failed with status: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error in Add Friends: $e');
+    } finally {
+      deleteFriendLoading(false);
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();
-    getAllUsers();
-    getFriends();
+    getAllUsers(searchName: '');
+    getFriends(searchName: '');
   }
 }
