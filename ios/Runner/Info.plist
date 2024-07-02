@@ -52,7 +52,7 @@
 		<string>Puntos Smart</string>
 		<key>FirebaseDynamicLinksCustomDomains</key>
 		<array>
-			<string>https://foodyman.page.link</string>
+			<string>https://puntosmart.page.link</string>
 		</array>
 		<key>LSApplicationQueriesSchemes</key>
 		<array>
@@ -112,5 +112,7 @@
 		<true/>
 		<key>UIViewControllerBasedStatusBarAppearance</key>
 		<false/>
+		<key>io.flutter.embedded_views_preview</key>
+		<true/>
 	</dict>
 </plist>

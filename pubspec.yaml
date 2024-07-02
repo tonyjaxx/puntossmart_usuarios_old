@@ -83,6 +83,8 @@ dependencies:
   get: ^4.6.6
   fluttertoast: ^8.2.6
   pie_chart: ^5.4.0
+  qr_flutter: ^4.1.0
+  qrscan: ^0.3.3
 
 dev_dependencies:
   flutter_test:

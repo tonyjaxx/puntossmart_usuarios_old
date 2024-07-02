@@ -68,7 +68,7 @@ class ShopPageAvatar extends StatelessWidget {
                       color: AppStyle.black,
                     ),
                   ),
-                  if (shop.verify ?? false)
+                  if (shop.verify == 1)
                     Padding(
                       padding: EdgeInsets.only(left: 4.r),
                       child: const BadgeItem(),

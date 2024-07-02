@@ -76,7 +76,18 @@ class LocalStorage {
     }
   }
 
+
+
+
   static int getUserId() => _preferences?.getInt(AppConstants.keyUserId) ?? 0;
+
+  static Future<void> setUserUuid(String? uuid) async {
+    if (_preferences != null) {
+      await _preferences!.setString(AppConstants.keyUserUuid, uuid ?? '');
+    }
+  }
+  static String getUserUuid() => _preferences?.getString(AppConstants.keyUserUuid) ?? "";
+
 
   static void deleteUserId() => _preferences?.remove(AppConstants.keyUserId);
 

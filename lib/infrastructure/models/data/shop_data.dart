@@ -62,7 +62,7 @@ class ShopData {
   bool? isRecommend;
   bool? isDiscount;
   bool? open;
-  bool? verify;
+  int? verify;
   String? openTime;
   String? closeTime;
   String? backgroundImg;
@@ -98,10 +98,7 @@ class ShopData {
               ? (json["open"] == 1)
               : json["open"]) ??
           true,
-      verify: (json["verify"].runtimeType == int
-              ? (json["verify"] == 1)
-              : json["verify"]) ??
-          false,
+      verify: json["verify"],
       openTime: json["open_time"] ?? "00:00",
       closeTime: json["close_time"] ?? "00:00",
       backgroundImg: json["background_img"] ?? "",

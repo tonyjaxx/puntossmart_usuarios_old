@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:puntossmart/application/currency/currency_provider.dart';
 import 'package:puntossmart/application/home/home_notifier.dart';
@@ -13,12 +14,16 @@ import 'package:puntossmart/application/home/home_state.dart';
 import 'package:puntossmart/application/map/view_map_provider.dart';
 import 'package:puntossmart/application/profile/profile_provider.dart';
 import 'package:puntossmart/application/shop_order/shop_order_provider.dart';
+import 'package:puntossmart/infrastructure/services/app_constants.dart';
 import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/local_storage.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
+import 'package:puntossmart/presentation/components/badge_item.dart';
 
 import 'package:puntossmart/presentation/components/text_fields/search_text_field.dart';
 import 'package:puntossmart/presentation/components/title_icon.dart';
+import 'package:puntossmart/presentation/pages/home/controller/shop_survey_controller.dart';
+import 'package:puntossmart/presentation/pages/home/shop_survey_page.dart';
 import 'package:puntossmart/presentation/pages/home_three/banner_three.dart';
 import 'package:puntossmart/presentation/pages/home_three/widgets/door_three.dart';
 import 'package:puntossmart/presentation/pages/home_three/widgets/market_three_item.dart';
@@ -118,6 +123,7 @@ class _HomePageState extends ConsumerState<HomePageThree> {
             controller: _restaurantController, isRefresh: true);
   }
 
+  ShopSurveyController shopSurveyController = Get.put(ShopSurveyController());
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(homeProvider);
@@ -182,6 +188,161 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                         state: state,
                         event: event,
                         shopController: _restaurantController),
+                Container(
+                  padding: const EdgeInsets.only(bottom: 5),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  ),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 9),
+                  height: MediaQuery.of(context).size.height * 0.24,
+                  child: Stack(
+                    alignment: AlignmentDirectional.topStart,
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        ),
+                        height: MediaQuery.of(context).size.height * 0.20,
+                        width: MediaQuery.of(context).size.width,
+                        child: Image.asset(
+                          "assets/images/survey.png",
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Text(
+                          "ANSWER NOW",
+                          style: AppStyle.interSemi(
+                            size: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: Text(
+                    "Surveys",
+                    style: AppStyle.interBold(
+                      size: 18,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                Obx(() {
+                  return shopSurveyController.isLoading.value
+                      ? Container(
+                          margin: const EdgeInsets.only(right: 5),
+                          decoration: const BoxDecoration(
+                            color: AppStyle.textGrey,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
+                          ),
+                        )
+                      : Container(
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 9),
+                          height: MediaQuery.of(context).size.height * 0.20,
+                          child: ListView.builder(
+                            itemCount:
+                                shopSurveyController.shopSurveyModelList.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              final survey = shopSurveyController
+                                  .shopSurveyModelList[index];
+                              return GestureDetector(
+                                onTap: () {
+                                  if (LocalStorage.getToken().isNotEmpty) {
+                                    shopSurveyController.getSurveysByShopId(
+                                        shopID: survey.shopId ?? 0);
+                                    shopSurveyController
+                                        .getUserCompletedSurveysByShop(
+                                            shopID: survey.shopId ?? 0);
+                                  } else {
+                                    context.router.replace(const LoginRoute());
+                                  }
+                                  print("CHECKING three");
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => ShopSurveyPage(
+                                        shopName: survey.shopTitle ?? "",
+                                        imageUrl: survey.logoImg ??
+                                            AppConstants.emptyImage,
+                                        shopID: survey.shopId ?? 0,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(5),
+                                  margin: const EdgeInsets.only(right: 5),
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10.0)),
+                                  ),
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.20,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.40,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(50),
+                                        child: Image.network(
+                                          survey.logoImg ??
+                                              AppConstants.emptyImage,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 6,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            survey.shopTitle ?? "",
+                                            style: AppStyle.interSemi(
+                                              size: 15,
+                                              color: AppStyle.black,
+                                            ),
+                                          ),
+                                          if (survey.verify == 1)
+                                            Padding(
+                                              padding:
+                                                  EdgeInsets.only(left: 4.r),
+                                              child: const BadgeItem(),
+                                            ),
+                                        ],
+                                      ),
+                                      Text(
+                                        (survey.shopDescription?.length ?? 0) >
+                                                25
+                                            ? "${survey.shopDescription?.substring(0, 25) ?? " "}.."
+                                            : survey.shopDescription ?? "",
+                                        style: AppStyle.interNormal(
+                                          size: 14,
+                                          color: AppStyle.black,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                })
               ],
             ),
           ),

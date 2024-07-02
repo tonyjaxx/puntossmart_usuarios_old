@@ -27,6 +27,7 @@ import 'package:puntossmart/application/like/like_provider.dart';
 import 'package:puntossmart/presentation/pages/friends/friends.dart';
 import 'package:puntossmart/presentation/pages/profile/currency_page.dart';
 import 'package:puntossmart/presentation/pages/profile/delete_screen.dart';
+import 'package:puntossmart/presentation/pages/profile/qr_code_screen.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -194,15 +195,15 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             top: 24.h, right: 16.w, left: 16.w, bottom: 120.h),
                         child: Column(
                           children: [
-                            if (AppConstants.isDemo)
-                              ProfileItem(
-                                isLtr: isLtr,
-                                title: AppHelpers.getTranslation(TrKeys.uiType),
-                                icon: FlutterRemix.typhoon_line,
-                                onTap: () {
-                                  context.pushRoute(UiTypeRoute(isBack: true));
-                                },
-                              ),
+                            // if (AppConstants.isDemo)
+                            //   ProfileItem(
+                            //     isLtr: isLtr,
+                            //     title: AppHelpers.getTranslation(TrKeys.uiType),
+                            //     icon: FlutterRemix.typhoon_line,
+                            //     onTap: () {
+                            //       context.pushRoute(UiTypeRoute(isBack: true));
+                            //     },
+                            //   ),
                             ProfileItem(
                               isLtr: isLtr,
                               title: AppHelpers.getTranslation(
@@ -219,12 +220,21 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                                 );
                               },
                             ),
+                            ProfileItem(
+                              isLtr: isLtr,
+                              title: AppHelpers.getTranslation(TrKeys.qrCode),
+                              icon: FlutterRemix.qr_code_line,
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => QRCodeScreen()));
+                              },
+                            ),
                             LocalStorage.getToken().isNotEmpty
                                 ? ProfileItem(
                                     isLtr: isLtr,
                                     title: AppHelpers.getTranslation(
                                         TrKeys.friends),
-                                    icon: FlutterRemix.user_settings_line,
+                                    icon: FlutterRemix.group_line,
                                     onTap: () {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(

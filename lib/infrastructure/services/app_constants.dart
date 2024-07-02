@@ -6,6 +6,7 @@ class AppConstants {
   /// shared preferences keys
   static const String keyLangSelected = 'keyLangSelected';
   static const String keyUserId = 'keyUserId';
+  static const String keyUserUuid = 'keyUserUuid';
   static const String keyUserImage = 'keyUser';
   static const String keyToken = 'keyToken';
   static const String keyUiType = 'keyUiType';

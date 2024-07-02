@@ -19,6 +19,7 @@ import 'package:puntossmart/infrastructure/services/app_constants.dart';
 import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/local_storage.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
+import 'package:puntossmart/presentation/components/badge_item.dart';
 
 import 'package:puntossmart/presentation/components/market_item.dart';
 import 'package:puntossmart/presentation/components/title_icon.dart';
@@ -26,7 +27,9 @@ import 'package:puntossmart/presentation/pages/home/app_bar_home.dart';
 import 'package:puntossmart/presentation/pages/home/category_screen.dart';
 import 'package:puntossmart/presentation/pages/home/controller/shop_survey_controller.dart';
 import 'package:puntossmart/presentation/pages/home/filter_category_shop.dart';
+import 'package:puntossmart/presentation/pages/home/shop_survey_page.dart';
 import 'package:puntossmart/presentation/pages/home_one/widget/door_to_door.dart';
+
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
 import 'package:upgrader/upgrader.dart';
@@ -236,8 +239,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                           : Container(
                               margin: const EdgeInsets.symmetric(
                                   horizontal: 15, vertical: 9),
-                              padding: const EdgeInsets.all(5),
-                              height: MediaQuery.of(context).size.height * 0.22,
+                              height: MediaQuery.of(context).size.height * 0.20,
                               child: ListView.builder(
                                 itemCount: shopSurveyController
                                     .shopSurveyModelList.length,
@@ -245,45 +247,93 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 itemBuilder: (context, index) {
                                   final survey = shopSurveyController
                                       .shopSurveyModelList[index];
-                                  return Container(
-                                    margin: const EdgeInsets.only(right: 5),
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10.0)),
-                                    ),
-                                    height: MediaQuery.of(context).size.height *
-                                        0.20,
-                                    width: MediaQuery.of(context).size.width *
-                                        0.50,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Image.network(
-                                          survey.logoImg ??
-                                              AppConstants.emptyImage,
-                                          fit: BoxFit.contain,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.14,
-                                          width: double.infinity,
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.all(8),
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.05,
-                                          child: Text(
-                                            survey.shopTitle ?? "",
-                                            style: AppStyle.interRegular(),
+                                  return GestureDetector(
+                                    onTap: () {
+                                      if (LocalStorage.getToken().isNotEmpty) {
+                                        shopSurveyController.getSurveysByShopId(
+                                            shopID: survey.shopId ?? 0);
+                                        shopSurveyController
+                                            .getUserCompletedSurveysByShop(
+                                                shopID: survey.shopId ?? 0);
+                                      } else {
+                                        context.router
+                                            .replace(const LoginRoute());
+                                      }
+
+                                      print("CHECKING");
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => ShopSurveyPage(
+                                            shopName: survey.shopTitle ?? "",
+                                            imageUrl: survey.logoImg ??
+                                                AppConstants.emptyImage,
+                                            shopID: survey.shopId ?? 0,
                                           ),
                                         ),
-                                      ],
+                                      );
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.all(5),
+                                      margin: const EdgeInsets.only(right: 5),
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10.0)),
+                                      ),
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.20,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.40,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            child: Image.network(
+                                              survey.logoImg ??
+                                                  AppConstants.emptyImage,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 6,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                survey.shopTitle ?? "",
+                                                style: AppStyle.interSemi(
+                                                  size: 15,
+                                                  color: AppStyle.black,
+                                                ),
+                                              ),
+                                              if (survey.verify == 1)
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: 4.r),
+                                                  child: const BadgeItem(),
+                                                ),
+                                            ],
+                                          ),
+                                          Text(
+                                            (survey.shopDescription?.length ??
+                                                        0) >
+                                                    25
+                                                ? "${survey.shopDescription?.substring(0, 25) ?? " "}.."
+                                                : survey.shopDescription ?? "",
+                                            style: AppStyle.interNormal(
+                                              size: 14,
+                                              color: AppStyle.black,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   );
                                 },
@@ -401,7 +451,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                                   childAspectRatio: 1, crossAxisCount: 2),
-                          padding: EdgeInsets.symmetric(horizontal: 16.r),
+                          padding: EdgeInsets.symmetric(horizontal: 12.r),
                           itemCount: state.shops.length,
                           itemBuilder: (context, index) =>
                               AnimationConfiguration.staggeredGrid(

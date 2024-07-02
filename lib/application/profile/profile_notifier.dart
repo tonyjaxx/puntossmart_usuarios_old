@@ -95,6 +95,7 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
           success: (data) async {
             LocalStorage.setProfileImage(data.data?.img);
             LocalStorage.setUserId(data.data?.id);
+            LocalStorage.setUserUuid(data.data?.uuid);
             LocalStorage.setWalletData(data.data?.wallet);
             LocalStorage.setFirstName(data.data?.firstname);
             LocalStorage.setLastName(data.data?.lastname);

@@ -68,7 +68,7 @@ class MarketItem extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16.w),
+                            padding: EdgeInsets.symmetric(horizontal: 14.w),
                             child: Row(
                               children: [
                                 Text(
@@ -80,11 +80,11 @@ class MarketItem extends StatelessWidget {
                                     color: AppStyle.black,
                                   ),
                                 ),
-                                if (shop.verify ?? false)
+                                if (shop.verify == 1)
                                   Padding(
                                     padding: EdgeInsets.only(left: 4.r),
                                     child: const BadgeItem(),
-                                  )
+                                  ),
                               ],
                             ),
                           ),
@@ -222,7 +222,7 @@ class MarketItem extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
-                if (shop.verify ?? false)
+                if (shop.verify == 1)
                   Padding(
                     padding: EdgeInsets.only(left: 4.r),
                     child: const BadgeItem(),
