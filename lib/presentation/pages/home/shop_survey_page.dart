@@ -113,7 +113,7 @@ class ShopSurveyPage extends StatelessWidget {
                                   crossAxisCount: 2,
                                   mainAxisSpacing: 10,
                                   crossAxisSpacing: 10,
-                                  mainAxisExtent: 140,
+                                  mainAxisExtent: 150,
                                 ),
                                 itemCount: shopSurveyController
                                         .shopWiseSurveyModel
@@ -165,47 +165,36 @@ class ShopSurveyPage extends StatelessWidget {
                                                   imageUrl,
                                                 ),
                                               ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: Alignment.bottomCenter,
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              survey?.surveyTitle ?? "",
-                                              style: GoogleFonts.inter(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 14.0,
-                                                color: AppStyle.black,
-                                              ),
-                                            ),
-                                            const SizedBox(height: 6),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Image.asset(
-                                                  "assets/images/add.png",
-                                                  width: 18,
-                                                  height: 18,
-                                                ),
-                                                const SizedBox(width: 6),
-                                                Text(
-                                                  "${survey?.totalPoints ?? 0}",
+                                              const SizedBox(height: 2),
+                                              Text(survey?.surveyTitle ?? "",
                                                   style: GoogleFonts.inter(
-                                                    fontSize: 13.0,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 14.0,
                                                     color: AppStyle.black,
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
+                                                  textAlign: TextAlign.center),
+                                              const SizedBox(height: 2),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Image.asset(
+                                                    "assets/images/add.png",
+                                                    width: 18,
+                                                    height: 18,
+                                                  ),
+                                                  const SizedBox(width: 6),
+                                                  Text(
+                                                    "${survey?.totalPoints ?? 0}",
+                                                    style: GoogleFonts.inter(
+                                                      fontSize: 13.0,
+                                                      color: AppStyle.black,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -260,7 +249,7 @@ class ShopSurveyPage extends StatelessWidget {
                                   crossAxisCount: 2,
                                   mainAxisSpacing: 10,
                                   crossAxisSpacing: 10,
-                                  mainAxisExtent: 140,
+                                  mainAxisExtent: 150,
                                 ),
                                 itemCount: shopSurveyController
                                         .userCompletedSurveysByShopModel
@@ -293,17 +282,7 @@ class ShopSurveyPage extends StatelessWidget {
                                                 imageUrl,
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: Alignment.bottomCenter,
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
+                                            const SizedBox(height: 2),
                                             Text(
                                               survey?.surveyTitle ?? "",
                                               style: GoogleFonts.inter(
@@ -311,8 +290,9 @@ class ShopSurveyPage extends StatelessWidget {
                                                 fontSize: 14.0,
                                                 color: AppStyle.black,
                                               ),
+                                              textAlign: TextAlign.center,
                                             ),
-                                            const SizedBox(height: 6),
+                                            const SizedBox(height: 2),
                                             Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
@@ -334,7 +314,7 @@ class ShopSurveyPage extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                      )
+                                      ),
                                     ],
                                   );
                                 },

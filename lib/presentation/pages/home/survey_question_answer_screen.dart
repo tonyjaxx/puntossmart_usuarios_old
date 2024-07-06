@@ -23,6 +23,8 @@ class SurveyQuestionAnswerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isLtr = LocalStorage.getLangLtr();
+    shopSurveyController.getSurveysQuestionAnswer(
+        surveyID: int.parse(surveyID));
     return Directionality(
       textDirection: isLtr ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
@@ -97,32 +99,37 @@ class SurveyQuestionAnswerScreen extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(height: 8),
-                              ...?question?.answers?.map((answer) {
-                                return Card(
-                                  color: AppStyle.bgGrey,
-                                  child: ListTile(
-                                    title: Text(answer.answerText ?? ""),
-                                    trailing: Obx(() {
-                                      return Radio<int>(
+                              ...?question?.answers
+                                  ?.asMap()
+                                  .entries
+                                  .map((entry) {
+                                final answerIndex = entry.key;
+                                final answer = entry.value;
+                                return Obx(() {
+                                  return Card(
+                                    color: AppStyle.bgGrey,
+                                    child: ListTile(
+                                      title: Text(answer.answerText ?? ""),
+                                      subtitle: Text(answer.points ?? ""),
+                                      trailing: Radio<int>(
                                         activeColor: AppStyle.brandGreen,
-                                        value: int.tryParse(
-                                                answer.points ?? "0") ??
-                                            0,
+                                        value: answerIndex,
                                         groupValue: shopSurveyController
-                                                .selectedAnswers[questionIndex]
-                                                ?.value ??
-                                            0,
+                                            .selectedAnswers[questionIndex]
+                                            ?.value,
                                         onChanged: (value) {
                                           if (value != null) {
                                             shopSurveyController
                                                 .setSelectedAnswer(
-                                                    questionIndex, value);
+                                                    questionIndex,
+                                                    value,
+                                                    answer.points.toString());
                                           }
                                         },
-                                      );
-                                    }),
-                                  ),
-                                );
+                                      ),
+                                    ),
+                                  );
+                                });
                               }),
                             ],
                           ),
@@ -142,7 +149,8 @@ class SurveyQuestionAnswerScreen extends StatelessWidget {
                             onPressed: () {
                               final totalPoints =
                                   shopSurveyController.calculateTotalPoints();
-                              if (totalPoints > 1) {
+                              if (totalPoints > 0) {
+                                print("TOTAL POINTS ARE $totalPoints");
                                 shopSurveyController.submitSurvey(
                                   context: context,
                                   surveyID: surveyID,
@@ -151,7 +159,7 @@ class SurveyQuestionAnswerScreen extends StatelessWidget {
                                       "You get $totalPoints points from survey $surveyTitle",
                                 );
                               } else {
-                                print("Please answer the a least one question");
+                                print("Please answer at least one question");
                               }
                               print("Total Points: $totalPoints");
                             });

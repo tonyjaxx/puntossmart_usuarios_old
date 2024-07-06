@@ -25,6 +25,7 @@ import 'package:puntossmart/presentation/components/custom_network_image.dart';
 import 'package:puntossmart/presentation/components/loading.dart';
 import 'package:puntossmart/application/like/like_provider.dart';
 import 'package:puntossmart/presentation/pages/friends/friends.dart';
+import 'package:puntossmart/presentation/pages/profile/buy_points_screen.dart';
 import 'package:puntossmart/presentation/pages/profile/currency_page.dart';
 import 'package:puntossmart/presentation/pages/profile/delete_screen.dart';
 import 'package:puntossmart/presentation/pages/profile/qr_code_screen.dart';
@@ -318,6 +319,16 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                               onTap: () {
                                 context
                                     .pushRoute(const NotificationListRoute());
+                              },
+                            ),
+                            ProfileItem(
+                              isLtr: isLtr,
+                              title:
+                                  AppHelpers.getTranslation(TrKeys.buyPoints),
+                              icon: FlutterRemix.coins_line,
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => BuyPointsScreen()));
                               },
                             ),
                             ProfileItem(

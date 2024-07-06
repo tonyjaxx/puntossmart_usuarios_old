@@ -395,4 +395,6 @@ class TrKeys {
   static const String surveys = "Surveys";
   static const String qrCode = "qr_code";
   static const String received = "received";
+  static const String pushNotification = "push_notification";
+  static const String buyPoints = "buy_points";
 }

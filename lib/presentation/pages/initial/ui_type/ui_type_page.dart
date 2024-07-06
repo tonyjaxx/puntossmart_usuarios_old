@@ -29,7 +29,7 @@ class UiTypePage extends StatelessWidget {
         ),
       ),
       body: GridView.builder(
-        itemCount: 4,
+        itemCount: 1,
         padding: REdgeInsets.symmetric(horizontal: 16, vertical: 24),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
@@ -43,7 +43,7 @@ class UiTypePage extends StatelessWidget {
               builder: (BuildContext context, WidgetRef ref, Widget? child) {
                 return GestureDetector(
                   onTap: () async {
-                    await LocalStorage.setUiType(index);
+                    await LocalStorage.setUiType(3);
                     if (context.mounted) {
                       ref.read(mainProvider.notifier).selectIndex(0);
                       context.replaceRoute(const MainRoute());
@@ -52,7 +52,7 @@ class UiTypePage extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(
-                          color: AppHelpers.getType() == index
+                          color: AppHelpers.getType() == 3
                               ? AppStyle.brandGreen
                               : AppStyle.transparent,
                           width: 3),
@@ -61,7 +61,7 @@ class UiTypePage extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.r),
                       child: Image.asset(
-                        "assets/images/ui$index.png",
+                        "assets/images/ui3.png",
                       ),
                     ),
                   ),

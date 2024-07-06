@@ -107,7 +107,10 @@ class ShopSurveyController extends GetxController {
   }
 
   Rx<SurveyQuestionAnswerModel?> surveyQuestionAnswerModel = Rx(null);
-  var selectedAnswers = <int, Rx<int>>{}.obs;
+  Map<int, Rx<int?>> selectedAnswers = {};
+  Map<int, int> selectedPoints =
+      {}; // Map to store selected points for each question
+
   getSurveysQuestionAnswer({required int surveyID}) async {
     try {
       isLoading(true);
@@ -127,6 +130,13 @@ class ShopSurveyController extends GetxController {
       if (response.statusCode == 200) {
         surveyQuestionAnswerModel.value =
             SurveyQuestionAnswerModel.fromJson(responseData);
+        // Initialize selectedAnswers and selectedPoints with null and 0 for each question respectively
+        surveyQuestionAnswerModel.value?.questions
+            ?.asMap()
+            .forEach((index, question) {
+          selectedAnswers[index] = Rx<int?>(null);
+          selectedPoints[index] = 0;
+        });
         print("URL :: $url :: RESPONSE :: $responseData");
       } else {
         log('Request failed with status: ${response.statusCode}');
@@ -184,14 +194,15 @@ class ShopSurveyController extends GetxController {
     }
   }
 
-  void setSelectedAnswer(int questionIndex, int points) {
-    selectedAnswers[questionIndex] = points.obs;
+  void setSelectedAnswer(int questionIndex, int value, String points) {
+    selectedAnswers[questionIndex]?.value = value;
+    selectedPoints[questionIndex] = int.parse(points); // Store the points
   }
 
   int calculateTotalPoints() {
     int totalPoints = 0;
-    selectedAnswers.forEach((key, value) {
-      totalPoints += value.value;
+    selectedPoints.forEach((key, value) {
+      totalPoints += value;
     });
     return totalPoints;
   }

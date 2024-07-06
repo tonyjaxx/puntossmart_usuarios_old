@@ -24,7 +24,7 @@ class CategoryBarItemThree extends StatelessWidget {
         padding: REdgeInsets.all(8),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10.r)),
-            color: isActive ? AppStyle.brandGreen : AppStyle.brandGreen),
+            color: isActive ? AppStyle.recommendBg : AppStyle.brandGreen),
         child: InkWell(
           onTap: onTap,
           child: Row(
