@@ -8,6 +8,7 @@ import 'package:puntossmart/presentation/components/text_fields/outline_bordered
 import 'package:puntossmart/presentation/pages/profile/controller/send_push_notification_controller.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
 
+// ignore: must_be_immutable
 class PushNotificationScreen extends StatelessWidget {
   PushNotificationScreen({Key? key}) : super(key: key);
 

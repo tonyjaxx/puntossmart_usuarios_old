@@ -397,4 +397,10 @@ class TrKeys {
   static const String received = "received";
   static const String pushNotification = "push_notification";
   static const String buyPoints = "buy_points";
+  static const String points = 'points';
+  static const String status = "status";
+  static const String pending = "pending";
+  static const String approved = "approved";
+  static const String rejected = "rejected";
+  static const String price = "price";
 }

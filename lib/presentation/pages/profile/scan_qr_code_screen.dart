@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:puntossmart/infrastructure/services/local_storage.dart';
 import 'package:puntossmart/presentation/pages/friends/controller/friend_controller.dart';
-import 'package:puntossmart/presentation/pages/profile/send_point_by_qr_code.dart';
 
 import '../../theme/app_style.dart';
 
