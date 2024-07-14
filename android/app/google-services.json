@@ -7,12 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:425054115382:android:5213f0193525e182ebea97",
+        "mobilesdk_app_id": "1:425054115382:android:5c6a30816275161cebea97",
         "android_client_info": {
-          "package_name": "com.puntossmart.puntossmart"
+          "package_name": "com.puntossmart.comercio"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "425054115382-uligc2dcipocl6j61d049k6dd160gltg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBNbVXIBe6pw3gtJD-86D1DDDEfOlud260"
@@ -20,7 +25,151 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425054115382-uligc2dcipocl6j61d049k6dd160gltg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "425054115382-15tq8kfgc9e1tjf2n89ok6h51c6tdi90.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.puntossmart.vendor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425054115382:android:e6c4ec9b5a94e9a9ebea97",
+        "android_client_info": {
+          "package_name": "com.puntossmart.comercios"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425054115382-t6s5hhdf5tnc1ohbhp3ecohi8lg7enr7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.puntossmart.comercios",
+            "certificate_hash": "66d8254febb6e877f7073e1d408e4d1d7151c5e2"
+          }
+        },
+        {
+          "client_id": "425054115382-uligc2dcipocl6j61d049k6dd160gltg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNbVXIBe6pw3gtJD-86D1DDDEfOlud260"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425054115382-uligc2dcipocl6j61d049k6dd160gltg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "425054115382-15tq8kfgc9e1tjf2n89ok6h51c6tdi90.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.puntossmart.vendor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425054115382:android:5213f0193525e182ebea97",
+        "android_client_info": {
+          "package_name": "com.puntossmart.puntossmart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425054115382-h9js84tbcu0amc2c91022i81n5prqjuh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.puntossmart.puntossmart",
+            "certificate_hash": "66d8254febb6e877f7073e1d408e4d1d7151c5e2"
+          }
+        },
+        {
+          "client_id": "425054115382-uligc2dcipocl6j61d049k6dd160gltg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNbVXIBe6pw3gtJD-86D1DDDEfOlud260"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425054115382-uligc2dcipocl6j61d049k6dd160gltg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "425054115382-15tq8kfgc9e1tjf2n89ok6h51c6tdi90.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.puntossmart.vendor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425054115382:android:b142c11d32e30234ebea97",
+        "android_client_info": {
+          "package_name": "com.puntossmart.vendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425054115382-2r8e4beooo33iq0nun9aelj9pgld6b4p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.puntossmart.vendor",
+            "certificate_hash": "66d8254febb6e877f7073e1d408e4d1d7151c5e2"
+          }
+        },
+        {
+          "client_id": "425054115382-uligc2dcipocl6j61d049k6dd160gltg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNbVXIBe6pw3gtJD-86D1DDDEfOlud260"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425054115382-uligc2dcipocl6j61d049k6dd160gltg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "425054115382-15tq8kfgc9e1tjf2n89ok6h51c6tdi90.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.puntossmart.vendor"
+              }
+            }
+          ]
         }
       }
     }

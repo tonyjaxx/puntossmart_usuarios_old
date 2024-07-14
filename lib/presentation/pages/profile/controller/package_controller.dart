@@ -9,6 +9,7 @@ import 'package:puntossmart/infrastructure/services/local_storage.dart';
 import 'package:puntossmart/presentation/pages/profile/model/buy_history_model.dart';
 import 'package:puntossmart/presentation/pages/profile/model/package_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 class PackageController extends GetxController {
   RxBool isLoading = false.obs;
@@ -86,15 +87,11 @@ class PackageController extends GetxController {
       if (response.statusCode == 200) {
         getBuyHistory();
         Navigator.of(context).pop();
-        await FlutterShare.share(
-          title: 'Buy Punto Smart',
-          text: '🌟 *Buy Punto Smart* 🌟\n\n'
-              'Hello,\n\n'
-              'I would like to purchase the *$packageName* Puntos Smart. 🎉\n\n'
-              'This package provides *$points* points and is valued at *$pens* PENs. These points will allow me to enjoy numerous benefits and exclusive rewards within the Punto Smart ecosystem.\n\n'
-              'Please proceed with my request at your earliest convenience. I am eager to start utilizing the benefits of this package.\n\n'
-              '*Thank you!*\n\n'
-              '${LocalStorage.getFirstName().toString()} ${LocalStorage.getLastName().toString()}',
+        openWhatsapp(
+          phone: "+51904244903",
+          packageName: packageName,
+          points: "$points",
+          pens: "$pens",
         );
         log("$responseData");
       } else {
@@ -104,6 +101,33 @@ class PackageController extends GetxController {
       log('Error in fetch history: $e');
     } finally {
       requestLoding(false);
+    }
+  }
+
+  Future<void> openWhatsapp(
+      {required String phone,
+      required String packageName,
+      required String points,
+      required String pens}) async {
+    final String phoneNumber = phone;
+    final String firstName = LocalStorage.getFirstName().toString();
+    final String lastName = LocalStorage.getLastName().toString();
+    final String message = Uri.encodeComponent(
+      '🌟 *Buy Punto Smart* 🌟\n\n'
+      'Hello,\n\n'
+      'I would like to purchase the *$packageName* Puntos Smart. 🎉\n\n'
+      'This package provides *$points* points and is valued at *$pens* PENs. These points will allow me to enjoy numerous benefits and exclusive rewards within the Punto Smart ecosystem.\n\n'
+      'Please proceed with my request at your earliest convenience. I am eager to start utilizing the benefits of this package.\n\n'
+      '*Thank you!*\n\n'
+      '$firstName $lastName',
+    );
+
+    final String url = "https://wa.me/$phoneNumber?text=$message";
+
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
     }
   }
 

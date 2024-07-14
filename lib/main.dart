@@ -23,10 +23,16 @@ void main() async {
   if (Platform.isIOS) {
     await Firebase.initializeApp(
       options: const FirebaseOptions(
-        apiKey: "AIzaSyBk8bkWJyOKu-7UPQdZdWWxoLUilL8AD6I",
-        appId: "425054115382",
-        messagingSenderId: "messagingSenderId",
-        projectId: "puntos-smart-650e5",
+        apiKey: 'AIzaSyBk8bkWJyOKu-7UPQdZdWWxoLUilL8AD6I',
+        appId: '1:425054115382:ios:e06f9f17ee70e039ebea97',
+        messagingSenderId: '425054115382',
+        projectId: 'puntos-smart-650e5',
+        storageBucket: 'puntos-smart-650e5.appspot.com',
+        androidClientId:
+            '425054115382-2r8e4beooo33iq0nun9aelj9pgld6b4p.apps.googleusercontent.com',
+        iosClientId:
+            '425054115382-gh5pnno2d7mpmir9et7lamat2h31deq2.apps.googleusercontent.com',
+        iosBundleId: 'com.puntossmart.puntossmart.v2',
       ),
     );
   } else {

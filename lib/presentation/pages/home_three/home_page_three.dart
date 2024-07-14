@@ -247,7 +247,7 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                       : Container(
                           margin: const EdgeInsets.symmetric(
                               horizontal: 15, vertical: 9),
-                          height: MediaQuery.of(context).size.height * 0.20,
+                          height: MediaQuery.of(context).size.height * 0.22,
                           child: ListView.builder(
                             itemCount:
                                 shopSurveyController.shopSurveyModelList.length,
@@ -310,7 +310,9 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            survey.shopTitle ?? "",
+                                            (survey.shopTitle?.length ?? 0) > 15
+                                                ? "${survey.shopTitle?.substring(0, 15) ?? " "}.."
+                                                : survey.shopTitle ?? "",
                                             style: AppStyle.interSemi(
                                               size: 15,
                                               color: AppStyle.black,
@@ -326,8 +328,8 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                                       ),
                                       Text(
                                         (survey.shopDescription?.length ?? 0) >
-                                                25
-                                            ? "${survey.shopDescription?.substring(0, 25) ?? " "}.."
+                                                20
+                                            ? "${survey.shopDescription?.substring(0, 20) ?? " "}.."
                                             : survey.shopDescription ?? "",
                                         style: AppStyle.interNormal(
                                           size: 14,

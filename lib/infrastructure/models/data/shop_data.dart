@@ -58,7 +58,7 @@ class ShopData {
   String? avgRate;
   String? rateCount;
   String? phone;
-  int? visibility;
+  bool? visibility;
   bool? isRecommend;
   bool? isDiscount;
   bool? open;
