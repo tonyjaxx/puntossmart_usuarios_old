@@ -161,9 +161,14 @@ class ShopSurveyPage extends StatelessWidget {
                                               ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(50),
-                                                child: Image.network(
-                                                  imageUrl,
-                                                ),
+                                                child: Image.network(imageUrl,
+                                                    fit: BoxFit.cover,
+                                                    width: 100,
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.12),
                                               ),
                                               const SizedBox(height: 2),
                                               Text(survey?.surveyTitle ?? "",
@@ -280,6 +285,12 @@ class ShopSurveyPage extends StatelessWidget {
                                                   BorderRadius.circular(50),
                                               child: Image.network(
                                                 imageUrl,
+                                                fit: BoxFit.cover,
+                                                width: 100,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.12,
                                               ),
                                             ),
                                             const SizedBox(height: 2),
@@ -365,6 +376,7 @@ class _ShimmerEffectState extends State<ShimmerEffect>
       builder: (context, child) {
         return Container(
           padding: const EdgeInsets.all(5),
+          margin: const EdgeInsets.all(5),
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             color: _animation.value,

@@ -25,6 +25,8 @@ import 'package:puntossmart/presentation/components/title_icon.dart';
 import 'package:puntossmart/presentation/pages/home/controller/shop_survey_controller.dart';
 import 'package:puntossmart/presentation/pages/home/shop_survey_page.dart';
 import 'package:puntossmart/presentation/pages/home_three/banner_three.dart';
+import 'package:puntossmart/presentation/pages/home_three/controller/promotion_controller.dart';
+import 'package:puntossmart/presentation/pages/home_three/video_player_screen.dart';
 import 'package:puntossmart/presentation/pages/home_three/widgets/door_three.dart';
 import 'package:puntossmart/presentation/pages/home_three/widgets/market_three_item.dart';
 import 'package:puntossmart/presentation/pages/home_three/widgets/shop_see_all.dart';
@@ -123,7 +125,10 @@ class _HomePageState extends ConsumerState<HomePageThree> {
             controller: _restaurantController, isRefresh: true);
   }
 
+  String despacito = "Despacito";
+
   ShopSurveyController shopSurveyController = Get.put(ShopSurveyController());
+  PromotionController promotionController = Get.put(PromotionController());
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(homeProvider);
@@ -282,7 +287,7 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                                   padding: const EdgeInsets.all(5),
                                   margin: const EdgeInsets.only(right: 5),
                                   decoration: const BoxDecoration(
-                                    color: Colors.white,
+                                    color: AppStyle.bgGrey,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10.0)),
                                   ),
@@ -300,6 +305,14 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                                           survey.logoImg ??
                                               AppConstants.emptyImage,
                                           fit: BoxFit.cover,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.25,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.12,
                                         ),
                                       ),
                                       const SizedBox(
@@ -343,6 +356,118 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                               );
                             },
                           ),
+                        );
+                }),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: Text(
+                    "Promotions",
+                    style: AppStyle.interBold(
+                      size: 18,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                Obx(() {
+                  return promotionController.promotionLoading.value
+                      ? Container(
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 9),
+                          height: MediaQuery.of(context).size.height * 0.20,
+                          child: ListView.builder(
+                            itemCount: 3,
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              return ShimmerEffect();
+                            },
+                          ),
+                        )
+                      : Container(
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 9),
+                          height: MediaQuery.of(context).size.height * 0.20,
+                          child: ListView.builder(
+                              itemCount: promotionController.promotionModel
+                                      .value?.promotions?.length ??
+                                  0,
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                final promo = promotionController
+                                    .promotionModel.value?.promotions?[index];
+                                return Container(
+                                  padding: const EdgeInsets.all(5),
+                                  margin: const EdgeInsets.only(right: 5),
+                                  height: 120,
+                                  width: 110,
+                                  decoration: const BoxDecoration(
+                                    color: AppStyle.bgGrey,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10.0)),
+                                  ),
+                                  child: Stack(
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.network(
+                                          promo?.image ??
+                                              AppConstants.emptyImage,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.15,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: 2,
+                                        right: 5,
+                                        child: CircleAvatar(
+                                          backgroundColor: AppStyle.brandGreen,
+                                          radius: 13,
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        VideoPlayerScreen(
+                                                          shopID:
+                                                              promo?.userId ??
+                                                                  0,
+                                                          videoUrl:
+                                                              promo?.video ??
+                                                                  "",
+                                                          points: promo!.points
+                                                              .toString(),
+                                                        )),
+                                              );
+                                            },
+                                            child: Icon(
+                                              Icons.play_arrow,
+                                              size: 18,
+                                              color: AppStyle.black,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.bottomLeft,
+                                        child: Text(
+                                          (promo?.title?.length ?? 0) > 20
+                                              ? "${promo?.title?.substring(0, 20) ?? ""}.."
+                                              : promo?.title ?? "",
+                                          style: AppStyle.interNormal(
+                                            size: 14,
+                                            color: AppStyle.black,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }),
                         );
                 })
               ],
