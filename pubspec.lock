@@ -598,14 +598,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
-  flutter_login_facebook:
-    dependency: "direct main"
-    description:
-      name: flutter_login_facebook
-      sha256: ad38ae738c6d6ff5f9cb5ef4025d90b03045cb8c4e976d470067df2490b5ca30
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.9.0"
   flutter_masked_text2:
     dependency: "direct main"
     description:
@@ -1192,14 +1184,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
-  list_ext:
-    dependency: transitive
-    description:
-      name: list_ext
-      sha256: a38869a6911830f39ace7534972d01e573e17917955b26215e54d5797eb8d5cd
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.6"
   location:
     dependency: "direct main"
     description:
