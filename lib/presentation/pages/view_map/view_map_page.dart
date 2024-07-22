@@ -58,6 +58,7 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
   dynamic check;
   late LatLng latLng;
   final Delayed delayed = Delayed(milliseconds: 700);
+  LatLng peruLocation = LatLng(-12.0464,-77.0428); // Coordenadas para Lima-Perú knjt 19-07-24
 
   @override
   void dispose() {
@@ -140,9 +141,9 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
                     myLocationButtonEnabled: false,
                     initialCameraPosition: CameraPosition(
                       bearing: 0,
-                      target: latLng,
+                      target: peruLocation, // 19-04-24 latLng,
                       tilt: 0,
-                      zoom: 17,
+                      zoom: 12, //17
                     ),
                     mapToolbarEnabled: false,
                     zoomControlsEnabled: false,
