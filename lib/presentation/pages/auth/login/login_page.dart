@@ -22,6 +22,9 @@ import '../../../theme/theme.dart';
 import '../../profile/language_page.dart';
 import 'login_screen.dart';
 import '../../../../application/login/login_provider.dart';
+import 'package:puntossmart/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 @RoutePage()
 class LoginPage extends ConsumerStatefulWidget {
@@ -159,15 +162,15 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             },
                             child: Container(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 5,
+                                horizontal: 12, //10
+                                vertical: 7, //5
                               ),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              child: Text(
-                                AppHelpers.getTranslation(TrKeys.skip),
+                              child: Text(AppLocalizations.of(context)!.skip,
+                                //AppHelpers.getTranslation(TrKeys.skip),
                                 style: AppStyle.interSemi(
                                   size: 16.sp,
                                 ),
@@ -180,20 +183,24 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Welcome To",
+                              //"Welcome To",
+                              AppLocalizations.of(context)!.auth_login_welcome,
                               style: AppStyle.interSemi(size: 32),
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              AppHelpers.getAppName() ?? "",
-                              style: AppStyle.interSemi(
-                                size: 28,
-                                color: AppStyle.brandGreen,
-                              ),
+                              // AppHelpers.getAppName() ?? "",
+                              // style: AppStyle.interSemi(
+                              //   size: 28,
+                              //   color: AppStyle.brandGreen,
+                              // ),
+                              AppLocalizations.of(context)!.puntos_smart,
+                              style: AppStyle.bungee(size: 34),
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              "The Largest Points & Discounts\nNetwork in Peru.",
+                              //"The Largest Points & Discounts\nNetwork in Peru.",
+                              AppLocalizations.of(context)!.auth_login_description,
                               style: AppStyle.interRegular(),
                             )
                           ],
@@ -273,7 +280,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             ),
                             const SizedBox(width: 10),
                             Text(
-                              AppHelpers.getTranslation(TrKeys.login),
+                              //AppHelpers.getTranslation(TrKeys.login),
+                              AppLocalizations.of(context)!.auth_login_3,
                               style: AppStyle.interRegular(
                                 color: AppStyle.white,
                               ),
@@ -318,7 +326,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           vertical: 8,
                         ),
                         child: CustomButton(
-                          title: "Register with Your Email Or Number",
+                          //title: "Register with Your Email Or Number",
+                          title: AppLocalizations.of(context)!.auth_login_register,
                           onPressed: () {
                             AppHelpers.showCustomModalBottomSheet(
                                 context: context,
@@ -337,8 +346,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            "Do you already have an account?",
+                          Text(AppLocalizations.of(context)!.auth_login_login,
+                            //"Do you already have an account?",
                             style: TextStyle(
                               color: AppStyle.white,
                             ),
@@ -352,11 +361,12 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                 isDarkMode: isDarkMode,
                               );
                             },
-                            child: Text(
-                              AppHelpers.getTranslation(TrKeys.login),
+                            child: Text(AppLocalizations.of(context)!.auth_login_2,
+                              //AppHelpers.getTranslation(TrKeys.login),
                               style: TextStyle(
                                   color: AppStyle.white,
-                                  fontWeight: FontWeight.w500),
+                                  fontWeight: FontWeight.w500,
+                                  decoration: TextDecoration.underline),
                             ),
                           ),
                         ],

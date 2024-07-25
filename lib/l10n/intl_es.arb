@@ -1,0 +1,32 @@
+{
+ 
+    "puntos_smart": "PUNTOS SMART",
+    "skip": "Saltar",
+    "auth_login_welcome": "Bienvenido a",
+    "auth_login_description": "La red de puntos y descuentos \nmás grande del Perú",
+    "auth_login_1": "Iniciar Sesión",
+    "auth_login_2": "Ingresar",
+    "auth_login_3": "Acceso",
+    "auth_login_4": "Acceder con",
+    "auth_login_register": "Regístrese con su correo electrónico o número",
+    "auth_login_create": "¿Ya tienes una cuenta?",
+    "auth_login_forget": "¿Olvidaste tu contraseña?",
+    "auth_login_login": "¿Ya tienes cuenta?",
+    "auth_login_keep": "Recordar",
+    "email_or_phone_number": "Correo electrónico o celular",
+    "password": "Contraseña",
+    "email_invalid": "Correo electrónico o celular invalido",
+    "password_invalid": "La contraseña debe tener 8 caracteres",
+    "auth_register": "Crear Cuenta",
+
+
+
+    "all_services": "Servicios",
+    "prueba_t": "hola",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": ""
+}

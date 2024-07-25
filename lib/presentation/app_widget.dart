@@ -1,16 +1,21 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:puntossmart/application/app_widget/app_provider.dart';
 import 'package:puntossmart/domain/di/dependency_manager.dart';
+import 'package:puntossmart/generated/l10n.dart';
 import 'package:puntossmart/infrastructure/services/local_storage.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
 
 import 'components/custom_range_slider.dart';
 import 'routes/app_router.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:puntossmart/l10n/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppWidget extends ConsumerWidget {
   AppWidget({super.key});
@@ -53,7 +58,27 @@ class AppWidget extends ConsumerWidget {
                   debugShowCheckedModeBanner: false,
                   routerDelegate: appRouter.delegate(),
                   routeInformationParser: appRouter.defaultRouteParser(),
-                  locale: Locale(state.activeLanguage?.locale ?? 'en'),
+                  //idioma 25-07-24 knjt
+                  supportedLocales: L10n.all,
+                  locale: const Locale('es'),
+                  localizationsDelegates: const[
+                    //AppLocalizationDelegate(),
+                    AppLocalizations.delegate,
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+
+                  ],
+                  // agregado por karen
+                  // localizationsDelegates: const [
+                  //   S.delegate ,
+                  //   GlobalMaterialLocalizations.delegate,
+                  //   GlobalWidgetsLocalizations.delegate,
+                  //   GlobalCupertinoLocalizations.delegate,
+                  // ],
+                  // supportedLocales: S.delegate.supportedLocales,
+                  //
+                  //locale: Locale(state.activeLanguage?.locale ?? 'en'), //este ya estaba 
                   theme: ThemeData(
                     useMaterial3: false,
                     sliderTheme: SliderThemeData(

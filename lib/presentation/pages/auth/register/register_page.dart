@@ -4,6 +4,7 @@ import 'package:flutter_remix/flutter_remix.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:puntossmart/application/register/register_provider.dart';
+import 'package:puntossmart/generated/l10n.dart';
 import 'package:puntossmart/infrastructure/models/data/user.dart';
 import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/local_storage.dart';
@@ -15,7 +16,7 @@ import 'package:puntossmart/presentation/components/keyboard_dismisser.dart';
 import 'package:puntossmart/presentation/components/text_fields/outline_bordered_text_field.dart';
 import '../../../theme/theme.dart';
 import '../confirmation/register_confirmation_page.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 @RoutePage()
 class RegisterPage extends ConsumerWidget {
   final bool isOnlyEmail;
@@ -53,12 +54,12 @@ class RegisterPage extends ConsumerWidget {
                   Column(
                     children: [
                       AppBarBottomSheet(
-                        title: AppHelpers.getTranslation(TrKeys.register),
+                        title: AppHelpers.getTranslation(AppLocalizations.of(context)!.auth_register/*TrKeys.register*/),
                       ),
                       isOnlyEmail
                           ? OutlinedBorderTextField(
-                              label: AppHelpers.getTranslation(
-                                      TrKeys.emailOrPhoneNumber)
+                              label: AppHelpers.getTranslation(AppLocalizations.of(context)!.email_or_phone_number
+                                      /*TrKeys.emailOrPhoneNumber*/)
                                   .toUpperCase(),
                               onChanged: event.setEmail,
                               isError: state.isEmailInvalid,
@@ -183,8 +184,8 @@ class RegisterPage extends ConsumerWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 30.h),
                     child: CustomButton(
-                      isLoading: state.isLoading,
-                      title: AppHelpers.getTranslation(TrKeys.register),
+                      isLoading: state.isLoading, //btn registrar
+                      title: AppHelpers.getTranslation(AppLocalizations.of(context)!.auth_register/*TrKeys.register*/),
                       onPressed: () {
                         isOnlyEmail
                             ? (event.checkEmail()
@@ -244,8 +245,8 @@ class RegisterPage extends ConsumerWidget {
                                 padding:
                                     const EdgeInsets.only(right: 12, left: 12),
                                 child: Text(
-                                  AppHelpers.getTranslation(
-                                      TrKeys.orAccessQuickly),
+                                  AppHelpers.getTranslation(AppLocalizations.of(context)!.auth_login_4
+                                      /*TrKeys.orAccessQuickly*/),
                                   style: AppStyle.interNormal(
                                     size: 12.sp,
                                     color: AppStyle.textGrey,

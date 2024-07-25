@@ -144,4 +144,18 @@ class AppStyle {
           color: color,
           letterSpacing: letterSpacing.sp,
           decoration: textDecoration);
+  
+  //knjt 24-07-24 tipografia puntos smart
+  static TextStyle bungee({
+    double size = 32,
+    Color color = AppStyle.brandGreen,
+    TextDecoration textDecoration = TextDecoration.none,
+    double letterSpacing = 0,
+  }) =>
+      GoogleFonts.bungee(
+        fontSize: size.sp,
+        color: color,
+        letterSpacing: letterSpacing.sp,
+        decoration: textDecoration,
+      );
 }

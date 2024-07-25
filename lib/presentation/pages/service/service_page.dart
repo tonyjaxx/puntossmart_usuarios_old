@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:puntossmart/application/home/home_provider.dart';
+import 'package:puntossmart/generated/l10n.dart';
 import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/app_bars/common_app_bar.dart';
@@ -50,7 +51,8 @@ class _ServicePageState extends State<ServicePage> {
               ),
               const Spacer(),
               Text(
-                AppHelpers.getTranslation(TrKeys.allServices),
+                //knjt 24-07
+                AppHelpers.getTranslation(S.of(context).all_services/*TrKeys.allServices*/),
                 style: AppStyle.interNoSemi(),
               ),
               const Spacer(),

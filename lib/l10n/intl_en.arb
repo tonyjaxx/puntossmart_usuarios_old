@@ -1,0 +1,26 @@
+{
+
+    "puntos_smart": "PUNTOS SMART",
+    "skip": "Skip",
+    "auth_login_welcome": "Welcome to",
+    "auth_login_description": "The Largest Points & Discounts\nNetwork in Peru.",
+    "auth_login_1": "Login in",
+    "auth_login_2": "Login in",
+    "auth_login_3": "Acceso in",
+    "auth_login_4": "Or access quickly",
+    "auth_login_register": "Register with Your Email Or Number",
+    "auth_login_create": "Do you already have an account?",
+    "auth_login_forget": "Did you forget your password?",
+    "auth_login_login": "Do you already have an account?",
+    "auth_login_keep": "Keep me logged in",
+    "email_or_phone_number": "Email or phone number",
+    "password": "Password",
+    "email_invalid": "Email or phone number is not valid",
+    "password_invalid": "Password should contain minimum 8 characters",
+    "auth_register": "Register",
+
+    "all_services": "All Services",
+    "prueba_t": "hola"
+
+
+}
