@@ -12,6 +12,7 @@ import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/app_bars/common_app_bar.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'widgets/service_two_categories_item.dart';
 
@@ -52,7 +53,7 @@ class _ServicePageState extends State<ServicePage> {
               const Spacer(),
               Text(
                 //knjt 24-07
-                AppHelpers.getTranslation(S.of(context).all_services/*TrKeys.allServices*/),
+                AppHelpers.getTranslation(AppLocalizations.of(context)!.all_services/*TrKeys.allServices*/),
                 style: AppStyle.interNoSemi(),
               ),
               const Spacer(),

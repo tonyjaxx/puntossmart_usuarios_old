@@ -23,6 +23,7 @@ import '../../../../../application/shop_order/shop_order_provider.dart';
 import 'widgets/cart_clear_dialog.dart';
 import 'widgets/cart_order_description.dart';
 import 'widgets/cart_order_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CartOrderPage extends ConsumerStatefulWidget {
   final bool isGroupOrder;
@@ -414,7 +415,7 @@ class _ShopOrderState extends ConsumerState<CartOrderPage> {
         Lottie.asset('assets/lottie/girl_empty.json'),
         24.verticalSpace,
         Text(
-          AppHelpers.getTranslation(TrKeys.cartIsEmpty),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!.cart_is_empty/*TrKeys.cartIsEmpty*/),
           style: AppStyle.interSemi(size: 18.sp),
         ),
       ],

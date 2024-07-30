@@ -12,6 +12,7 @@ import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddAddress extends StatelessWidget {
   const AddAddress({super.key});
@@ -22,7 +23,7 @@ class AddAddress extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          AppHelpers.getTranslation(TrKeys.agreeLocation),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!.agree_location),
           style: AppStyle.interSemi(size: 16.sp),
           textAlign: TextAlign.center,
         ),
@@ -31,7 +32,7 @@ class AddAddress extends StatelessWidget {
           children: [
             Expanded(
               child: CustomButton(
-                  title: AppHelpers.getTranslation(TrKeys.cancel),
+                  title: AppHelpers.getTranslation(AppLocalizations.of(context)!.cancel),
                   borderColor: AppStyle.black,
                   background: AppStyle.transparent,
                   onPressed: () {
@@ -43,7 +44,7 @@ class AddAddress extends StatelessWidget {
             Expanded(
               child: Consumer(builder: (context, ref, child) {
                 return CustomButton(
-                    title: AppHelpers.getTranslation(TrKeys.yes),
+                    title: AppHelpers.getTranslation(AppLocalizations.of(context)!.yes),
                     onPressed: () {
                       Navigator.pop(context);
                       LocalStorage.setAddressSelected(

@@ -5,6 +5,7 @@ abstract class AppConnectivity {
   AppConnectivity._();
 
   static Future<bool> connectivity() async {
+    //KNJT ERROR
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {

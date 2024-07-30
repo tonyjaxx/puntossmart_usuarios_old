@@ -13,7 +13,7 @@ import 'package:puntossmart/presentation/components/title_icon.dart';
 import 'package:puntossmart/presentation/pages/home/filter/filter_page.dart';
 import 'package:puntossmart/presentation/pages/home_two/widget/market_two_item.dart';
 import '../../theme/app_style.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class FilterCategoryShopTwo extends StatelessWidget {
   final HomeState state;
   final HomeNotifier event;
@@ -79,7 +79,7 @@ class FilterCategoryShopTwo extends StatelessWidget {
                               SvgPicture.asset("assets/svgs/filter.svg"),
                               6.horizontalSpace,
                               Text(
-                                AppHelpers.getTranslation(TrKeys.filter),
+                                AppHelpers.getTranslation(AppLocalizations.of(context)!.filter),
                                 style: AppStyle.interNormal(
                                   size: 13,
                                   color: AppStyle.black,
@@ -104,9 +104,9 @@ class FilterCategoryShopTwo extends StatelessWidget {
         ),
         6.verticalSpace,
         TitleAndIcon(
-          title: AppHelpers.getTranslation(TrKeys.restaurants),
+          title: AppHelpers.getTranslation(AppLocalizations.of(context)!.restaurants),
           rightTitle:
-              "${AppHelpers.getTranslation(TrKeys.found)} ${state.totalShops} ${AppHelpers.getTranslation(TrKeys.results)}",
+              "${AppHelpers.getTranslation(AppLocalizations.of(context)!.found)} ${state.totalShops} ${AppHelpers.getTranslation(AppLocalizations.of(context)!.results)}",
         ),
         state.isSelectCategoryLoading == -1
             ? const Loading()
@@ -128,19 +128,19 @@ class FilterCategoryShopTwo extends StatelessWidget {
                   )
                 : Padding(
                     padding: EdgeInsets.only(top: 24.h),
-                    child: Center(child: _resultEmpty()),
+                    child: Center(child: _resultEmpty(context)),
                   ),
       ],
     );
   }
 }
 
-Widget _resultEmpty() {
+Widget _resultEmpty(BuildContext context){
   return Column(
     children: [
       Image.asset("assets/images/notFound.png"),
       Text(
-        AppHelpers.getTranslation(TrKeys.nothingFound),
+        AppHelpers.getTranslation(AppLocalizations.of(context)!.nothing_found/*TrKeys.nothingFound*/),
         style: AppStyle.interSemi(size: 18.sp),
       ),
       Padding(
@@ -148,7 +148,7 @@ Widget _resultEmpty() {
           horizontal: 32.w,
         ),
         child: Text(
-          AppHelpers.getTranslation(TrKeys.trySearchingAgain),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!.try_searching_again/*TrKeys.trySearchingAgain*/),
           style: AppStyle.interRegular(size: 14.sp),
           textAlign: TextAlign.center,
         ),

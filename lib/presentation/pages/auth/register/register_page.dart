@@ -23,7 +23,7 @@ class RegisterPage extends ConsumerWidget {
 
   const RegisterPage({
     super.key,
-    required this.isOnlyEmail,
+    required this.isOnlyEmail, //si es solo con correo
   });
 
   @override
@@ -32,6 +32,7 @@ class RegisterPage extends ConsumerWidget {
     final state = ref.watch(registerProvider);
     final bool isDarkMode = LocalStorage.getAppThemeMode();
     final bool isLtr = LocalStorage.getLangLtr();
+
     return Directionality(
       textDirection: isLtr ? TextDirection.ltr : TextDirection.rtl,
       child: KeyboardDismisser(
@@ -47,6 +48,8 @@ class RegisterPage extends ConsumerWidget {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: SingleChildScrollView(
+
+
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.min,
@@ -65,7 +68,7 @@ class RegisterPage extends ConsumerWidget {
                               isError: state.isEmailInvalid,
                               descriptionText: state.isEmailInvalid
                                   ? AppHelpers.getTranslation(
-                                      TrKeys.emailIsNotValid)
+                                      AppLocalizations.of(context)!.email_invalid/*TrKeys.emailIsNotValid*/)
                                   : null,
                             )
                           : const SizedBox.shrink(),
@@ -79,7 +82,7 @@ class RegisterPage extends ConsumerWidget {
                                 (state.verificationId.isEmpty)
                                     ? OutlinedBorderTextField(
                                         label: AppHelpers.getTranslation(
-                                                TrKeys.phoneNumber)
+                                                AppLocalizations.of(context)!.phone_number)
                                             .toUpperCase(),
                                         onChanged: event.setPhone,
                                       )
@@ -95,7 +98,7 @@ class RegisterPage extends ConsumerWidget {
                                           2,
                                       child: OutlinedBorderTextField(
                                         label: AppHelpers.getTranslation(
-                                                TrKeys.firstname)
+                                                AppLocalizations.of(context)!.firstname)
                                             .toUpperCase(),
                                         onChanged: (name) =>
                                             event.setFirstName(name),
@@ -107,7 +110,7 @@ class RegisterPage extends ConsumerWidget {
                                           2,
                                       child: OutlinedBorderTextField(
                                         label: AppHelpers.getTranslation(
-                                                TrKeys.surname)
+                                                AppLocalizations.of(context)!.surname)
                                             .toUpperCase(),
                                         onChanged: (name) =>
                                             event.setLatName(name),
@@ -118,7 +121,7 @@ class RegisterPage extends ConsumerWidget {
                                 30.verticalSpace,
                                 OutlinedBorderTextField(
                                   label:
-                                      AppHelpers.getTranslation(TrKeys.password)
+                                      AppHelpers.getTranslation(AppLocalizations.of(context)!.password)
                                           .toUpperCase(),
                                   obscure: state.showPassword,
                                   suffixIcon: IconButton(
@@ -137,14 +140,13 @@ class RegisterPage extends ConsumerWidget {
                                   onChanged: (name) => event.setPassword(name),
                                   isError: state.isPasswordInvalid,
                                   descriptionText: state.isPasswordInvalid
-                                      ? AppHelpers.getTranslation(TrKeys
-                                          .passwordShouldContainMinimum8Characters)
+                                      ? AppHelpers.getTranslation(AppLocalizations.of(context)!.password_minimum_8_characters)
                                       : null,
                                 ),
                                 34.verticalSpace,
                                 OutlinedBorderTextField(
                                   label:
-                                      AppHelpers.getTranslation(TrKeys.password)
+                                      AppHelpers.getTranslation(AppLocalizations.of(context)!.confirm_password)
                                           .toUpperCase(),
                                   obscure: state.showConfirmPassword,
                                   suffixIcon: IconButton(
@@ -167,13 +169,13 @@ class RegisterPage extends ConsumerWidget {
                                   descriptionText: state
                                           .isConfirmPasswordInvalid
                                       ? AppHelpers.getTranslation(
-                                          TrKeys.confirmPasswordIsNotTheSame)
+                                          AppLocalizations.of(context)!.password_is_not_the_same)
                                       : null,
                                 ),
                                 30.verticalSpace,
                                 OutlinedBorderTextField(
                                   label:
-                                      AppHelpers.getTranslation(TrKeys.referral)
+                                      AppHelpers.getTranslation(AppLocalizations.of(context)!.referral)
                                           .toUpperCase(),
                                   onChanged: event.setReferral,
                                 ),
@@ -188,7 +190,8 @@ class RegisterPage extends ConsumerWidget {
                       title: AppHelpers.getTranslation(AppLocalizations.of(context)!.auth_register/*TrKeys.register*/),
                       onPressed: () {
                         isOnlyEmail
-                            ? (event.checkEmail()
+                            ? 
+                            (event.checkEmail()
                                 ? event.sendCode(context, () {
                                     Navigator.pop(context);
                                     AppHelpers.showCustomModalBottomSheet(

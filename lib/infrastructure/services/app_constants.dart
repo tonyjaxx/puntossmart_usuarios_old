@@ -1,5 +1,6 @@
+import 'package:flutter/widgets.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class AppConstants {
   AppConstants._();
 
@@ -82,12 +83,21 @@ class AppConstants {
     "assets/images/set.png",
   ];
 
-  static const List infoTitle = [
-    TrKeys.saveTime,
-    TrKeys.deliveryRestriction,
-    TrKeys.fast,
-    TrKeys.set,
-  ];
+  // static const List infoTitle = [
+  //   TrKeys.saveTime,
+  //   TrKeys.deliveryRestriction,
+  //   TrKeys.fast,
+  //   TrKeys.set,
+  // ];
+
+  static List<String> infoTitle(BuildContext context) {
+    return [
+      AppLocalizations.of(context)!.save_time,
+      AppLocalizations.of(context)!.delivery_restriction,
+      AppLocalizations.of(context)!.fast_secure_delivery,
+      AppLocalizations.of(context)!.set_up_deliver,
+    ];
+  }
 
   static const payLater = [
     "progress",

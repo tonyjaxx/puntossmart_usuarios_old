@@ -18,7 +18,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      Future.delayed(Duration(seconds: 7), () {
+      Future.delayed(Duration(seconds: 3), () { //7
         ref.read(splashProvider.notifier).getTranslations(context);
         ref.read(splashProvider.notifier).getToken(context, goMain: () {
           FlutterNativeSplash.remove();

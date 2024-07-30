@@ -13,7 +13,7 @@ import 'package:puntossmart/presentation/components/buttons/pop_button.dart';
 import 'package:puntossmart/presentation/components/custom_tab_bar.dart';
 import 'package:puntossmart/presentation/components/loading.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'parcel_item.dart';
 
 @RoutePage()
@@ -123,7 +123,7 @@ class _ParcelListPageState extends ConsumerState<ParcelListPage>
                                           );
                                         },
                                       )
-                                    : _resultEmpty(),
+                                    : _resultEmpty(context),
                               ),
                         state.isHistoryLoading
                             ? const Loading()
@@ -170,13 +170,13 @@ class _ParcelListPageState extends ConsumerState<ParcelListPage>
   }
 }
 
-Widget _resultEmpty() {
+Widget _resultEmpty(BuildContext context) {
   return Column(
     children: [
       24.verticalSpace,
       Image.asset("assets/images/notFound.png"),
       Text(
-        AppHelpers.getTranslation(TrKeys.nothingFound),
+        AppHelpers.getTranslation(AppLocalizations.of(context)!.nothing_found/*TrKeys.nothingFound*/),
         style: AppStyle.interSemi(size: 18.sp),
       ),
       Padding(
@@ -184,7 +184,7 @@ Widget _resultEmpty() {
           horizontal: 32.w,
         ),
         child: Text(
-          AppHelpers.getTranslation(TrKeys.trySearchingAgain),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!.try_searching_again/*TrKeys.trySearchingAgain*/),
           style: AppStyle.interRegular(size: 14.sp),
           textAlign: TextAlign.center,
         ),

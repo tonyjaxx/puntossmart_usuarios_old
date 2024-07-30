@@ -115,14 +115,14 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
       }
     }
   }
-
+//KNJT 29-07-24 +51
   Future<void> sendCodeToNumber(
       BuildContext context, ValueChanged<String> onSuccess) async {
     final connected = await AppConnectivity.connectivity();
     if (connected) {
       state = state.copyWith(isLoading: true, isSuccess: false);
       await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: state.email,
+        phoneNumber: '+51'+state.email,
         verificationCompleted: (PhoneAuthCredential credential) {},
         verificationFailed: (FirebaseAuthException e) {
           AppHelpers.showCheckTopSnackBar(
@@ -135,7 +135,7 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
         codeSent: (String verificationId, int? resendToken) {
           state = state.copyWith(
             verificationId: verificationId,
-            phone: state.email,
+            phone: '+51'+state.email,
             isLoading: false,
             isSuccess: true,
           );

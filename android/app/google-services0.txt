@@ -94,27 +94,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "425054115382-0e7b0ce73bsit9v1jf3e1dued2qnlg2a.apps.googleusercontent.com",
+          "client_id": "425054115382-h9js84tbcu0amc2c91022i81n5prqjuh.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.puntossmart.puntossmart",
-            "certificate_hash": "084e531f55d097d34210cc64bbb83bd1161a14d8"
-          }
-        },
-        {
-          "client_id": "425054115382-3utlka28pepjr3uapvu4mtjml3s603ns.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.puntossmart.puntossmart",
-            "certificate_hash": "45dce3774f612086fefdbf761e199631915ad114"
-          }
-        },
-        {
-          "client_id": "425054115382-sgn2jqvmheveb4u66t8pku4ugllidrll.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.puntossmart.puntossmart",
-            "certificate_hash": "64aad0b8a6e994676d8ccb45c1da1ddc16469ba3"
+            "certificate_hash": "66d8254febb6e877f7073e1d408e4d1d7151c5e2"
           }
         },
         {

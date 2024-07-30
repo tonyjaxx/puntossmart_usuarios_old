@@ -25,6 +25,7 @@ import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
 import '../../../../application/map/view_map_notifier.dart';
 import '../../../../application/map/view_map_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class ViewMapPage extends ConsumerStatefulWidget {
@@ -382,7 +383,7 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
                         child: Opacity(
                           opacity: state.isScrolling ? 0.5 : 1,
                           child: CustomButton(
-                            title: AppHelpers.getTranslation(TrKeys.apply),
+                            title: AppHelpers.getTranslation(AppLocalizations.of(context)!.apply),
                             onPressed: () {
                               if (widget.isParcel) {
                                 Navigator.pop(

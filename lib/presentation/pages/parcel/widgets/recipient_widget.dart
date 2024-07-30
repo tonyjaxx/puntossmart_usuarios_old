@@ -11,7 +11,7 @@ import 'package:puntossmart/presentation/components/buttons/animation_button_eff
 import 'package:puntossmart/presentation/components/text_fields/outline_bordered_text_field.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../infrastructure/models/models.dart';
 import 'custom_expanded.dart';
 
@@ -79,14 +79,14 @@ class RecipientWidget extends StatelessWidget {
                     children: [
                       if (state.addressTo != null)
                         Text(
-                          AppHelpers.getTranslation(TrKeys.deliveryTo),
+                          AppHelpers.getTranslation(AppLocalizations.of(context)!.delivery_to),
                           style: AppStyle.interRegular(size: 12),
                         ),
                       SizedBox(
                         width: MediaQuery.sizeOf(context).width / 2 - 20.r,
                         child: Text(
                           state.addressTo ??
-                              AppHelpers.getTranslation(TrKeys.deliveryTo),
+                              AppHelpers.getTranslation(AppLocalizations.of(context)!.delivery_to),
                           style: AppStyle.interSemi(size: 16),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,

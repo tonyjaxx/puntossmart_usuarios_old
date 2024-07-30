@@ -11,7 +11,7 @@ import 'package:puntossmart/presentation/components/loading.dart';
 import 'package:puntossmart/presentation/components/title_icon.dart';
 import 'package:puntossmart/presentation/pages/home/filter/filter_page.dart';
 import 'package:puntossmart/presentation/pages/home_three/widgets/market_three_item.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../theme/app_style.dart';
 import 'shimmer/news_shop_shimmer.dart';
 import 'widgets/tab_bar_item_three.dart';
@@ -29,6 +29,8 @@ class FilterCategoryShopThree extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var tittle_ = state.categories[state.selectIndexCategory].translation?.title
+        .toString();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -36,6 +38,8 @@ class FilterCategoryShopThree extends StatelessWidget {
           height: 46.r,
           child: ListView.builder(
             padding: EdgeInsets.only(bottom: 8.r, left: 16.r),
+
+            ///btn filter
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
             itemCount:
@@ -81,7 +85,8 @@ class FilterCategoryShopThree extends StatelessWidget {
                               SvgPicture.asset("assets/svgs/filter.svg"),
                               6.horizontalSpace,
                               Text(
-                                AppHelpers.getTranslation(TrKeys.filter),
+                                AppHelpers.getTranslation(
+                                    AppLocalizations.of(context)!.filter),
                                 style: AppStyle.interNormal(
                                   size: 13,
                                   color: AppStyle.black,
@@ -120,7 +125,7 @@ class FilterCategoryShopThree extends StatelessWidget {
                                   title:
                                       AppHelpers.getTranslation(TrKeys.shops),
                                   rightTitle:
-                                      "${AppHelpers.getTranslation(TrKeys.found)} ${state.totalShops} ${AppHelpers.getTranslation(TrKeys.results)}",
+                                      "${AppHelpers.getTranslation(AppLocalizations.of(context)!.found)} ${state.totalShops} ${AppHelpers.getTranslation(AppLocalizations.of(context)!.results)}",
                                 ),
                                 12.verticalSpace,
                                 SizedBox(
@@ -147,9 +152,9 @@ class FilterCategoryShopThree extends StatelessWidget {
                             )
                           : const SizedBox.shrink(),
                   TitleAndIcon(
-                    title: AppHelpers.getTranslation(TrKeys.restaurants),
+                    title: AppHelpers.getTranslation('$tittle_'),
                     rightTitle:
-                        "${AppHelpers.getTranslation(TrKeys.found)} ${state.filterShops.length.toString()} ${AppHelpers.getTranslation(TrKeys.results)}",
+                        "${AppHelpers.getTranslation(AppLocalizations.of(context)!.found)} ${state.filterShops.length.toString()} ${AppHelpers.getTranslation(AppLocalizations.of(context)!.results)}",
                   ),
                   state.filterShops.isNotEmpty
                       ? ListView.builder(
@@ -165,7 +170,7 @@ class FilterCategoryShopThree extends StatelessWidget {
                         )
                       : Padding(
                           padding: EdgeInsets.only(top: 24.h),
-                          child: Center(child: _resultEmpty()),
+                          child: Center(child: _resultEmpty(context)),
                         ),
                 ],
               ),
@@ -174,12 +179,13 @@ class FilterCategoryShopThree extends StatelessWidget {
   }
 }
 
-Widget _resultEmpty() {
+Widget _resultEmpty(BuildContext context) {
   return Column(
     children: [
       Image.asset("assets/images/notFound.png"),
       Text(
-        AppHelpers.getTranslation(TrKeys.nothingFound),
+        AppHelpers.getTranslation(AppLocalizations.of(context)!
+            .nothing_found /*TrKeys.nothingFound*/),
         style: AppStyle.interSemi(size: 18.sp),
       ),
       Padding(
@@ -187,7 +193,8 @@ Widget _resultEmpty() {
           horizontal: 32.w,
         ),
         child: Text(
-          AppHelpers.getTranslation(TrKeys.trySearchingAgain),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!
+              .try_searching_again /*TrKeys.trySearchingAgain*/),
           style: AppStyle.interRegular(size: 14.sp),
           textAlign: TextAlign.center,
         ),

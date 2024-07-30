@@ -19,6 +19,7 @@ import 'package:puntossmart/presentation/pages/auth/reset/set_password_page.dart
 import 'package:sms_autofill/sms_autofill.dart';
 import '../../../theme/theme.dart';
 import '../register/register_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class RegisterConfirmationPage extends ConsumerStatefulWidget {
@@ -108,10 +109,10 @@ class _RegisterConfirmationPageState
                     Column(
                       children: [
                         AppBarBottomSheet(
-                          title: AppHelpers.getTranslation(TrKeys.enterOtp),
+                          title: AppHelpers.getTranslation(AppLocalizations.of(context)!.enter_otp),
                         ),
                         Text(
-                          AppHelpers.getTranslation(TrKeys.sendOtp),
+                          AppHelpers.getTranslation(AppLocalizations.of(context)!.send_otp),
                           style: AppStyle.interRegular(
                             size: 14,
                             color: AppStyle.black,
@@ -126,40 +127,54 @@ class _RegisterConfirmationPageState
                         ),
                         40.verticalSpace,
                         SizedBox(
+                          //EL ERROR ESTA EN EL child:PinFieldAutoFill knt 29-07-04
                           height: 64,
-                          child: PinFieldAutoFill(
-                            codeLength: 6,
-                            currentCode: state.confirmCode,
-                            onCodeChanged: notifier.setCode,
-                            cursor: Cursor(
-                              width: 1,
-                              height: 24,
-                              color:
-                                  isDarkMode ? AppStyle.white : AppStyle.black,
-                              enabled: true,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              labelText: AppLocalizations.of(context)!.hint_opt,
+                              border: OutlineInputBorder(),
                             ),
-                            decoration: BoxLooseDecoration(
-                              gapSpace: 10.r,
-                              textStyle: AppStyle.interNormal(
-                                size: 15.sp,
-                                color: isDarkMode
-                                    ? AppStyle.white
-                                    : AppStyle.black,
-                              ),
-                              bgColorBuilder: FixedColorBuilder(
-                                isDarkMode
-                                    ? AppStyle.mainBackDark
-                                    : AppStyle.transparent,
-                              ),
-                              strokeColorBuilder: FixedColorBuilder(
-                                state.isCodeError
-                                    ? AppStyle.red
-                                    : isDarkMode
-                                        ? AppStyle.borderDark
-                                        : AppStyle.outlineButtonBorder,
-                              ),
-                            ),
+                            maxLength: 6,
+                            keyboardType: TextInputType.number,
+                            onChanged: (value) {
+                              notifier.setCode(
+                                  value); // Actualiza el estado con el código ingresado
+                            },
                           ),
+                          //
+                          // child: PinFieldAutoFill(
+                          //   codeLength: 6,
+                          //   currentCode: state.confirmCode,
+                          //   onCodeChanged: notifier.setCode,
+                          //   cursor: Cursor(
+                          //     width: 1,
+                          //     height: 24,
+                          //     color:
+                          //         isDarkMode ? AppStyle.white : AppStyle.black,
+                          //     enabled: true,
+                          //   ),
+                          //   decoration: BoxLooseDecoration(
+                          //     gapSpace: 10.r,
+                          //     textStyle: AppStyle.interNormal(
+                          //       size: 15.sp,
+                          //       color: isDarkMode
+                          //           ? AppStyle.white
+                          //           : AppStyle.black,
+                          //     ),
+                          //     bgColorBuilder: FixedColorBuilder(
+                          //       isDarkMode
+                          //           ? AppStyle.mainBackDark
+                          //           : AppStyle.transparent,
+                          //     ),
+                          //     strokeColorBuilder: FixedColorBuilder(
+                          //       state.isCodeError
+                          //           ? AppStyle.red
+                          //           : isDarkMode
+                          //               ? AppStyle.borderDark
+                          //               : AppStyle.outlineButtonBorder,
+                          //     ),
+                          //   ),
+                          // ),
                         ),
                       ],
                     ),
@@ -173,7 +188,7 @@ class _RegisterConfirmationPageState
                           CustomButton(
                             isLoading: state.isResending,
                             title: state.isTimeExpired
-                                ? AppHelpers.getTranslation(TrKeys.resendOtp)
+                                ? AppHelpers.getTranslation(AppLocalizations.of(context)!.resend_otp)
                                 : state.timerText,
                             onPressed: () {
                               if (state.isTimeExpired) {
@@ -195,7 +210,7 @@ class _RegisterConfirmationPageState
                           CustomButton(
                             isLoading: state.isLoading,
                             title:
-                                AppHelpers.getTranslation(TrKeys.confirmation),
+                                AppHelpers.getTranslation(AppLocalizations.of(context)!.confirm),
                             onPressed: () {
                               if (state.confirmCode.length == 6) {
                                 if (widget.isResetPassword) {

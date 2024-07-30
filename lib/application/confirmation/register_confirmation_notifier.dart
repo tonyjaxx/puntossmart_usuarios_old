@@ -35,6 +35,7 @@ class RegisterConfirmationNotifier
         isConfirm: code.toString().length == 6);
   }
 
+  //knjt 29-07-24
   Future<void> confirmCodeWithFirebase(
       {required BuildContext context,
       required String verificationId,
@@ -42,23 +43,61 @@ class RegisterConfirmationNotifier
     final connected = await AppConnectivity.connectivity();
     if (connected) {
       state = state.copyWith(isLoading: true, isSuccess: false);
-      try {
+      // try {
+      //   PhoneAuthCredential credential = PhoneAuthProvider.credential(
+      //     verificationId: state.verificationCode.isNotEmpty
+      //         ? state.verificationCode
+      //         : verificationId,
+      //     smsCode: state.confirmCode,
+      //   );
+
+      //   await FirebaseAuth.instance.signInWithCredential(credential);
+      //   onSuccess?.call();
+      //   state = state.copyWith(
+      //       isLoading: false, isSuccess: onSuccess == null ? true : false);
+      // } catch (e) {
+      //   AppHelpers.showCheckTopSnackBar(
+      //     context,
+      //     AppHelpers.getTranslation((e as FirebaseAuthException).message ?? ""),
+      //   );
+      //   state = state.copyWith(
+      //       isLoading: false, isCodeError: true, isSuccess: false);
+      // }
+      //mod pq se quedaba en un bucle y no mostraba el error :,v
+
+      try{
         PhoneAuthCredential credential = PhoneAuthProvider.credential(
-          verificationId: state.verificationCode.isNotEmpty
-              ? state.verificationCode
-              : verificationId,
+          verificationId: verificationId,
           smsCode: state.confirmCode,
         );
 
-        await FirebaseAuth.instance.signInWithCredential(credential);
+        // Autenticar al usuario con las credenciales
+        try {
+          UserCredential userCredential =
+              await FirebaseAuth.instance.signInWithCredential(credential);
+          print('karen User authenticated: ${userCredential.user}');
+        } catch (e) {
+          print('karen Failed to sign in: $e');
+        }
+
+
         onSuccess?.call();
-        state = state.copyWith(
-            isLoading: false, isSuccess: onSuccess == null ? true : false);
-      } catch (e) {
-        AppHelpers.showCheckTopSnackBar(
-          context,
-          AppHelpers.getTranslation((e as FirebaseAuthException).message ?? ""),
-        );
+        state = state.copyWith(isLoading: false, isSuccess: true);
+      }catch(e){
+        print('karen Error during Firebase sign-in: $e');
+        if (e is FirebaseAuthException) {
+          AppHelpers.showCheckTopSnackBar(
+            context,
+            AppHelpers.getTranslation(e.message ?? "An error occurred"),
+          );
+          print('karen Error during Firebase sign-in 2: $e');
+        } else {
+          AppHelpers.showCheckTopSnackBar(
+            context,
+            'An unexpected error occurred. Please try again.',
+          );
+          print('karen 3Error during Firebase sign-in: $e');
+        }
         state = state.copyWith(
             isLoading: false, isCodeError: true, isSuccess: false);
       }

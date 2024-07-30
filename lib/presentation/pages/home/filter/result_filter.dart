@@ -17,6 +17,7 @@ import '../../../components/market_item.dart';
 import '../../../theme/app_style.dart';
 import '../../home_two/widget/market_two_item.dart';
 import '../shimmer/all_shop_shimmer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class ResultFilterPage extends ConsumerStatefulWidget {
@@ -97,7 +98,7 @@ class _ResultFilterState extends ConsumerState<ResultFilterPage> {
                                 title:
                                     AppHelpers.getTranslation(TrKeys.allShops),
                                 rightTitle:
-                                    "${AppHelpers.getTranslation(TrKeys.found)} ${state.restaurant.length.toString()} ${AppHelpers.getTranslation(TrKeys.results)}",
+                                    "${AppHelpers.getTranslation(AppLocalizations.of(context)!.found)} ${state.restaurant.length.toString()} ${AppHelpers.getTranslation(AppLocalizations.of(context)!.results)}",
                               ),
                               ListView.builder(
                                 padding: EdgeInsets.only(top: 6.h),

@@ -95,14 +95,18 @@ class LoginNotifier extends StateNotifier<LoginState> {
     }
   }
 
+//valida numero de celular pero no espera espacios 
   checkEmail() {
-    return AppValidators.checkEmail(state.email);
+    var email_ = '+51'+state.email;
+    print('karne check number $email_');
+    return AppValidators.checkEmail(email_);
   }
 
   Future<void> login(BuildContext context) async {
     final connected = await AppConnectivity.connectivity();
     if (connected) {
       if (checkEmail()) {
+        //valida correo electronico
         if (!AppValidators.isValidEmail(state.email)) {
           state = state.copyWith(isEmailNotValid: true);
           return;
@@ -113,6 +117,12 @@ class LoginNotifier extends StateNotifier<LoginState> {
         state = state.copyWith(isPasswordNotValid: true);
         return;
       }
+
+      // Añadir prefijo +51 si el email tiene 9 dígitos
+        if (state.email.length == 9 && RegExp(r'^\d{9}$').hasMatch(state.email)) {
+          state = state.copyWith(email: '+51${state.email}');
+        }
+
       state = state.copyWith(isLoading: true);
       final response = await _authRepository.login(
         email: state.email,

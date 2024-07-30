@@ -8,7 +8,7 @@ import 'package:puntossmart/presentation/components/custom_network_image.dart';
 import 'package:puntossmart/presentation/components/shop_avarat.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class RecommendedThreeItem extends StatelessWidget {
   final ShopData shop;
 
@@ -71,7 +71,7 @@ class RecommendedThreeItem extends StatelessWidget {
                         color: AppStyle.black.withOpacity(0.8),
                         borderRadius: BorderRadius.all(Radius.circular(100.r))),
                     child: Text(
-                      "${shop.productsCount ?? 0}  ${AppHelpers.getTranslation(TrKeys.products)}",
+                      "${shop.productsCount ?? 0}  ${AppHelpers.getTranslation(AppLocalizations.of(context)!.products)}",
                       style: AppStyle.interNormal(
                         size: 12,
                         color: AppStyle.white,

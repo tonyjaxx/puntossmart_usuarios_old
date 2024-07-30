@@ -27,7 +27,7 @@ import 'shimmer/search_shop_shimmer.dart';
 import 'widgets/product_item.dart';
 import 'widgets/restaurant_item.dart';
 import 'widgets/search_result.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 @RoutePage()
 class SearchPage extends ConsumerStatefulWidget {
   final bool isBackButton;
@@ -145,7 +145,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
       children: [
         Lottie.asset("assets/lottie/not-found.json", height: 200.h),
         Text(
-          AppHelpers.getTranslation(TrKeys.nothingFound),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!.nothing_found),
           style: AppStyle.interSemi(size: 18.sp),
         ),
       ],
@@ -226,9 +226,9 @@ class _SearchPageState extends ConsumerState<SearchPage> {
               : Column(
                   children: [
                     TitleAndIcon(
-                        title: AppHelpers.getTranslation(TrKeys.restaurants),
+                        title: AppHelpers.getTranslation(AppLocalizations.of(context)!.restaurants),
                         rightTitle:
-                            "${AppHelpers.getTranslation(TrKeys.found)} ${state.shops.length} ${AppHelpers.getTranslation(TrKeys.results)}"),
+                            "${AppHelpers.getTranslation(AppLocalizations.of(context)!.found)} ${state.shops.length} ${AppHelpers.getTranslation(AppLocalizations.of(context)!.results)}"),
                     20.verticalSpace,
                     state.shops.isNotEmpty
                         ? AnimationLimiter(
@@ -261,9 +261,9 @@ class _SearchPageState extends ConsumerState<SearchPage> {
               : Column(
                   children: [
                     TitleAndIcon(
-                        title: AppHelpers.getTranslation(TrKeys.products),
+                        title: AppHelpers.getTranslation(AppLocalizations.of(context)!.products),
                         rightTitle:
-                            "${AppHelpers.getTranslation(TrKeys.found)} ${state.products.length} ${AppHelpers.getTranslation(TrKeys.results)}"),
+                            "${AppHelpers.getTranslation(AppLocalizations.of(context)!.found)} ${state.products.length} ${AppHelpers.getTranslation(AppLocalizations.of(context)!.results)}"),
                     20.verticalSpace,
                     state.products.isNotEmpty
                         ? AnimationLimiter(
@@ -372,8 +372,8 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                   )
                 : const SizedBox.shrink(),
         TitleAndIcon(
-          title: AppHelpers.getTranslation(TrKeys.recently),
-          rightTitle: AppHelpers.getTranslation(TrKeys.clear),
+          title: AppHelpers.getTranslation(AppLocalizations.of(context)!.recently),
+          rightTitle: AppHelpers.getTranslation(AppLocalizations.of(context)!.clear),
           rightTitleColor: AppStyle.red,
           onRightTap: () {
             event.clearAllHistory();

@@ -485,7 +485,7 @@ class _HomeOnePageState extends ConsumerState<HomeOnePage> {
                 : const SizedBox.shrink(),
         state.isRestaurantNewLoading
             ? NewsShopShimmer(
-                title: AppHelpers.getTranslation(TrKeys.newsOfWeek),
+                title: AppHelpers.getTranslation('TrKeys.newsOfWeek'),
               )
             : state.newRestaurant.isNotEmpty
                 ? Column(
@@ -493,7 +493,7 @@ class _HomeOnePageState extends ConsumerState<HomeOnePage> {
                       TitleAndIcon(
                         rightTitle: AppHelpers.getTranslation(TrKeys.seeAll),
                         isIcon: true,
-                        title: AppHelpers.getTranslation(TrKeys.newsOfWeek),
+                        title: AppHelpers.getTranslation('TrKeys.newsOfWeek'),
                         onRightTap: () {
                           context.pushRoute(
                               RecommendedOneRoute(isNewsOfPage: true));

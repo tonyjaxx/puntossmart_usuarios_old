@@ -603,15 +603,15 @@ class _HomeTwoPageState extends ConsumerState<HomeTwoPage> {
             : const SizedBox.shrink(),
         state.isRestaurantNewLoading
             ? NewsShopShimmer(
-                title: AppHelpers.getTranslation(TrKeys.newsOfWeek),
+                title: AppHelpers.getTranslation('TrKeys.newsOfWeek'),
               )
             : state.newRestaurant.isNotEmpty
                 ? Column(
                     children: [
                       TitleAndIcon(
-                        rightTitle: AppHelpers.getTranslation(TrKeys.seeAll),
+                        rightTitle: AppHelpers.getTranslation('TrKeys.seeAll'),
                         isIcon: true,
-                        title: AppHelpers.getTranslation(TrKeys.newsOfWeek),
+                        title: AppHelpers.getTranslation('TrKeys.newsOfWeek'),
                         onRightTap: () {
                           context.pushRoute(
                               RecommendedTwoRoute(isNewsOfPage: true));

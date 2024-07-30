@@ -33,7 +33,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.puntossmart.puntossmart"
-    compileSdkVersion 34
+    compileSdkVersion 34//34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -82,5 +82,6 @@ flutter {
 dependencies {
     implementation platform('com.google.firebase:firebase-bom:32.7.2')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.android.billingclient:billing:6.1.0'
 
 }

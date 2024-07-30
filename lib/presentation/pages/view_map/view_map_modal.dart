@@ -17,6 +17,10 @@ import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/components/text_fields/outline_bordered_text_field.dart';
 import 'package:puntossmart/presentation/components/text_fields/search_text_field.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+
+
 
 class ViewMapModal extends ConsumerStatefulWidget {
   final TextEditingController controller;
@@ -88,7 +92,7 @@ class _ViewMapModalState extends ConsumerState<ViewMapModal> {
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              AppHelpers.getTranslation(TrKeys.enterADeliveryAddress),
+              AppHelpers.getTranslation(AppLocalizations.of(context)!.delivery_address),
               style: AppStyle.interNoSemi(size: 18),
             ),
           ),
@@ -154,9 +158,9 @@ class _ViewMapModalState extends ConsumerState<ViewMapModal> {
                   : AppStyle.black,
               title: !widget.isShopLocation
                   ? (state.isActive
-                      ? AppHelpers.getTranslation(TrKeys.apply)
+                      ? AppHelpers.getTranslation(AppLocalizations.of(context)!.apply)
                       : AppHelpers.getTranslation(TrKeys.noDriverZone))
-                  : AppHelpers.getTranslation(TrKeys.apply),
+                  : AppHelpers.getTranslation(AppLocalizations.of(context)!.apply),
               onPressed: () {
                 if (widget.isShopLocation) {
                   Navigator.pop(context, state.place);
