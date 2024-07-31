@@ -484,13 +484,15 @@ class _HomePageState extends ConsumerState<HomePageThree> {
       children: [
         state.isShopLoading
             ? ShopShimmerThree(
-                title: AppHelpers.getTranslation(AppLocalizations.of(context)!.choose_brand),
+                title: AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.choose_brand),
               )
             : state.shops.isNotEmpty
                 ? Column(
                     children: [
                       Text(
-                        AppHelpers.getTranslation(AppLocalizations.of(context)!.choose_brand),
+                        AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.choose_brand),
                         style: AppStyle.interNoSemi(),
                       ),
                       AnimationLimiter(
@@ -572,15 +574,18 @@ class _HomePageState extends ConsumerState<HomePageThree> {
         16.verticalSpace,
         state.isRestaurantNewLoading
             ? NewsShopShimmer(
-                title: AppHelpers.getTranslation(AppLocalizations.of(context)!.new_of_week),
+                title: AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.new_of_week),
               )
             : state.newRestaurant.isNotEmpty
                 ? Column(
                     children: [
                       TitleAndIcon(
-                        rightTitle: AppHelpers.getTranslation(AppLocalizations.of(context)!.see_all),
+                        rightTitle: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.see_all),
                         isIcon: true,
-                        title: AppHelpers.getTranslation(AppLocalizations.of(context)!.new_of_week),
+                        title: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.new_of_week),
                         onRightTap: () {
                           context.pushRoute(
                               RecommendedThreeRoute(isNewsOfPage: true));
@@ -619,9 +624,11 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                 ? Column(
                     children: [
                       TitleAndIcon(
-                        rightTitle: AppHelpers.getTranslation(AppLocalizations.of(context)!.see_all),
+                        rightTitle: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.see_all),
                         isIcon: true,
-                        title: AppHelpers.getTranslation(AppLocalizations.of(context)!.recommended),
+                        title: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.recommended),
                         onRightTap: () {
                           context.pushRoute(RecommendedThreeRoute());
                         },
@@ -663,7 +670,8 @@ class _HomePageState extends ConsumerState<HomePageThree> {
             : Column(
                 children: [
                   TitleAndIcon(
-                    title: AppHelpers.getTranslation(AppLocalizations.of(context)!.popular_near_you),
+                    title: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.popular_near_you),
                   ),
                   state.restaurant.isNotEmpty
                       ? AnimationLimiter(

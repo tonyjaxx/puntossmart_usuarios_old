@@ -18,7 +18,7 @@ class AppHelpers {
         symbol: (isOrder ?? false)
             ? symbol
             : LocalStorage.getSelectedCurrency()?.symbol,
-        decimalDigits: 2,
+        decimalDigits: 0,
       ).format(number ?? 0);
     } else {
       return NumberFormat.currency(
@@ -26,7 +26,7 @@ class AppHelpers {
         symbol: (isOrder ?? false)
             ? symbol
             : LocalStorage.getSelectedCurrency()?.symbol,
-        decimalDigits: 2,
+        decimalDigits: 0,
       ).format(number ?? 0);
     }
   }

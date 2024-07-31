@@ -27,7 +27,7 @@ class CategoryScreenThree extends StatelessWidget {
     return state.isCategoryLoading
         ? const CategoryShimmerThree()
         : Container(
-            height: state.categories.isNotEmpty ? 135.r : 0, //40
+            height: state.categories.isNotEmpty ? 120.r : 0, //40
             margin:
                 EdgeInsets.only(bottom: state.categories.isNotEmpty ? 16.h : 0),
             child: SmartRefresher(

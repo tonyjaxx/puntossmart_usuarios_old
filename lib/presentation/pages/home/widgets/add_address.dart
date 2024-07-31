@@ -23,7 +23,8 @@ class AddAddress extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          AppHelpers.getTranslation(AppLocalizations.of(context)!.agree_location),
+          AppHelpers.getTranslation(
+              AppLocalizations.of(context)!.agree_location),
           style: AppStyle.interSemi(size: 16.sp),
           textAlign: TextAlign.center,
         ),
@@ -32,7 +33,8 @@ class AddAddress extends StatelessWidget {
           children: [
             Expanded(
               child: CustomButton(
-                  title: AppHelpers.getTranslation(AppLocalizations.of(context)!.cancel),
+                  title: AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.cancel),
                   borderColor: AppStyle.black,
                   background: AppStyle.transparent,
                   onPressed: () {
@@ -44,7 +46,8 @@ class AddAddress extends StatelessWidget {
             Expanded(
               child: Consumer(builder: (context, ref, child) {
                 return CustomButton(
-                    title: AppHelpers.getTranslation(AppLocalizations.of(context)!.yes),
+                    title: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.yes),
                     onPressed: () {
                       Navigator.pop(context);
                       LocalStorage.setAddressSelected(

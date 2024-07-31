@@ -25,7 +25,6 @@ import '../../../../application/login/login_provider.dart';
 import 'package:puntossmart/generated/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 @RoutePage()
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
@@ -152,13 +151,24 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         Align(
                           alignment: Alignment.topRight,
                           child: TextButton(
-                            onPressed: () {
+                            onPressed: () async {
+                              await LocalStorage.setUiType(3);
                               ref.read(mainProvider.notifier).selectIndex(0);
-                              if (AppConstants.isDemo) {
-                                context.pushRoute(UiTypeRoute());
-                                return;
-                              }
                               context.replaceRoute(const MainRoute());
+                              debugPrint(
+                                  '==> MainRouteMainRouteMainRouteMainRouteMainRouteMainRoute');
+
+                              // ref.read(mainProvider.notifier).selectIndex(0);
+                              // if (AppConstants.isDemo) {
+                              //   debugPrint(
+                              //       '==> isDemoisDemoisDemoisDemoisDemoisDemoisDemoisDemo: ');
+                              //   context.pushRoute(UiTypeRoute());
+                              //   return;
+                              // }
+
+                              // context.replaceRoute(const MainRoute());
+                              // debugPrint(
+                              //     '==> MainRouteMainRouteMainRouteMainRouteMainRouteMainRoute ');
                             },
                             child: Container(
                               padding: const EdgeInsets.symmetric(
@@ -169,7 +179,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              child: Text(AppLocalizations.of(context)!.skip,
+                              child: Text(
+                                AppLocalizations.of(context)!.skip,
                                 //AppHelpers.getTranslation(TrKeys.skip),
                                 style: AppStyle.interSemi(
                                   size: 16.sp,
@@ -200,7 +211,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             const SizedBox(height: 10),
                             Text(
                               //"The Largest Points & Discounts\nNetwork in Peru.",
-                              AppLocalizations.of(context)!.auth_login_description,
+                              AppLocalizations.of(context)!
+                                  .auth_login_description,
                               style: AppStyle.interRegular(),
                             )
                           ],
@@ -327,7 +339,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         ),
                         child: CustomButton(
                           //title: "Register with Your Email Or Number",
-                          title: AppLocalizations.of(context)!.auth_login_register,
+                          title:
+                              AppLocalizations.of(context)!.auth_login_register,
                           onPressed: () {
                             AppHelpers.showCustomModalBottomSheet(
                                 context: context,
@@ -346,7 +359,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(AppLocalizations.of(context)!.auth_login_login,
+                          Text(
+                            AppLocalizations.of(context)!.auth_login_login,
                             //"Do you already have an account?",
                             style: TextStyle(
                               color: AppStyle.white,
@@ -361,7 +375,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                 isDarkMode: isDarkMode,
                               );
                             },
-                            child: Text(AppLocalizations.of(context)!.auth_login_2,
+                            child: Text(
+                              AppLocalizations.of(context)!.auth_login_2,
                               //AppHelpers.getTranslation(TrKeys.login),
                               style: TextStyle(
                                   color: AppStyle.white,

@@ -19,7 +19,7 @@ import 'package:puntossmart/presentation/components/shop_avarat.dart';
 import 'package:puntossmart/presentation/pages/shop/group_order/group_order.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../infrastructure/models/data/bonus_data.dart';
 import '../../../components/bonus_discount_popular.dart';
 import 'bonus_screen.dart';
@@ -91,7 +91,8 @@ class ShopPageAvatar extends StatelessWidget {
                       ShopDetailRoute(shop: shop, workTime: workTime));
                 },
                 child: Text(
-                  AppHelpers.getTranslation(TrKeys.moreInfo),
+                  AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.more_info),
                   style: AppStyle.interNormal(
                       size: 14,
                       color: AppStyle.black,
@@ -126,20 +127,23 @@ class ShopPageAvatar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ShopDescriptionItem(
-                    title: AppHelpers.getTranslation(TrKeys.workingHours),
+                    title: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.working_hours),
                     description: workTime,
                     icon: const Icon(FlutterRemix.time_fill),
                   ),
                   ShopDescriptionItem(
-                    title: AppHelpers.getTranslation(TrKeys.deliveryTime),
+                    title: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.delivery_time),
                     description:
                         "${shop.deliveryTime?.from ?? 0} - ${shop.deliveryTime?.to ?? 0} ${AppHelpers.getTranslation(shop.deliveryTime?.type ?? "min")}",
                     icon: SvgPicture.asset("assets/svgs/delivery.svg"),
                   ),
                   ShopDescriptionItem(
-                    title: AppHelpers.getTranslation(TrKeys.deliveryPrice),
+                    title: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.delivery_price),
                     description:
-                        "${AppHelpers.getTranslation(TrKeys.from)} ${AppHelpers.numberFormat(number: shop.deliveryRange)}",
+                        "${AppHelpers.getTranslation(AppLocalizations.of(context)!.from)} ${AppHelpers.numberFormat(number: shop.deliveryRange)}",
                     icon: SvgPicture.asset(
                       "assets/svgs/ticket.svg",
                       width: 18.r,
@@ -148,7 +152,8 @@ class ShopPageAvatar extends StatelessWidget {
                   ),
                 ],
               ),
-              AppHelpers.getTranslation(TrKeys.close) == workTime
+              AppHelpers.getTranslation(AppLocalizations.of(context)!.close) ==
+                      workTime
                   ? Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: Container(
@@ -168,7 +173,8 @@ class ShopPageAvatar extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 AppHelpers.getTranslation(
-                                    TrKeys.notWorkTodayTime),
+                                    AppLocalizations.of(context)!
+                                        .not_work_today_time),
                                 style: AppStyle.interNormal(
                                   size: 14,
                                   color: AppStyle.black,
@@ -200,7 +206,8 @@ class ShopPageAvatar extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              AppHelpers.getTranslation(TrKeys.allPreviouslyAdded),
+              AppHelpers.getTranslation(
+                  AppLocalizations.of(context)!.all_previously_added),
               style: AppStyle.interNormal(),
               textAlign: TextAlign.center,
             ),
@@ -209,7 +216,8 @@ class ShopPageAvatar extends StatelessWidget {
               children: [
                 Expanded(
                   child: CustomButton(
-                      title: AppHelpers.getTranslation(TrKeys.cancel),
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.cancel),
                       background: AppStyle.transparent,
                       borderColor: AppStyle.borderColor,
                       onPressed: () {
@@ -220,7 +228,8 @@ class ShopPageAvatar extends StatelessWidget {
                 Expanded(child: Consumer(builder: (contextTwo, ref, child) {
                   return CustomButton(
                       isLoading: ref.watch(shopOrderProvider).isDeleteLoading,
-                      title: AppHelpers.getTranslation(TrKeys.continueText),
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.continue_),
                       onPressed: () {
                         ref
                             .read(shopOrderProvider.notifier)
@@ -270,8 +279,10 @@ class ShopPageAvatar extends StatelessWidget {
           color: isStartOrder ? AppStyle.black : AppStyle.white,
         ),
         title: isStartOrder
-            ? AppHelpers.getTranslation(TrKeys.manageOrder)
-            : AppHelpers.getTranslation(TrKeys.startGroupOrder),
+            ? AppHelpers.getTranslation(
+                AppLocalizations.of(context)!.manage_orden)
+            : AppHelpers.getTranslation(
+                AppLocalizations.of(context)!.start_group_oder),
         background:
             isStartOrder ? AppStyle.brandGreen : AppStyle.orderButtonColor,
         textColor: isStartOrder ? AppStyle.black : AppStyle.white,
@@ -453,8 +464,8 @@ class ShopPageAvatar extends StatelessWidget {
                   child: Text(
                     bonus != null
                         ? ((bonus?.type ?? "sum") == "sum")
-                            ? "${AppHelpers.getTranslation(TrKeys.under)} ${AppHelpers.numberFormat(number: bonus?.value)} + ${bonus?.bonusStock?.product?.translation?.title ?? ""}"
-                            : "${AppHelpers.getTranslation(TrKeys.under)} ${bonus?.value ?? 0} + ${bonus?.bonusStock?.product?.translation?.title ?? ""}"
+                            ? "${AppHelpers.getTranslation(AppLocalizations.of(context)!.under)} ${AppHelpers.numberFormat(number: bonus?.value)} + ${bonus?.bonusStock?.product?.translation?.title ?? ""}"
+                            : "${AppHelpers.getTranslation(AppLocalizations.of(context)!.under)} ${bonus?.value ?? 0} + ${bonus?.bonusStock?.product?.translation?.title ?? ""}"
                         : "",
                     style: AppStyle.interNormal(
                       size: 14,

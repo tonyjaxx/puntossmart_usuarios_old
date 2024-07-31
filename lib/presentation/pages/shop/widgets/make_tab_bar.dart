@@ -6,7 +6,7 @@ import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'shop_tab_bar_item.dart';
 
 Widget makeTabBarHeader(
@@ -50,7 +50,8 @@ Widget makeTabBarHeader(
                 ? [
                     ShopTabBarItem(
                         image: "",
-                        title: AppHelpers.getTranslation(TrKeys.popular),
+                        title: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.popular),
                         onTap: () {
                           tabController?.index = 0;
                           onTab?.call(0);
@@ -62,7 +63,8 @@ Widget makeTabBarHeader(
                           tabController?.index = 1;
                           onTab?.call(1);
                         },
-                        title: AppHelpers.getTranslation(TrKeys.all),
+                        title: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.all),
                         isActive: index == 1),
                     if (!category)
                       ...list!.map(
@@ -85,7 +87,8 @@ Widget makeTabBarHeader(
                           tabController?.index = 0;
                           onTab?.call(0);
                         },
-                        title: AppHelpers.getTranslation(TrKeys.all),
+                        title: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.all),
                         isActive: index == 0),
                     if (!category)
                       ...list!.map(

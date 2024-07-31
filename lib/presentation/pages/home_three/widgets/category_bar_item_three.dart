@@ -61,7 +61,10 @@ class CategoryBarItemThree extends StatelessWidget {
       padding: REdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(45.r)), //10
-        color: isActive ? AppStyle.recommendBg : AppStyle.brandGreen,
+        color: isActive
+            ? AppStyle.brandGreen
+            : const Color.fromARGB(255, 255, 255, 255),
+        //color: isActive ? AppStyle.recommendBg : AppStyle.brandGreen,
       ),
       child: InkWell(
         onTap: onTap,
@@ -74,7 +77,7 @@ class CategoryBarItemThree extends StatelessWidget {
               //color: Colors.red,
               child: ClipOval(
                 child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+                  //margin: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
                   child: CustomNetworkImage(
                     url: image,
                     height: 60.r, // Ajusta el tamaño según sea necesario
@@ -86,19 +89,25 @@ class CategoryBarItemThree extends StatelessWidget {
               ),
             ),
             // SizedBox(height: 8.h), //8
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: 0,
-                  horizontal: 8), // Ajusta el padding según sea necesario
-              child: Text(
-                title,
-                style: AppStyle.interNormal(
-                  size: 12,
-                  color: AppStyle.black,
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 1, vertical: 4),
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 0),
+                // color: Colors.red,
+                width: (MediaQuery.of(context).size.width - 260) / 2,
+                //height: 30,
+                child: Tooltip(
+                  message: title,
+                  child: Text(
+                    title,
+                    style: AppStyle.interNormal(
+                      size: 12,
+                      color: AppStyle.black,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
               ),
             ),
           ],

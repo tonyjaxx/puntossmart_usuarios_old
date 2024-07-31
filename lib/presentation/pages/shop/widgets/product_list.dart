@@ -8,7 +8,7 @@ import 'package:puntossmart/infrastructure/models/models.dart';
 import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/title_icon.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../application/shop/shop_provider.dart';
@@ -104,8 +104,10 @@ class _ProductsListState extends ConsumerState<ProductsList> {
                 title: widget.index == null
                     ? widget.categoryData?.translation?.title ?? ""
                     : widget.index == 0
-                        ? AppHelpers.getTranslation(TrKeys.all)
-                        : AppHelpers.getTranslation(TrKeys.popular)),
+                        ? AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.all)
+                        : AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.popular)),
             12.verticalSpace,
             if (widget.index != null)
               state.isProductLoading
@@ -213,18 +215,20 @@ class _ProductsListState extends ConsumerState<ProductsList> {
     );
   }
 
-  Widget _resultEmpty(BuildContext context){
+  Widget _resultEmpty(BuildContext context) {
     return Column(
       children: [
         Lottie.asset("assets/lottie/empty-box.json"),
         Text(
-          AppHelpers.getTranslation(AppLocalizations.of(context)!.nothing_found/*TrKeys.nothingFound*/),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!
+              .nothing_found /*TrKeys.nothingFound*/),
           style: AppStyle.interSemi(size: 18.sp),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 32.w),
           child: Text(
-            AppHelpers.getTranslation(AppLocalizations.of(context)!.try_searching_again/*TrKeys.trySearchingAgain*/),
+            AppHelpers.getTranslation(AppLocalizations.of(context)!
+                .try_searching_again /*TrKeys.trySearchingAgain*/),
             style: AppStyle.interRegular(size: 14.sp),
             textAlign: TextAlign.center,
           ),

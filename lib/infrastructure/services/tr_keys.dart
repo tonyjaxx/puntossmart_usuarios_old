@@ -144,7 +144,7 @@ class TrKeys {
   static const String wallet = 'wallet';
   static const String repeatOrder = 'repeat_order';
   static const String paymentMethodFailed = 'payment_method_failed';
-  static const String typeHere = 'type_here';
+  static const String typeHere = 'Escribe aquí';
   static const String notification = 'notification';
   static const String lowRating = 'low_rating';
   static const String lowSale = 'low_sale';

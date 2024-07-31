@@ -109,10 +109,12 @@ class _RegisterConfirmationPageState
                     Column(
                       children: [
                         AppBarBottomSheet(
-                          title: AppHelpers.getTranslation(AppLocalizations.of(context)!.enter_otp),
+                          title: AppHelpers.getTranslation(
+                              AppLocalizations.of(context)!.enter_otp),
                         ),
                         Text(
-                          AppHelpers.getTranslation(AppLocalizations.of(context)!.send_otp),
+                          AppHelpers.getTranslation(
+                              AppLocalizations.of(context)!.send_otp),
                           style: AppStyle.interRegular(
                             size: 14,
                             color: AppStyle.black,
@@ -188,10 +190,13 @@ class _RegisterConfirmationPageState
                           CustomButton(
                             isLoading: state.isResending,
                             title: state.isTimeExpired
-                                ? AppHelpers.getTranslation(AppLocalizations.of(context)!.resend_otp)
+                                ? AppHelpers.getTranslation(
+                                    AppLocalizations.of(context)!.resend_otp)
                                 : state.timerText,
                             onPressed: () {
                               if (state.isTimeExpired) {
+                                debugPrint(
+                                    '==> isTimeExpiredisTimeExpiredisTimeExpiredisTimeExpired ${widget.verificationId.isEmpty}');
                                 widget.verificationId.isEmpty
                                     ? notifier.resendConfirmation(
                                         context, widget.userModel.email ?? "",
@@ -209,8 +214,8 @@ class _RegisterConfirmationPageState
                           ),
                           CustomButton(
                             isLoading: state.isLoading,
-                            title:
-                                AppHelpers.getTranslation(AppLocalizations.of(context)!.confirm),
+                            title: AppHelpers.getTranslation(
+                                AppLocalizations.of(context)!.confirm),
                             onPressed: () {
                               if (state.confirmCode.length == 6) {
                                 if (widget.isResetPassword) {

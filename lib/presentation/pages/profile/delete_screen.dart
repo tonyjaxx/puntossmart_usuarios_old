@@ -10,7 +10,7 @@ import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../application/profile/profile_provider.dart';
 
 class DeleteScreen extends StatelessWidget {
@@ -26,7 +26,7 @@ class DeleteScreen extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          AppHelpers.getTranslation(TrKeys.areYouSure),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!.are_you_sure),
           style: AppStyle.interSemi(size: 16.sp),
           textAlign: TextAlign.center,
         ),
@@ -38,7 +38,8 @@ class DeleteScreen extends StatelessWidget {
                     return CustomButton(
                         background: AppStyle.red,
                         textColor: AppStyle.white,
-                        title: AppHelpers.getTranslation(TrKeys.deleteAccount),
+                        title: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.delete_account),
                         onPressed: () {
                           ref.refresh(shopOrderProvider);
                           ref.refresh(profileProvider);
@@ -54,7 +55,8 @@ class DeleteScreen extends StatelessWidget {
                   24.verticalSpace,
                   Consumer(builder: (context, ref, child) {
                     return CustomButton(
-                        title: AppHelpers.getTranslation(TrKeys.logout),
+                        title: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.logout),
                         onPressed: () {
                           onDelete.call();
                           ref.read(profileProvider.notifier).logOut();
@@ -70,7 +72,8 @@ class DeleteScreen extends StatelessWidget {
         CustomButton(
             borderColor: AppStyle.black,
             background: AppStyle.transparent,
-            title: AppHelpers.getTranslation(TrKeys.cancel),
+            title:
+                AppHelpers.getTranslation(AppLocalizations.of(context)!.cancel),
             onPressed: () {
               Navigator.pop(context);
             })

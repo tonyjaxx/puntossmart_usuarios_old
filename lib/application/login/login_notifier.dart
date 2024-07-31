@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:puntossmart/application/main/main_provider.dart';
 import 'package:puntossmart/domain/iterface/auth.dart';
 import 'package:puntossmart/domain/iterface/user.dart';
 import 'package:puntossmart/infrastructure/models/data/address_new_data.dart';
@@ -95,9 +96,9 @@ class LoginNotifier extends StateNotifier<LoginState> {
     }
   }
 
-//valida numero de celular pero no espera espacios 
+//valida numero de celular pero no espera espacios
   checkEmail() {
-    var email_ = '+51'+state.email;
+    var email_ = '+51' + state.email;
     print('karne check number $email_');
     return AppValidators.checkEmail(email_);
   }
@@ -119,9 +120,9 @@ class LoginNotifier extends StateNotifier<LoginState> {
       }
 
       // Añadir prefijo +51 si el email tiene 9 dígitos
-        if (state.email.length == 9 && RegExp(r'^\d{9}$').hasMatch(state.email)) {
-          state = state.copyWith(email: '+51${state.email}');
-        }
+      if (state.email.length == 9 && RegExp(r'^\d{9}$').hasMatch(state.email)) {
+        state = state.copyWith(email: '+51${state.email}');
+      }
 
       state = state.copyWith(isLoading: true);
       final response = await _authRepository.login(
@@ -160,11 +161,14 @@ class LoginNotifier extends StateNotifier<LoginState> {
                       })
                       .location
                       ?.first)));
-          if (AppConstants.isDemo) {
-            context.replaceRoute(UiTypeRoute());
-          } else {
-            context.replaceRoute(const MainRoute());
-          }
+          //knjt
+
+          // if (AppConstants.isDemo) {
+          //   context.replaceRoute(UiTypeRoute());
+          // } else {
+          //   context.replaceRoute(const MainRoute());
+          // }
+
           String? fcmToken = await FirebaseMessaging.instance.getToken();
           print("FIREBAE TOKEN $fcmToken");
           _userRepositoryFacade.updateFirebaseToken(fcmToken);
@@ -419,6 +423,7 @@ class LoginNotifier extends StateNotifier<LoginState> {
                         .location
                         ?.first)));
             context.router.popUntilRoot();
+            //directo al home
             if (AppConstants.isDemo) {
               context.replaceRoute(UiTypeRoute());
             } else {

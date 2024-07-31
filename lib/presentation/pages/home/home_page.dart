@@ -42,6 +42,7 @@ import 'widgets/banner_item.dart';
 import 'widgets/recommended_item.dart';
 import 'widgets/shop_bar_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({
     super.key,
@@ -430,7 +431,8 @@ class _HomePageState extends ConsumerState<HomePage> {
         24.verticalSpace,
         state.isShopLoading
             ? ShopShimmer(
-                title: AppHelpers.getTranslation(TrKeys.shops),
+                title: AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.shops),
               )
             : state.shops.isNotEmpty
                 ? Column(
@@ -601,7 +603,8 @@ class _HomePageState extends ConsumerState<HomePage> {
             : Column(
                 children: [
                   TitleAndIcon(
-                    title: AppHelpers.getTranslation(AppLocalizations.of(context)!.popular_near_you),
+                    title: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.popular_near_you),
                   ),
                   state.restaurant.isNotEmpty
                       ? AnimationLimiter(

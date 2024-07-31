@@ -30,7 +30,9 @@ class FilterCategoryShopThree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var tittle_ = state.categories[state.selectIndexCategory].translation?.title
-        .toString();
+            .toString() ??
+        "titulo_l31";
+    print('karen tittle : $tittle_');
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -116,14 +118,15 @@ class FilterCategoryShopThree extends StatelessWidget {
                 children: [
                   state.isShopLoading
                       ? NewsShopShimmer(
-                          title: AppHelpers.getTranslation(TrKeys.shops),
+                          title: AppHelpers.getTranslation(
+                              AppLocalizations.of(context)!.shops),
                         )
                       : state.filterMarket.isNotEmpty
                           ? Column(
                               children: [
                                 TitleAndIcon(
-                                  title:
-                                      AppHelpers.getTranslation(TrKeys.shops),
+                                  title: AppHelpers.getTranslation(
+                                      AppLocalizations.of(context)!.shops),
                                   rightTitle:
                                       "${AppHelpers.getTranslation(AppLocalizations.of(context)!.found)} ${state.totalShops} ${AppHelpers.getTranslation(AppLocalizations.of(context)!.results)}",
                                 ),
@@ -152,7 +155,8 @@ class FilterCategoryShopThree extends StatelessWidget {
                             )
                           : const SizedBox.shrink(),
                   TitleAndIcon(
-                    title: AppHelpers.getTranslation('$tittle_'),
+                    title: AppHelpers.getTranslation(tittle_),
+                    //title: AppHelpers.getTranslation('tittle_'),
                     rightTitle:
                         "${AppHelpers.getTranslation(AppLocalizations.of(context)!.found)} ${state.filterShops.length.toString()} ${AppHelpers.getTranslation(AppLocalizations.of(context)!.results)}",
                   ),

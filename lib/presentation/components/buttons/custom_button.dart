@@ -27,7 +27,8 @@ class CustomButton extends StatelessWidget {
     this.radius = 8,
     this.icon,
     this.borderColor = AppStyle.transparent,
-    this.padding = const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0), // Default padding
+    this.padding = const EdgeInsets.symmetric(
+        vertical: 12.0, horizontal: 16.0), // Default padding
   });
 
   @override
@@ -36,8 +37,9 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           side: BorderSide(
-              color:
-                  borderColor == AppStyle.transparent ? background : borderColor,
+              color: borderColor == AppStyle.transparent
+                  ? background
+                  : borderColor,
               width: 2.r),
           elevation: 0,
           shadowColor: AppStyle.transparent,
@@ -58,7 +60,8 @@ class CustomButton extends StatelessWidget {
                   strokeWidth: 2.r,
                 ),
               )
-              : Wrap( // Cambiado de Row a Wrap para permitir ajuste de línea 
+            : Wrap(
+                // Cambiado de Row a Wrap para permitir ajuste de línea
                 alignment: WrapAlignment.center, // Centramos el contenido
                 spacing: 10.w, // Espaciado entre icono y texto
                 children: [
@@ -66,38 +69,40 @@ class CustomButton extends StatelessWidget {
                     icon!,
                   Text(
                     title,
-                    textAlign: TextAlign.center, // Alineación del texto al centro
+                    textAlign:
+                        TextAlign.center, // Alineación del texto al centro
                     style: AppStyle.interNormal(
-                      size: 15.sp, // Tamaño del texto ajustable
+                      size: 13.sp, // Tamaño del texto ajustable
                       color: textColor,
                       letterSpacing: -14 * 0.01,
                     ),
                     maxLines: 2, // Permitir hasta dos líneas de texto
-                    overflow: TextOverflow.visible, // Permitir desbordamiento visible
+                    overflow:
+                        TextOverflow.visible, // Permitir desbordamiento visible
                   ),
                 ],
               ),
-            // : Row(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       icon == null
-            //           ? const SizedBox()
-            //           : Row(
-            //               children: [
-            //                 icon!,
-            //                 10.horizontalSpace,
-            //               ],
-            //             ),
-            //       Text(
-            //         title,
-            //         style: AppStyle.interNormal(
-            //           size: 15,
-            //           color: textColor,
-            //           letterSpacing: -14 * 0.01,
-            //         ),
-            //       ),
-            //     ],
-            //   ),
+        // : Row(
+        //     mainAxisAlignment: MainAxisAlignment.center,
+        //     children: [
+        //       icon == null
+        //           ? const SizedBox()
+        //           : Row(
+        //               children: [
+        //                 icon!,
+        //                 10.horizontalSpace,
+        //               ],
+        //             ),
+        //       Text(
+        //         title,
+        //         style: AppStyle.interNormal(
+        //           size: 15,
+        //           color: textColor,
+        //           letterSpacing: -14 * 0.01,
+        //         ),
+        //       ),
+        //     ],
+        //   ),
       ),
     );
   }

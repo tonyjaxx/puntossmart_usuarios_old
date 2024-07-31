@@ -68,7 +68,7 @@ class _ResultFilterState extends ConsumerState<ResultFilterPage> {
         children: [
           CommonAppBar(
             child: Text(
-              AppHelpers.getTranslation(TrKeys.shops),
+              AppHelpers.getTranslation(AppLocalizations.of(context)!.shops),
               style: AppStyle.interNoSemi(size: 18.sp),
             ),
           ),
@@ -95,8 +95,8 @@ class _ResultFilterState extends ConsumerState<ResultFilterPage> {
                         : Column(
                             children: [
                               TitleAndIcon(
-                                title:
-                                    AppHelpers.getTranslation(TrKeys.allShops),
+                                title: AppHelpers.getTranslation(
+                                    AppLocalizations.of(context)!.all_shops),
                                 rightTitle:
                                     "${AppHelpers.getTranslation(AppLocalizations.of(context)!.found)} ${state.restaurant.length.toString()} ${AppHelpers.getTranslation(AppLocalizations.of(context)!.results)}",
                               ),

@@ -110,6 +110,71 @@
     "clear": "Limpiar",
     "filter": "Flitrar",
     "found_results": "Resultados Encontrados",
-    "try_searching_again": "Intentar de nuevo"
+    "try_searching_again": "Intentar de nuevo",
+
+
+
+    "more_info": "Más información",
+    "working_hours": "Horario",
+    "delivery_time": "Tiempo de entrega",
+    "delivery_price": "Precio",
+    "start_group_oder": "Iniciar Orden de Pedido",
+    "all": "Todo",
+    "manage_orden": "Administrar Pedido",
+    "you_fully_manage": "Administra tu orden",
+    "group_member": "Miembro del Pedido",
+    "choosing": "Eligiendo",
+    "orders": "Pedidos",
+    "group_order_progress": "Progreso del Pedido grupal",
+    "add": "Agregar",
+    "total": "Total",
+    "from": "Desde",
+    "close": "Cerrar",
+    "not_work_today_time": "Hoy Cerrado",
+    "popular": "Populares",
+    "leave_group": "Abandonar Grupo",
+    "continue_": "Continuar",
+    "delivery_price": "Precio de entrega",
+    "start_price": "Precio de salida",
+    "discount": "Descuento",
+    "discount_products": "Productos con descuento",
+    "need_select_product": "Mescecita seleccionar un producto",
+    "done": "Terminar",
+    "is_edit_order": "Editar Pedido",
+    "your_order": "Su Pedido",
+    "clear_all": "Borrar todo",
+    "all_previously_added": "Todo agregado previamente",
+    "not_work_today_time": "No trabaja hoy",
+    "close": "Cerrar",
+    "under": "Bajo",
+
+
+
+    "are_you_sure": "¿Estás seguro de que quieres cerrar la sesión?",
+    "logout": "Cerrar Sesión",
+    "delete_account": "Eliminar Cuenta",
+    "reset_password": "Restablecer Contraseña",
+    "reset_password_text": "Restablecer texto de contraseña",
+    "can_not_be_empty": "Ingrese sus datos",
+    "send": "Enviar",
+
+
+
+    "price_range": "Rango de Precios",
+    "rating": "Clasificación",
+    "sort_by": "Ordenar por",
+    "free_delivery": "Delivery Gratis",
+    "deals": "Ofertas",
+    "open_shop": "Tienda abierta",
+    "trust_you": "Confiar en ti",
+    "best_sale": "Mejor venta",
+    "highly_rated": "Altamente calificado",
+    "low_sale": "Baja venta",
+    "low_rating": "Calificación baja",
+    "show": "Mostra",
+    "shops": "Tiendas",
+    "all_shops": "Todas las tiendas",
+    "special_offers": "Ofertas Especiales",
+    "loading": "Cargando"
 
 }

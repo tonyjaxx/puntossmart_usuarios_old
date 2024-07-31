@@ -522,10 +522,10 @@ class S {
     );
   }
 
-  /// `Historial de promociones`
+  /// `Pedidos`
   String get orders {
     return Intl.message(
-      'Historial de promociones',
+      'Pedidos',
       name: 'orders',
       desc: '',
       args: [],
@@ -1037,6 +1037,516 @@ class S {
     return Intl.message(
       'Intentar de nuevo',
       name: 'try_searching_again',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Más información`
+  String get more_info {
+    return Intl.message(
+      'Más información',
+      name: 'more_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Horario`
+  String get working_hours {
+    return Intl.message(
+      'Horario',
+      name: 'working_hours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tiempo de entrega`
+  String get delivery_time {
+    return Intl.message(
+      'Tiempo de entrega',
+      name: 'delivery_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Precio de entrega`
+  String get delivery_price {
+    return Intl.message(
+      'Precio de entrega',
+      name: 'delivery_price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Iniciar Pedido en Grupo`
+  String get start_group_oder {
+    return Intl.message(
+      'Iniciar Pedido en Grupo',
+      name: 'start_group_oder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Todo`
+  String get all {
+    return Intl.message(
+      'Todo',
+      name: 'all',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Administrar Pedido`
+  String get manage_orden {
+    return Intl.message(
+      'Administrar Pedido',
+      name: 'manage_orden',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Administra tu orden`
+  String get you_fully_manage {
+    return Intl.message(
+      'Administra tu orden',
+      name: 'you_fully_manage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Miembro del Pedido`
+  String get group_member {
+    return Intl.message(
+      'Miembro del Pedido',
+      name: 'group_member',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Eligiendo`
+  String get choosing {
+    return Intl.message(
+      'Eligiendo',
+      name: 'choosing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Progreso del Pedido grupal`
+  String get group_order_progress {
+    return Intl.message(
+      'Progreso del Pedido grupal',
+      name: 'group_order_progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Agregar`
+  String get add {
+    return Intl.message(
+      'Agregar',
+      name: 'add',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get total {
+    return Intl.message(
+      'Total',
+      name: 'total',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Desde`
+  String get from {
+    return Intl.message(
+      'Desde',
+      name: 'from',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cerrar`
+  String get close {
+    return Intl.message(
+      'Cerrar',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No trabaja hoy`
+  String get not_work_today_time {
+    return Intl.message(
+      'No trabaja hoy',
+      name: 'not_work_today_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Populares`
+  String get popular {
+    return Intl.message(
+      'Populares',
+      name: 'popular',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Abandonar Grupo`
+  String get leave_group {
+    return Intl.message(
+      'Abandonar Grupo',
+      name: 'leave_group',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continuar`
+  String get continue_ {
+    return Intl.message(
+      'Continuar',
+      name: 'continue_',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Precio de salida`
+  String get start_price {
+    return Intl.message(
+      'Precio de salida',
+      name: 'start_price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Descuento`
+  String get discount {
+    return Intl.message(
+      'Descuento',
+      name: 'discount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Productos con descuento`
+  String get discount_products {
+    return Intl.message(
+      'Productos con descuento',
+      name: 'discount_products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mescecita seleccionar un producto`
+  String get need_select_product {
+    return Intl.message(
+      'Mescecita seleccionar un producto',
+      name: 'need_select_product',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terminar`
+  String get done {
+    return Intl.message(
+      'Terminar',
+      name: 'done',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Editar Pedido`
+  String get is_edit_order {
+    return Intl.message(
+      'Editar Pedido',
+      name: 'is_edit_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Su Pedido`
+  String get your_order {
+    return Intl.message(
+      'Su Pedido',
+      name: 'your_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Borrar todo`
+  String get clear_all {
+    return Intl.message(
+      'Borrar todo',
+      name: 'clear_all',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Todo agregado previamente`
+  String get all_previously_added {
+    return Intl.message(
+      'Todo agregado previamente',
+      name: 'all_previously_added',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bajo`
+  String get under {
+    return Intl.message(
+      'Bajo',
+      name: 'under',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `¿Estás seguro de que quieres cerrar la sesión?`
+  String get are_you_sure {
+    return Intl.message(
+      '¿Estás seguro de que quieres cerrar la sesión?',
+      name: 'are_you_sure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cerrar Sesión`
+  String get logout {
+    return Intl.message(
+      'Cerrar Sesión',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restablecer Contraseña`
+  String get reset_password {
+    return Intl.message(
+      'Restablecer Contraseña',
+      name: 'reset_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restablecer texto de contraseña`
+  String get reset_password_text {
+    return Intl.message(
+      'Restablecer texto de contraseña',
+      name: 'reset_password_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ingrese sus datos`
+  String get can_not_be_empty {
+    return Intl.message(
+      'Ingrese sus datos',
+      name: 'can_not_be_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enviar`
+  String get send {
+    return Intl.message(
+      'Enviar',
+      name: 'send',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rango de Precios`
+  String get price_range {
+    return Intl.message(
+      'Rango de Precios',
+      name: 'price_range',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clasificación`
+  String get rating {
+    return Intl.message(
+      'Clasificación',
+      name: 'rating',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ordenar por`
+  String get sort_by {
+    return Intl.message(
+      'Ordenar por',
+      name: 'sort_by',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivery Gratis`
+  String get free_delivery {
+    return Intl.message(
+      'Delivery Gratis',
+      name: 'free_delivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ofertas`
+  String get deals {
+    return Intl.message(
+      'Ofertas',
+      name: 'deals',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tienda abierta`
+  String get open_shop {
+    return Intl.message(
+      'Tienda abierta',
+      name: 'open_shop',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confiar en ti`
+  String get trust_you {
+    return Intl.message(
+      'Confiar en ti',
+      name: 'trust_you',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mejor venta`
+  String get best_sale {
+    return Intl.message(
+      'Mejor venta',
+      name: 'best_sale',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Altamente calificado`
+  String get highly_rated {
+    return Intl.message(
+      'Altamente calificado',
+      name: 'highly_rated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Baja venta`
+  String get low_sale {
+    return Intl.message(
+      'Baja venta',
+      name: 'low_sale',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Calificación baja`
+  String get low_rating {
+    return Intl.message(
+      'Calificación baja',
+      name: 'low_rating',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mostra`
+  String get show {
+    return Intl.message(
+      'Mostra',
+      name: 'show',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tiendas`
+  String get shops {
+    return Intl.message(
+      'Tiendas',
+      name: 'shops',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Todas las tiendas`
+  String get all_shops {
+    return Intl.message(
+      'Todas las tiendas',
+      name: 'all_shops',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ofertas Especiales`
+  String get special_offers {
+    return Intl.message(
+      'Ofertas Especiales',
+      name: 'special_offers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cargando`
+  String get loading {
+    return Intl.message(
+      'Cargando',
+      name: 'loading',
       desc: '',
       args: [],
     );

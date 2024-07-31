@@ -1,12 +1,12 @@
 name: puntossmart
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.5+4
 
 environment:
-  sdk: '>=2.18.2 <3.0.0'
+  sdk: ">=2.18.2 <3.0.0"
 
 dependencies:
   flutter:
@@ -86,6 +86,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_localization: ^0.2.0
+  libphonenumber: ^2.0.2
 
 dev_dependencies:
   flutter_test:
@@ -97,7 +98,6 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
   # kntj 22-07-24
   flutter_intl: ^0.0.1
-
 
 flutter:
   # knjt 24-07-24intl
@@ -115,7 +115,7 @@ flutter_icons:
   android: true
   ios: true
   remove_alpha_ios: true
-  image_path: 'assets/images/customer.png'
+  image_path: "assets/images/customer.png"
 
 flutter_intl:
   enabled: true

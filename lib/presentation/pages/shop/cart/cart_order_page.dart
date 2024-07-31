@@ -138,10 +138,12 @@ class _ShopOrderState extends ConsumerState<CartOrderPage> {
                                     children: [
                                       TitleAndIcon(
                                         title: AppHelpers.getTranslation(
-                                            TrKeys.yourOrder),
+                                            AppLocalizations.of(context)!
+                                                .your_order),
                                         rightTitleColor: AppStyle.red,
                                         rightTitle: AppHelpers.getTranslation(
-                                            TrKeys.clearAll),
+                                            AppLocalizations.of(context)!
+                                                .clear_all),
                                         onRightTap: () {
                                           AppHelpers.showAlertDialog(
                                             context: context,
@@ -269,8 +271,10 @@ class _ShopOrderState extends ConsumerState<CartOrderPage> {
                 ShopOrderDescription(
                   price: ref.watch(shopProvider).shopData?.deliveryRange ?? 0,
                   svgName: "assets/svgs/delivery.svg",
-                  title: AppHelpers.getTranslation(TrKeys.deliveryPrice),
-                  description: AppHelpers.getTranslation(TrKeys.startPrice),
+                  title: AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.delivery_price),
+                  description: AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.start_price),
                 ),
                 16.verticalSpace,
                 Divider(
@@ -280,9 +284,10 @@ class _ShopOrderState extends ConsumerState<CartOrderPage> {
                   ShopOrderDescription(
                     price: state.cart?.receiptDiscount ?? 0,
                     svgName: "assets/svgs/discount.svg",
-                    title: AppHelpers.getTranslation(TrKeys.discount),
-                    description:
-                        AppHelpers.getTranslation(TrKeys.discountProducts),
+                    title: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.discount),
+                    description: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.discount_products),
                     discount: true,
                   ),
                 16.verticalSpace,
@@ -301,7 +306,8 @@ class _ShopOrderState extends ConsumerState<CartOrderPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppHelpers.getTranslation(TrKeys.total),
+                  AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.total),
                   style: AppStyle.interNormal(
                     size: 14,
                     color: AppStyle.black,
@@ -337,9 +343,12 @@ class _ShopOrderState extends ConsumerState<CartOrderPage> {
               title: (state.cart?.ownerId != LocalStorage.getUserId() &&
                       (state.cart?.group ?? false))
                   ? (state.isEditOrder
-                      ? AppHelpers.getTranslation(TrKeys.isEditOrder)
-                      : AppHelpers.getTranslation(TrKeys.done))
-                  : AppHelpers.getTranslation(TrKeys.order),
+                      ? AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.is_edit_order)
+                      : AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.done))
+                  : AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.orders),
               onPressed: () {
                 if ((state.cart?.ownerId != LocalStorage.getUserId() &&
                     (state.cart?.group ?? false))) {
@@ -377,7 +386,8 @@ class _ShopOrderState extends ConsumerState<CartOrderPage> {
                               AppHelpers.showCheckTopSnackBarInfo(
                                 context,
                                 AppHelpers.getTranslation(
-                                    TrKeys.needSelectProduct),
+                                    AppLocalizations.of(context)!
+                                        .need_select_product),
                               );
                             } else {
                               Navigator.pop(context);
@@ -389,7 +399,8 @@ class _ShopOrderState extends ConsumerState<CartOrderPage> {
                     } else if (!checkProduct) {
                       AppHelpers.showCheckTopSnackBarInfo(
                         context,
-                        AppHelpers.getTranslation(TrKeys.needSelectProduct),
+                        AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.need_select_product),
                       );
                     } else {
                       Navigator.pop(context);
@@ -415,7 +426,8 @@ class _ShopOrderState extends ConsumerState<CartOrderPage> {
         Lottie.asset('assets/lottie/girl_empty.json'),
         24.verticalSpace,
         Text(
-          AppHelpers.getTranslation(AppLocalizations.of(context)!.cart_is_empty/*TrKeys.cartIsEmpty*/),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!
+              .cart_is_empty /*TrKeys.cartIsEmpty*/),
           style: AppStyle.interSemi(size: 18.sp),
         ),
       ],
