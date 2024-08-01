@@ -65,7 +65,8 @@ class _ParcelPageState extends ConsumerState<ParcelPage> {
           children: [
             CommonAppBar(
                 child: Text(
-              AppHelpers.getTranslation(AppLocalizations.of(context)!.door_to_door),
+              AppHelpers.getTranslation(
+                  AppLocalizations.of(context)!.door_to_door),
               style: AppStyle.interNoSemi(
                 size: 18,
                 color: AppStyle.black,
@@ -180,8 +181,9 @@ class _ParcelPageState extends ConsumerState<ParcelPage> {
                       Padding(
                         padding: EdgeInsets.all(16.r),
                         child: Text(
-                          AppHelpers.getTranslation(AppLocalizations.of(context)!.coming_soon
-                              /*TrKeys.ifYouWantToUseThisService*/),
+                          AppHelpers.getTranslation(AppLocalizations.of(
+                                  context)!
+                              .coming_soon /*TrKeys.ifYouWantToUseThisService*/),
                           style: AppStyle.interNormal(),
                           textAlign: TextAlign.center,
                         ),
@@ -252,7 +254,9 @@ class _ParcelPageState extends ConsumerState<ParcelPage> {
     return Column(
       children: [
         24.verticalSpace,
-        TitleAndIcon(title: AppHelpers.getTranslation(AppLocalizations.of(context)!.how_it_works)),
+        TitleAndIcon(
+            title: AppHelpers.getTranslation(
+                AppLocalizations.of(context)!.how_it_works)),
         12.verticalSpace,
         const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+//import 'package:marquee/marquee.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:puntossmart/application/currency/currency_provider.dart';
 import 'package:puntossmart/application/home/home_notifier.dart';
@@ -33,6 +34,7 @@ import 'package:puntossmart/presentation/pages/home_three/widgets/shop_see_all.d
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
 import 'package:upgrader/upgrader.dart';
+import '../../components/text_fields/scrolling_text .dart';
 import 'app_bar_home_three.dart';
 import 'category_screen_three.dart';
 import 'filter_category_shop_three.dart';
@@ -292,9 +294,9 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10.0)),
                                   ),
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.20,
-                                  width:
+                                  height: //0.20
+                                      MediaQuery.of(context).size.height * 0.22,
+                                  width: //40
                                       MediaQuery.of(context).size.width * 0.40,
                                   child: Column(
                                     crossAxisAlignment:
@@ -323,13 +325,34 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Text(
-                                            (survey.shopTitle?.length ?? 0) > 15
-                                                ? "${survey.shopTitle?.substring(0, 15) ?? " "}.."
-                                                : survey.shopTitle ?? "",
-                                            style: AppStyle.interSemi(
-                                              size: 15,
-                                              color: AppStyle.black,
+                                          // Text(
+                                          //   // (survey.shopTitle?.length ?? 0) > 15
+                                          //   //     ? "${survey.shopTitle?.substring(0, 15) ?? " "}.."
+                                          //   //     : survey.shopTitle ?? "",
+                                          //   survey.shopTitle ?? "",
+                                          //   maxLines: 2, // Limitar a dos líneas
+                                          //   overflow: TextOverflow.ellipsis,
+                                          //   style: AppStyle.interSemi(
+                                          //     size: 15,
+                                          //     color: AppStyle.black,
+                                          //   ),
+                                          // ),
+                                          // if (survey.verify == 1)
+                                          //   Padding(
+                                          //     padding:
+                                          //         EdgeInsets.only(left: 4.r),
+                                          //     child: const BadgeItem(),
+                                          //   ),
+                                          Expanded(
+                                            child: Text(
+                                              survey.shopTitle ?? "",
+                                              maxLines: 2,
+                                              //overflow: TextOverflow.ellipsis,
+                                              style: AppStyle.interSemi(
+                                                size: 15,
+                                                color: AppStyle.black,
+                                              ),
+                                              textAlign: TextAlign.center,
                                             ),
                                           ),
                                           if (survey.verify == 1)
@@ -340,16 +363,28 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                                             ),
                                         ],
                                       ),
-                                      Text(
-                                        (survey.shopDescription?.length ?? 0) >
-                                                20
-                                            ? "${survey.shopDescription?.substring(0, 20) ?? " "}.."
-                                            : survey.shopDescription ?? "",
-                                        style: AppStyle.interNormal(
-                                          size: 14,
-                                          color: AppStyle.black,
+                                      // Text(
+                                      //   // (survey.shopDescription?.length ?? 0) >
+                                      //   //         20
+                                      //   //     ? "${survey.shopDescription?.substring(0, 20) ?? " "}.."
+                                      //   //     : survey.shopDescription ?? "",
+                                      //   survey.shopDescription ?? "",
+                                      //   style: AppStyle.interNormal(
+                                      //     size: 14,
+                                      //     color: AppStyle.black,
+                                      //   ),
+                                      //   textAlign: TextAlign.center,
+                                      // ),
+                                      Expanded(
+                                        child: ScrollingText(
+                                          text: survey.shopDescription ??
+                                              "No description available",
+                                          style: AppStyle.interNormal(
+                                            size: 14,
+                                            color: AppStyle.black,
+                                          ),
+                                          duration: Duration(seconds: 8),
                                         ),
-                                        textAlign: TextAlign.center,
                                       ),
                                     ],
                                   ),

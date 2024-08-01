@@ -15,6 +15,7 @@ import 'package:puntossmart/presentation/components/loading.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
 import 'widgets/orders_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 @RoutePage()
 class OrdersListPage extends ConsumerStatefulWidget {
   const OrdersListPage({super.key});
@@ -28,25 +29,25 @@ class _OrderPageState extends ConsumerState<OrdersListPage>
   late TabController _tabController;
   late RefreshController activeRefreshController;
   late RefreshController historyRefreshController;
-  late RefreshController refundRefreshController;
+  //late RefreshController refundRefreshController;
   late OrdersListNotifier event;
 
   final _tabs = [
-    Tab(text: AppHelpers.getTranslation(TrKeys.activeOrders)),
-    Tab(text: AppHelpers.getTranslation(TrKeys.orderHistory)),
-    Tab(text: AppHelpers.getTranslation(TrKeys.reFound)),
+    Tab(text: AppHelpers.getTranslation('Promociones Activas')),
+    Tab(text: AppHelpers.getTranslation('Promociones Completas')),
+    //Tab(text: AppHelpers.getTranslation(TrKeys.reFound)),
   ];
 
   @override
   void initState() {
     activeRefreshController = RefreshController();
     historyRefreshController = RefreshController();
-    refundRefreshController = RefreshController();
-    _tabController = TabController(length: 3, vsync: this);
+    //refundRefreshController = RefreshController();
+    _tabController = TabController(length: 2, vsync: this); //3
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(ordersListProvider.notifier).fetchActiveOrders(context);
       ref.read(ordersListProvider.notifier).fetchHistoryOrders(context);
-      ref.read(ordersListProvider.notifier).fetchRefundOrders(context);
+      //ref.read(ordersListProvider.notifier).fetchRefundOrders(context);
     });
     super.initState();
   }
@@ -62,7 +63,7 @@ class _OrderPageState extends ConsumerState<OrdersListPage>
     _tabController.dispose();
     activeRefreshController.dispose();
     historyRefreshController.dispose();
-    refundRefreshController.dispose();
+    //refundRefreshController.dispose();
     super.dispose();
   }
 
@@ -79,7 +80,8 @@ class _OrderPageState extends ConsumerState<OrdersListPage>
           children: [
             CommonAppBar(
               child: Text(
-                AppHelpers.getTranslation(TrKeys.order),
+                AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.my_promotions),
                 style: AppStyle.interNoSemi(
                   size: 18,
                   color: AppStyle.black,
@@ -156,34 +158,34 @@ class _OrderPageState extends ConsumerState<OrdersListPage>
                                   },
                                 ),
                               ),
-                        state.isRefundLoading
-                            ? const Loading()
-                            : SmartRefresher(
-                                controller: refundRefreshController,
-                                enablePullDown: true,
-                                enablePullUp: true,
-                                onRefresh: () {
-                                  event.fetchRefundOrdersPage(
-                                      context, refundRefreshController,
-                                      isRefresh: true);
-                                  refundRefreshController.refreshCompleted();
-                                },
-                                onLoading: () {
-                                  event.fetchRefundOrdersPage(
-                                      context, refundRefreshController);
-                                },
-                                child: ListView.builder(
-                                  padding: EdgeInsets.only(top: 24.h),
-                                  itemCount: state.refundOrders.length,
-                                  itemBuilder: (context, index) {
-                                    return OrdersItem(
-                                      isRefund: true,
-                                      isActive: false,
-                                      refund: state.refundOrders[index],
-                                    );
-                                  },
-                                ),
-                              ),
+                        // state.isRefundLoading
+                        //     ? const Loading()
+                        //     : SmartRefresher(
+                        //         controller: refundRefreshController,
+                        //         enablePullDown: true,
+                        //         enablePullUp: true,
+                        //         onRefresh: () {
+                        //           event.fetchRefundOrdersPage(
+                        //               context, refundRefreshController,
+                        //               isRefresh: true);
+                        //           refundRefreshController.refreshCompleted();
+                        //         },
+                        //         onLoading: () {
+                        //           event.fetchRefundOrdersPage(
+                        //               context, refundRefreshController);
+                        //         },
+                        //         child: ListView.builder(
+                        //           padding: EdgeInsets.only(top: 24.h),
+                        //           itemCount: state.refundOrders.length,
+                        //           itemBuilder: (context, index) {
+                        //             return OrdersItem(
+                        //               isRefund: true,
+                        //               isActive: false,
+                        //               refund: state.refundOrders[index],
+                        //             );
+                        //           },
+                        //         ),
+                        //       ),
                       ]),
                     )
                   ],
@@ -208,7 +210,8 @@ Widget _resultEmpty(BuildContext context) {
       24.verticalSpace,
       Image.asset("assets/images/notFound.png"),
       Text(
-        AppHelpers.getTranslation(AppLocalizations.of(context)!.nothing_found/*TrKeys.nothingFound*/),
+        AppHelpers.getTranslation(AppLocalizations.of(context)!
+            .nothing_found /*TrKeys.nothingFound*/),
         style: AppStyle.interSemi(size: 18.sp),
       ),
       Padding(
@@ -216,7 +219,8 @@ Widget _resultEmpty(BuildContext context) {
           horizontal: 32.w,
         ),
         child: Text(
-          AppHelpers.getTranslation(AppLocalizations.of(context)!.try_searching_again/*TrKeys.trySearchingAgain*/),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!
+              .try_searching_again /*TrKeys.trySearchingAgain*/),
           style: AppStyle.interRegular(size: 14.sp),
           textAlign: TextAlign.center,
         ),

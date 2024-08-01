@@ -126,28 +126,38 @@ class ShopPageAvatar extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ShopDescriptionItem(
-                    title: AppHelpers.getTranslation(
-                        AppLocalizations.of(context)!.working_hours),
-                    description: workTime,
-                    icon: const Icon(FlutterRemix.time_fill),
+                  Container(
+                    width: (800 / MediaQuery.of(context).size.height) * 100,
+                    child: ShopDescriptionItem(
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.working_hours),
+                      description: workTime,
+                      icon: const Icon(FlutterRemix.time_fill),
+                    ),
                   ),
-                  ShopDescriptionItem(
-                    title: AppHelpers.getTranslation(
-                        AppLocalizations.of(context)!.delivery_time),
-                    description:
-                        "${shop.deliveryTime?.from ?? 0} - ${shop.deliveryTime?.to ?? 0} ${AppHelpers.getTranslation(shop.deliveryTime?.type ?? "min")}",
-                    icon: SvgPicture.asset("assets/svgs/delivery.svg"),
+                  Container(
+                    width:
+                        (880 / MediaQuery.of(context).size.height) * 100, //120
+                    child: ShopDescriptionItem(
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.delivery_time),
+                      description:
+                          "${shop.deliveryTime?.from ?? 0} - ${shop.deliveryTime?.to ?? 0} ${AppHelpers.getTranslation(shop.deliveryTime?.type ?? "min")}",
+                      icon: SvgPicture.asset("assets/svgs/delivery.svg"),
+                    ),
                   ),
-                  ShopDescriptionItem(
-                    title: AppHelpers.getTranslation(
-                        AppLocalizations.of(context)!.delivery_price),
-                    description:
-                        "${AppHelpers.getTranslation(AppLocalizations.of(context)!.from)} ${AppHelpers.numberFormat(number: shop.deliveryRange)}",
-                    icon: SvgPicture.asset(
-                      "assets/svgs/ticket.svg",
-                      width: 18.r,
-                      height: 18.r,
+                  Container(
+                    width: (880 / MediaQuery.of(context).size.height) * 100,
+                    child: ShopDescriptionItem(
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.delivery_price),
+                      description:
+                          "${AppHelpers.getTranslation(AppLocalizations.of(context)!.from)} ${AppHelpers.numberFormat(number: shop.deliveryRange)}",
+                      icon: SvgPicture.asset(
+                        "assets/svgs/ticket.svg",
+                        width: 18.r,
+                        height: 18.r,
+                      ),
                     ),
                   ),
                 ],

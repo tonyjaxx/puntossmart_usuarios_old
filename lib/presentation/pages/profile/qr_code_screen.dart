@@ -9,6 +9,7 @@ import 'package:puntossmart/presentation/theme/app_style.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_share/flutter_share.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QRCodeScreen extends StatelessWidget {
   const QRCodeScreen({super.key});
@@ -76,7 +77,7 @@ class QRCodeScreen extends StatelessWidget {
             ),
           ),
           title: Text(
-            "QR Code",
+            AppLocalizations.of(context)!.qr_code,
             style: GoogleFonts.inter(
               fontWeight: FontWeight.w600,
               fontSize: 18.0,
@@ -84,21 +85,21 @@ class QRCodeScreen extends StatelessWidget {
               letterSpacing: -0.4,
             ),
           ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const ScanQrCodeScreen()));
-                },
-                icon: const Icon(
-                  FlutterRemix.qr_scan_2_line,
-                  color: AppStyle.black,
-                ),
-              ),
-            ),
-          ],
+          // actions: [
+          //   Padding(
+          //     padding: const EdgeInsets.only(right: 8.0),
+          //     child: IconButton(
+          //       onPressed: () {
+          //         Navigator.of(context).push(MaterialPageRoute(
+          //             builder: (context) => const ScanQrCodeScreen()));
+          //       },
+          //       icon: const Icon(
+          //         FlutterRemix.qr_scan_2_line,
+          //         color: AppStyle.black,
+          //       ),
+          //     ),
+          //   ),
+          // ],
         ),
         body: Container(
           width: MediaQuery.of(context).size.width,
@@ -119,7 +120,7 @@ class QRCodeScreen extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                "Puntos Smart",
+                "Escanear QR Smart",
                 style: GoogleFonts.inter(
                   fontWeight: FontWeight.w700,
                   fontSize: 25.0,
@@ -129,6 +130,25 @@ class QRCodeScreen extends StatelessWidget {
               ),
               const SizedBox(
                 height: 20,
+              ),
+              Container(
+                padding: const EdgeInsets.only(right: 8.0),
+                height: 150,
+                width: 150,
+                color: AppStyle.addProductSearchedToBasket,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const ScanQrCodeScreen()));
+                  },
+                  icon: FittedBox(
+                    child: Icon(
+                      FlutterRemix.qr_scan_2_line,
+                      color: AppStyle.black,
+                      size: 150,
+                    ),
+                  ),
+                ),
               ),
               // ElevatedButton.icon(
               //   onPressed: () => _shareQrCode(uuid),

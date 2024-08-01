@@ -56,7 +56,7 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
             ),
           ),
           title: Text(
-            'Send Puntos Smart ', // replace widget.name with the actual title if needed
+            'Send Puntos Smart 3', // replace widget.name with the actual title if needed
             style: GoogleFonts.inter(
               fontWeight: FontWeight.w600,
               fontSize: 18.0,

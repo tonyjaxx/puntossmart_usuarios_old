@@ -9,6 +9,7 @@ import 'package:puntossmart/presentation/components/buttons/animation_button_eff
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class DoorThree extends StatelessWidget {
   const DoorThree({super.key});
 
@@ -18,14 +19,16 @@ class DoorThree extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          AppHelpers.getTranslation(AppLocalizations.of(context)!.especially_for_you),
+          AppHelpers.getTranslation(
+              AppLocalizations.of(context)!.especially_for_you),
           style: AppStyle.interNoSemi(size: 20),
         ),
         6.verticalSpace,
         Padding(
           padding: REdgeInsets.symmetric(horizontal: 24),
           child: Text(
-            AppHelpers.getTranslation(AppLocalizations.of(context)!.your_personal_door),
+            AppHelpers.getTranslation(
+                AppLocalizations.of(context)!.your_personal_door),
             style: AppStyle.interNormal(size: 14, color: AppStyle.textGrey),
             textAlign: TextAlign.center,
           ),
@@ -39,7 +42,7 @@ class DoorThree extends StatelessWidget {
                 context.pushRoute(const LoginRoute());
                 return;
               }
-              context.pushRoute(const ParcelRoute());
+              context.pushRoute(const OrdersListRoute());
               return;
             },
             child: AnimationButtonEffect(
@@ -70,7 +73,8 @@ class DoorThree extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            AppHelpers.getTranslation(AppLocalizations.of(context)!.door_to_door),
+                            AppHelpers.getTranslation(
+                                AppLocalizations.of(context)!.door_to_door),
                             style: AppStyle.interNoSemi(
                                 color: AppStyle.white, size: 24),
                           ),
@@ -104,7 +108,8 @@ class DoorThree extends StatelessWidget {
                                 Expanded(
                                   child: Text(
                                     AppHelpers.getTranslation(
-                                        AppLocalizations.of(context)!.work_for_you),
+                                        AppLocalizations.of(context)!
+                                            .work_for_you),
                                     style: AppStyle.interNoSemi(
                                         color: AppStyle.doorColor, size: 14),
                                   ),

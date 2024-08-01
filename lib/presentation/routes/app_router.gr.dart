@@ -117,7 +117,7 @@ abstract class _$AppRouter extends RootStackRouter {
           orderId: args.orderId,
         ),
       );
-    },
+    }, //01-08
     OrdersListRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -129,7 +129,7 @@ abstract class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: const ParcelListPage(),
       );
-    },
+    }, //01-08
     ParcelRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
