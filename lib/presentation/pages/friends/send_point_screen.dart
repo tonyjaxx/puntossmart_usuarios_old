@@ -365,6 +365,17 @@ class _SendPointScreenState extends State<SendPointScreen> {
                           backgroundColor: AppStyle.red,
                           textColor: Colors.white,
                           fontSize: 16.0);
+                    } else if (friendController.noteController.text.isEmpty) {
+                      Fluttertoast.showToast(
+                          msg: AppLocalizations.of(context)!
+                              .please_enter_you_note,
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.TOP,
+                          timeInSecForIosWeb: 3,
+                          backgroundColor: AppStyle.red,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
+                      return;
                     } else {
                       showModalBottomSheet(
                         backgroundColor: AppStyle.borderColor,

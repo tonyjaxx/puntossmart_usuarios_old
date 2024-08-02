@@ -444,6 +444,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "El Número de Teléfono No es Válido"),
         "pickup": MessageLookupByLibrary.simpleMessage("Entregas"),
         "pickup_at": MessageLookupByLibrary.simpleMessage("Recoger en"),
+        "please_enter_you_note":
+            MessageLookupByLibrary.simpleMessage("Porfavor ingresa una nota"),
         "points": MessageLookupByLibrary.simpleMessage("Puntos"),
         "points_should_be_greater_then_zero":
             MessageLookupByLibrary.simpleMessage(

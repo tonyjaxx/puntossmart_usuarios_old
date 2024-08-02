@@ -1570,6 +1570,16 @@ class S {
     );
   }
 
+  /// `Porfavor ingresa una nota`
+  String get please_enter_you_note {
+    return Intl.message(
+      'Porfavor ingresa una nota',
+      name: 'please_enter_you_note',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Rango de Precios`
   String get price_range {
     return Intl.message(

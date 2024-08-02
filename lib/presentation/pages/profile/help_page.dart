@@ -240,7 +240,7 @@ class _HelpPageState extends ConsumerState<HelpPage> {
                 onPressed: () async {
                   final Uri launchUri = Uri(
                     scheme: 'tel',
-                    path: AppHelpers.getAppPhone(),
+                    path: '+51 904244903', //AppHelpers.getAppPhone(),
                   );
                   await launchUrl(launchUri);
                 },

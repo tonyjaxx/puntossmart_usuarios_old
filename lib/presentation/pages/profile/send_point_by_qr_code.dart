@@ -12,6 +12,7 @@ import 'package:puntossmart/presentation/pages/friends/controller/friend_control
 import 'package:puntossmart/presentation/theme/app_style.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SendPointByQrCode extends StatefulWidget {
   SendPointByQrCode({
@@ -23,13 +24,21 @@ class SendPointByQrCode extends StatefulWidget {
 }
 
 class _SendPointByQrCodeState extends State<SendPointByQrCode> {
-  FriendController friendController = Get.put(FriendController());
+  final FriendController friendController = Get.put(FriendController());
   int points = 0;
   final FocusNode _focusNode = FocusNode();
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: points.toString());
+  }
 
   @override
   void dispose() {
     _focusNode.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -56,7 +65,8 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
             ),
           ),
           title: Text(
-            'Send Puntos Smart 3', // replace widget.name with the actual title if needed
+            AppLocalizations.of(context)!
+                .friends, // replace widget.name with the actual title if needed
             style: GoogleFonts.inter(
               fontWeight: FontWeight.w600,
               fontSize: 18.0,
@@ -122,7 +132,8 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                               ],
                             ),
                           ),
-                          subtitle: const Text("My Balance"),
+                          subtitle:
+                              Text(AppLocalizations.of(context)!.my_balance),
                         ),
                       ),
                     ),
@@ -130,11 +141,11 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                       height: 40,
                     ),
                     Text(
-                      "Punto Smart",
-                      style: GoogleFonts.inter(
+                      AppLocalizations.of(context)!.puntos_smart,
+                      style: GoogleFonts.bungee(
                         fontWeight: FontWeight.w600,
                         fontSize: 22.0,
-                        color: AppStyle.textGrey,
+                        color: AppStyle.newThemeColor,
                       ),
                     ),
                     const SizedBox(
@@ -154,6 +165,49 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            // Container(
+                            //   decoration: BoxDecoration(
+                            //     border: Border.all(width: 1),
+                            //     shape: BoxShape.circle,
+                            //   ),
+                            //   child: GestureDetector(
+                            //     onTap: () {
+                            //       if (points > 0) {
+                            //         setState(() {
+                            //           points--;
+                            //         });
+                            //       }
+                            //     },
+                            //     child: const Icon(Icons.remove),
+                            //   ),
+                            // ),
+                            // const SizedBox(
+                            //   width: 10,
+                            // ),
+                            // Text(
+                            //   "$points",
+                            //   style: GoogleFonts.inter(
+                            //     fontSize: 18.0,
+                            //     color: AppStyle.black,
+                            //   ),
+                            // ),
+                            // const SizedBox(
+                            //   width: 10,
+                            // ),
+                            // Container(
+                            //   decoration: BoxDecoration(
+                            //     border: Border.all(width: 1),
+                            //     shape: BoxShape.circle,
+                            //   ),
+                            //   child: GestureDetector(
+                            //     onTap: () {
+                            //       setState(() {
+                            //         points++;
+                            //       });
+                            //     },
+                            //     child: const Icon(Icons.add),
+                            //   ),
+                            // ),
                             Container(
                               decoration: BoxDecoration(
                                 border: Border.all(width: 1),
@@ -164,6 +218,7 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                                   if (points > 0) {
                                     setState(() {
                                       points--;
+                                      _controller.text = points.toString();
                                     });
                                   }
                                 },
@@ -173,11 +228,24 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                             const SizedBox(
                               width: 10,
                             ),
-                            Text(
-                              "$points",
-                              style: GoogleFonts.inter(
-                                fontSize: 18.0,
-                                color: AppStyle.black,
+                            SizedBox(
+                              width: 50,
+                              child: TextField(
+                                controller: _controller,
+                                keyboardType: TextInputType.number,
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.inter(
+                                  fontSize: 18.0,
+                                  color: Colors.black,
+                                ),
+                                onChanged: (value) {
+                                  setState(() {
+                                    points = int.tryParse(value) ?? points;
+                                  });
+                                },
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                ),
                               ),
                             ),
                             const SizedBox(
@@ -192,6 +260,7 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                                 onTap: () {
                                   setState(() {
                                     points++;
+                                    _controller.text = points.toString();
                                   });
                                 },
                                 child: const Icon(Icons.add),
@@ -251,7 +320,8 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                           size: 13,
                           color: AppStyle.hintColor,
                         ),
-                        hintText: AppHelpers.getTranslation(TrKeys.note),
+                        hintText: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.note),
                         contentPadding:
                             REdgeInsets.symmetric(horizontal: 15, vertical: 14),
                         fillColor: AppStyle.bgGrey,
@@ -276,22 +346,25 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                   ],
                 ),
                 CustomButton(
-                  title: "Continue",
+                  title: AppLocalizations.of(context)!.continue_,
                   onPressed: () {
                     if (points < 1) {
                       Fluttertoast.showToast(
-                          msg: "Points should be greater then zero",
+                          msg: AppLocalizations.of(context)!
+                              .points_should_be_greater_then_zero,
                           toastLength: Toast.LENGTH_LONG,
                           gravity: ToastGravity.TOP,
                           timeInSecForIosWeb: 3,
                           backgroundColor: AppStyle.red,
                           textColor: Colors.white,
                           fontSize: 16.0);
+                      //int.parse
                     } else if (points >
-                        int.parse(
+                        double.parse(
                             LocalStorage.getWalletData()!.price.toString())) {
                       Fluttertoast.showToast(
-                          msg: "You don't have enough points",
+                          msg: AppLocalizations.of(context)!
+                              .you_dont_have_enough_points,
                           toastLength: Toast.LENGTH_LONG,
                           gravity: ToastGravity.TOP,
                           timeInSecForIosWeb: 3,
@@ -300,7 +373,8 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                           fontSize: 16.0);
                     } else if (friendController.noteController.text.isEmpty) {
                       Fluttertoast.showToast(
-                          msg: "Please enter your note",
+                          msg: AppLocalizations.of(context)!
+                              .please_enter_you_note,
                           toastLength: Toast.LENGTH_LONG,
                           gravity: ToastGravity.TOP,
                           timeInSecForIosWeb: 3,
@@ -320,7 +394,7 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                               children: [
                                 const SizedBox(height: 20),
                                 Text(
-                                  "Send Points",
+                                  AppLocalizations.of(context)!.send_points,
                                   style: GoogleFonts.inter(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 22.0,
@@ -332,7 +406,8 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                                   TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: "Are you sure to send ",
+                                        text: AppLocalizations.of(context)!
+                                            .are_you_sure_to_send,
                                         style: GoogleFonts.inter(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 14.0,
@@ -348,7 +423,7 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                                         ),
                                       ),
                                       TextSpan(
-                                        text: " to ",
+                                        text: " para ",
                                         style: GoogleFonts.inter(
                                           fontSize: 14.0,
                                           fontWeight: FontWeight.w500,
@@ -401,7 +476,9 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                                                   CircularProgressIndicator(),
                                             )
                                           : CustomButton(
-                                              title: "Send",
+                                              title:
+                                                  AppLocalizations.of(context)!
+                                                      .send,
                                               onPressed: () {
                                                 friendController.sendPoints(
                                                   uuid: friendController
@@ -461,8 +538,9 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                                                             TextSpan(
                                                               children: [
                                                                 TextSpan(
-                                                                  text:
-                                                                      "You have Successfully sent ",
+                                                                  text: AppLocalizations.of(
+                                                                          context)!
+                                                                      .you_have_successfully_sent,
                                                                   style:
                                                                       GoogleFonts
                                                                           .inter(
@@ -500,8 +578,9 @@ class _SendPointByQrCodeState extends State<SendPointByQrCode> {
                                                                 .transparent,
                                                             borderColor:
                                                                 AppStyle.black,
-                                                            title:
-                                                                "Back to Home",
+                                                            title: AppLocalizations
+                                                                    .of(context)!
+                                                                .back_to_home,
                                                             onPressed: () {
                                                               Navigator.pop(
                                                                   context);
