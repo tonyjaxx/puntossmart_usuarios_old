@@ -25,7 +25,6 @@ import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
 import '../../../../application/map/view_map_notifier.dart';
 import '../../../../application/map/view_map_provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class ViewMapPage extends ConsumerStatefulWidget {
@@ -59,7 +58,6 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
   dynamic check;
   late LatLng latLng;
   final Delayed delayed = Delayed(milliseconds: 700);
-  LatLng peruLocation = LatLng(-12.0464,-77.0428); // Coordenadas para Lima-Perú knjt 19-07-24
 
   @override
   void dispose() {
@@ -142,9 +140,9 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
                     myLocationButtonEnabled: false,
                     initialCameraPosition: CameraPosition(
                       bearing: 0,
-                      target: peruLocation, // 19-04-24 latLng,
+                      target: latLng,
                       tilt: 0,
-                      zoom: 12, //17
+                      zoom: 17,
                     ),
                     mapToolbarEnabled: false,
                     zoomControlsEnabled: false,
@@ -383,7 +381,7 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
                         child: Opacity(
                           opacity: state.isScrolling ? 0.5 : 1,
                           child: CustomButton(
-                            title: AppHelpers.getTranslation(AppLocalizations.of(context)!.apply),
+                            title: AppHelpers.getTranslation(TrKeys.apply),
                             onPressed: () {
                               if (widget.isParcel) {
                                 Navigator.pop(

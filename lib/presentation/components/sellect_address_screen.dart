@@ -77,7 +77,8 @@ class _SelectAddressScreenState extends ConsumerState<SelectAddressScreen> {
                   ),
                   24.verticalSpace,
                   TitleAndIcon(
-                    title: AppHelpers.getTranslation(AppLocalizations.of(context)!.select_address),
+                    title: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.select_address),
                     paddingHorizontalSize: 0,
                     titleSize: 18,
                   ),
@@ -125,13 +126,15 @@ class _SelectAddressScreenState extends ConsumerState<SelectAddressScreen> {
                   16.verticalSpace,
                   CustomButton(
                       background: AppStyle.white,
-                      title: AppHelpers.getTranslation(AppLocalizations.of(context)!.add_address),
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.add_address),
                       onPressed: () {
                         widget.addAddress.call();
                       }),
                   16.verticalSpace,
                   CustomButton(
-                      title: AppHelpers.getTranslation(AppLocalizations.of(context)!.btn_save),
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.btn_save),
                       onPressed: () {
                         ref.read(profileProvider.notifier).setActiveAddress(
                             index: ref.watch(profileProvider).selectAddress,

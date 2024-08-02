@@ -19,9 +19,6 @@ import 'package:puntossmart/presentation/components/text_fields/search_text_fiel
 import 'package:puntossmart/presentation/theme/theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
-
-
 class ViewMapModal extends ConsumerStatefulWidget {
   final TextEditingController controller;
   final AddressNewModel? address;
@@ -92,7 +89,8 @@ class _ViewMapModalState extends ConsumerState<ViewMapModal> {
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              AppHelpers.getTranslation(AppLocalizations.of(context)!.delivery_address),
+              AppHelpers.getTranslation(
+                  AppLocalizations.of(context)!.delivery_address),
               style: AppStyle.interNoSemi(size: 18),
             ),
           ),
@@ -158,9 +156,11 @@ class _ViewMapModalState extends ConsumerState<ViewMapModal> {
                   : AppStyle.black,
               title: !widget.isShopLocation
                   ? (state.isActive
-                      ? AppHelpers.getTranslation(AppLocalizations.of(context)!.apply)
+                      ? AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.apply)
                       : AppHelpers.getTranslation(TrKeys.noDriverZone))
-                  : AppHelpers.getTranslation(AppLocalizations.of(context)!.apply),
+                  : AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.apply),
               onPressed: () {
                 if (widget.isShopLocation) {
                   Navigator.pop(context, state.place);
