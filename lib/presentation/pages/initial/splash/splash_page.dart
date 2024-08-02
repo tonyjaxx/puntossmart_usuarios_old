@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lottie/lottie.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import '../../../../application/splash/splash_provider.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -18,7 +19,8 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      Future.delayed(Duration(seconds: 3), () {
+      Future.delayed(Duration(seconds: 1 /*milliseconds: (1 * 1000).round()*/),
+          () {
         //7 3
         //7
         ref.read(splashProvider.notifier).getTranslations(context);
@@ -40,6 +42,15 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
     // return Image.asset("assets/images/splash.gif", fit: BoxFit.cover);
-    return Image.asset("assets/images/puntossmart.gif", fit: BoxFit.cover);
+    return Lottie.asset("assets/json/puntossmartx1.json");
+    // return Container(
+    //   decoration: BoxDecoration(
+    //     color: Colors.black,
+    //     image: DecorationImage(
+    //       image: AssetImage("assets/json/puntossmartx1.json"),
+    //       fit: BoxFit.cover,
+    //     ),
+    //   ),
+    // );
   }
 }

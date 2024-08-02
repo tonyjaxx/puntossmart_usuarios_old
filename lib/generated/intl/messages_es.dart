@@ -55,10 +55,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Número Alternativo"),
         "answer": MessageLookupByLibrary.simpleMessage("Respuesta"),
         "answer_now":
-            MessageLookupByLibrary.simpleMessage("Responde y Gana Ya!"),
+            MessageLookupByLibrary.simpleMessage("Responde y Gana Puntos!"),
         "apply": MessageLookupByLibrary.simpleMessage("Aplicar"),
         "approved": MessageLookupByLibrary.simpleMessage("Aprobado"),
         "are_you_sure": MessageLookupByLibrary.simpleMessage("¿Estás seguro?"),
+        "are_you_sure_buy_puntos_smart": MessageLookupByLibrary.simpleMessage(
+            "¿Estás seguro de comprar Puntos Smart?"),
         "are_you_sure_to_send":
             MessageLookupByLibrary.simpleMessage("¿Estás seguro de enviar?"),
         "auth_login_1": MessageLookupByLibrary.simpleMessage("Iniciar Sesión"),
@@ -282,6 +284,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Altamente calificado"),
         "hint_opt": MessageLookupByLibrary.simpleMessage(
             "Ingrese el código de verificación"),
+        "history_puntos": MessageLookupByLibrary.simpleMessage(
+            "Historial de Compra de Puntos"),
         "home": MessageLookupByLibrary.simpleMessage("Inicio"),
         "house": MessageLookupByLibrary.simpleMessage("Casa"),
         "how_it_works": MessageLookupByLibrary.simpleMessage("Cómo funciona"),
@@ -360,6 +364,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No se encontro el Amigo"),
         "no_internet_connection":
             MessageLookupByLibrary.simpleMessage("Sin Conexión a Internet"),
+        "no_package_found":
+            MessageLookupByLibrary.simpleMessage("No se encontró paquete"),
         "no_payment_type":
             MessageLookupByLibrary.simpleMessage("No Hay Tipo de Pago"),
         "no_restaurant":
@@ -407,7 +413,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "parcel_details":
             MessageLookupByLibrary.simpleMessage("Detalles del Paquete"),
         "parcel_history":
-            MessageLookupByLibrary.simpleMessage("Historial de Paquetes"),
+            MessageLookupByLibrary.simpleMessage("Paquete Recibido"),
         "parcels": MessageLookupByLibrary.simpleMessage("Entregas"),
         "password": MessageLookupByLibrary.simpleMessage("Contraseña"),
         "password_invalid": MessageLookupByLibrary.simpleMessage(
@@ -508,6 +514,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ubicaciones Guardadas"),
         "saved_stores":
             MessageLookupByLibrary.simpleMessage("Tiendas Guardadas"),
+        "scaner_qr": MessageLookupByLibrary.simpleMessage("Escanea tu QR"),
         "score": MessageLookupByLibrary.simpleMessage("Puntuación"),
         "search": MessageLookupByLibrary.simpleMessage("Buscar"),
         "search_restaurant_and_products": MessageLookupByLibrary.simpleMessage(
@@ -526,9 +533,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "send": MessageLookupByLibrary.simpleMessage("Enviar"),
         "send_message": MessageLookupByLibrary.simpleMessage(""),
         "send_new": MessageLookupByLibrary.simpleMessage("Enviar Nuevo"),
+        "send_now": MessageLookupByLibrary.simpleMessage("Enviar ahora"),
         "send_otp":
             MessageLookupByLibrary.simpleMessage("Código OTP enviado a"),
         "send_points": MessageLookupByLibrary.simpleMessage("Enviar puntos"),
+        "send_recive_point":
+            MessageLookupByLibrary.simpleMessage("Envia y Recibe Puntos"),
         "sender": MessageLookupByLibrary.simpleMessage("Remitente"),
         "service_fee":
             MessageLookupByLibrary.simpleMessage("Cuota de Servicio"),
@@ -641,6 +651,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("¿Qué Estás Enviando?"),
         "why_do_you_want":
             MessageLookupByLibrary.simpleMessage("¿Por Qué Quieres?"),
+        "with_qr": MessageLookupByLibrary.simpleMessage("Solo con tu QR Smart"),
         "work_247": MessageLookupByLibrary.simpleMessage("Trabajo 24/7"),
         "work_for_you": MessageLookupByLibrary.simpleMessage("Verificalo aquí"),
         "working_hours": MessageLookupByLibrary.simpleMessage("Horario"),

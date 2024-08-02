@@ -168,6 +168,8 @@ class LoginNotifier extends StateNotifier<LoginState> {
           // } else {
           //   context.replaceRoute(const MainRoute());
           // }
+          await LocalStorage.setUiType(3);
+          context.replaceRoute(const MainRoute());
 
           String? fcmToken = await FirebaseMessaging.instance.getToken();
           print("FIREBAE TOKEN $fcmToken");
@@ -244,11 +246,12 @@ class LoginNotifier extends StateNotifier<LoginState> {
                       .location
                       ?.first)));
           context.router.popUntilRoot();
-          if (AppConstants.isDemo) {
-            context.replaceRoute(UiTypeRoute());
-          } else {
-            context.replaceRoute(const MainRoute());
-          }
+          // if (AppConstants.isDemo) {
+          //   context.replaceRoute(UiTypeRoute());
+          // } else {
+          await LocalStorage.setUiType(3);
+          context.replaceRoute(const MainRoute());
+          //}
           String? fcmToken = await FirebaseMessaging.instance.getToken();
           _userRepositoryFacade.updateFirebaseToken(fcmToken);
         },
@@ -424,11 +427,14 @@ class LoginNotifier extends StateNotifier<LoginState> {
                         ?.first)));
             context.router.popUntilRoot();
             //directo al home
-            if (AppConstants.isDemo) {
-              context.replaceRoute(UiTypeRoute());
-            } else {
-              context.replaceRoute(const MainRoute());
-            }
+            // if (AppConstants.isDemo) {
+            //   context.replaceRoute(UiTypeRoute());
+            // } else {
+            //   context.replaceRoute(const MainRoute());
+            // }
+            await LocalStorage.setUiType(3);
+            context.replaceRoute(const MainRoute());
+
             String? fcmToken = await FirebaseMessaging.instance.getToken();
             _userRepositoryFacade.updateFirebaseToken(fcmToken);
           },

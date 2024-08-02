@@ -16,6 +16,7 @@ import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/components/buttons/social_button.dart';
 import 'package:puntossmart/presentation/pages/auth/register/register_page.dart';
+import 'package:puntossmart/presentation/pages/home_three/home_page_three.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:upgrader/upgrader.dart';
 import '../../../theme/theme.dart';
@@ -70,10 +71,12 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     if (deepLink.toString().contains("product") ||
         deepLink.toString().contains("shop") ||
         deepLink.toString().contains("restaurant")) {
-      if (AppConstants.isDemo) {
-        context.replaceRoute(UiTypeRoute());
-        return;
-      }
+      // if (AppConstants.isDemo) {
+      //   context.replaceRoute(UiTypeRoute());
+      //   return;
+      // }
+      // context.replaceRoute(const MainRoute());
+      await LocalStorage.setUiType(3);
       context.replaceRoute(const MainRoute());
     }
   }
@@ -152,23 +155,18 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           alignment: Alignment.topRight,
                           child: TextButton(
                             onPressed: () async {
-                              await LocalStorage.setUiType(3);
-                              ref.read(mainProvider.notifier).selectIndex(0);
-                              context.replaceRoute(const MainRoute());
-                              debugPrint(
-                                  '==> MainRouteMainRouteMainRouteMainRouteMainRouteMainRoute');
-
+                              //original
                               // ref.read(mainProvider.notifier).selectIndex(0);
                               // if (AppConstants.isDemo) {
-                              //   debugPrint(
-                              //       '==> isDemoisDemoisDemoisDemoisDemoisDemoisDemoisDemo: ');
                               //   context.pushRoute(UiTypeRoute());
                               //   return;
                               // }
-
                               // context.replaceRoute(const MainRoute());
-                              // debugPrint(
-                              //     '==> MainRouteMainRouteMainRouteMainRouteMainRouteMainRoute ');
+
+                              //pueba 1
+                              await LocalStorage.setUiType(3);
+                              ref.read(mainProvider.notifier).selectIndex(0);
+                              context.replaceRoute(const MainRoute());
                             },
                             child: Container(
                               padding: const EdgeInsets.symmetric(

@@ -111,9 +111,10 @@ flutter:
     - assets/
     - assets/temp/
     - assets/images/ui3.png
+    - assets/json/
 
 flutter_icons:
-  android: true
+  android: false
   ios: true
   remove_alpha_ios: true
   image_path: "assets/images/customer.png"

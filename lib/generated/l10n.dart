@@ -620,6 +620,36 @@ class S {
     );
   }
 
+  /// `Historial de Compra de Puntos`
+  String get history_puntos {
+    return Intl.message(
+      'Historial de Compra de Puntos',
+      name: 'history_puntos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `¿Estás seguro de comprar Puntos Smart?`
+  String get are_you_sure_buy_puntos_smart {
+    return Intl.message(
+      '¿Estás seguro de comprar Puntos Smart?',
+      name: 'are_you_sure_buy_puntos_smart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No se encontró paquete`
+  String get no_package_found {
+    return Intl.message(
+      'No se encontró paquete',
+      name: 'no_package_found',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Dirección de entrega`
   String get delivery_address {
     return Intl.message(
@@ -870,11 +900,51 @@ class S {
     );
   }
 
-  /// `Responde y Gana Ya!`
+  /// `Responde y Gana Puntos!`
   String get answer_now {
     return Intl.message(
-      'Responde y Gana Ya!',
+      'Responde y Gana Puntos!',
       name: 'answer_now',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Envia y Recibe Puntos`
+  String get send_recive_point {
+    return Intl.message(
+      'Envia y Recibe Puntos',
+      name: 'send_recive_point',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Solo con tu QR Smart`
+  String get with_qr {
+    return Intl.message(
+      'Solo con tu QR Smart',
+      name: 'with_qr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enviar ahora`
+  String get send_now {
+    return Intl.message(
+      'Enviar ahora',
+      name: 'send_now',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Escanea tu QR`
+  String get scaner_qr {
+    return Intl.message(
+      'Escanea tu QR',
+      name: 'scaner_qr',
       desc: '',
       args: [],
     );
@@ -2102,10 +2172,10 @@ class S {
     );
   }
 
-  /// `Historial de Paquetes`
+  /// `Paquete Recibido`
   String get parcel_history {
     return Intl.message(
-      'Historial de Paquetes',
+      'Paquete Recibido',
       name: 'parcel_history',
       desc: '',
       args: [],

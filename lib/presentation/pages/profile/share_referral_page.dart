@@ -20,6 +20,7 @@ import '../../../infrastructure/services/local_storage.dart';
 import '../../components/app_bars/common_app_bar.dart';
 import '../../components/buttons/pop_button.dart';
 import '../../theme/app_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class ShareReferralPage extends ConsumerStatefulWidget {
@@ -60,7 +61,8 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
           children: [
             CommonAppBar(
               child: Text(
-                AppHelpers.getTranslation(TrKeys.referral),
+                AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.shared_friends),
                 style: AppStyle.interNoSemi(
                   size: 18,
                   color: AppStyle.black,
@@ -72,11 +74,20 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                 : Padding(
                     padding: EdgeInsets.all(16.r),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
+                        Container(
                           height: 200.h,
                           width: double.infinity,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppStyle.textGrey,
+                                offset: Offset(5, 5),
+                                blurRadius: 5,
+                              ),
+                            ],
+                          ),
                           child: CustomNetworkImage(
                             url: state.referralData?.img ?? "",
                             height: 42.r,
@@ -84,14 +95,15 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                             radius: 8.r,
                           ),
                         ),
+                        16.verticalSpace,
                         Text(
                           state.referralData?.translation?.title ?? "",
-                          style: AppStyle.interNoSemi(
+                          style: AppStyle.bungee(
                             size: 20,
-                            color: AppStyle.black,
+                            color: AppStyle.newThemeColor,
                           ),
                         ),
-                        16.verticalSpace,
+                        5.verticalSpace,
                         GestureDetector(
                           onTap: () {
                             context.pushRoute(ShareReferralFaqRoute(
@@ -110,7 +122,8 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                                 children: [
                                   TextSpan(
                                     text: AppHelpers.getTranslation(
-                                            TrKeys.referralFaq)
+                                            AppLocalizations.of(context)!
+                                                .referral_faq)
                                         .toLowerCase(),
                                     style: AppStyle.interNoSemi(
                                         size: 14,
@@ -122,11 +135,13 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                         ),
                         16.verticalSpace,
                         CustomButton(
-                            title: AppHelpers.getTranslation(TrKeys.share),
+                            title: AppHelpers.getTranslation(
+                                AppLocalizations.of(context)!.share),
                             onPressed: () {
                               FlutterShare.share(
                                   title: AppHelpers.getTranslation(
-                                      TrKeys.referral),
+                                      AppLocalizations.of(context)!
+                                          .shared_friends),
                                   linkUrl: ref
                                           .watch(profileProvider)
                                           .userData
@@ -137,7 +152,8 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                         CustomButton(
                             background: AppStyle.transparent,
                             borderColor: AppStyle.black,
-                            title: AppHelpers.getTranslation(TrKeys.copyCode),
+                            title: AppHelpers.getTranslation(
+                                AppLocalizations.of(context)!.copy_code),
                             onPressed: () async {
                               await Clipboard.setData(ClipboardData(
                                   text: ref
@@ -145,8 +161,10 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                                           .userData
                                           ?.referral ??
                                       ""));
-                              AppHelpers.showCheckTopSnackBarDone(context,
-                                  AppHelpers.getTranslation(TrKeys.copyCode));
+                              AppHelpers.showCheckTopSnackBarDone(
+                                  context,
+                                  AppHelpers.getTranslation(
+                                      AppLocalizations.of(context)!.copy_code));
                             }),
                         16.verticalSpace,
                         Container(
@@ -172,7 +190,9 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Text(
-                                      AppHelpers.getTranslation(TrKeys.balance),
+                                      AppHelpers.getTranslation(
+                                          AppLocalizations.of(context)!
+                                              .balance),
                                       style: AppStyle.interNormal(
                                         size: 14.sp,
                                         color: AppStyle.black,

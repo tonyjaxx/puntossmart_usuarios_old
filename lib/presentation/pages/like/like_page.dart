@@ -82,7 +82,8 @@ class _LikePageState extends ConsumerState<LikePage> {
         children: [
           CommonAppBar(
             child: Text(
-              AppHelpers.getTranslation(TrKeys.likeRestaurants),
+              AppHelpers.getTranslation(
+                  AppLocalizations.of(context)!.liked_restaurant),
               style: AppStyle.interNoSemi(
                 size: 18,
                 color: AppStyle.black,
@@ -197,13 +198,15 @@ class _LikePageState extends ConsumerState<LikePage> {
         32.verticalSpace,
         Image.asset("assets/images/notFound.png"),
         Text(
-          AppHelpers.getTranslation(AppLocalizations.of(context)!.nothing_found/*TrKeys.nothingFound*/),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!
+              .nothing_found /*TrKeys.nothingFound*/),
           style: AppStyle.interSemi(size: 18.sp),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 32.w),
           child: Text(
-            AppHelpers.getTranslation(AppLocalizations.of(context)!.try_searching_again/*TrKeys.trySearchingAgain*/),
+            AppHelpers.getTranslation(AppLocalizations.of(context)!
+                .try_searching_again /*TrKeys.trySearchingAgain*/),
             style: AppStyle.interRegular(size: 14.sp),
             textAlign: TextAlign.center,
           ),

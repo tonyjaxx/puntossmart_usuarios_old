@@ -37,6 +37,7 @@ import '../../../../application/edit_profile/edit_profile_provider.dart';
 import 'language_page.dart';
 import 'widgets/profile_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 @RoutePage()
 class ProfilePage extends ConsumerStatefulWidget {
   final bool isBackButton;
@@ -208,7 +209,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             ProfileItem(
                               isLtr: isLtr,
                               title: AppHelpers.getTranslation(
-                                  AppLocalizations.of(context)!.profile_settings),
+                                  AppLocalizations.of(context)!
+                                      .profile_settings),
                               icon: FlutterRemix.user_settings_line,
                               onTap: () {
                                 ref.refresh(editProfileProvider);
@@ -223,7 +225,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             ),
                             ProfileItem(
                               isLtr: isLtr,
-                              title: AppHelpers.getTranslation(AppLocalizations.of(context)!.qr_code),
+                              title: AppHelpers.getTranslation(
+                                  AppLocalizations.of(context)!.qr_code),
                               icon: FlutterRemix.qr_code_line,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
@@ -270,7 +273,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                                 ? ProfileItem(
                                     isLtr: isLtr,
                                     title: AppHelpers.getTranslation(
-                                        AppLocalizations.of(context)!.shared_friends),
+                                        AppLocalizations.of(context)!
+                                            .shared_friends),
                                     icon: FlutterRemix.money_dollar_circle_line,
                                     onTap: () {
                                       context.pushRoute(
@@ -280,7 +284,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                                 : const SizedBox.shrink(),
                             ProfileItem(
                               isLtr: isLtr,
-                              title: AppHelpers.getTranslation(AppLocalizations.of(context)!.orders),
+                              title: AppHelpers.getTranslation(
+                                  AppLocalizations.of(context)!.orders),
                               icon: FlutterRemix.history_line,
                               isCount: true,
                               count: ref
@@ -294,8 +299,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             if (AppHelpers.getParcel())
                               ProfileItem(
                                 isLtr: isLtr,
-                                title:
-                                    AppHelpers.getTranslation(AppLocalizations.of(context)!.parcels),
+                                title: AppHelpers.getTranslation(
+                                    AppLocalizations.of(context)!.parcels),
                                 icon: FlutterRemix.archive_line,
                                 isCount: true,
                                 count: ref
@@ -323,8 +328,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             ),
                             ProfileItem(
                               isLtr: isLtr,
-                              title:
-                                  AppHelpers.getTranslation(AppLocalizations.of(context)!.buy_points),
+                              title: AppHelpers.getTranslation(
+                                  AppLocalizations.of(context)!.buy_points),
                               icon: FlutterRemix.coins_line,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
@@ -334,7 +339,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             ProfileItem(
                               isLtr: isLtr,
                               title: AppHelpers.getTranslation(
-                                  AppLocalizations.of(context)!.delivery_address),
+                                  AppLocalizations.of(context)!
+                                      .delivery_address),
                               icon: FlutterRemix.user_location_line,
                               onTap: () {
                                 context.pushRoute(const AddressListRoute());
@@ -343,7 +349,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             if (widget.isBackButton)
                               ProfileItem(
                                 isLtr: isLtr,
-                                title: AppHelpers.getTranslation(AppLocalizations.of(context)!.liked),
+                                title: AppHelpers.getTranslation(
+                                    AppLocalizations.of(context)!.liked),
                                 icon: FlutterRemix.heart_3_line,
                                 onTap: () {
                                   context.pushRoute(LikeRoute());
@@ -370,7 +377,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             ),
                             ProfileItem(
                               isLtr: isLtr,
-                              title: AppHelpers.getTranslation(AppLocalizations.of(context)!.languages),
+                              title: AppHelpers.getTranslation(
+                                  AppLocalizations.of(context)!.languages),
                               icon: FlutterRemix.global_line,
                               onTap: () {
                                 AppHelpers.showCustomModalBottomSheet(
@@ -387,8 +395,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             ),
                             ProfileItem(
                               isLtr: isLtr,
-                              title:
-                                  AppHelpers.getTranslation(AppLocalizations.of(context)!.currencies),
+                              title: AppHelpers.getTranslation(
+                                  AppLocalizations.of(context)!.currencies),
                               icon: FlutterRemix.bank_card_line,
                               onTap: () {
                                 AppHelpers.showCustomModalBottomSheet(
@@ -409,7 +417,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             ),
                             ProfileItem(
                               isLtr: isLtr,
-                              title: AppHelpers.getTranslation(AppLocalizations.of(context)!.help),
+                              title: AppHelpers.getTranslation(
+                                  AppLocalizations.of(context)!.help),
                               icon: FlutterRemix.question_line,
                               onTap: () {
                                 context.pushRoute(const HelpRoute());
@@ -417,7 +426,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             ),
                             ProfileItem(
                               isLtr: isLtr,
-                              title: AppHelpers.getTranslation(AppLocalizations.of(context)!.about),
+                              title: AppHelpers.getTranslation(
+                                  AppLocalizations.of(context)!.about),
                               icon: FlutterRemix.bill_line,
                               onTap: () async {
                                 // ignore: deprecated_member_use
@@ -429,7 +439,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             ),
                             ProfileItem(
                               isLtr: isLtr,
-                              title: AppHelpers.getTranslation(AppLocalizations.of(context)!.careers),
+                              title: AppHelpers.getTranslation(
+                                  AppLocalizations.of(context)!.careers),
                               icon: FlutterRemix.empathize_line,
                               onTap: () async {
                                 // ignore: deprecated_member_use
@@ -441,7 +452,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             ),
                             ProfileItem(
                               isLtr: isLtr,
-                              title: AppHelpers.getTranslation(AppLocalizations.of(context)!.blogs),
+                              title: AppHelpers.getTranslation(
+                                  AppLocalizations.of(context)!.blogs),
                               icon: FlutterRemix.article_line,
                               onTap: () async {
                                 // ignore: deprecated_member_use
@@ -466,7 +478,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             ),
                             ProfileItem(
                               isLtr: isLtr,
-                              title: AppHelpers.getTranslation(AppLocalizations.of(context)!.terms),
+                              title: AppHelpers.getTranslation(
+                                  AppLocalizations.of(context)!.terms),
                               icon: FlutterRemix.file_info_line,
                               onTap: () async {
                                 // ignore: deprecated_member_use
@@ -476,15 +489,15 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                                 );
                               },
                             ),
-                            ProfileItem(
-                              isLtr: isLtr,
-                              title: AppHelpers.getTranslation(
-                                  AppLocalizations.of(context)!.sing_up_to_deliver),
-                              icon: FlutterRemix.external_link_line,
-                              onTap: () {
-                                context.pushRoute(const HelpRoute());
-                              },
-                            ),
+                            // ProfileItem(
+                            //   isLtr: isLtr,
+                            //   title: AppHelpers.getTranslation(
+                            //       AppLocalizations.of(context)!.sing_up_to_deliver),
+                            //   icon: FlutterRemix.external_link_line,
+                            //   onTap: () {
+                            //     context.pushRoute(const HelpRoute());
+                            //   },
+                            // ),
                             ProfileItem(
                               isLtr: isLtr,
                               title: AppHelpers.getTranslation(

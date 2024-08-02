@@ -30,6 +30,7 @@ import 'package:puntossmart/presentation/pages/home_three/controller/promotion_c
 import 'package:puntossmart/presentation/pages/home_three/video_player_screen.dart';
 import 'package:puntossmart/presentation/pages/home_three/widgets/door_three.dart';
 import 'package:puntossmart/presentation/pages/home_three/widgets/market_three_item.dart';
+import 'package:puntossmart/presentation/pages/home_three/widgets/send_point_home.dart';
 import 'package:puntossmart/presentation/pages/home_three/widgets/shop_see_all.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
@@ -197,29 +198,30 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                         event: event,
                         shopController: _restaurantController),
                 Container(
-                  padding: const EdgeInsets.only(bottom: 5),
+                  padding: const EdgeInsets.only(bottom: 10, top: 15),
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   ),
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 9),
-                  height: MediaQuery.of(context).size.height * 0.24,
+                  // margin:
+                  //     const EdgeInsets.symmetric(horizontal: 15, vertical: 9),
+                  height: MediaQuery.of(context).size.height * 0.42, //0.24
                   child: Stack(
                     alignment: AlignmentDirectional.topStart,
                     children: [
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
-                        height: MediaQuery.of(context).size.height * 0.20,
-                        width: MediaQuery.of(context).size.width,
-                        child: Image.asset(
-                          "assets/images/survey.png",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                      // Container(
+                      //   decoration: const BoxDecoration(
+                      //     color: Colors.white,
+                      //     borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      //   ),
+                      //   height: MediaQuery.of(context).size.height * 0.20,
+                      //   width: MediaQuery.of(context).size.width,
+                      //   child: Image.asset(
+                      //     "assets/images/survey.png",
+                      //     fit: BoxFit.cover,
+                      //   ),
+                      // ),
+                      if (AppHelpers.getParcel()) const SendPointHome(),
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: Text(

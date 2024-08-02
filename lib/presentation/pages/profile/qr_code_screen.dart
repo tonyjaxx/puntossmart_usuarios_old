@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_remix/flutter_remix.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:puntossmart/infrastructure/services/local_storage.dart';
 import 'package:puntossmart/presentation/pages/profile/scan_qr_code_screen.dart';
@@ -103,13 +104,15 @@ class QRCodeScreen extends StatelessWidget {
         ),
         body: Container(
           width: MediaQuery.of(context).size.width,
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          padding:
+              const EdgeInsets.symmetric(horizontal: 15.0 /*, vertical: 55.0*/),
           decoration: const BoxDecoration(
-            color: Colors.white,
+            color: Color.fromARGB(255, 255, 255, 255),
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            //mainAxisAlignment: MainAxisAlignment.start,
             children: [
               QrImageView(
                 data: uuid,
@@ -121,10 +124,10 @@ class QRCodeScreen extends StatelessWidget {
               ),
               Text(
                 "Escanear QR Smart",
-                style: GoogleFonts.inter(
+                style: GoogleFonts.bungee(
                   fontWeight: FontWeight.w700,
                   fontSize: 25.0,
-                  color: AppStyle.black,
+                  color: AppStyle.newThemeColor,
                   letterSpacing: -0.4,
                 ),
               ),
@@ -132,19 +135,26 @@ class QRCodeScreen extends StatelessWidget {
                 height: 20,
               ),
               Container(
-                padding: const EdgeInsets.only(right: 8.0),
-                height: 150,
-                width: 150,
-                color: AppStyle.addProductSearchedToBasket,
+                //alignment: Alignment.center,
+                //padding: const EdgeInsets.only(right: 8.0),
+                decoration: BoxDecoration(
+                  color: AppStyle.verticalDivider,
+                  borderRadius: BorderRadius.circular(
+                      15.0), // Ajusta el valor según sea necesario
+                ),
+                height: MediaQuery.sizeOf(context).width - 260.w,
+                width: MediaQuery.sizeOf(context).width - 260.w,
+                //color: AppStyle.addProductSearchedToBasket,
                 child: IconButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const ScanQrCodeScreen()));
                   },
-                  icon: FittedBox(
+                  icon: const FittedBox(
+                    //alignment: Alignment.center,
                     child: Icon(
                       FlutterRemix.qr_scan_2_line,
-                      color: AppStyle.black,
+                      color: AppStyle.newThemeColor,
                       size: 150,
                     ),
                   ),

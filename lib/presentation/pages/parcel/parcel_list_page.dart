@@ -32,8 +32,10 @@ class _ParcelListPageState extends ConsumerState<ParcelListPage>
   late ParcelListNotifier event;
 
   final _tabs = [
-    Tab(text: AppHelpers.getTranslation(TrKeys.activeParcel)),
-    Tab(text: AppHelpers.getTranslation(TrKeys.parcelHistory)),
+    // Tab(text: AppHelpers.getTranslation(TrKeys.activeParcel)),
+    // Tab(text: AppHelpers.getTranslation(TrKeys.parcelHistory)),
+    Tab(text: AppHelpers.getTranslation('Paquete Activo')),
+    Tab(text: AppHelpers.getTranslation('Paquete Recibido')),
   ];
 
   @override
@@ -75,7 +77,8 @@ class _ParcelListPageState extends ConsumerState<ParcelListPage>
           children: [
             CommonAppBar(
               child: Text(
-                AppHelpers.getTranslation(TrKeys.parcels),
+                AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.parcels),
                 style: AppStyle.interNoSemi(
                   size: 18,
                   color: AppStyle.black,
@@ -176,7 +179,8 @@ Widget _resultEmpty(BuildContext context) {
       24.verticalSpace,
       Image.asset("assets/images/notFound.png"),
       Text(
-        AppHelpers.getTranslation(AppLocalizations.of(context)!.nothing_found/*TrKeys.nothingFound*/),
+        AppHelpers.getTranslation(AppLocalizations.of(context)!
+            .nothing_found /*TrKeys.nothingFound*/),
         style: AppStyle.interSemi(size: 18.sp),
       ),
       Padding(
@@ -184,7 +188,8 @@ Widget _resultEmpty(BuildContext context) {
           horizontal: 32.w,
         ),
         child: Text(
-          AppHelpers.getTranslation(AppLocalizations.of(context)!.try_searching_again/*TrKeys.trySearchingAgain*/),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!
+              .try_searching_again /*TrKeys.trySearchingAgain*/),
           style: AppStyle.interRegular(size: 14.sp),
           textAlign: TextAlign.center,
         ),

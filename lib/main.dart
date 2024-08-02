@@ -17,17 +17,18 @@ import 'generated/l10n.dart';
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
 }
+
 // l
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   if (Platform.isIOS) {
     await Firebase.initializeApp(
       options: const FirebaseOptions(
         apiKey: 'AIzaSyBk8bkWJyOKu-7UPQdZdWWxoLUilL8AD6I',
         appId: '1:425054115382:ios:e06f9f17ee70e039ebea97',
         messagingSenderId: '425054115382',
-        projectId: 'puntos-smart-650e5', 
+        projectId: 'puntos-smart-650e5',
         storageBucket: 'puntos-smart-650e5.appspot.com',
         androidClientId:
             '425054115382-2r8e4beooo33iq0nun9aelj9pgld6b4p.apps.googleusercontent.com',

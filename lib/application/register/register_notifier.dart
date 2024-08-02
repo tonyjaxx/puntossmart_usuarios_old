@@ -211,13 +211,13 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
                       })
                       .location
                       ?.first)));
-          if (AppConstants.isDemo) {
-            context.replaceRoute(UiTypeRoute());
-          } else {
-            context.replaceRoute(const MainRoute());
-          }
-          // await LocalStorage.setUiType(3);
-          // context.replaceRoute(const MainRoute());
+          // if (AppConstants.isDemo) {
+          //   context.replaceRoute(UiTypeRoute());
+          // } else {
+          //   context.replaceRoute(const MainRoute());
+          // }
+          await LocalStorage.setUiType(3);
+          context.replaceRoute(const MainRoute());
           String? fcmToken = await FirebaseMessaging.instance.getToken();
           _userRepositoryFacade.updateFirebaseToken(fcmToken);
         },
@@ -302,11 +302,13 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
                       })
                       .location
                       ?.first)));
-          if (AppConstants.isDemo) {
-            context.replaceRoute(UiTypeRoute());
-          } else {
-            context.replaceRoute(const MainRoute());
-          }
+          // if (AppConstants.isDemo) {
+          //   context.replaceRoute(UiTypeRoute());
+          // } else {
+          //   context.replaceRoute(const MainRoute());
+          // }
+          await LocalStorage.setUiType(3);
+          context.replaceRoute(const MainRoute());
           String? fcmToken = await FirebaseMessaging.instance.getToken();
           _userRepositoryFacade.updateFirebaseToken(fcmToken);
         },
@@ -395,11 +397,13 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
                       .location
                       ?.first)));
           context.router.popUntilRoot();
-          if (AppConstants.isDemo) {
-            context.replaceRoute(UiTypeRoute());
-          } else {
-            context.replaceRoute(const MainRoute());
-          }
+          // if (AppConstants.isDemo) {
+          //   context.replaceRoute(UiTypeRoute());
+          // } else {
+          //   context.replaceRoute(const MainRoute());
+          // }
+          await LocalStorage.setUiType(3);
+          context.replaceRoute(const MainRoute());
           String? fcmToken = await FirebaseMessaging.instance.getToken();
           _userRepositoryFacade.updateFirebaseToken(fcmToken);
         },
@@ -582,12 +586,14 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
                         .location
                         ?.first)));
             context.router.popUntilRoot();
-            if (AppConstants.isDemo) {
-              context.replaceRoute(UiTypeRoute());
-            }
-            {
-              context.replaceRoute(const MainRoute());
-            }
+            // if (AppConstants.isDemo) {
+            //   context.replaceRoute(UiTypeRoute());
+            // }
+            // {
+            //   context.replaceRoute(const MainRoute());
+            // }
+            await LocalStorage.setUiType(3);
+            context.replaceRoute(const MainRoute());
             String? fcmToken = await FirebaseMessaging.instance.getToken();
             _userRepositoryFacade.updateFirebaseToken(fcmToken);
           },

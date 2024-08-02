@@ -18,7 +18,7 @@ import 'package:puntossmart/presentation/components/app_bars/common_app_bar.dart
 import 'package:puntossmart/presentation/components/keyboard_dismisser.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../components/blur_wrap.dart';
 import '../../../components/buttons/custom_button.dart';
 import '../../../components/buttons/pop_button.dart';
@@ -45,9 +45,12 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
   late TextEditingController pricePerKm;
   dynamic data;
 
-  List list = ["minute", "day", "month"];
+  // List list = ["minute", "day", "month"];
 
-  String value = "minute";
+  // String value = "minute";
+  List list = ["minutos", "días", "meses"];
+
+  String value = "minutos";
 
   @override
   void initState() {
@@ -93,7 +96,8 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
           children: [
             CommonAppBar(
               child: Text(
-                AppHelpers.getTranslation(TrKeys.becomeSeller),
+                AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.become_seller),
                 style: AppStyle.interNoSemi(
                   size: 18,
                   color: AppStyle.black,
@@ -163,7 +167,8 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
                                           child: OutlinedBorderTextField(
                                             textController: shopName,
                                             label: AppHelpers.getTranslation(
-                                                TrKeys.restaurantName),
+                                                AppLocalizations.of(context)!
+                                                    .restaurant_name),
                                           ),
                                         ),
                                       ],
@@ -172,21 +177,24 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
                                     OutlinedBorderTextField(
                                       textController: descName,
                                       label: AppHelpers.getTranslation(
-                                          TrKeys.description),
+                                          AppLocalizations.of(context)!
+                                              .description),
                                     ),
                                     24.verticalSpace,
                                     OutlinedBorderTextField(
                                       textController: phoneName,
                                       inputType: TextInputType.phone,
                                       label: AppHelpers.getTranslation(
-                                          TrKeys.phoneNumber),
+                                          AppLocalizations.of(context)!
+                                              .phone_number),
                                     ),
                                     24.verticalSpace,
                                     OutlinedBorderTextField(
                                       textController: tax,
                                       inputType: TextInputType.number,
-                                      label:
-                                          AppHelpers.getTranslation(TrKeys.tax),
+                                      label: AppHelpers.getTranslation(
+                                          AppLocalizations.of(context)!
+                                              .total_tax),
                                       inputFormatters: [
                                         InputFormatter.currency
                                       ],
@@ -205,7 +213,8 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
                                       },
                                       decoration: InputDecoration(
                                         labelText: AppHelpers.getTranslation(
-                                            TrKeys.deliveryTimeType),
+                                            AppLocalizations.of(context)!
+                                                .delivery_time_type),
                                         labelStyle: AppStyle.interNormal(
                                           size: 12,
                                           color: AppStyle.black,
@@ -239,7 +248,8 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
                                       textController: deliveryTimeFrom,
                                       inputType: TextInputType.number,
                                       label: AppHelpers.getTranslation(
-                                          TrKeys.deliveryTimeFrom),
+                                          AppLocalizations.of(context)!
+                                              .delivery_time_from),
                                       inputFormatters: [
                                         InputFormatter.digitsOnly
                                       ],
@@ -249,7 +259,8 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
                                       inputType: TextInputType.number,
                                       textController: deliveryTimeTo,
                                       label: AppHelpers.getTranslation(
-                                          TrKeys.deliveryTimeTo),
+                                          AppLocalizations.of(context)!
+                                              .delivery_time_to),
                                       inputFormatters: [
                                         InputFormatter.digitsOnly
                                       ],
@@ -259,7 +270,8 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
                                       textController: startPrice,
                                       inputType: TextInputType.number,
                                       label: AppHelpers.getTranslation(
-                                          TrKeys.startPrice),
+                                          AppLocalizations.of(context)!
+                                              .start_price),
                                       inputFormatters: [
                                         InputFormatter.currency
                                       ],
@@ -269,7 +281,8 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
                                       inputType: TextInputType.number,
                                       textController: pricePerKm,
                                       label: AppHelpers.getTranslation(
-                                          TrKeys.pricePerKm),
+                                          AppLocalizations.of(context)!
+                                              .price_per_km),
                                       inputFormatters: [
                                         InputFormatter.currency
                                       ],
@@ -301,7 +314,9 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
                                             children: [
                                               Text(
                                                 AppHelpers.getTranslation(
-                                                    TrKeys.address),
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .address),
                                                 style: AppStyle.interNormal(
                                                     size: 12.sp,
                                                     color: AppStyle.black),
@@ -335,8 +350,8 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
                                   padding: EdgeInsets.only(bottom: 32.h),
                                   child: CustomButton(
                                     isLoading: state.isSaveLoading,
-                                    title:
-                                        AppHelpers.getTranslation(TrKeys.save),
+                                    title: AppHelpers.getTranslation(
+                                        AppLocalizations.of(context)!.save),
                                     onPressed: () {
                                       event.createShop(
                                           context: context,
@@ -367,7 +382,8 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
                           Lottie.asset('assets/lottie/processing.json'),
                           Text(
                             AppHelpers.getTranslation(
-                              TrKeys.yourRequest,
+                              AppLocalizations.of(context)!
+                                  .your_request_is_being_processed,
                             ),
                             style: AppStyle.interNoSemi(
                               size: 18,
@@ -380,7 +396,8 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
                         padding: EdgeInsets.all(24.r),
                         child: CustomButton(
                             title: AppHelpers.getTranslation(
-                                TrKeys.goToAdminPanel),
+                                AppLocalizations.of(context)!
+                                    .go_to_admin_panel),
                             onPressed: () async {
                               final Uri launchUri =
                                   Uri.parse(AppConstants.adminPageUrl);
@@ -488,7 +505,8 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
                   ),
                   16.verticalSpace,
                   Text(
-                    AppHelpers.getTranslation(TrKeys.bgPicture),
+                    AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.bg_picture),
                     style: AppStyle.interSemi(
                       size: 14,
                       color: AppStyle.black,
@@ -496,7 +514,8 @@ class _EditRestaurantState extends ConsumerState<CreateShopPage> {
                     ),
                   ),
                   Text(
-                    AppHelpers.getTranslation(TrKeys.recommendedSize),
+                    AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.recommended_size),
                     style: AppStyle.interRegular(
                       size: 14,
                       color: AppStyle.black,
