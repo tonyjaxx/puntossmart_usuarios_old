@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:puntossmart/presentation/components/title_icon.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../theme/app_style.dart';
 
 class SearchShopShimmer extends StatelessWidget {
@@ -12,7 +12,7 @@ class SearchShopShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TitleAndIcon(title: "Restaurants", rightTitle: "Found results"),
+        TitleAndIcon(title: AppLocalizations.of(context)!.restaurants, rightTitle: AppLocalizations.of(context)!.found_results),
         20.verticalSpace,
         AnimationLimiter(
           child: ListView.builder(

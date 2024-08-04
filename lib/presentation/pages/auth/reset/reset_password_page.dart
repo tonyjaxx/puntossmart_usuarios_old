@@ -14,6 +14,7 @@ import 'package:puntossmart/presentation/components/text_fields/outline_bordered
 import 'package:puntossmart/presentation/pages/auth/confirmation/register_confirmation_page.dart';
 import '../../../theme/theme.dart';
 import '../../../../application/reser_password/reset_password_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class ResetPasswordPage extends ConsumerWidget {
@@ -63,11 +64,13 @@ class ResetPasswordPage extends ConsumerWidget {
                     Column(
                       children: [
                         AppBarBottomSheet(
-                          title:
-                              AppHelpers.getTranslation(TrKeys.resetPassword),
+                          title: AppHelpers.getTranslation(
+                              AppLocalizations.of(context)!.reset_password),
                         ),
                         Text(
-                          AppHelpers.getTranslation(TrKeys.resetPasswordText),
+                          AppHelpers.getTranslation(
+                              AppLocalizations.of(context)!
+                                  .reset_password_text),
                           style: AppStyle.interRegular(
                             size: 14.sp,
                             color: AppStyle.black,
@@ -76,12 +79,13 @@ class ResetPasswordPage extends ConsumerWidget {
                         40.verticalSpace,
                         OutlinedBorderTextField(
                           label: AppHelpers.getTranslation(
-                                  TrKeys.emailOrPhoneNumber)
+                                  AppLocalizations.of(context)!
+                                      .email_or_phone_number)
                               .toUpperCase(),
                           onChanged: notifier.setEmail,
                           isError: !state.isSuccess,
-                          descriptionText:
-                              AppHelpers.getTranslation(TrKeys.canNotBeEmpty),
+                          descriptionText: AppHelpers.getTranslation(
+                              AppLocalizations.of(context)!.can_not_be_empty),
                         ),
                       ],
                     ),
@@ -91,7 +95,8 @@ class ResetPasswordPage extends ConsumerWidget {
                           top: 120.h),
                       child: CustomButton(
                         isLoading: state.isLoading,
-                        title: AppHelpers.getTranslation(TrKeys.send),
+                        title: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.send),
                         onPressed: () {
                           notifier.checkEmail()
                               ? notifier.sendCode(context)

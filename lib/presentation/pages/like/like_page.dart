@@ -18,7 +18,7 @@ import 'package:puntossmart/presentation/pages/home_one/widget/market_one_item.d
 import 'package:puntossmart/presentation/pages/home_three/widgets/market_three_item.dart';
 import 'package:puntossmart/presentation/pages/home_two/widget/market_two_item.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../application/main/main_provider.dart';
 import '../home/shimmer/all_shop_shimmer.dart';
 
@@ -82,7 +82,8 @@ class _LikePageState extends ConsumerState<LikePage> {
         children: [
           CommonAppBar(
             child: Text(
-              AppHelpers.getTranslation(TrKeys.likeRestaurants),
+              AppHelpers.getTranslation(
+                  AppLocalizations.of(context)!.liked_restaurant),
               style: AppStyle.interNoSemi(
                 size: 18,
                 color: AppStyle.black,
@@ -142,7 +143,7 @@ class _LikePageState extends ConsumerState<LikePage> {
                             isTitle: false,
                           )
                         : state.shops.isEmpty
-                            ? _resultEmpty()
+                            ? _resultEmpty(context)
                             : ListView.builder(
                                 padding: AppHelpers.getType() == 2
                                     ? EdgeInsets.symmetric(
@@ -191,19 +192,21 @@ class _LikePageState extends ConsumerState<LikePage> {
     );
   }
 
-  Widget _resultEmpty() {
+  Widget _resultEmpty(BuildContext context) {
     return Column(
       children: [
         32.verticalSpace,
         Image.asset("assets/images/notFound.png"),
         Text(
-          AppHelpers.getTranslation(TrKeys.nothingFound),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!
+              .nothing_found /*TrKeys.nothingFound*/),
           style: AppStyle.interSemi(size: 18.sp),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 32.w),
           child: Text(
-            AppHelpers.getTranslation(TrKeys.trySearchingAgain),
+            AppHelpers.getTranslation(AppLocalizations.of(context)!
+                .try_searching_again /*TrKeys.trySearchingAgain*/),
             style: AppStyle.interRegular(size: 14.sp),
             textAlign: TextAlign.center,
           ),

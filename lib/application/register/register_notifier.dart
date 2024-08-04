@@ -116,13 +116,14 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
     }
   }
 
+//KNJT 29-07-24 +51
   Future<void> sendCodeToNumber(
       BuildContext context, ValueChanged<String> onSuccess) async {
     final connected = await AppConnectivity.connectivity();
     if (connected) {
       state = state.copyWith(isLoading: true, isSuccess: false);
       await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: state.email,
+        phoneNumber: '+51' + state.email,
         verificationCompleted: (PhoneAuthCredential credential) {},
         verificationFailed: (FirebaseAuthException e) {
           AppHelpers.showCheckTopSnackBar(
@@ -135,7 +136,7 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
         codeSent: (String verificationId, int? resendToken) {
           state = state.copyWith(
             verificationId: verificationId,
-            phone: state.email,
+            phone: '+51' + state.email,
             isLoading: false,
             isSuccess: true,
           );
@@ -210,11 +211,13 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
                       })
                       .location
                       ?.first)));
-          if (AppConstants.isDemo) {
-            context.replaceRoute(UiTypeRoute());
-          } else {
-            context.replaceRoute(const MainRoute());
-          }
+          // if (AppConstants.isDemo) {
+          //   context.replaceRoute(UiTypeRoute());
+          // } else {
+          //   context.replaceRoute(const MainRoute());
+          // }
+          await LocalStorage.setUiType(3);
+          context.replaceRoute(const MainRoute());
           String? fcmToken = await FirebaseMessaging.instance.getToken();
           _userRepositoryFacade.updateFirebaseToken(fcmToken);
         },
@@ -299,11 +302,13 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
                       })
                       .location
                       ?.first)));
-          if (AppConstants.isDemo) {
-            context.replaceRoute(UiTypeRoute());
-          } else {
-            context.replaceRoute(const MainRoute());
-          }
+          // if (AppConstants.isDemo) {
+          //   context.replaceRoute(UiTypeRoute());
+          // } else {
+          //   context.replaceRoute(const MainRoute());
+          // }
+          await LocalStorage.setUiType(3);
+          context.replaceRoute(const MainRoute());
           String? fcmToken = await FirebaseMessaging.instance.getToken();
           _userRepositoryFacade.updateFirebaseToken(fcmToken);
         },
@@ -392,11 +397,13 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
                       .location
                       ?.first)));
           context.router.popUntilRoot();
-          if (AppConstants.isDemo) {
-            context.replaceRoute(UiTypeRoute());
-          } else {
-            context.replaceRoute(const MainRoute());
-          }
+          // if (AppConstants.isDemo) {
+          //   context.replaceRoute(UiTypeRoute());
+          // } else {
+          //   context.replaceRoute(const MainRoute());
+          // }
+          await LocalStorage.setUiType(3);
+          context.replaceRoute(const MainRoute());
           String? fcmToken = await FirebaseMessaging.instance.getToken();
           _userRepositoryFacade.updateFirebaseToken(fcmToken);
         },
@@ -579,12 +586,14 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
                         .location
                         ?.first)));
             context.router.popUntilRoot();
-            if (AppConstants.isDemo) {
-              context.replaceRoute(UiTypeRoute());
-            }
-            {
-              context.replaceRoute(const MainRoute());
-            }
+            // if (AppConstants.isDemo) {
+            //   context.replaceRoute(UiTypeRoute());
+            // }
+            // {
+            //   context.replaceRoute(const MainRoute());
+            // }
+            await LocalStorage.setUiType(3);
+            context.replaceRoute(const MainRoute());
             String? fcmToken = await FirebaseMessaging.instance.getToken();
             _userRepositoryFacade.updateFirebaseToken(fcmToken);
           },

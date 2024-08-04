@@ -17,6 +17,7 @@ import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/components/title_icon.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../application/shop/shop_provider.dart';
 import 'widgets/check_status_dialog.dart';
@@ -103,12 +104,14 @@ class _GroupOrderPageState extends ConsumerState<GroupOrderScreen> {
                 ),
                 14.verticalSpace,
                 TitleAndIcon(
-                  title: AppHelpers.getTranslation(TrKeys.startGroupOrder),
+                  title: AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.start_group_oder),
                   paddingHorizontalSize: 0,
                 ),
                 10.verticalSpace,
                 Text(
-                  AppHelpers.getTranslation(TrKeys.youFullyManaga),
+                  AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.you_fully_manage),
                   style: AppStyle.interRegular(
                     size: 14,
                     color: AppStyle.textGrey,
@@ -203,7 +206,8 @@ class _GroupOrderPageState extends ConsumerState<GroupOrderScreen> {
                   children: [
                     20.verticalSpace,
                     TitleAndIcon(
-                      title: AppHelpers.getTranslation(TrKeys.groupMember),
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.group_member),
                       paddingHorizontalSize: 0,
                       titleSize: 14,
                     ),
@@ -247,7 +251,8 @@ class _GroupOrderPageState extends ConsumerState<GroupOrderScreen> {
                           bottom: 16.h,
                         ),
                         child: CustomButton(
-                          title: AppHelpers.getTranslation(TrKeys.order),
+                          title: AppHelpers.getTranslation(
+                              AppLocalizations.of(context)!.orders),
                           onPressed: () {
                             bool check = true;
                             bool checkProduct = false;
@@ -312,8 +317,8 @@ class _GroupOrderPageState extends ConsumerState<GroupOrderScreen> {
                   child: CustomButton(
                     title: AppHelpers.getTranslation(
                         LocalStorage.getUserId() == state.cart?.ownerId
-                            ? TrKeys.cancel
-                            : TrKeys.leaveGroup),
+                            ? AppLocalizations.of(context)!.cancel
+                            : AppLocalizations.of(context)!.leave_group),
                     borderColor: AppStyle.black,
                     background: AppStyle.transparent,
                     onPressed: () {

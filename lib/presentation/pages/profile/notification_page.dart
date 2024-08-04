@@ -19,7 +19,7 @@ import 'package:puntossmart/presentation/components/custom_network_image.dart';
 import 'package:puntossmart/presentation/components/loading.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../theme/app_style.dart';
 
 @RoutePage()
@@ -64,7 +64,8 @@ class _NotificationListPageState extends ConsumerState<NotificationListPage> {
                 children: [
                   CommonAppBar(
                     child: Text(
-                      AppHelpers.getTranslation(TrKeys.notifications),
+                      AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.notifications),
                       style: AppStyle.interNoSemi(
                         size: 18,
                         color: AppStyle.black,
@@ -156,7 +157,8 @@ class _NotificationListPageState extends ConsumerState<NotificationListPage> {
                   child: CustomButton(
                 background: AppStyle.black,
                 textColor: AppStyle.white,
-                title: AppHelpers.getTranslation(TrKeys.readAll),
+                title: AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.read_all),
                 onPressed: () async {
                   event.readAll(context);
                 },

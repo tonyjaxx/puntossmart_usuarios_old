@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+//import 'package:marquee/marquee.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:puntossmart/application/currency/currency_provider.dart';
 import 'package:puntossmart/application/home/home_notifier.dart';
@@ -29,10 +30,12 @@ import 'package:puntossmart/presentation/pages/home_three/controller/promotion_c
 import 'package:puntossmart/presentation/pages/home_three/video_player_screen.dart';
 import 'package:puntossmart/presentation/pages/home_three/widgets/door_three.dart';
 import 'package:puntossmart/presentation/pages/home_three/widgets/market_three_item.dart';
+import 'package:puntossmart/presentation/pages/home_three/widgets/send_point_home.dart';
 import 'package:puntossmart/presentation/pages/home_three/widgets/shop_see_all.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
 import 'package:upgrader/upgrader.dart';
+import '../../components/text_fields/scrolling_text .dart';
 import 'app_bar_home_three.dart';
 import 'category_screen_three.dart';
 import 'filter_category_shop_three.dart';
@@ -44,6 +47,7 @@ import 'shimmer/shop_shimmer_three.dart';
 import 'widgets/explore_three.dart';
 import 'widgets/recommended_three_item.dart';
 import 'widgets/shop_bar_item_three.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePageThree extends ConsumerStatefulWidget {
   const HomePageThree({super.key});
@@ -194,33 +198,34 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                         event: event,
                         shopController: _restaurantController),
                 Container(
-                  padding: const EdgeInsets.only(bottom: 5),
+                  padding: const EdgeInsets.only(bottom: 10, top: 15),
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   ),
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 9),
-                  height: MediaQuery.of(context).size.height * 0.24,
+                  // margin:
+                  //     const EdgeInsets.symmetric(horizontal: 15, vertical: 9),
+                  height: MediaQuery.of(context).size.height * 0.42, //0.24
                   child: Stack(
                     alignment: AlignmentDirectional.topStart,
                     children: [
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
-                        height: MediaQuery.of(context).size.height * 0.20,
-                        width: MediaQuery.of(context).size.width,
-                        child: Image.asset(
-                          "assets/images/survey.png",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                      // Container(
+                      //   decoration: const BoxDecoration(
+                      //     color: Colors.white,
+                      //     borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      //   ),
+                      //   height: MediaQuery.of(context).size.height * 0.20,
+                      //   width: MediaQuery.of(context).size.width,
+                      //   child: Image.asset(
+                      //     "assets/images/survey.png",
+                      //     fit: BoxFit.cover,
+                      //   ),
+                      // ),
+                      if (AppHelpers.getParcel()) const SendPointHome(),
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: Text(
-                          "ANSWER NOW",
+                          AppLocalizations.of(context)!.answer_now,
                           style: AppStyle.interSemi(
                             size: 20,
                           ),
@@ -232,7 +237,7 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0),
                   child: Text(
-                    "Surveys",
+                    AppLocalizations.of(context)!.surveys,
                     style: AppStyle.interBold(
                       size: 18,
                     ),
@@ -291,9 +296,9 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10.0)),
                                   ),
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.20,
-                                  width:
+                                  height: //0.20
+                                      MediaQuery.of(context).size.height * 0.22,
+                                  width: //40
                                       MediaQuery.of(context).size.width * 0.40,
                                   child: Column(
                                     crossAxisAlignment:
@@ -322,13 +327,34 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Text(
-                                            (survey.shopTitle?.length ?? 0) > 15
-                                                ? "${survey.shopTitle?.substring(0, 15) ?? " "}.."
-                                                : survey.shopTitle ?? "",
-                                            style: AppStyle.interSemi(
-                                              size: 15,
-                                              color: AppStyle.black,
+                                          // Text(
+                                          //   // (survey.shopTitle?.length ?? 0) > 15
+                                          //   //     ? "${survey.shopTitle?.substring(0, 15) ?? " "}.."
+                                          //   //     : survey.shopTitle ?? "",
+                                          //   survey.shopTitle ?? "",
+                                          //   maxLines: 2, // Limitar a dos líneas
+                                          //   overflow: TextOverflow.ellipsis,
+                                          //   style: AppStyle.interSemi(
+                                          //     size: 15,
+                                          //     color: AppStyle.black,
+                                          //   ),
+                                          // ),
+                                          // if (survey.verify == 1)
+                                          //   Padding(
+                                          //     padding:
+                                          //         EdgeInsets.only(left: 4.r),
+                                          //     child: const BadgeItem(),
+                                          //   ),
+                                          Expanded(
+                                            child: Text(
+                                              survey.shopTitle ?? "",
+                                              maxLines: 2,
+                                              //overflow: TextOverflow.ellipsis,
+                                              style: AppStyle.interSemi(
+                                                size: 15,
+                                                color: AppStyle.black,
+                                              ),
+                                              textAlign: TextAlign.center,
                                             ),
                                           ),
                                           if (survey.verify == 1)
@@ -339,16 +365,28 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                                             ),
                                         ],
                                       ),
-                                      Text(
-                                        (survey.shopDescription?.length ?? 0) >
-                                                20
-                                            ? "${survey.shopDescription?.substring(0, 20) ?? " "}.."
-                                            : survey.shopDescription ?? "",
-                                        style: AppStyle.interNormal(
-                                          size: 14,
-                                          color: AppStyle.black,
+                                      // Text(
+                                      //   // (survey.shopDescription?.length ?? 0) >
+                                      //   //         20
+                                      //   //     ? "${survey.shopDescription?.substring(0, 20) ?? " "}.."
+                                      //   //     : survey.shopDescription ?? "",
+                                      //   survey.shopDescription ?? "",
+                                      //   style: AppStyle.interNormal(
+                                      //     size: 14,
+                                      //     color: AppStyle.black,
+                                      //   ),
+                                      //   textAlign: TextAlign.center,
+                                      // ),
+                                      Expanded(
+                                        child: ScrollingText(
+                                          text: survey.shopDescription ??
+                                              "No description available",
+                                          style: AppStyle.interNormal(
+                                            size: 14,
+                                            color: AppStyle.black,
+                                          ),
+                                          duration: Duration(seconds: 8),
                                         ),
-                                        textAlign: TextAlign.center,
                                       ),
                                     ],
                                   ),
@@ -361,7 +399,7 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0),
                   child: Text(
-                    "Promotions",
+                    AppLocalizations.of(context)!.promotions,
                     style: AppStyle.interBold(
                       size: 18,
                     ),
@@ -483,13 +521,15 @@ class _HomePageState extends ConsumerState<HomePageThree> {
       children: [
         state.isShopLoading
             ? ShopShimmerThree(
-                title: AppHelpers.getTranslation(TrKeys.chooseBrand),
+                title: AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.choose_brand),
               )
             : state.shops.isNotEmpty
                 ? Column(
                     children: [
                       Text(
-                        AppHelpers.getTranslation(TrKeys.chooseBrand),
+                        AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.choose_brand),
                         style: AppStyle.interNoSemi(),
                       ),
                       AnimationLimiter(
@@ -571,15 +611,18 @@ class _HomePageState extends ConsumerState<HomePageThree> {
         16.verticalSpace,
         state.isRestaurantNewLoading
             ? NewsShopShimmer(
-                title: AppHelpers.getTranslation(TrKeys.newsOfWeek),
+                title: AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.new_of_week),
               )
             : state.newRestaurant.isNotEmpty
                 ? Column(
                     children: [
                       TitleAndIcon(
-                        rightTitle: AppHelpers.getTranslation(TrKeys.seeAll),
+                        rightTitle: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.see_all),
                         isIcon: true,
-                        title: AppHelpers.getTranslation(TrKeys.newsOfWeek),
+                        title: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.new_of_week),
                         onRightTap: () {
                           context.pushRoute(
                               RecommendedThreeRoute(isNewsOfPage: true));
@@ -618,9 +661,11 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                 ? Column(
                     children: [
                       TitleAndIcon(
-                        rightTitle: AppHelpers.getTranslation(TrKeys.seeAll),
+                        rightTitle: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.see_all),
                         isIcon: true,
-                        title: AppHelpers.getTranslation(TrKeys.recommended),
+                        title: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.recommended),
                         onRightTap: () {
                           context.pushRoute(RecommendedThreeRoute());
                         },
@@ -662,7 +707,8 @@ class _HomePageState extends ConsumerState<HomePageThree> {
             : Column(
                 children: [
                   TitleAndIcon(
-                    title: AppHelpers.getTranslation(TrKeys.allRestaurants),
+                    title: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.popular_near_you),
                   ),
                   state.restaurant.isNotEmpty
                       ? AnimationLimiter(

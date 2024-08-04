@@ -29,7 +29,7 @@ import 'package:puntossmart/presentation/pages/order/order_check/widgets/rating_
 import 'package:puntossmart/presentation/pages/order/order_type/widgets/order_map.dart';
 import 'package:puntossmart/presentation/pages/shop/cart/widgets/cart_order_item.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../application/order/order_state.dart';
 import '../../../components/buttons/pop_button.dart';
 import '../order_check/widgets/refund_info.dart';
@@ -133,7 +133,8 @@ class _OrderProgressPageState extends ConsumerState<OrderProgressPage> {
                   FlutterRemix.gamepad_fill,
                   color: AppStyle.black,
                 ),
-                title: AppHelpers.getTranslation(TrKeys.wantToPlayGame),
+                title: AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.want_to_play),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -180,7 +181,8 @@ class _OrderProgressPageState extends ConsumerState<OrderProgressPage> {
               ),
               24.verticalSpace,
               TitleAndIcon(
-                title: AppHelpers.getTranslation(TrKeys.compositionOrder),
+                title: AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.composition_order),
               ),
               Consumer(builder: (context, ref, child) {
                 return ListView.builder(

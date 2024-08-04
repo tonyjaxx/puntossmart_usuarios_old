@@ -17,6 +17,7 @@ import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/components/text_fields/outline_bordered_text_field.dart';
 import 'package:puntossmart/presentation/components/text_fields/search_text_field.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ViewMapModal extends ConsumerStatefulWidget {
   final TextEditingController controller;
@@ -88,7 +89,8 @@ class _ViewMapModalState extends ConsumerState<ViewMapModal> {
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              AppHelpers.getTranslation(TrKeys.enterADeliveryAddress),
+              AppHelpers.getTranslation(
+                  AppLocalizations.of(context)!.delivery_address),
               style: AppStyle.interNoSemi(size: 18),
             ),
           ),
@@ -146,75 +148,61 @@ class _ViewMapModalState extends ConsumerState<ViewMapModal> {
             padding: REdgeInsets.only(bottom: 28),
             child: CustomButton(
               isLoading: !widget.isShopLocation ? state.isLoading : false,
-              background: !widget.isShopLocation
-                  ? (state.isActive ? AppStyle.brandGreen : AppStyle.bgGrey)
-                  : AppStyle.brandGreen,
-              textColor: !widget.isShopLocation
-                  ? (state.isActive ? AppStyle.black : AppStyle.textGrey)
-                  : AppStyle.black,
-              title: !widget.isShopLocation
-                  ? (state.isActive
-                      ? AppHelpers.getTranslation(TrKeys.apply)
-                      : AppHelpers.getTranslation(TrKeys.noDriverZone))
-                  : AppHelpers.getTranslation(TrKeys.apply),
+              background: AppStyle.brandGreen,
+              textColor: AppStyle.black,
+              title: AppHelpers.getTranslation(
+                  AppLocalizations.of(context)!.apply),
               onPressed: () {
                 if (widget.isShopLocation) {
                   Navigator.pop(context, state.place);
                 } else {
-                  if (state.isActive) {
-                    ref.read(homeProvider.notifier)
-                      ..fetchBannerPage(context, RefreshController(),
-                          isRefresh: true)
-                      ..fetchRestaurantPage(context, RefreshController(),
-                          isRefresh: true)
-                      ..fetchShopPageRecommend(context, RefreshController(),
-                          isRefresh: true)
-                      ..fetchShopPage(context, RefreshController(),
-                          isRefresh: true)
-                      ..fetchStorePage(context, RefreshController(),
-                          isRefresh: true)
-                      ..fetchRestaurantPageNew(context, RefreshController(),
-                          isRefresh: true)
-                      ..fetchCategoriesPage(context, RefreshController(),
-                          isRefresh: true)
-                      ..setAddress();
-                    LocalStorage.setAddressSelected(AddressData(
-                        title: office.text,
-                        address: state.place?.address?.address ?? "",
-                        location: LocationModel(
-                            latitude: state.place?.location?.first,
-                            longitude: state.place?.location?.last)));
-                    AddressInformation data = AddressInformation(
-                        address: widget.controller.text,
-                        house: house.text,
-                        floor: floor.text);
-                    LocalStorage.setAddressInformation(data);
-                    if (LocalStorage.getToken().isEmpty) {
+                  ref.read(homeProvider.notifier)
+                    ..fetchBannerPage(context, RefreshController(),
+                        isRefresh: true)
+                    ..fetchRestaurantPage(context, RefreshController(),
+                        isRefresh: true)
+                    ..fetchShopPageRecommend(context, RefreshController(),
+                        isRefresh: true)
+                    ..fetchShopPage(context, RefreshController(),
+                        isRefresh: true)
+                    ..fetchStorePage(context, RefreshController(),
+                        isRefresh: true)
+                    ..fetchRestaurantPageNew(context, RefreshController(),
+                        isRefresh: true)
+                    ..fetchCategoriesPage(context, RefreshController(),
+                        isRefresh: true)
+                    ..setAddress();
+                  LocalStorage.setAddressSelected(AddressData(
+                      title: office.text,
+                      address: state.place?.address?.address ?? "",
+                      location: LocationModel(
+                          latitude: state.place?.location?.first,
+                          longitude: state.place?.location?.last)));
+                  AddressInformation data = AddressInformation(
+                      address: widget.controller.text,
+                      house: house.text,
+                      floor: floor.text);
+                  LocalStorage.setAddressInformation(data);
+                  if (LocalStorage.getToken().isEmpty) {
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    return;
+                  }
+                  if (widget.address == null) {
+                    event.saveLocation(context, onSuccess: () {
+                      ref.read(profileProvider.notifier).fetchUser(context);
+                      ref.read(homeProvider.notifier).setAddress();
                       Navigator.pop(context);
                       Navigator.pop(context);
-                      return;
-                    }
-                    if (widget.address == null) {
-                      event.saveLocation(context, onSuccess: () {
-                        ref.read(profileProvider.notifier).fetchUser(context);
-                        ref.read(homeProvider.notifier).setAddress();
-                        Navigator.pop(context);
-                        Navigator.pop(context);
-                      });
-                    } else {
-                      event.updateLocation(context, widget.address?.id,
-                          onSuccess: () {
-                        ref.read(profileProvider.notifier).fetchUser(context);
-                        ref.read(homeProvider.notifier).setAddress();
-                        Navigator.pop(context);
-                        Navigator.pop(context);
-                      });
-                    }
+                    });
                   } else {
-                    AppHelpers.showCheckTopSnackBarInfo(
-                      context,
-                      AppHelpers.getTranslation(TrKeys.noDriverZone),
-                    );
+                    event.updateLocation(context, widget.address?.id,
+                        onSuccess: () {
+                      ref.read(profileProvider.notifier).fetchUser(context);
+                      ref.read(homeProvider.notifier).setAddress();
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                    });
                   }
                 }
               },

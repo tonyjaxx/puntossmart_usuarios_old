@@ -11,6 +11,7 @@ import 'package:puntossmart/presentation/components/text_fields/search_text_fiel
 import 'package:puntossmart/presentation/pages/friends/controller/friend_controller.dart';
 import 'package:puntossmart/presentation/pages/friends/send_point_screen.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FriendScreen extends StatefulWidget {
   const FriendScreen({super.key});
@@ -46,7 +47,8 @@ class _FriendScreenState extends State<FriendScreen> {
               ),
             ),
             title: Text(
-              'Send Puntos Smart ', // replace widget.name with the actual title if needed
+              AppLocalizations.of(context)!
+                  .friends, // replace widget.name with the actual title if needed
               style: GoogleFonts.inter(
                 fontWeight: FontWeight.w600,
                 fontSize: 18.0,
@@ -66,8 +68,12 @@ class _FriendScreenState extends State<FriendScreen> {
               indicatorWeight: 3,
               indicatorColor: AppStyle.brandGreen,
               tabs: [
-                Tab(text: AppHelpers.getTranslation(TrKeys.friends)),
-                Tab(text: AppHelpers.getTranslation(TrKeys.add)),
+                Tab(
+                    text: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.friend_)),
+                Tab(
+                    text: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.add)),
               ],
             ),
           ),
@@ -116,7 +122,8 @@ class _UsersTabState extends State<UsersTab> {
               ),
               SearchTextField(
                 isBorder: true,
-                hintText: AppHelpers.getTranslation(TrKeys.search),
+                hintText: AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.search),
                 onChanged: (value) {
                   friendController.getAllUsers(searchName: value);
                 },
@@ -135,7 +142,7 @@ class _UsersTabState extends State<UsersTab> {
                     friendController.getUserModel.value!.users!.isEmpty) {
                   return Center(
                     child: Text(
-                      "No User Found",
+                      AppLocalizations.of(context)!.no_user_found,
                       style: AppStyle.interNormal(
                         size: 18,
                         color: AppStyle.black,
@@ -168,7 +175,7 @@ class _UsersTabState extends State<UsersTab> {
                                   children: [
                                     const SizedBox(height: 20),
                                     Text(
-                                      "Add Friend",
+                                      AppLocalizations.of(context)!.add_friend,
                                       style: GoogleFonts.inter(
                                         fontWeight: FontWeight.w500,
                                         fontSize: 22.0,
@@ -177,7 +184,8 @@ class _UsersTabState extends State<UsersTab> {
                                     ),
                                     const SizedBox(height: 20),
                                     Text(
-                                      "Are you sure?",
+                                      AppLocalizations.of(context)!
+                                          .are_you_sure,
                                       style: GoogleFonts.inter(
                                         fontWeight: FontWeight.w500,
                                         fontSize: 14.0,
@@ -212,7 +220,9 @@ class _UsersTabState extends State<UsersTab> {
                                                         CircularProgressIndicator(),
                                                   )
                                                 : CustomButton(
-                                                    title: "Yes",
+                                                    title: AppLocalizations.of(
+                                                            context)!
+                                                        .yes,
                                                     onPressed: () {
                                                       friendController
                                                           .addNewFriend(
@@ -271,7 +281,9 @@ class _UsersTabState extends State<UsersTab> {
                                                                 const SizedBox(
                                                                     height: 20),
                                                                 Text(
-                                                                  "Friend Added Successfully",
+                                                                  AppLocalizations.of(
+                                                                          context)!
+                                                                      .friend_added_successfully,
                                                                   style:
                                                                       GoogleFonts
                                                                           .inter(
@@ -292,8 +304,9 @@ class _UsersTabState extends State<UsersTab> {
                                                                   borderColor:
                                                                       AppStyle
                                                                           .black,
-                                                                  title:
-                                                                      "Back to Home",
+                                                                  title: AppLocalizations.of(
+                                                                          context)!
+                                                                      .back_to_home,
                                                                   onPressed:
                                                                       () {
                                                                     Navigator.pop(
@@ -406,7 +419,8 @@ class _FriendsTabState extends State<FriendsTab> {
               ),
               SearchTextField(
                 isBorder: true,
-                hintText: AppHelpers.getTranslation(TrKeys.search),
+                hintText: AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.search),
                 onChanged: (value) {
                   friendController.getFriends(searchName: value);
                 },
@@ -426,7 +440,7 @@ class _FriendsTabState extends State<FriendsTab> {
                     friendController.getFriendModel.value!.friends!.isEmpty) {
                   return Center(
                     child: Text(
-                      "No Friend Found",
+                      AppLocalizations.of(context)!.no_friend_found,
                       style: AppStyle.interNormal(
                         size: 18,
                         color: AppStyle.black,

@@ -11,6 +11,7 @@ import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import '../../../theme/app_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductMainButton extends StatelessWidget {
   final ShopOrderNotifier eventOrderShop;
@@ -105,7 +106,8 @@ class ProductMainButton extends StatelessWidget {
                 width: 120.w,
                 child: CustomButton(
                   isLoading: state.isAddLoading,
-                  title: AppHelpers.getTranslation(TrKeys.add),
+                  title: AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.add),
                   onPressed: () {
                     if (LocalStorage.getToken().isNotEmpty) {
                       event.createCart(
@@ -133,7 +135,7 @@ class ProductMainButton extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                AppHelpers.getTranslation(TrKeys.total),
+                AppHelpers.getTranslation(AppLocalizations.of(context)!.total),
                 style: AppStyle.interNormal(
                   size: 14,
                   color: AppStyle.black,

@@ -10,6 +10,7 @@ import 'package:puntossmart/infrastructure/services/app_connectivity.dart';
 import 'package:puntossmart/infrastructure/services/app_constants.dart';
 import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/app_validators.dart';
+import 'package:puntossmart/infrastructure/services/local_storage.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 
@@ -57,12 +58,13 @@ class ResetPasswordNotifier extends StateNotifier<ResetPasswordState> {
     final connected = await AppConnectivity.connectivity();
     if (connected) {
       state = state.copyWith(isLoading: true, isSuccess: false);
-      if (state.email.trim().isEmpty) {
+      var phone_ = '+51${state.email.trim()}';
+      if (phone_.isEmpty) {
         state = state.copyWith(isLoading: false, isSuccess: false);
         return;
       }
       await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: state.email.trim(),
+        phoneNumber: phone_,
         verificationCompleted: (PhoneAuthCredential credential) {},
         verificationFailed: (FirebaseAuthException e) {
           AppHelpers.showCheckTopSnackBar(
@@ -74,7 +76,7 @@ class ResetPasswordNotifier extends StateNotifier<ResetPasswordState> {
         },
         codeSent: (String verificationId, int? resendToken) {
           state = state.copyWith(
-            phone: state.email,
+            phone: '+51${state.email}',
             isLoading: false,
             verificationId: verificationId,
             isSuccess: true,
@@ -142,11 +144,13 @@ class ResetPasswordNotifier extends StateNotifier<ResetPasswordState> {
       response.when(
         success: (data) async {
           state = state.copyWith(isLoading: false, isSuccess: true);
-          if (AppConstants.isDemo) {
-            context.replaceRoute(UiTypeRoute());
-          } else {
-            context.replaceRoute(const MainRoute());
-          }
+          // if (AppConstants.isDemo) {
+          //   context.replaceRoute(UiTypeRoute());
+          // } else {
+          //   context.replaceRoute(const MainRoute());
+          // }
+          await LocalStorage.setUiType(3);
+          context.replaceRoute(const MainRoute());
         },
         failure: (failure, status) {
           state = state.copyWith(isLoading: false, isSuccess: false);

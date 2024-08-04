@@ -11,6 +11,7 @@ import 'package:puntossmart/presentation/pages/friends/controller/friend_control
 import 'package:puntossmart/presentation/theme/app_style.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SendPointScreen extends StatefulWidget {
   final String uuid;
@@ -29,13 +30,21 @@ class SendPointScreen extends StatefulWidget {
 }
 
 class _SendPointScreenState extends State<SendPointScreen> {
-  FriendController friendController = Get.put(FriendController());
+  final FriendController friendController = Get.put(FriendController());
   int points = 0;
   final FocusNode _focusNode = FocusNode();
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: points.toString());
+  }
 
   @override
   void dispose() {
     _focusNode.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -62,7 +71,8 @@ class _SendPointScreenState extends State<SendPointScreen> {
             ),
           ),
           title: Text(
-            'Send Puntos Smart ', // replace widget.name with the actual title if needed
+            AppLocalizations.of(context)!
+                .friends, // replace widget.name with the actual title if needed
             style: GoogleFonts.inter(
               fontWeight: FontWeight.w600,
               fontSize: 18.0,
@@ -128,7 +138,8 @@ class _SendPointScreenState extends State<SendPointScreen> {
                               ],
                             ),
                           ),
-                          subtitle: const Text("My Balance"),
+                          subtitle:
+                              Text(AppLocalizations.of(context)!.my_balance),
                         ),
                       ),
                     ),
@@ -136,11 +147,11 @@ class _SendPointScreenState extends State<SendPointScreen> {
                       height: 40,
                     ),
                     Text(
-                      "Punto Smart",
-                      style: GoogleFonts.inter(
+                      AppLocalizations.of(context)!.puntos_smart,
+                      style: GoogleFonts.bungee(
                         fontWeight: FontWeight.w600,
                         fontSize: 22.0,
-                        color: AppStyle.textGrey,
+                        color: AppStyle.newThemeColor,
                       ),
                     ),
                     const SizedBox(
@@ -160,6 +171,49 @@ class _SendPointScreenState extends State<SendPointScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            // Container(
+                            //   decoration: BoxDecoration(
+                            //     border: Border.all(width: 1),
+                            //     shape: BoxShape.circle,
+                            //   ),
+                            //   child: GestureDetector(
+                            //     onTap: () {
+                            //       if (points > 0) {
+                            //         setState(() {
+                            //           points--;
+                            //         });
+                            //       }
+                            //     },
+                            //     child: const Icon(Icons.remove),
+                            //   ),
+                            // ),
+                            // const SizedBox(
+                            //   width: 10,
+                            // ),
+                            // Text(
+                            //   "$points",
+                            //   style: GoogleFonts.inter(
+                            //     fontSize: 18.0,
+                            //     color: AppStyle.black,
+                            //   ),
+                            // ),
+                            // const SizedBox(
+                            //   width: 10,
+                            // ),
+                            // Container(
+                            //   decoration: BoxDecoration(
+                            //     border: Border.all(width: 1),
+                            //     shape: BoxShape.circle,
+                            //   ),
+                            //   child: GestureDetector(
+                            //     onTap: () {
+                            //       setState(() {
+                            //         points++;
+                            //       });
+                            //     },
+                            //     child: const Icon(Icons.add),
+                            //   ),
+                            // ),
                             Container(
                               decoration: BoxDecoration(
                                 border: Border.all(width: 1),
@@ -170,6 +224,7 @@ class _SendPointScreenState extends State<SendPointScreen> {
                                   if (points > 0) {
                                     setState(() {
                                       points--;
+                                      _controller.text = points.toString();
                                     });
                                   }
                                 },
@@ -179,11 +234,24 @@ class _SendPointScreenState extends State<SendPointScreen> {
                             const SizedBox(
                               width: 10,
                             ),
-                            Text(
-                              "$points",
-                              style: GoogleFonts.inter(
-                                fontSize: 18.0,
-                                color: AppStyle.black,
+                            SizedBox(
+                              width: 50,
+                              child: TextField(
+                                controller: _controller,
+                                keyboardType: TextInputType.number,
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.inter(
+                                  fontSize: 18.0,
+                                  color: Colors.black,
+                                ),
+                                onChanged: (value) {
+                                  setState(() {
+                                    points = int.tryParse(value) ?? points;
+                                  });
+                                },
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                ),
                               ),
                             ),
                             const SizedBox(
@@ -198,6 +266,7 @@ class _SendPointScreenState extends State<SendPointScreen> {
                                 onTap: () {
                                   setState(() {
                                     points++;
+                                    _controller.text = points.toString();
                                   });
                                 },
                                 child: const Icon(Icons.add),
@@ -244,7 +313,8 @@ class _SendPointScreenState extends State<SendPointScreen> {
                           size: 13,
                           color: AppStyle.hintColor,
                         ),
-                        hintText: AppHelpers.getTranslation(TrKeys.note),
+                        hintText: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.note),
                         contentPadding:
                             REdgeInsets.symmetric(horizontal: 15, vertical: 14),
                         fillColor: AppStyle.bgGrey,
@@ -269,28 +339,43 @@ class _SendPointScreenState extends State<SendPointScreen> {
                   ],
                 ),
                 CustomButton(
-                  title: "Continue",
+                  title: AppLocalizations.of(context)!.continue_,
                   onPressed: () {
                     if (points < 1) {
+                      //los puntos deben ser mayores a 0
                       Fluttertoast.showToast(
-                          msg: "Points should be greater then zero",
+                          msg: AppLocalizations.of(context)!
+                              .points_should_be_greater_then_zero,
                           toastLength: Toast.LENGTH_LONG,
                           gravity: ToastGravity.TOP,
                           timeInSecForIosWeb: 3,
                           backgroundColor: AppStyle.red,
                           textColor: Colors.white,
                           fontSize: 16.0);
+                      //no_tienes_suficientes_puntos - se cambio int.parse a double.parse
                     } else if (points >
-                        int.parse(
+                        double.parse(
                             LocalStorage.getWalletData()!.price.toString())) {
                       Fluttertoast.showToast(
-                          msg: "You don't have enough points",
+                          msg: AppLocalizations.of(context)!
+                              .you_dont_have_enough_points,
                           toastLength: Toast.LENGTH_LONG,
                           gravity: ToastGravity.TOP,
                           timeInSecForIosWeb: 3,
                           backgroundColor: AppStyle.red,
                           textColor: Colors.white,
                           fontSize: 16.0);
+                    } else if (friendController.noteController.text.isEmpty) {
+                      Fluttertoast.showToast(
+                          msg: AppLocalizations.of(context)!
+                              .please_enter_you_note,
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.TOP,
+                          timeInSecForIosWeb: 3,
+                          backgroundColor: AppStyle.red,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
+                      return;
                     } else {
                       showModalBottomSheet(
                         backgroundColor: AppStyle.borderColor,
@@ -303,7 +388,7 @@ class _SendPointScreenState extends State<SendPointScreen> {
                               children: [
                                 const SizedBox(height: 20),
                                 Text(
-                                  "Send Points",
+                                  AppLocalizations.of(context)!.send_points,
                                   style: GoogleFonts.inter(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 22.0,
@@ -315,7 +400,8 @@ class _SendPointScreenState extends State<SendPointScreen> {
                                   TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: "Are you sure to send ",
+                                        text: AppLocalizations.of(context)!
+                                            .what_are_you_sending,
                                         style: GoogleFonts.inter(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 14.0,
@@ -331,7 +417,7 @@ class _SendPointScreenState extends State<SendPointScreen> {
                                         ),
                                       ),
                                       TextSpan(
-                                        text: " to ",
+                                        text: " para ",
                                         style: GoogleFonts.inter(
                                           fontSize: 14.0,
                                           fontWeight: FontWeight.w500,
@@ -383,7 +469,9 @@ class _SendPointScreenState extends State<SendPointScreen> {
                                                   CircularProgressIndicator(),
                                             )
                                           : CustomButton(
-                                              title: "Send",
+                                              title:
+                                                  AppLocalizations.of(context)!
+                                                      .send,
                                               onPressed: () {
                                                 friendController.sendPoints(
                                                   uuid: widget.uuid,
@@ -438,8 +526,9 @@ class _SendPointScreenState extends State<SendPointScreen> {
                                                             TextSpan(
                                                               children: [
                                                                 TextSpan(
-                                                                  text:
-                                                                      "You have Successfully sent ",
+                                                                  text: AppLocalizations.of(
+                                                                          context)!
+                                                                      .you_have_successfully_sent,
                                                                   style:
                                                                       GoogleFonts
                                                                           .inter(
@@ -477,8 +566,9 @@ class _SendPointScreenState extends State<SendPointScreen> {
                                                                 .transparent,
                                                             borderColor:
                                                                 AppStyle.black,
-                                                            title:
-                                                                "Back to Home",
+                                                            title: AppLocalizations
+                                                                    .of(context)!
+                                                                .back_to_home,
                                                             onPressed: () {
                                                               Navigator.pop(
                                                                   context);

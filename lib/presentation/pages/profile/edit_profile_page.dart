@@ -20,7 +20,7 @@ import 'package:puntossmart/presentation/components/text_fields/outline_bordered
 import 'package:puntossmart/presentation/components/text_fields/underline_drop_down.dart';
 import 'package:puntossmart/presentation/components/title_icon.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'phone_verify.dart';
 
 class EditProfileScreen extends ConsumerStatefulWidget {
@@ -119,7 +119,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                               24.verticalSpace,
                               TitleAndIcon(
                                 title: AppHelpers.getTranslation(
-                                    TrKeys.profileSettings),
+                                    AppLocalizations.of(context)!
+                                        .profile_settings),
                                 paddingHorizontalSize: 0,
                                 titleSize: 18,
                               ),
@@ -182,7 +183,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                               OutlinedBorderTextField(
                                 readOnly: AppValidators.isValidEmail(
                                     user?.email ?? ''),
-                                label: AppHelpers.getTranslation(TrKeys.email)
+                                label: AppHelpers.getTranslation(
+                                        AppLocalizations.of(context)!.email)
                                     .toUpperCase(),
                                 initialText: user?.email ?? "",
                                 validation: AppValidators.emailCheck,
@@ -199,7 +201,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                                         2,
                                     child: OutlinedBorderTextField(
                                       label: AppHelpers.getTranslation(
-                                              TrKeys.firstname)
+                                              AppLocalizations.of(context)!
+                                                  .firstname)
                                           .toUpperCase(),
                                       initialText: user?.firstname ?? "",
                                       validation:
@@ -215,7 +218,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                                         2,
                                     child: OutlinedBorderTextField(
                                       label: AppHelpers.getTranslation(
-                                              TrKeys.surname)
+                                              AppLocalizations.of(context)!
+                                                  .surname)
                                           .toUpperCase(),
                                       initialText: user?.lastname ?? "",
                                       validation:
@@ -231,11 +235,13 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                               OutlinedBorderTextField(
                                 readOnly: true,
                                 label: AppHelpers.getTranslation(
-                                        TrKeys.phoneNumber)
+                                        AppLocalizations.of(context)!
+                                            .phone_number)
                                     .toUpperCase(),
-                                hint: "+1 990 000 00 00",
+                                hint: "+51 987654321",
                                 initialText: user?.phone ?? "",
                                 validation: AppValidators.isNotEmptyValidator,
+                                //onChanged: event.setPhone,
                                 onTap: () {
                                   AppHelpers.showCustomModalBottomSheet(
                                       context: context,
@@ -286,7 +292,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                                 },
                                 readOnly: true,
                                 label: AppHelpers.getTranslation(
-                                        TrKeys.dateOfBirth)
+                                        AppLocalizations.of(context)!
+                                            .date_of_birth)
                                     .toUpperCase(),
                                 hint: "YYYY-MM-DD",
                                 validation: AppValidators.isNotEmptyValidator,
@@ -297,7 +304,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                                 value: user?.gender,
                                 hint:
                                     AppHelpers.getTranslation(TrKeys.typeHere),
-                                label: AppHelpers.getTranslation(TrKeys.gender)
+                                label: AppHelpers.getTranslation(
+                                        AppLocalizations.of(context)!.gender)
                                     .toUpperCase(),
                                 list: AppConstants.genderList,
                                 onChanged: event.setGender,
@@ -306,7 +314,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                                     return null;
                                   }
                                   return AppHelpers.getTranslation(
-                                      TrKeys.canNotBeEmpty);
+                                      AppLocalizations.of(context)!
+                                          .can_not_be_empty);
                                 },
                               ),
                             ],
@@ -317,7 +326,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                                     24.h,
                                 top: 24.h),
                             child: CustomButton(
-                              title: AppHelpers.getTranslation(TrKeys.save),
+                              title: AppHelpers.getTranslation(
+                                  AppLocalizations.of(context)!.btn_save),
                               onPressed: () {
                                 if (formKey.currentState?.validate() ?? false) {
                                   event.editProfile(context, user!);

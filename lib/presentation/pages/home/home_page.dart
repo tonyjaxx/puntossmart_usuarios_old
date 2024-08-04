@@ -41,6 +41,7 @@ import 'shimmer/shop_shimmer.dart';
 import 'widgets/banner_item.dart';
 import 'widgets/recommended_item.dart';
 import 'widgets/shop_bar_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({
@@ -430,7 +431,8 @@ class _HomePageState extends ConsumerState<HomePage> {
         24.verticalSpace,
         state.isShopLoading
             ? ShopShimmer(
-                title: AppHelpers.getTranslation(TrKeys.shops),
+                title: AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.shops),
               )
             : state.shops.isNotEmpty
                 ? Column(
@@ -555,7 +557,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 : const SizedBox.shrink(),
         state.isRestaurantNewLoading
             ? NewsShopShimmer(
-                title: AppHelpers.getTranslation(TrKeys.newsOfWeek),
+                title: AppHelpers.getTranslation('TrKeys.newsOfWeek'),
               )
             : state.newRestaurant.isNotEmpty
                 ? Column(
@@ -563,7 +565,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                       TitleAndIcon(
                         rightTitle: AppHelpers.getTranslation(TrKeys.seeAll),
                         isIcon: true,
-                        title: AppHelpers.getTranslation(TrKeys.newsOfWeek),
+                        title: AppHelpers.getTranslation('TrKeys.newsOfWeek'),
                         onRightTap: () {
                           context
                               .pushRoute(RecommendedRoute(isNewsOfPage: true));
@@ -601,7 +603,8 @@ class _HomePageState extends ConsumerState<HomePage> {
             : Column(
                 children: [
                   TitleAndIcon(
-                    title: AppHelpers.getTranslation(TrKeys.allRestaurants),
+                    title: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.popular_near_you),
                   ),
                   state.restaurant.isNotEmpty
                       ? AnimationLimiter(

@@ -17,7 +17,7 @@ import 'package:puntossmart/presentation/components/keyboard_dismisser.dart';
 import 'package:puntossmart/presentation/components/title_icon.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../application/home/home_provider.dart';
 import 'select_address_item.dart';
 
@@ -77,7 +77,8 @@ class _SelectAddressScreenState extends ConsumerState<SelectAddressScreen> {
                   ),
                   24.verticalSpace,
                   TitleAndIcon(
-                    title: AppHelpers.getTranslation(TrKeys.selectAddress),
+                    title: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.select_address),
                     paddingHorizontalSize: 0,
                     titleSize: 18,
                   ),
@@ -125,13 +126,15 @@ class _SelectAddressScreenState extends ConsumerState<SelectAddressScreen> {
                   16.verticalSpace,
                   CustomButton(
                       background: AppStyle.white,
-                      title: AppHelpers.getTranslation(TrKeys.addAddress),
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.add_address),
                       onPressed: () {
                         widget.addAddress.call();
                       }),
                   16.verticalSpace,
                   CustomButton(
-                      title: AppHelpers.getTranslation(TrKeys.save),
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.btn_save),
                       onPressed: () {
                         ref.read(profileProvider.notifier).setActiveAddress(
                             index: ref.watch(profileProvider).selectAddress,

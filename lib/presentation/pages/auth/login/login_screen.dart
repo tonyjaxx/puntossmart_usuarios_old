@@ -15,6 +15,8 @@ import 'package:puntossmart/presentation/pages/auth/reset/reset_password_page.da
 
 import '../../../theme/app_style.dart';
 import '../../../../application/login/login_provider.dart';
+import 'package:puntossmart/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -56,29 +58,29 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     child: Column(
                       children: [
                         AppBarBottomSheet(
-                          title: AppHelpers.getTranslation(TrKeys.login),
+                          title: AppHelpers.getTranslation(AppLocalizations.of(context)!.auth_login_1/*TrKeys.login*/),
                         ),
                         OutlinedBorderTextField(
-                          label: AppHelpers.getTranslation(
-                                  TrKeys.emailOrPhoneNumber)
+                          label: AppHelpers.getTranslation(AppLocalizations.of(context)!.email_or_phone_number
+                                  /*TrKeys.emailOrPhoneNumber*/)
                               .toUpperCase(),
                           onChanged: event.setEmail,
                           isError: state.isEmailNotValid,
                           validation: (s) {
                             if (s?.isEmpty ?? true) {
-                              return AppHelpers.getTranslation(
-                                  TrKeys.emailIsNotValid);
+                              return AppHelpers.getTranslation(AppLocalizations.of(context)!.email_invalid
+                                  /*TrKeys.emailIsNotValid*/);
                             }
                             return null;
                           },
                           descriptionText: state.isEmailNotValid
-                              ? AppHelpers.getTranslation(
-                                  TrKeys.emailIsNotValid)
+                              ? AppHelpers.getTranslation(AppLocalizations.of(context)!.email_invalid
+                                  /*TrKeys.emailIsNotValid*/)
                               : null,
                         ),
                         34.verticalSpace,
                         OutlinedBorderTextField(
-                          label: AppHelpers.getTranslation(TrKeys.password)
+                          label: AppHelpers.getTranslation(AppLocalizations.of(context)!.password/*TrKeys.password*/)
                               .toUpperCase(),
                           obscure: state.showPassword,
                           suffixIcon: IconButton(
@@ -98,8 +100,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           onChanged: event.setPassword,
                           isError: state.isPasswordNotValid,
                           descriptionText: state.isPasswordNotValid
-                              ? AppHelpers.getTranslation(TrKeys
-                                  .passwordShouldContainMinimum8Characters)
+                              ? AppHelpers.getTranslation(AppLocalizations.of(context)!.password_invalid
+                                /*TrKeys.passwordShouldContainMinimum8Characters*/)
                               : null,
                         ),
                         30.verticalSpace,
@@ -124,7 +126,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                 ),
                                 8.horizontalSpace,
                                 Text(
-                                  AppHelpers.getTranslation(TrKeys.keepLogged),
+                                  AppHelpers.getTranslation(AppLocalizations.of(context)!.auth_login_keep/*TrKeys.keepLogged*/),
                                   style: AppStyle.interNormal(
                                     size: 12.sp,
                                     color: AppStyle.black,
@@ -134,7 +136,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             ),
                             ForgotTextButton(
                               title: AppHelpers.getTranslation(
-                                TrKeys.forgotPassword,
+                                AppLocalizations.of(context)!.auth_login_forget/*TrKeys.forgotPassword*/,
                               ),
                               onPressed: () {
                                 Navigator.pop(context);
@@ -154,7 +156,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     children: [
                       CustomButton(
                         isLoading: state.isLoading,
-                        title: 'Login',
+                        title: AppLocalizations.of(context)!.auth_login_2, //'Login',
                         onPressed: () {
                           if (key.currentState?.validate() ?? false) {
                             event.login(context);
@@ -170,7 +172,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         Padding(
                           padding: const EdgeInsets.only(right: 12, left: 12),
                           child: Text(
-                            AppHelpers.getTranslation(TrKeys.orAccessQuickly),
+                            AppHelpers.getTranslation(AppLocalizations.of(context)!.auth_login_4/*TrKeys.orAccessQuickly*/),
                             style: AppStyle.interNormal(
                               size: 12.sp,
                               color: AppStyle.textGrey,

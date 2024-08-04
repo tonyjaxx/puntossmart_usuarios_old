@@ -17,6 +17,7 @@ import 'package:puntossmart/presentation/components/loading.dart';
 import 'package:puntossmart/presentation/pages/profile/controller/send_transaction_controller.dart';
 import '../../theme/app_style.dart';
 import 'package:flutter/material.dart' as refersh;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class WalletHistoryPage extends ConsumerStatefulWidget {
@@ -70,7 +71,8 @@ class _WalletHistoryState extends ConsumerState<WalletHistoryPage>
           children: [
             CommonAppBar(
               child: Text(
-                AppHelpers.getTranslation(TrKeys.transactions),
+                AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.transactions),
                 style: AppStyle.interNoSemi(
                   size: 18,
                   color: AppStyle.black,
@@ -87,8 +89,12 @@ class _WalletHistoryState extends ConsumerState<WalletHistoryPage>
                 unselectedLabelColor: Colors.black,
                 controller: _tabController,
                 tabs: [
-                  Tab(text: AppHelpers.getTranslation(TrKeys.received)),
-                  Tab(text: AppHelpers.getTranslation(TrKeys.send)),
+                  Tab(
+                      text: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.received)),
+                  Tab(
+                      text: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.send)),
                 ],
               ),
             ),
@@ -134,8 +140,7 @@ class _WalletHistoryState extends ConsumerState<WalletHistoryPage>
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            intl.DateFormat(
-                                                    "MMM dd,yyyy h:mm a")
+                                            intl.DateFormat("dd/MM/yyyy h:mm a")
                                                 .format(
                                               DateTime.tryParse(transaction
                                                               ?.createdAt ??
@@ -170,14 +175,16 @@ class _WalletHistoryState extends ConsumerState<WalletHistoryPage>
                                             children: [
                                               Text(
                                                 AppHelpers.getTranslation(
-                                                    TrKeys.paymentDate),
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .payment_date),
                                                 style: AppStyle.interRegular(
                                                   size: 12.sp,
                                                   color: AppStyle.textGrey,
                                                 ),
                                               ),
                                               Text(
-                                                intl.DateFormat("MM/dd/yyyy")
+                                                intl.DateFormat("dd/MM/yyyy")
                                                     .format(
                                                   DateTime.tryParse(transaction
                                                                   ?.createdAt ??
@@ -199,7 +206,9 @@ class _WalletHistoryState extends ConsumerState<WalletHistoryPage>
                                             children: [
                                               Text(
                                                 AppHelpers.getTranslation(
-                                                    TrKeys.sender),
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .sender),
                                                 style: AppStyle.interRegular(
                                                   size: 12.sp,
                                                   color: AppStyle.textGrey,
@@ -223,7 +232,9 @@ class _WalletHistoryState extends ConsumerState<WalletHistoryPage>
                                             children: [
                                               Text(
                                                 AppHelpers.getTranslation(
-                                                    TrKeys.deposit),
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .deposit),
                                                 style: AppStyle.interRegular(
                                                   size: 12.sp,
                                                   color: AppStyle.textGrey,
@@ -269,7 +280,7 @@ class _WalletHistoryState extends ConsumerState<WalletHistoryPage>
                               transactions.isEmpty) {
                             return Center(
                               child: Text(
-                                "No Data Found",
+                                AppLocalizations.of(context)!.nothing_found,
                                 style: AppStyle.interBold(
                                   size: 14.sp,
                                   color: AppStyle.textGrey,
@@ -303,7 +314,7 @@ class _WalletHistoryState extends ConsumerState<WalletHistoryPage>
                                             children: [
                                               Text(
                                                 intl.DateFormat(
-                                                        "MMM dd,yyyy h:mm a")
+                                                        "dd/MM/yyyy h:mm a")
                                                     .format(
                                                   DateTime.tryParse(transaction
                                                                   .createdAt ??
@@ -339,7 +350,9 @@ class _WalletHistoryState extends ConsumerState<WalletHistoryPage>
                                                 children: [
                                                   Text(
                                                     AppHelpers.getTranslation(
-                                                        TrKeys.paymentDate),
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .payment_date),
                                                     style:
                                                         AppStyle.interRegular(
                                                       size: 12.sp,
@@ -348,7 +361,7 @@ class _WalletHistoryState extends ConsumerState<WalletHistoryPage>
                                                   ),
                                                   Text(
                                                     intl.DateFormat(
-                                                            "MM/dd/yyyy")
+                                                            "dd/MM/yyyy")
                                                         .format(
                                                       DateTime.tryParse(transaction
                                                                       .createdAt ??
@@ -372,7 +385,9 @@ class _WalletHistoryState extends ConsumerState<WalletHistoryPage>
                                                 children: [
                                                   Text(
                                                     AppHelpers.getTranslation(
-                                                        TrKeys.receiver),
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .receiver),
                                                     style:
                                                         AppStyle.interRegular(
                                                       size: 12.sp,
@@ -398,7 +413,9 @@ class _WalletHistoryState extends ConsumerState<WalletHistoryPage>
                                                 children: [
                                                   Text(
                                                     AppHelpers.getTranslation(
-                                                        TrKeys.send),
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .send),
                                                     style:
                                                         AppStyle.interRegular(
                                                       size: 12.sp,

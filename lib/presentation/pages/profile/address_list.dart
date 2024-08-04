@@ -15,7 +15,7 @@ import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/components/buttons/pop_button.dart';
 import 'package:puntossmart/presentation/components/select_address_item.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../theme/app_style.dart';
 
 @RoutePage()
@@ -51,7 +51,8 @@ class _AddressListPageState extends ConsumerState<AddressListPage> {
               children: [
                 CommonAppBar(
                   child: Text(
-                    AppHelpers.getTranslation(TrKeys.deliveryAddress),
+                    AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.delivery_address),
                     style: AppStyle.interNoSemi(
                       size: 18,
                       color: AppStyle.black,
@@ -108,14 +109,16 @@ class _AddressListPageState extends ConsumerState<AddressListPage> {
                   24.horizontalSpace,
                   Expanded(
                       child: CustomButton(
-                          title: AppHelpers.getTranslation(TrKeys.addAddress),
+                          title: AppHelpers.getTranslation(
+                              AppLocalizations.of(context)!.add_address),
                           onPressed: () {
                             context.pushRoute(ViewMapRoute());
                           })),
                   24.horizontalSpace,
                   Expanded(
                       child: CustomButton(
-                          title: AppHelpers.getTranslation(TrKeys.save),
+                          title: AppHelpers.getTranslation(
+                              AppLocalizations.of(context)!.save),
                           onPressed: () {
                             ref.read(profileProvider.notifier).setActiveAddress(
                                 index: ref.watch(profileProvider).selectAddress,

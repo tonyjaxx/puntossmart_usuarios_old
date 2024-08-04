@@ -27,7 +27,7 @@ import 'package:puntossmart/presentation/pages/home_one/category_one.dart';
 import 'package:puntossmart/presentation/pages/home_one/widget/banner_one_item.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../home/shimmer/news_shop_shimmer.dart';
 import 'app_bar_one.dart';
 import 'filter_category_one_shop.dart';
@@ -448,9 +448,11 @@ class _HomeOnePageState extends ConsumerState<HomeOnePage> {
                 ? Column(
                     children: [
                       TitleAndIcon(
-                        rightTitle: AppHelpers.getTranslation(TrKeys.seeAll),
+                        rightTitle: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.see_all),
                         isIcon: true,
-                        title: AppHelpers.getTranslation(TrKeys.popularNearYou),
+                        title: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.popular_near_you),
                         onRightTap: () {
                           context.pushRoute(RecommendedOneRoute());
                         },
@@ -485,7 +487,7 @@ class _HomeOnePageState extends ConsumerState<HomeOnePage> {
                 : const SizedBox.shrink(),
         state.isRestaurantNewLoading
             ? NewsShopShimmer(
-                title: AppHelpers.getTranslation(TrKeys.newsOfWeek),
+                title: AppHelpers.getTranslation('TrKeys.newsOfWeek'),
               )
             : state.newRestaurant.isNotEmpty
                 ? Column(
@@ -493,7 +495,7 @@ class _HomeOnePageState extends ConsumerState<HomeOnePage> {
                       TitleAndIcon(
                         rightTitle: AppHelpers.getTranslation(TrKeys.seeAll),
                         isIcon: true,
-                        title: AppHelpers.getTranslation(TrKeys.newsOfWeek),
+                        title: AppHelpers.getTranslation('TrKeys.newsOfWeek'),
                         onRightTap: () {
                           context.pushRoute(
                               RecommendedOneRoute(isNewsOfPage: true));

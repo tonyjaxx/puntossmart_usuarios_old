@@ -16,12 +16,15 @@ import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/components/buttons/social_button.dart';
 import 'package:puntossmart/presentation/pages/auth/register/register_page.dart';
+import 'package:puntossmart/presentation/pages/home_three/home_page_three.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:upgrader/upgrader.dart';
 import '../../../theme/theme.dart';
 import '../../profile/language_page.dart';
 import 'login_screen.dart';
 import '../../../../application/login/login_provider.dart';
+import 'package:puntossmart/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class LoginPage extends ConsumerStatefulWidget {
@@ -68,10 +71,12 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     if (deepLink.toString().contains("product") ||
         deepLink.toString().contains("shop") ||
         deepLink.toString().contains("restaurant")) {
-      if (AppConstants.isDemo) {
-        context.replaceRoute(UiTypeRoute());
-        return;
-      }
+      // if (AppConstants.isDemo) {
+      //   context.replaceRoute(UiTypeRoute());
+      //   return;
+      // }
+      // context.replaceRoute(const MainRoute());
+      await LocalStorage.setUiType(3);
       context.replaceRoute(const MainRoute());
     }
   }
@@ -149,25 +154,32 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         Align(
                           alignment: Alignment.topRight,
                           child: TextButton(
-                            onPressed: () {
+                            onPressed: () async {
+                              //original
+                              // ref.read(mainProvider.notifier).selectIndex(0);
+                              // if (AppConstants.isDemo) {
+                              //   context.pushRoute(UiTypeRoute());
+                              //   return;
+                              // }
+                              // context.replaceRoute(const MainRoute());
+
+                              //pueba 1
+                              await LocalStorage.setUiType(3);
                               ref.read(mainProvider.notifier).selectIndex(0);
-                              if (AppConstants.isDemo) {
-                                context.pushRoute(UiTypeRoute());
-                                return;
-                              }
                               context.replaceRoute(const MainRoute());
                             },
                             child: Container(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 5,
+                                horizontal: 12, //10
+                                vertical: 7, //5
                               ),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: Text(
-                                AppHelpers.getTranslation(TrKeys.skip),
+                                AppLocalizations.of(context)!.skip,
+                                //AppHelpers.getTranslation(TrKeys.skip),
                                 style: AppStyle.interSemi(
                                   size: 16.sp,
                                 ),
@@ -180,20 +192,25 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Welcome To",
+                              //"Welcome To",
+                              AppLocalizations.of(context)!.auth_login_welcome,
                               style: AppStyle.interSemi(size: 32),
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              AppHelpers.getAppName() ?? "",
-                              style: AppStyle.interSemi(
-                                size: 28,
-                                color: AppStyle.brandGreen,
-                              ),
+                              // AppHelpers.getAppName() ?? "",
+                              // style: AppStyle.interSemi(
+                              //   size: 28,
+                              //   color: AppStyle.brandGreen,
+                              // ),
+                              AppLocalizations.of(context)!.puntos_smart,
+                              style: AppStyle.bungee(size: 34),
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              "The Largest Points & Discounts\nNetwork in Peru.",
+                              //"The Largest Points & Discounts\nNetwork in Peru.",
+                              AppLocalizations.of(context)!
+                                  .auth_login_description,
                               style: AppStyle.interRegular(),
                             )
                           ],
@@ -273,7 +290,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             ),
                             const SizedBox(width: 10),
                             Text(
-                              AppHelpers.getTranslation(TrKeys.login),
+                              //AppHelpers.getTranslation(TrKeys.login),
+                              AppLocalizations.of(context)!.auth_login_3,
                               style: AppStyle.interRegular(
                                 color: AppStyle.white,
                               ),
@@ -318,7 +336,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           vertical: 8,
                         ),
                         child: CustomButton(
-                          title: "Register with Your Email Or Number",
+                          //title: "Register with Your Email Or Number",
+                          title:
+                              AppLocalizations.of(context)!.auth_login_register,
                           onPressed: () {
                             AppHelpers.showCustomModalBottomSheet(
                                 context: context,
@@ -338,7 +358,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Do you already have an account?",
+                            AppLocalizations.of(context)!.auth_login_login,
+                            //"Do you already have an account?",
                             style: TextStyle(
                               color: AppStyle.white,
                             ),
@@ -353,10 +374,12 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                               );
                             },
                             child: Text(
-                              AppHelpers.getTranslation(TrKeys.login),
+                              AppLocalizations.of(context)!.auth_login_2,
+                              //AppHelpers.getTranslation(TrKeys.login),
                               style: TextStyle(
                                   color: AppStyle.white,
-                                  fontWeight: FontWeight.w500),
+                                  fontWeight: FontWeight.w500,
+                                  decoration: TextDecoration.underline),
                             ),
                           ),
                         ],

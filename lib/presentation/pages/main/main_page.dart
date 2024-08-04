@@ -284,8 +284,9 @@ class _MainPageState extends State<MainPage> {
                         if (LocalStorage.getToken().isEmpty) {
                           context.pushRoute(const LoginRoute());
                           return;
-                        }
-                        context.pushRoute(const ParcelRoute());
+                        } //knt 01-08
+                        //context.pushRoute(const ParcelRoute());
+                        context.pushRoute(const OrdersListRoute());
                         return;
                       }
                       ref.read(mainProvider.notifier).selectIndex(value);

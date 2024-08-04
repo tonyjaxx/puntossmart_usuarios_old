@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:puntossmart/infrastructure/models/data/order_active_model.dart';
 import 'package:puntossmart/infrastructure/models/data/refund_data.dart';
 import 'package:puntossmart/infrastructure/services/app_helpers.dart';
@@ -10,7 +11,7 @@ import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/shop_avarat.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../infrastructure/services/app_constants.dart';
 import 'package:intl/intl.dart' as intl;
 
@@ -29,6 +30,8 @@ class OrdersItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Intl.defaultLocale = 'es';
+
     return GestureDetector(
       onTap: () {
         context.pushRoute(
@@ -164,7 +167,8 @@ class OrdersItem extends StatelessWidget {
                   children: [
                     Text(
                       isRefund
-                          ? AppHelpers.getTranslation(TrKeys.cause)
+                          ? AppHelpers.getTranslation(
+                              AppLocalizations.of(context)!.cause)
                           : AppHelpers.numberFormat(
                               isOrder: order?.currencyModel?.symbol != null,
                               symbol: order?.currencyModel?.symbol,

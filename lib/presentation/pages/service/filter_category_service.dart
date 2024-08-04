@@ -15,7 +15,7 @@ import 'package:puntossmart/presentation/pages/service/widgets/service_one_categ
 import '../../theme/app_style.dart';
 import 'widgets/service_three_category.dart';
 import 'widgets/service_two_category.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class FilterCategoryService extends StatelessWidget {
   final HomeState state;
   final HomeNotifier event;
@@ -72,9 +72,9 @@ class FilterCategoryService extends StatelessWidget {
                             event: event,
                             categoryIndex: categoryIndex),
             TitleAndIcon(
-              title: AppHelpers.getTranslation(TrKeys.restaurants),
+              title: AppHelpers.getTranslation(AppLocalizations.of(context)!.restaurants),
               rightTitle:
-                  "${AppHelpers.getTranslation(TrKeys.found)} ${state.filterShops.length.toString()} ${AppHelpers.getTranslation(TrKeys.results)}",
+                  "${AppHelpers.getTranslation(AppLocalizations.of(context)!.found)} ${state.filterShops.length.toString()} ${AppHelpers.getTranslation(AppLocalizations.of(context)!.results)}",
             ),
             state.isSelectCategoryLoading == -1
                 ? const Loading()
@@ -111,7 +111,7 @@ class FilterCategoryService extends StatelessWidget {
                       )
                     : Padding(
                         padding: EdgeInsets.only(top: 24.h),
-                        child: _resultEmpty(),
+                        child: _resultEmpty(context),
                       ),
           ],
         ),
@@ -120,12 +120,12 @@ class FilterCategoryService extends StatelessWidget {
   }
 }
 
-Widget _resultEmpty() {
+Widget _resultEmpty(BuildContext context) {
   return Column(
     children: [
       Image.asset("assets/images/notFound.png"),
       Text(
-        AppHelpers.getTranslation(TrKeys.nothingFound),
+        AppHelpers.getTranslation(AppLocalizations.of(context)!.nothing_found/*TrKeys.nothingFound*/),
         style: AppStyle.interSemi(size: 18.sp),
       ),
       Padding(
@@ -133,7 +133,7 @@ Widget _resultEmpty() {
           horizontal: 32.w,
         ),
         child: Text(
-          AppHelpers.getTranslation(TrKeys.trySearchingAgain),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!.try_searching_again/*TrKeys.trySearchingAgain*/),
           style: AppStyle.interRegular(size: 14.sp),
           textAlign: TextAlign.center,
         ),

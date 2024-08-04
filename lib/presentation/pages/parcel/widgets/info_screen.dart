@@ -20,6 +20,7 @@ class InfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final infoTitles = AppConstants.infoTitle(context);//25-07
     return Scaffold(
       body: Stack(
         children: [
@@ -36,7 +37,8 @@ class InfoPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    AppHelpers.getTranslation(AppConstants.infoTitle[index]),
+                    AppHelpers.getTranslation(infoTitles[index]),
+                    //AppHelpers.getTranslation(AppConstants.infoTitle[index]),
                     style:
                         AppStyle.interNoSemi(size: 40, color: AppStyle.white),
                   ),

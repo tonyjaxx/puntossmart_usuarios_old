@@ -13,7 +13,7 @@ import 'package:puntossmart/presentation/components/custom_network_image.dart';
 import 'package:puntossmart/presentation/components/sellect_address_screen.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class AppBarOne extends StatelessWidget {
   final HomeState state;
   final HomeNotifier event;
@@ -58,7 +58,7 @@ class AppBarOne extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    AppHelpers.getTranslation(TrKeys.deliveryAddress),
+                    AppHelpers.getTranslation(AppLocalizations.of(context)!.delivery_address),
                     style: AppStyle.interNormal(
                       size: 12,
                       color: AppStyle.textGrey,

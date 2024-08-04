@@ -4,6 +4,7 @@ import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CheckStatusDialog extends StatelessWidget {
   final VoidCallback cancel;
@@ -35,7 +36,8 @@ class CheckStatusDialog extends StatelessWidget {
         children: [
           15.verticalSpace,
           Text(
-            AppHelpers.getTranslation(TrKeys.groupOrderProgress),
+            AppHelpers.getTranslation(
+                AppLocalizations.of(context)!.group_order_progress),
             style: AppStyle.interNormal(
               size: 14,
               color: AppStyle.black,
@@ -48,7 +50,8 @@ class CheckStatusDialog extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomButton(
-                  title: AppHelpers.getTranslation(TrKeys.cancel),
+                  title: AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.cancel),
                   onPressed: cancel,
                   background: AppStyle.transparent,
                   textColor: AppStyle.black,
@@ -58,7 +61,8 @@ class CheckStatusDialog extends StatelessWidget {
               16.horizontalSpace,
               Expanded(
                 child: CustomButton(
-                  title: AppHelpers.getTranslation(TrKeys.continueText),
+                  title: AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.continue_),
                   onPressed: onTap,
                   background: AppStyle.red,
                   textColor: AppStyle.white,

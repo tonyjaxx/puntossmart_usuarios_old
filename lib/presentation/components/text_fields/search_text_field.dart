@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import '../../theme/theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchTextField extends StatelessWidget {
   final String? hintText;
@@ -51,7 +52,7 @@ class SearchTextField extends StatelessWidget {
           size: 13,
           color: AppStyle.hintColor,
         ),
-        hintText: hintText ?? AppHelpers.getTranslation(TrKeys.searchProducts),
+        hintText: hintText ?? AppHelpers.getTranslation(AppLocalizations.of(context)!.search_restaurnats_products),
         contentPadding: REdgeInsets.symmetric(horizontal: 15, vertical: 14),
         prefixIcon: isSearchIcon
             ? Icon(

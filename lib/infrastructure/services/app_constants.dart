@@ -1,4 +1,6 @@
+import 'package:flutter/widgets.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppConstants {
   AppConstants._();
@@ -48,7 +50,11 @@ class AppConstants {
 
   /// api urls
   static const String drawingBaseUrl = 'https://api.openrouteservice.org';
+
   static const String baseUrl = 'https://api.puntossmart.com';
+
+  /// 04-08
+  ///static const String baseUrl = 'https://44e7-201-218-156-27.ngrok-free.app';
   static const String googleApiKey = 'AIzaSyDZQUsmwnkCmD3HMNFCABo8YSE54FCTFYo';
   static const String privacyPolicyUrl = '$baseUrl/privacy-policy';
   static const String adminPageUrl = 'https://admin.puntossmart.com';
@@ -82,12 +88,21 @@ class AppConstants {
     "assets/images/set.png",
   ];
 
-  static const List infoTitle = [
-    TrKeys.saveTime,
-    TrKeys.deliveryRestriction,
-    TrKeys.fast,
-    TrKeys.set,
-  ];
+  // static const List infoTitle = [
+  //   TrKeys.saveTime,
+  //   TrKeys.deliveryRestriction,
+  //   TrKeys.fast,
+  //   TrKeys.set,
+  // ];
+
+  static List<String> infoTitle(BuildContext context) {
+    return [
+      AppLocalizations.of(context)!.save_time,
+      AppLocalizations.of(context)!.delivery_restriction,
+      AppLocalizations.of(context)!.fast_secure_delivery,
+      AppLocalizations.of(context)!.set_up_deliver,
+    ];
+  }
 
   static const payLater = [
     "progress",

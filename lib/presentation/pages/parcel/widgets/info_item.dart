@@ -15,6 +15,7 @@ class InfoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final infoTitles = AppConstants.infoTitle(context);//25-07
     return InkWell(
       onTap: () {
         context.pushRoute(InfoRoute(index: index));
@@ -33,7 +34,8 @@ class InfoItem extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(left: 18.r, bottom: 12.r, right: 24.r),
             child: Text(
-              AppHelpers.getTranslation(AppConstants.infoTitle[index]),
+              //AppHelpers.getTranslation(AppConstants.infoTitle[index]),
+              AppHelpers.getTranslation(infoTitles[index]),
               style: AppStyle.interNoSemi(size: 16, color: AppStyle.white),
             ),
           ),

@@ -14,7 +14,7 @@ import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/local_storage.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'widgets/chat_item.dart';
 
 @RoutePage()
@@ -69,7 +69,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
             ),
           ),
           title: Text(
-            widget.name,
+            'Administrador SMART',
             style: GoogleFonts.inter(
               fontWeight: FontWeight.w600,
               fontSize: 14.sp,
@@ -179,7 +179,8 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                                       color: AppStyle.black,
                                     ),
                                     hintText: AppHelpers.getTranslation(
-                                      TrKeys.typeSomething,
+                                      AppLocalizations.of(context)!
+                                          .type_something,
                                     ),
                                   ),
                                 ),

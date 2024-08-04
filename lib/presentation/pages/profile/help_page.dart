@@ -8,7 +8,7 @@ import 'package:puntossmart/infrastructure/services/local_storage.dart';
 import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/components/loading.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../infrastructure/services/app_helpers.dart';
 import '../../../../infrastructure/services/tr_keys.dart';
 import '../../components/app_bars/common_app_bar.dart';
@@ -46,7 +46,8 @@ class _HelpPageState extends ConsumerState<HelpPage> {
                 children: [
                   CommonAppBar(
                     child: Text(
-                      AppHelpers.getTranslation(TrKeys.help),
+                      AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.help),
                       style: AppStyle.interNoSemi(
                         size: 18,
                         color: AppStyle.black,
@@ -196,7 +197,8 @@ class _HelpPageState extends ConsumerState<HelpPage> {
                                         children: [
                                           Text(
                                             AppHelpers.getTranslation(
-                                                TrKeys.stillHaveQuestions),
+                                                AppLocalizations.of(context)!
+                                                    .still_have_questions),
                                             style:
                                                 AppStyle.interSemi(size: 14.sp),
                                           ),
@@ -207,7 +209,8 @@ class _HelpPageState extends ConsumerState<HelpPage> {
                                                 1.5,
                                             child: Text(
                                               AppHelpers.getTranslation(
-                                                  TrKeys.cantFindTheAnswer),
+                                                  AppLocalizations.of(context)!
+                                                      .cant_find_the_answer),
                                               style: AppStyle.interRegular(
                                                   size: 12.sp),
                                             ),
@@ -232,11 +235,12 @@ class _HelpPageState extends ConsumerState<HelpPage> {
                   child: CustomButton(
                 background: AppStyle.black,
                 textColor: AppStyle.white,
-                title: AppHelpers.getTranslation(TrKeys.callToSupport),
+                title: AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.call_to_support),
                 onPressed: () async {
                   final Uri launchUri = Uri(
                     scheme: 'tel',
-                    path: AppHelpers.getAppPhone(),
+                    path: '+51 904244903', //AppHelpers.getAppPhone(),
                   );
                   await launchUrl(launchUri);
                 },

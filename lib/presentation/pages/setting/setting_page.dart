@@ -9,7 +9,7 @@ import 'package:puntossmart/presentation/components/app_bars/common_app_bar.dart
 import 'package:puntossmart/presentation/components/buttons/pop_button.dart';
 import 'package:puntossmart/presentation/components/keyboard_dismisser.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'notification_page.dart';
 
 @RoutePage()
@@ -66,7 +66,8 @@ class _SettingPageState extends ConsumerState<SettingPage>
             children: [
               CommonAppBar(
                 child: Text(
-                  AppHelpers.getTranslation(TrKeys.notification),
+                  AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.notification),
                   style: AppStyle.interNoSemi(
                     size: 18,
                     color: AppStyle.black,

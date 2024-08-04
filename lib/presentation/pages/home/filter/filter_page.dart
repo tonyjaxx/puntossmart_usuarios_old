@@ -14,7 +14,7 @@ import 'package:puntossmart/presentation/components/loading.dart';
 import 'package:puntossmart/presentation/components/title_icon.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../application/filter/filter_provider.dart';
 import 'widgets/filter_item.dart';
 
@@ -35,12 +35,18 @@ class FilterPage extends ConsumerStatefulWidget {
 class _FilterPageState extends ConsumerState<FilterPage> {
   List rating = ["2.5 - 3.5", "3.5 - 4.5", "4.5 - 5.0", "5.0"];
   List sorts = [
-    AppHelpers.getTranslation(TrKeys.trustYou),
-    AppHelpers.getTranslation(TrKeys.bestSale),
-    AppHelpers.getTranslation(TrKeys.highlyRated),
-    AppHelpers.getTranslation(TrKeys.lowSale),
-    AppHelpers.getTranslation(TrKeys.lowRating),
+    // AppHelpers.getTranslation(TrKeys.trustYou ),
+    // AppHelpers.getTranslation(TrKeys.bestSale),
+    // AppHelpers.getTranslation(TrKeys.highlyRated),
+    // AppHelpers.getTranslation(TrKeys.lowSale),
+    // AppHelpers.getTranslation(TrKeys.lowRating),
+    AppHelpers.getTranslation('Confiar en ti'),
+    AppHelpers.getTranslation('Mejor Sale'),
+    AppHelpers.getTranslation('Altamente Calificado'),
+    AppHelpers.getTranslation('Baja Venta'),
+    AppHelpers.getTranslation('Clasificación Baja'),
   ];
+
   final _freeDeliveryController = ValueNotifier<bool>(false);
   final _dealsController = ValueNotifier<bool>(false);
   final _openController = ValueNotifier<bool>(true);
@@ -76,6 +82,7 @@ class _FilterPageState extends ConsumerState<FilterPage> {
           _openController.value,
           widget.categoryId);
     });
+
     super.initState();
   }
 
@@ -120,9 +127,10 @@ class _FilterPageState extends ConsumerState<FilterPage> {
                 18.verticalSpace,
                 TitleAndIcon(
                   title:
-                      "${AppHelpers.getTranslation(TrKeys.filter)} (${!state.isLoading ? state.shopCount : AppHelpers.getTranslation(TrKeys.loading)})",
+                      "${AppHelpers.getTranslation(AppLocalizations.of(context)!.filter)} (${!state.isLoading ? state.shopCount : AppHelpers.getTranslation(AppLocalizations.of(context)!.loading)})",
                   rightTitleColor: AppStyle.red,
-                  rightTitle: AppHelpers.getTranslation(TrKeys.clearAll),
+                  rightTitle: AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.clear_all),
                   onRightTap: () {
                     event.clear(context, widget.categoryId);
                   },
@@ -140,7 +148,8 @@ class _FilterPageState extends ConsumerState<FilterPage> {
                               : const SizedBox.shrink(),
                           8.verticalSpace,
                           FilterItem(
-                            title: AppHelpers.getTranslation(TrKeys.rating),
+                            title: AppHelpers.getTranslation(
+                                AppLocalizations.of(context)!.rating),
                             list: rating,
                             isRating: true,
                             currentItem: state.filterModel?.rating,
@@ -160,7 +169,8 @@ class _FilterPageState extends ConsumerState<FilterPage> {
                                     8.verticalSpace,
                                     FilterItem(
                                       title: AppHelpers.getTranslation(
-                                          TrKeys.specialOffers),
+                                          AppLocalizations.of(context)!
+                                              .special_offers),
                                       list: state.tags,
                                       isOffer: true,
                                       currentItem: state.filterModel?.offer,
@@ -182,7 +192,8 @@ class _FilterPageState extends ConsumerState<FilterPage> {
                               : const SizedBox.shrink(),
                           8.verticalSpace,
                           FilterItem(
-                            title: AppHelpers.getTranslation(TrKeys.sortBy),
+                            title: AppHelpers.getTranslation(
+                                AppLocalizations.of(context)!.sort_by),
                             list: sorts,
                             isSort: true,
                             currentItem: state.filterModel?.sort,
@@ -198,22 +209,24 @@ class _FilterPageState extends ConsumerState<FilterPage> {
                           ),
                           8.verticalSpace,
                           CustomToggle(
-                            title:
-                                AppHelpers.getTranslation(TrKeys.freeDelivery),
+                            title: AppHelpers.getTranslation(
+                                AppLocalizations.of(context)!.free_delivery),
                             isChecked: state.freeDelivery,
                             controller: _freeDeliveryController,
                             onChange: () {},
                           ),
                           8.verticalSpace,
                           CustomToggle(
-                            title: AppHelpers.getTranslation(TrKeys.deals),
+                            title: AppHelpers.getTranslation(
+                                AppLocalizations.of(context)!.deals),
                             isChecked: state.deals,
                             controller: _dealsController,
                             onChange: () {},
                           ),
                           8.verticalSpace,
                           CustomToggle(
-                            title: AppHelpers.getTranslation(TrKeys.openShop),
+                            title: AppHelpers.getTranslation(
+                                AppLocalizations.of(context)!.open_shop),
                             isChecked: state.open,
                             controller: _openController,
                             onChange: () {},
@@ -224,7 +237,7 @@ class _FilterPageState extends ConsumerState<FilterPage> {
                             background: AppStyle.black,
                             textColor: AppStyle.white,
                             title:
-                                "${AppHelpers.getTranslation(TrKeys.show)} ${state.shopCount} ${AppHelpers.getTranslation(TrKeys.shops)} ",
+                                "${AppHelpers.getTranslation(AppLocalizations.of(context)!.show)} ${state.shopCount} ${AppHelpers.getTranslation(AppLocalizations.of(context)!.shops)} ",
                             onPressed: () {
                               context.pushRoute(ResultFilterRoute(
                                   categoryId: widget.categoryId));
@@ -252,7 +265,8 @@ class _FilterPageState extends ConsumerState<FilterPage> {
       child: Column(
         children: [
           Text(
-            AppHelpers.getTranslation(TrKeys.priceRange),
+            AppHelpers.getTranslation(
+                AppLocalizations.of(context)!.price_range),
             style: AppStyle.interNoSemi(
               size: 16,
               color: AppStyle.black,

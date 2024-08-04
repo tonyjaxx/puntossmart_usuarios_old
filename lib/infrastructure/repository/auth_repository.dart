@@ -69,9 +69,10 @@ class AuthRepository implements AuthRepositoryFacade {
     }
   }
 
+//04-08
   @override
   Future<ApiResult<RegisterResponse>> sendOtp({required String phone}) async {
-    final data = {'phone': phone};
+    final data = {'email': phone};
     try {
       final client = inject<HttpService>().client(requireAuth: false);
       final response = await client.post(

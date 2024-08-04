@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:puntossmart/presentation/components/title_icon.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../infrastructure/services/app_helpers.dart';
 import '../../../../infrastructure/services/tr_keys.dart';
 import 'market_shimmer.dart';
@@ -18,7 +18,8 @@ class AllShopShimmer extends StatelessWidget {
       children: [
         isTitle
             ? TitleAndIcon(
-                title: AppHelpers.getTranslation(TrKeys.allRestaurants),
+                title: AppHelpers.getTranslation(
+                    AppLocalizations.of(context)!.popular_near_you),
               )
             : const SizedBox.shrink(),
         AnimationLimiter(

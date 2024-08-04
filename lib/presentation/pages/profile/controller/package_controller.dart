@@ -113,12 +113,12 @@ class PackageController extends GetxController {
     final String firstName = LocalStorage.getFirstName().toString();
     final String lastName = LocalStorage.getLastName().toString();
     final String message = Uri.encodeComponent(
-      '🌟 *Buy Punto Smart* 🌟\n\n'
-      'Hello,\n\n'
-      'I would like to purchase the *$packageName* Puntos Smart. 🎉\n\n'
-      'This package provides *$points* points and is valued at *$pens* PENs. These points will allow me to enjoy numerous benefits and exclusive rewards within the Punto Smart ecosystem.\n\n'
-      'Please proceed with my request at your earliest convenience. I am eager to start utilizing the benefits of this package.\n\n'
-      '*Thank you!*\n\n'
+      '🌟 *Comprar Paquete De Puntos Smart* 🌟\n\n'
+      'Hola Super Agente Smart!!,\n\n'
+      'Me Gustaría Comprar $packageName  de Puntos Smart. 🎉\n\n'
+      'Este Paquete Provee $points Puntos Smart Y Tiene un valor de  $pens PENs. Con Estos Puntos Smart Podrás Obtener Miles de beneficios y Cupones de descuento En El Ecosistema de Puntos Smart.\n\n'
+      'Por Favor Procede con mi compra lo más pronto posible.\n\n'
+      '¡Muchas Gracias!*\n\n'
       '$firstName $lastName',
     );
 

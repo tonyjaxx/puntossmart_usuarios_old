@@ -5,7 +5,7 @@ import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/app_bars/common_app_bar.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../infrastructure/services/local_storage.dart';
 import '../../components/buttons/pop_button.dart';
 
@@ -27,28 +27,31 @@ class _ShareReferralFaqPageState extends State<ShareReferralFaqPage> {
       textDirection: isLtr ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
         backgroundColor: AppStyle.bgGrey,
-        body: Column(
-          children: [
-            CommonAppBar(
-              child: Text(
-                AppHelpers.getTranslation(TrKeys.referralFaq),
-                style: AppStyle.interNoSemi(
-                  size: 18,
-                  color: AppStyle.black,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              CommonAppBar(
+                child: Text(
+                  AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.referral_faq),
+                  style: AppStyle.interNoSemi(
+                    size: 18,
+                    color: AppStyle.black,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(16.r),
-              child: Text(
-                widget.terms,
-                style: AppStyle.interNoSemi(
-                  size: 20,
-                  color: AppStyle.black,
+              Padding(
+                padding: EdgeInsets.all(16.r),
+                child: Text(
+                  widget.terms,
+                  style: AppStyle.interNoSemi(
+                    size: 16,
+                    color: AppStyle.black,
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
         floatingActionButton: Padding(

@@ -18,7 +18,7 @@ class AllShopShimmer extends StatelessWidget {
       children: [
         isTitle
             ? TitleAndIcon(
-                title: AppHelpers.getTranslation(TrKeys.allRestaurants),
+                title: AppHelpers.getTranslation('TrKeys.allRestaurants'),
               )
             : const SizedBox.shrink(),
         AnimationLimiter(

@@ -12,7 +12,7 @@ import 'package:puntossmart/presentation/components/keyboard_dismisser.dart';
 import 'package:puntossmart/presentation/components/loading.dart';
 import 'package:puntossmart/presentation/components/title_icon.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'widgets/currency_item.dart';
 
 class CurrencyScreen extends ConsumerStatefulWidget {
@@ -77,7 +77,8 @@ class _LanguagePageState extends ConsumerState<CurrencyScreen> {
                       ),
                       24.verticalSpace,
                       TitleAndIcon(
-                        title: AppHelpers.getTranslation(TrKeys.currencies),
+                        title: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.currencies),
                         paddingHorizontalSize: 0,
                         titleSize: 18,
                       ),

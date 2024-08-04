@@ -35,6 +35,7 @@ class RegisterConfirmationNotifier
         isConfirm: code.toString().length == 6);
   }
 
+  //knjt 29-07-24
   Future<void> confirmCodeWithFirebase(
       {required BuildContext context,
       required String verificationId,
@@ -42,23 +43,60 @@ class RegisterConfirmationNotifier
     final connected = await AppConnectivity.connectivity();
     if (connected) {
       state = state.copyWith(isLoading: true, isSuccess: false);
+      // try {
+      //   PhoneAuthCredential credential = PhoneAuthProvider.credential(
+      //     verificationId: state.verificationCode.isNotEmpty
+      //         ? state.verificationCode
+      //         : verificationId,
+      //     smsCode: state.confirmCode,
+      //   );
+
+      //   await FirebaseAuth.instance.signInWithCredential(credential);
+      //   onSuccess?.call();
+      //   state = state.copyWith(
+      //       isLoading: false, isSuccess: onSuccess == null ? true : false);
+      // } catch (e) {
+      //   AppHelpers.showCheckTopSnackBar(
+      //     context,
+      //     AppHelpers.getTranslation((e as FirebaseAuthException).message ?? ""),
+      //   );
+      //   state = state.copyWith(
+      //       isLoading: false, isCodeError: true, isSuccess: false);
+      // }
+      //mod pq se quedaba en un bucle y no mostraba el error :,v
+
       try {
         PhoneAuthCredential credential = PhoneAuthProvider.credential(
-          verificationId: state.verificationCode.isNotEmpty
-              ? state.verificationCode
-              : verificationId,
+          verificationId: verificationId,
           smsCode: state.confirmCode,
         );
 
-        await FirebaseAuth.instance.signInWithCredential(credential);
+        // Autenticar al usuario con las credenciales
+        try {
+          UserCredential userCredential =
+              await FirebaseAuth.instance.signInWithCredential(credential);
+          print('karen User authenticated: ${userCredential.user}');
+        } catch (e) {
+          print('karen Failed to sign in: $e');
+        }
+
         onSuccess?.call();
-        state = state.copyWith(
-            isLoading: false, isSuccess: onSuccess == null ? true : false);
+        state = state.copyWith(isLoading: false, isSuccess: true);
       } catch (e) {
-        AppHelpers.showCheckTopSnackBar(
-          context,
-          AppHelpers.getTranslation((e as FirebaseAuthException).message ?? ""),
-        );
+        print('karen Error during Firebase sign-in: $e');
+        if (e is FirebaseAuthException) {
+          AppHelpers.showCheckTopSnackBar(
+            context,
+            AppHelpers.getTranslation(e.message ?? "An error occurred"),
+          );
+          print('karen Error during Firebase sign-in 2: $e');
+        } else {
+          AppHelpers.showCheckTopSnackBar(
+            context,
+            'An unexpected error occurred. Please try again.',
+          );
+          print('karen 3Error during Firebase sign-in: $e');
+        }
         state = state.copyWith(
             isLoading: false, isCodeError: true, isSuccess: false);
       }
@@ -104,6 +142,7 @@ class RegisterConfirmationNotifier
     }
   }
 
+//knjt
   Future<void> confirmCodeResetPassword(
       BuildContext context, String email) async {
     final connected = await AppConnectivity.connectivity();
@@ -138,23 +177,28 @@ class RegisterConfirmationNotifier
     }
   }
 
+//knjt 2 agregar el +51
   Future<void> confirmCodeResetPasswordWithPhone(
       BuildContext context, String phone, String verificationId) async {
     final connected = await AppConnectivity.connectivity();
     if (connected) {
       state = state.copyWith(isLoading: true, isResetPasswordSuccess: false);
       try {
+        // PhoneAuthCredential credential = PhoneAuthProvider.credential(
+        //   verificationId: state.verificationCode.isNotEmpty
+        //       ? state.verificationCode
+        //       : verificationId,
+        //   smsCode: state.confirmCode,
+        // );
         PhoneAuthCredential credential = PhoneAuthProvider.credential(
-          verificationId: state.verificationCode.isNotEmpty
-              ? state.verificationCode
-              : verificationId,
+          verificationId: verificationId,
           smsCode: state.confirmCode,
         );
 
         await FirebaseAuth.instance.signInWithCredential(credential);
 
-        final response =
-            await _authRepository.forgotPasswordConfirmWithPhone(phone: phone);
+        final response = await _authRepository.forgotPasswordConfirmWithPhone(
+            phone: '+51$phone');
         response.when(
           success: (data) async {
             await LocalStorage.setToken(data.token);
@@ -172,11 +216,25 @@ class RegisterConfirmationNotifier
             debugPrint('==> confirm reset code failure: $failure');
           },
         );
-      } catch (e) {
-        AppHelpers.showCheckTopSnackBar(
-          context,
-          AppHelpers.getTranslation((e as FirebaseAuthException).message ?? ""),
-        );
+      } //catch (e) {
+      //   AppHelpers.showCheckTopSnackBar(
+      //     context,
+      //     AppHelpers.getTranslation((e as FirebaseAuthException).message ?? ""),
+      //   );
+      //   state = state.copyWith(isLoading: false, isCodeError: true);
+      // }
+      catch (e) {
+        if (e is FirebaseAuthException) {
+          AppHelpers.showCheckTopSnackBar(
+            context,
+            AppHelpers.getTranslation(e.message ?? ""),
+          );
+        } else {
+          AppHelpers.showCheckTopSnackBar(
+            context,
+            AppHelpers.getTranslation("An unexpected error occurred"),
+          );
+        }
         state = state.copyWith(isLoading: false, isCodeError: true);
       }
     } else {
@@ -191,14 +249,17 @@ class RegisterConfirmationNotifier
 
   Future<void> resendConfirmation(BuildContext context, String email,
       {bool isResetPassword = false}) async {
+    debugPrint(
+        '==> resendConfirmationresendConfirmationresendConfirmationresendConfirmationresendConfirmation');
     final connected = await AppConnectivity.connectivity();
     if (connected) {
       state = state.copyWith(isResending: true);
       late ApiResult response;
       if (isResetPassword) {
-        response = await _authRepository.forgotPassword(email: email.trim());
+        response =
+            await _authRepository.forgotPassword(email: '+51' + email.trim());
       } else {
-        response = await _authRepository.sigUp(email: email.trim());
+        response = await _authRepository.sigUp(email: '+51' + email.trim());
       }
 
       response.when(
@@ -226,11 +287,13 @@ class RegisterConfirmationNotifier
 
   Future<void> sendCodeToNumber(
       BuildContext context, String phoneNumber) async {
+    debugPrint(
+        '==> sendCodeToNumbersendCodeToNumbersendCodeToNumbersendCodeToNumbersendCodeToNumber');
     final connected = await AppConnectivity.connectivity();
     if (connected) {
       state = state.copyWith(isResending: true);
       await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: phoneNumber,
+        phoneNumber: '+51$phoneNumber',
         verificationCompleted: (PhoneAuthCredential credential) {},
         verificationFailed: (FirebaseAuthException e) {
           AppHelpers.showCheckTopSnackBar(

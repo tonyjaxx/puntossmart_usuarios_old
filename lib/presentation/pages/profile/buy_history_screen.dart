@@ -9,6 +9,7 @@ import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/pages/profile/controller/package_controller.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
 import 'package:intl/intl.dart' as intl;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BuyHistoryScreen extends StatefulWidget {
   BuyHistoryScreen({
@@ -56,7 +57,7 @@ class _BuyHistoryScreenState extends State<BuyHistoryScreen> {
               ),
             ),
             title: Text(
-              'History Puntos Smart',
+              AppLocalizations.of(context)!.history_puntos,
               style: GoogleFonts.inter(
                 fontWeight: FontWeight.w600,
                 fontSize: 18.0,
@@ -144,14 +145,15 @@ class _BuyHistoryScreenState extends State<BuyHistoryScreen> {
                                 children: [
                                   Text(
                                     AppHelpers.getTranslation(
-                                        TrKeys.paymentDate),
+                                        AppLocalizations.of(context)!
+                                            .payment_date),
                                     style: AppStyle.interRegular(
                                       size: 12.sp,
                                       color: AppStyle.textGrey,
                                     ),
                                   ),
                                   Text(
-                                    intl.DateFormat("MM/dd/yyyy").format(
+                                    intl.DateFormat("dd/MM/yyyy").format(
                                       DateTime.tryParse(buy.createdAt ?? "")
                                               ?.toLocal() ??
                                           DateTime.now(),
@@ -169,7 +171,8 @@ class _BuyHistoryScreenState extends State<BuyHistoryScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    AppHelpers.getTranslation(TrKeys.points),
+                                    AppHelpers.getTranslation(
+                                        AppLocalizations.of(context)!.points),
                                     style: AppStyle.interRegular(
                                       size: 12.sp,
                                       color: AppStyle.textGrey,
@@ -191,14 +194,15 @@ class _BuyHistoryScreenState extends State<BuyHistoryScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    AppHelpers.getTranslation(TrKeys.price),
+                                    AppHelpers.getTranslation(
+                                        AppLocalizations.of(context)!.price),
                                     style: AppStyle.interRegular(
                                       size: 12.sp,
                                       color: AppStyle.textGrey,
                                     ),
                                   ),
                                   Text(
-                                    "${buy.package?.pens ?? 0} PENS",
+                                    "${buy.package?.pens ?? 0} PEN",
                                     style: AppStyle.interRegular(
                                       size: 16.sp,
                                       color: AppStyle.black,
@@ -212,7 +216,8 @@ class _BuyHistoryScreenState extends State<BuyHistoryScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    AppHelpers.getTranslation(TrKeys.status),
+                                    AppHelpers.getTranslation(
+                                        AppLocalizations.of(context)!.status),
                                     style: AppStyle.interRegular(
                                       size: 12.sp,
                                       color: AppStyle.textGrey,
@@ -221,12 +226,15 @@ class _BuyHistoryScreenState extends State<BuyHistoryScreen> {
                                   Text(
                                     buy.status == 1
                                         ? AppHelpers.getTranslation(
-                                            TrKeys.approved)
+                                            AppLocalizations.of(context)!
+                                                .approved)
                                         : buy.status == 2
                                             ? AppHelpers.getTranslation(
-                                                TrKeys.status)
+                                                AppLocalizations.of(context)!
+                                                    .status)
                                             : AppHelpers.getTranslation(
-                                                TrKeys.pending),
+                                                AppLocalizations.of(context)!
+                                                    .pending),
                                     style: AppStyle.interRegular(
                                       size: 16.sp,
                                       color: AppStyle.black,

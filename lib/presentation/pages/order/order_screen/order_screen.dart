@@ -37,6 +37,7 @@ import '../order_type/order_type.dart';
 import '../order_check/widgets/rating_page.dart';
 import 'widgets/order_carts.dart';
 import 'widgets/order_status.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class OrderPage extends ConsumerStatefulWidget {
@@ -304,7 +305,7 @@ class _OrderPageState extends ConsumerState<OrderPage>
         l.Lottie.asset('assets/lottie/girl_empty.json'),
         24.verticalSpace,
         Text(
-          AppHelpers.getTranslation(TrKeys.cartIsEmpty),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!.cart_is_empty/*TrKeys.cartIsEmpty*/),
           style: AppStyle.interSemi(size: 18.sp),
         ),
       ],

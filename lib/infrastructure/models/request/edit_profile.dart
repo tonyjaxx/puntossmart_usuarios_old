@@ -33,8 +33,8 @@ class EditProfile {
     if (email != null) data['email'] = email;
     if (lastname != null) {
       data['birthday'] = birthday!.contains(" ")
-        ? birthday?.substring(0, birthday?.indexOf(" "))
-        : birthday;
+          ? birthday?.substring(0, birthday?.indexOf(" "))
+          : birthday;
     }
     if (gender != null) data['gender'] = gender;
     if (images != null && images!.isNotEmpty) data["images"] = [images];

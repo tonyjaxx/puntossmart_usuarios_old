@@ -9,6 +9,7 @@ import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/pages/profile/buy_history_screen.dart';
 import 'package:puntossmart/presentation/pages/profile/controller/package_controller.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BuyPointsScreen extends StatefulWidget {
   const BuyPointsScreen({
@@ -57,7 +58,7 @@ class _BuyPointsScreenState extends State<BuyPointsScreen> {
               ),
             ),
             title: Text(
-              'Buy Puntos Smart',
+              AppLocalizations.of(context)!.buy_points,
               style: GoogleFonts.inter(
                 fontWeight: FontWeight.w600,
                 fontSize: 18.0,
@@ -93,7 +94,7 @@ class _BuyPointsScreenState extends State<BuyPointsScreen> {
             if (packages.isEmpty) {
               return Center(
                 child: Text(
-                  'No Package Found',
+                  AppLocalizations.of(context)!.no_package_found,
                   style: GoogleFonts.inter(
                     fontWeight: FontWeight.w600,
                     fontSize: 18.0,
@@ -132,7 +133,8 @@ class _BuyPointsScreenState extends State<BuyPointsScreen> {
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Text(
-                                      "Are you sure to buy this Puntos Smart?",
+                                      AppLocalizations.of(context)!
+                                          .are_you_sure_buy_puntos_smart,
                                       style: GoogleFonts.inter(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 16.0,
@@ -168,7 +170,9 @@ class _BuyPointsScreenState extends State<BuyPointsScreen> {
                                                   ),
                                                 )
                                               : CustomButton(
-                                                  title: "Yes",
+                                                  title: AppLocalizations.of(
+                                                          context)!
+                                                      .yes,
                                                   onPressed: () {
                                                     packageController
                                                         .sendBuyRequest(
@@ -235,7 +239,7 @@ class _BuyPointsScreenState extends State<BuyPointsScreen> {
                       children: [
                         Text(
                           "$points",
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.bungee(
                             fontWeight: FontWeight.w500,
                             fontSize: 22.0,
                             color: AppStyle.white,
@@ -245,10 +249,10 @@ class _BuyPointsScreenState extends State<BuyPointsScreen> {
                           width: 8,
                         ),
                         Text(
-                          "Punto Smart",
-                          style: GoogleFonts.inter(
+                          AppLocalizations.of(context)!.puntos_smart,
+                          style: GoogleFonts.bungee(
                             fontWeight: FontWeight.w700,
-                            fontSize: 28.0,
+                            fontSize: 26.0,
                             color: AppStyle.brandGreen,
                           ),
                         ),
@@ -261,7 +265,7 @@ class _BuyPointsScreenState extends State<BuyPointsScreen> {
                     ),
                     Text(
                       packageName,
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.bungee(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.0,
                         color: AppStyle.black,
@@ -279,7 +283,7 @@ class _BuyPointsScreenState extends State<BuyPointsScreen> {
                       ),
                       child: Text(
                         "$pens PEN",
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.bungee(
                           fontWeight: FontWeight.w400,
                           fontSize: 15.0,
                           color: AppStyle.black,
