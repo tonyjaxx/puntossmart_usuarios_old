@@ -105,8 +105,11 @@ class EditProfileNotifier extends StateNotifier<EditProfileState> {
         birthday: state.birth.isEmpty ? user.birthday : state.birth,
         phone: user.phone,
         email: user.email,
-        secondPhone: state.secondPhone,
+        secondPhone: state.secondPhone, //04-08
         images: state.url.isEmpty ? user.img ?? "" : state.url,
+        // images: [
+        //   "https://api.puntossmart.com/storage/images/shops/logo/141-1722372713.webp"
+        // ], //state.url.isEmpty ? [user.img! ""] ?? [] : state.url,
         gender: state.gender.isEmpty ? user.gender : state.gender,
       ));
       response.when(

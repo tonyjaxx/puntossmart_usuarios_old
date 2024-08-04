@@ -65,24 +65,45 @@ class _RegisterConfirmationPageState
     final bool isDarkMode = LocalStorage.getAppThemeMode();
     final bool isLtr = LocalStorage.getLangLtr();
     ref.listen(registerConfirmationProvider, (previous, next) {
+      //si la verificacion fue correcta
       if (previous!.isSuccess != next.isSuccess && next.isSuccess) {
-        Navigator.pop(context);
-        AppHelpers.showCustomModalBottomSheet(
-          context: context,
-          modal: const RegisterPage(
-            isOnlyEmail: false,
-          ),
-          isDarkMode: isDarkMode,
-        );
+        // Navigator.pop(context);
+        // AppHelpers.showCustomModalBottomSheet(
+        //   context: context,
+        //   modal: const RegisterPage(
+        //     isOnlyEmail: false,
+        //   ),
+        //   isDarkMode: isDarkMode,
+        // );
+        if (!widget.editPhone && !widget.isResetPassword) {
+          Navigator.pop(context);
+          AppHelpers.showCustomModalBottomSheet(
+            context: context,
+            modal: const RegisterPage(
+              isOnlyEmail: false,
+            ),
+            isDarkMode: isDarkMode,
+          );
+        } else if (widget.editPhone) {
+          Navigator.pop(context);
+        }
       }
       if (previous.isResetPasswordSuccess != next.isResetPasswordSuccess &&
           next.isResetPasswordSuccess) {
-        Navigator.pop(context);
-        AppHelpers.showCustomModalBottomSheet(
-          context: context,
-          modal: const SetPasswordPage(),
-          isDarkMode: isDarkMode,
-        );
+        if (widget.isResetPassword) {
+          Navigator.pop(context);
+          AppHelpers.showCustomModalBottomSheet(
+            context: context,
+            modal: const SetPasswordPage(),
+            isDarkMode: isDarkMode,
+          );
+        }
+        // Navigator.pop(context);
+        // AppHelpers.showCustomModalBottomSheet(
+        //   context: context,
+        //   modal: const SetPasswordPage(),
+        //   isDarkMode: isDarkMode,
+        // );
       }
     });
     return Directionality(
@@ -218,6 +239,9 @@ class _RegisterConfirmationPageState
                                 AppLocalizations.of(context)!.confirm),
                             onPressed: () {
                               if (state.confirmCode.length == 6) {
+                                // if(widget.editPhone){
+
+                                // }
                                 if (widget.isResetPassword) {
                                   widget.verificationId.isEmpty
                                       ? notifier.confirmCodeResetPassword(

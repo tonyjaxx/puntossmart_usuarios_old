@@ -112,6 +112,7 @@ flutter:
     - assets/temp/
     - assets/images/ui3.png
     - assets/json/
+    
 
 flutter_icons:
   android: false

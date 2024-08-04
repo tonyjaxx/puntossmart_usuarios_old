@@ -241,6 +241,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                                 hint: "+51 987654321",
                                 initialText: user?.phone ?? "",
                                 validation: AppValidators.isNotEmptyValidator,
+                                //onChanged: event.setPhone,
                                 onTap: () {
                                   AppHelpers.showCustomModalBottomSheet(
                                       context: context,

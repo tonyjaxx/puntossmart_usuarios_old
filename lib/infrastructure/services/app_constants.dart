@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class AppConstants {
   AppConstants._();
 
@@ -49,7 +50,11 @@ class AppConstants {
 
   /// api urls
   static const String drawingBaseUrl = 'https://api.openrouteservice.org';
+
   static const String baseUrl = 'https://api.puntossmart.com';
+
+  /// 04-08
+  ///static const String baseUrl = 'https://44e7-201-218-156-27.ngrok-free.app';
   static const String googleApiKey = 'AIzaSyDZQUsmwnkCmD3HMNFCABo8YSE54FCTFYo';
   static const String privacyPolicyUrl = '$baseUrl/privacy-policy';
   static const String adminPageUrl = 'https://admin.puntossmart.com';

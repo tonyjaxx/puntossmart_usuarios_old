@@ -62,7 +62,8 @@ class SurveyQuestionAnswerScreen extends StatelessWidget {
             );
           } else if (shopSurveyController.surveyQuestionAnswerModel.value ==
               null) {
-            return const Center(child: Text("No Survey Question Found"));
+            return const Center(
+                child: Text("No se encontro la pregunta de la encuesta"));
           } else {
             return Padding(
               padding:
@@ -150,18 +151,18 @@ class SurveyQuestionAnswerScreen extends StatelessWidget {
                               final totalPoints =
                                   shopSurveyController.calculateTotalPoints();
                               if (totalPoints > 0) {
-                                print("TOTAL POINTS ARE $totalPoints");
+                                print("CANTIDAD DE PUNTOS $totalPoints");
                                 shopSurveyController.submitSurvey(
                                   context: context,
                                   surveyID: surveyID,
                                   points: totalPoints.toString(),
                                   note:
-                                      "You get $totalPoints points from survey $surveyTitle",
+                                      "Obtuviste $totalPoints puntos por responder la encuesta de $surveyTitle",
                                 );
                               } else {
-                                print("Please answer at least one question");
+                                print("Porfavor responde almenos una pregunta");
                               }
-                              print("Total Points: $totalPoints");
+                              print("Puntos Totales: $totalPoints");
                             });
                   })
                 ],

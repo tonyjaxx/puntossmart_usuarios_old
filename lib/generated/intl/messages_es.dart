@@ -171,7 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete_user": MessageLookupByLibrary.simpleMessage("Eliminar Usuario"),
         "delivery": MessageLookupByLibrary.simpleMessage("Entrega"),
         "delivery_address":
-            MessageLookupByLibrary.simpleMessage("Dirección de entrega"),
+            MessageLookupByLibrary.simpleMessage("Mi ubicación SMART"),
         "delivery_fee":
             MessageLookupByLibrary.simpleMessage("Tarifa de Entrega"),
         "delivery_price": MessageLookupByLibrary.simpleMessage("Precio"),

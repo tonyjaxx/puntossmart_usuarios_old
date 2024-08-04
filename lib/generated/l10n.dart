@@ -650,10 +650,10 @@ class S {
     );
   }
 
-  /// `Dirección de entrega`
+  /// `Mi ubicación SMART`
   String get delivery_address {
     return Intl.message(
-      'Dirección de entrega',
+      'Mi ubicación SMART',
       name: 'delivery_address',
       desc: '',
       args: [],
