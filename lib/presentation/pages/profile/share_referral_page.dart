@@ -44,11 +44,11 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
     super.initState();
   }
 
-  final List<Map<String, String>> data = [
-    {'date': '07/08/2020 04:00 PM', 'name': 'Bryan Rafael Andia'},
-    {'date': '01/08/2020 04:30 PM', 'name': 'Nicole Karen'},
-    {'date': '02/08/2020 05:00 PM', 'name': 'Piero '},
-    {'date': '06/08/2020 04:00 PM', 'name': 'Tony Agustin'},
+  final List<Map<String, dynamic>> data = [
+    {'date': '07/08/2020 04:00 PM', 'name': 'Bryan Rafael Andia', 'points': 10},
+    {'date': '01/08/2020 04:30 PM', 'name': 'Nicole Karen', 'points': 40},
+    {'date': '02/08/2020 05:00 PM', 'name': 'Piero ', 'points': 60},
+    {'date': '06/08/2020 04:00 PM', 'name': 'Tony Agustin', 'points': 70},
   ];
 
   @override
@@ -274,37 +274,46 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                                         scrollDirection: Axis.vertical,
                                         child: Column(
                                           children: [
-                                            Padding(
-                                              padding: EdgeInsets.all(16.r),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                            ListTile(
+                                              // contentPadding:
+                                              //     EdgeInsets.all(16.r),
+                                              title: Text(
+                                                intl.DateFormat(
+                                                        "dd/MM/yyyy h:mm a")
+                                                    .format(
+                                                  DateTime.tryParse(
+                                                              item['date']!)
+                                                          ?.toLocal() ??
+                                                      DateTime.now(),
+                                                ),
+                                                style: TextStyle(
+                                                  fontSize: 12.sp,
+                                                  color: Colors.grey,
+                                                ),
+                                              ),
+                                              subtitle: Text(
+                                                item['name']!,
+                                                style: TextStyle(
+                                                  fontSize: 16.sp,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                              trailing: Row(
+                                                mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   Text(
-                                                    intl.DateFormat(
-                                                            "dd/MM/yyyy h:mm a")
-                                                        .format(
-                                                      DateTime.tryParse(
-                                                                  item['date']!)
-                                                              ?.toLocal() ??
-                                                          DateTime.now(),
-                                                    ),
+                                                    '+${item['points']} Puntos',
                                                     style: TextStyle(
-                                                      fontSize: 12.sp,
-                                                      color: Colors.grey,
-                                                    ),
-                                                  ),
-                                                  SizedBox(height: 4.h),
-                                                  Text(
-                                                    item['name']!,
-                                                    style: TextStyle(
+                                                      color: Colors.green,
                                                       fontSize: 16.sp,
-                                                      color: Colors.black,
                                                     ),
                                                   ),
+                                                  SizedBox(
+                                                      width: 8
+                                                          .r), // Ajusta el tamaño del espacio entre el texto y el 'hola'
                                                 ],
                                               ),
-                                            ),
+                                            )
                                           ],
                                         ),
                                       ),
