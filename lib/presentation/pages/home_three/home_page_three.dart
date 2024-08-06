@@ -257,7 +257,8 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                       : Container(
                           margin: const EdgeInsets.symmetric(
                               horizontal: 15, vertical: 9),
-                          height: MediaQuery.of(context).size.height * 0.22,
+                          height: MediaQuery.of(context).size.height *
+                              0.20, //ancho de la caja
                           child: ListView.builder(
                             itemCount:
                                 shopSurveyController.shopSurveyModelList.length,
@@ -297,7 +298,7 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                                         BorderRadius.all(Radius.circular(10.0)),
                                   ),
                                   height: //0.20
-                                      MediaQuery.of(context).size.height * 0.22,
+                                      MediaQuery.of(context).size.height * 0.20,
                                   width: //40
                                       MediaQuery.of(context).size.width * 0.40,
                                   child: Column(
@@ -327,34 +328,16 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          // Text(
-                                          //   // (survey.shopTitle?.length ?? 0) > 15
-                                          //   //     ? "${survey.shopTitle?.substring(0, 15) ?? " "}.."
-                                          //   //     : survey.shopTitle ?? "",
-                                          //   survey.shopTitle ?? "",
-                                          //   maxLines: 2, // Limitar a dos líneas
-                                          //   overflow: TextOverflow.ellipsis,
-                                          //   style: AppStyle.interSemi(
-                                          //     size: 15,
-                                          //     color: AppStyle.black,
-                                          //   ),
-                                          // ),
-                                          // if (survey.verify == 1)
-                                          //   Padding(
-                                          //     padding:
-                                          //         EdgeInsets.only(left: 4.r),
-                                          //     child: const BadgeItem(),
-                                          //   ),
-                                          Expanded(
-                                            child: Text(
-                                              survey.shopTitle ?? "",
-                                              maxLines: 2,
-                                              //overflow: TextOverflow.ellipsis,
-                                              style: AppStyle.interSemi(
-                                                size: 15,
-                                                color: AppStyle.black,
-                                              ),
-                                              textAlign: TextAlign.center,
+                                          Text(
+                                            (survey.shopTitle?.length ?? 0) > 12
+                                                ? "${survey.shopTitle?.substring(0, 12) ?? " "}.."
+                                                : survey.shopTitle ?? "",
+                                            //survey.shopTitle ?? "",
+                                            maxLines: 2, // Limitar a dos líneas
+                                            overflow: TextOverflow.ellipsis,
+                                            style: AppStyle.interSemi(
+                                              size: 15,
+                                              color: AppStyle.black,
                                             ),
                                           ),
                                           if (survey.verify == 1)
@@ -363,6 +346,24 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                                                   EdgeInsets.only(left: 4.r),
                                               child: const BadgeItem(),
                                             ),
+                                          // Expanded(
+                                          //   child: Text(
+                                          //     survey.shopTitle ?? "",
+                                          //     maxLines: 2,
+                                          //     //overflow: TextOverflow.ellipsis,
+                                          //     style: AppStyle.interSemi(
+                                          //       size: 15,
+                                          //       color: AppStyle.black,
+                                          //     ),
+                                          //     textAlign: TextAlign.center,
+                                          //   ),
+                                          // ),
+                                          // if (survey.verify == 1)
+                                          //   Padding(
+                                          //     padding:
+                                          //         EdgeInsets.only(left: 4.r),
+                                          //     child: const BadgeItem(),
+                                          //   ),
                                         ],
                                       ),
                                       // Text(
@@ -380,7 +381,7 @@ class _HomePageState extends ConsumerState<HomePageThree> {
                                       Expanded(
                                         child: ScrollingText(
                                           text: survey.shopDescription ??
-                                              "No description available",
+                                              "Sin descripción disponible",
                                           style: AppStyle.interNormal(
                                             size: 14,
                                             color: AppStyle.black,

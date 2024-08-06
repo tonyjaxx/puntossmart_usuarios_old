@@ -147,6 +147,7 @@ class _NotificationListPageState extends ConsumerState<NotificationListPage> {
                 ],
               ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        //btn retroceder y leer mas
         floatingActionButton: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Row(
@@ -191,6 +192,8 @@ class _NotificationListPageState extends ConsumerState<NotificationListPage> {
                   children: [
                     Text(
                       '${notification.client?.firstname ?? ''} ${notification.client?.lastname?.substring(0, 1) ?? ''}.',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
                       style:
                           AppStyle.interSemi(size: 16, color: AppStyle.black),
                     ),
@@ -212,7 +215,7 @@ class _NotificationListPageState extends ConsumerState<NotificationListPage> {
                   SizedBox(
                     width: notification.client != null
                         ? MediaQuery.sizeOf(context).width / 2
-                        : null,
+                        : MediaQuery.sizeOf(context).width / 1.5,
                     child: Text(
                       '${notification.body ?? notification.title}',
                       overflow: TextOverflow.ellipsis,

@@ -24,13 +24,15 @@ class AppBarBottomSheet extends StatelessWidget {
         ),
         Text(
           title,
+          //textAlign: TextAlign.right,
           style: AppStyle.interNoSemi(
               size: 20, color: AppStyle.black, letterSpacing: -0.01),
         ),
         Container(
-          width: 24.w,
+          width: 2.w,
           height: 24.h,
           margin: const EdgeInsets.all(8),
+          //color: AppStyle.black,
         ),
       ],
     );

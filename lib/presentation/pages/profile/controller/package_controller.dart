@@ -88,7 +88,7 @@ class PackageController extends GetxController {
         getBuyHistory();
         Navigator.of(context).pop();
         openWhatsapp(
-          phone: "+51904244903",
+          phone: "+51904244903", //numero bot smarter
           packageName: packageName,
           points: "$points",
           pens: "$pens",

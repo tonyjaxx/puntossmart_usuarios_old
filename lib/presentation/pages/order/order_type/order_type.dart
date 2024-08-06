@@ -30,8 +30,8 @@ class OrderType extends StatefulWidget {
 
 class _OrderPageState extends State<OrderType> {
   final _tabs = [
-    Tab(text: AppHelpers.getTranslation(TrKeys.delivery)),
-    Tab(text: AppHelpers.getTranslation(TrKeys.pickup)),
+    //Tab(text: AppHelpers.getTranslation("Delivery" /*TrKeys.delivery*/)),
+    Tab(text: AppHelpers.getTranslation("Recoger en" /*TrKeys.pickup*/)),
   ];
 
   @override
@@ -54,12 +54,12 @@ class _OrderPageState extends State<OrderType> {
             SizedBox(
               height: widget.sendUser ? 550.r : 496.r,
               child: TabBarView(controller: widget.tabController, children: [
-                OrderDelivery(
-                  onChange: widget.onChange,
-                  getLocation: widget.getLocation,
-                  shopId: widget.shopId,
-                ),
-                const OrderPickUp(),
+                // OrderDelivery(
+                //   onChange: widget.onChange,
+                //   getLocation: widget.getLocation,
+                //   shopId: widget.shopId,
+                // ),
+                const OrderPickUp(), //recoger en tienda
               ]),
             )
           ],

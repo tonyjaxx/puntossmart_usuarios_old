@@ -100,7 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "buy_points":
             MessageLookupByLibrary.simpleMessage("Comprar Puntos Smart"),
         "call_center_restaurant": MessageLookupByLibrary.simpleMessage(
-            "Centro de Llamadas del Restaurante"),
+            "Centro de Llamadas del Servicio"),
         "call_the_driver": MessageLookupByLibrary.simpleMessage(""),
         "call_to_support":
             MessageLookupByLibrary.simpleMessage("Llamar al Soporte"),
@@ -171,7 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete_user": MessageLookupByLibrary.simpleMessage("Eliminar Usuario"),
         "delivery": MessageLookupByLibrary.simpleMessage("Entrega"),
         "delivery_address":
-            MessageLookupByLibrary.simpleMessage("Mi ubicación SMART"),
+            MessageLookupByLibrary.simpleMessage("Mi ubicación Smart"),
         "delivery_fee":
             MessageLookupByLibrary.simpleMessage("Tarifa de Entrega"),
         "delivery_price": MessageLookupByLibrary.simpleMessage("Precio"),

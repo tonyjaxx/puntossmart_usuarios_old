@@ -6,7 +6,7 @@ import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/components/custom_network_image.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../infrastructure/services/app_helpers.dart';
 import '../../../theme/app_style.dart';
 
@@ -69,7 +69,8 @@ class BannerScreen extends StatelessWidget {
                   child: CustomButton(
                       background: AppStyle.transparent,
                       borderColor: AppStyle.tabBarBorderColor,
-                      title: AppHelpers.getTranslation(TrKeys.cancel),
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.cancel),
                       onPressed: () {
                         Navigator.pop(context);
                       }),
@@ -77,7 +78,8 @@ class BannerScreen extends StatelessWidget {
                 10.horizontalSpace,
                 Expanded(
                   child: CustomButton(
-                      title: AppHelpers.getTranslation(TrKeys.orderNow),
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.order_now),
                       onPressed: () {
                         context.pushRoute(
                             ShopsBannerRoute(bannerId: bannerId, title: desc));

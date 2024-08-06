@@ -65,8 +65,8 @@ class ShopSurveyPage extends StatelessWidget {
               indicatorWeight: 3,
               indicatorColor: AppStyle.brandGreen,
               tabs: const [
-                Tab(text: 'Survey'),
-                Tab(text: 'My Survey'),
+                Tab(text: 'Encuestas'),
+                Tab(text: 'Mis Encuestas'),
               ],
             ),
           ),
@@ -99,7 +99,7 @@ class ShopSurveyPage extends StatelessWidget {
                                 true
                             ? Center(
                                 child: Text(
-                                  "No Survey Found",
+                                  "No se encontraron Encuestas",
                                   style: GoogleFonts.inter(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 16.0,
@@ -172,11 +172,15 @@ class ShopSurveyPage extends StatelessWidget {
                                               ),
                                               const SizedBox(height: 2),
                                               Text(survey?.surveyTitle ?? "",
+                                                  maxLines:
+                                                      1, // Limitar a dos líneas
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   style: GoogleFonts.inter(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14.0,
-                                                    color: AppStyle.black,
-                                                  ),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: 14.0,
+                                                      color: AppStyle.black),
                                                   textAlign: TextAlign.center),
                                               const SizedBox(height: 2),
                                               Row(
@@ -296,6 +300,9 @@ class ShopSurveyPage extends StatelessWidget {
                                             const SizedBox(height: 2),
                                             Text(
                                               survey?.surveyTitle ?? "",
+                                              maxLines:
+                                                  1, // Limitar a dos líneas
+                                              overflow: TextOverflow.ellipsis,
                                               style: GoogleFonts.inter(
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 14.0,

@@ -182,7 +182,7 @@ class ShopSurveyController extends GetxController {
         getSurveysByShopId(shopID: responseData['shop_id']);
         getUserCompletedSurveysByShop(shopID: responseData['shop_id']);
         AppHelpers.showCheckTopSnackBarDone(
-            context, "Survey submitted successfully.");
+            context, "Encuesta enviada con éxito.");
         Navigator.of(context).pop();
       } else {
         log('Request failed with status: ${response.statusCode}');

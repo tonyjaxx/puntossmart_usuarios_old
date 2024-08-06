@@ -6,6 +6,7 @@ import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';
 import '../../../theme/theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class NoConnectionPage extends ConsumerWidget {
@@ -25,7 +26,8 @@ class NoConnectionPage extends ConsumerWidget {
           ),
           const SizedBox(height: 20),
           Text(
-            AppHelpers.getTranslation(TrKeys.noInternetConnection),
+            AppHelpers.getTranslation(
+                AppLocalizations.of(context)!.no_internet_connection),
             style: AppStyle.interNoSemi(
               size: 18,
               color: AppStyle.black,

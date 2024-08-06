@@ -8,7 +8,7 @@ import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/pages/order/order_check/widgets/promo_code.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'payment_method.dart';
 import 'order_payment_container.dart';
 
@@ -68,7 +68,8 @@ class CardAndPromo extends StatelessWidget {
                               ?.payment
                               ?.tag ??
                           ""))
-                  : AppHelpers.getTranslation(TrKeys.noPaymentType),
+                  : AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.no_payment_type),
               isActive: ((AppHelpers.getPaymentType() == "admin")
                   ? (ref.watch(paymentProvider).payments.isNotEmpty)
                   : (ref
@@ -98,7 +99,8 @@ class CardAndPromo extends StatelessWidget {
                     : AppStyle.brandGreen,
               ),
               title: ref.watch(orderProvider).promoCode ??
-                  AppHelpers.getTranslation(TrKeys.youHavePromoCode),
+                  AppHelpers.getTranslation(
+                      AppLocalizations.of(context)!.you_have_promo_code),
             );
           }),
         ],

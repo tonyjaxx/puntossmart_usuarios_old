@@ -650,10 +650,10 @@ class S {
     );
   }
 
-  /// `Mi ubicación SMART`
+  /// `Mi ubicación Smart`
   String get delivery_address {
     return Intl.message(
-      'Mi ubicación SMART',
+      'Mi ubicación Smart',
       name: 'delivery_address',
       desc: '',
       args: [],
@@ -3242,10 +3242,10 @@ class S {
     );
   }
 
-  /// `Centro de Llamadas del Restaurante`
+  /// `Centro de Llamadas del Servicio`
   String get call_center_restaurant {
     return Intl.message(
-      'Centro de Llamadas del Restaurante',
+      'Centro de Llamadas del Servicio',
       name: 'call_center_restaurant',
       desc: '',
       args: [],

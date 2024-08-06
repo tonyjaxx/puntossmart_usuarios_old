@@ -12,6 +12,7 @@ import 'package:puntossmart/presentation/theme/app_style.dart';
 import '../../../../../infrastructure/services/tr_keys.dart';
 import 'order_container.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class OrderPickUp extends ConsumerStatefulWidget {
   const OrderPickUp({super.key});
 
@@ -42,8 +43,8 @@ class _OrderPickUpState extends ConsumerState<OrderPickUp> {
                         children: [
                           24.verticalSpace,
                           TitleAndIcon(
-                              title:
-                                  AppHelpers.getTranslation(TrKeys.branches)),
+                              title: AppHelpers.getTranslation(
+                                  AppLocalizations.of(context)!.branches)),
                           16.verticalSpace,
                           Expanded(
                             child: Consumer(builder: (context, ref, child) {
@@ -94,7 +95,8 @@ class _OrderPickUpState extends ConsumerState<OrderPickUp> {
                   height: 20.h,
                 ),
               ),
-              title: AppHelpers.getTranslation(AppLocalizations.of(context)!.delivery_address),
+              title: AppHelpers.getTranslation(
+                  AppLocalizations.of(context)!.delivery_address),
               description:
                   "${ref.watch(orderProvider).shopData?.translation?.address}",
             );

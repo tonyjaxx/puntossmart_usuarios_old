@@ -172,13 +172,13 @@ class _OrderProgressPageState extends ConsumerState<OrderProgressPage> {
                       refundModel: state.orderData?.refunds?.first,
                     )
                   : const SizedBox.shrink(),
-              OrderMap(
-                isLoading: state.isMapLoading,
-                polylineCoordinates: state.polylineCoordinates,
-                markers: Set<Marker>.of(state.markers.values),
-                latLng: LatLng(state.orderData?.shop?.location?.latitude ?? 0,
-                    state.orderData?.shop?.location?.longitude ?? 0),
-              ),
+              // OrderMap(
+              //   isLoading: state.isMapLoading,
+              //   polylineCoordinates: state.polylineCoordinates,
+              //   markers: Set<Marker>.of(state.markers.values),
+              //   latLng: LatLng(state.orderData?.shop?.location?.latitude ?? 0,
+              //       state.orderData?.shop?.location?.longitude ?? 0),
+              // ),
               24.verticalSpace,
               TitleAndIcon(
                 title: AppHelpers.getTranslation(

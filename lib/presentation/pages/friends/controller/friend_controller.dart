@@ -117,7 +117,7 @@ class FriendController extends GetxController {
       {required String uuid, required String points}) async {
     if (noteController.text.isEmpty) {
       Fluttertoast.showToast(
-          msg: "Please enter your note",
+          msg: "Porfavor ingrese una nota", //Please enter your note
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.TOP,
           timeInSecForIosWeb: 3,

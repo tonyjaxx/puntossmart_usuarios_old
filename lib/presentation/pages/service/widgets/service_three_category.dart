@@ -27,9 +27,9 @@ class ServiceThreeCategory extends StatelessWidget {
     return state.isCategoryLoading
         ? const CategoryShimmerThree()
         : Container(
-            height: state.categories.isNotEmpty ? 40.h : 0,
-            margin:
-                EdgeInsets.only(bottom: state.categories.isNotEmpty ? 26.h : 0),
+            height: state.categories.isNotEmpty ? 110.h : 0, //40
+            margin: EdgeInsets.only(
+                bottom: state.categories.isNotEmpty ? 5.h : 0), //16
             child: AnimationLimiter(
               child: ListView.builder(
                 padding: REdgeInsets.symmetric(horizontal: 12),
@@ -70,20 +70,25 @@ class ServiceThreeCategory extends StatelessWidget {
                                   radius: 12,
                                 );
                               },
-                              child: Container(
-                                width: 44.w,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 6.r, vertical: 4.r),
-                                decoration: BoxDecoration(
-                                  color: AppStyle.black,
-                                  borderRadius: BorderRadius.circular(14.r),
-                                ),
-                                child: Center(
-                                  child: SvgPicture.asset(
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Container(
+                                    width: 44.w,
+                                    height: 44
+                                        .w, // Definir un tamaño fijo para el ícono
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 6.r, vertical: 4.r),
+                                    decoration: BoxDecoration(
+                                      color: AppStyle.black,
+                                      borderRadius: BorderRadius.circular(14.r),
+                                    ),
+                                  ),
+                                  SvgPicture.asset(
                                     "assets/svgs/menu.svg",
                                     height: 18.r,
                                   ),
-                                ),
+                                ],
                               ),
                             ),
                           ),
