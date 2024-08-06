@@ -216,7 +216,6 @@ class OrderStatusScreen extends StatelessWidget {
                           ),
                         ),
                         OrderStatusItem(
-                          //knjt 05-08
                           icon: /*parcel
                               ? const Icon(FlutterRemix.truck_fill)
                               : SvgPicture.asset(
