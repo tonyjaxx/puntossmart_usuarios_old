@@ -216,34 +216,39 @@ class OrderStatusScreen extends StatelessWidget {
                           ),
                         ),
                         OrderStatusItem(
-                          icon: parcel
+                          //knjt 05-08
+                          icon: /*parcel
                               ? const Icon(FlutterRemix.truck_fill)
                               : SvgPicture.asset(
                                   status == OrderStatus.onWay
                                       ? "assets/svgs/delivery2.svg"
                                       : "assets/svgs/delivery.svg",
                                   width: 20.w,
-                                ),
+                                )*/
+                              Icon(
+                            Icons.flag,
+                            size: 16.r,
+                          ),
                           isActive: status == OrderStatus.onWay,
                           isProgress: status == OrderStatus.ready ||
                               status == OrderStatus.delivered,
                         ),
-                        AnimatedContainer(
-                          duration: const Duration(milliseconds: 500),
-                          height: 6.h,
-                          width: 12.w,
-                          decoration: const BoxDecoration(
-                            color: AppStyle.white,
-                          ),
-                        ),
-                        OrderStatusItem(
-                          icon: Icon(
-                            Icons.flag,
-                            size: 16.r,
-                          ),
-                          isActive: false,
-                          isProgress: false,
-                        ),
+                        // AnimatedContainer(
+                        //   duration: const Duration(milliseconds: 500),
+                        //   height: 6.h,
+                        //   width: 12.w,
+                        //   decoration: const BoxDecoration(
+                        //     color: AppStyle.white,
+                        //   ),
+                        // ),
+                        // OrderStatusItem(
+                        //   icon: Icon(
+                        //     Icons.flag,
+                        //     size: 16.r,
+                        //   ),
+                        //   isActive: false,
+                        //   isProgress: false,
+                        // ),
                       ],
                     )
         ],
