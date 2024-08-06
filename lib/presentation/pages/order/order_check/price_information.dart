@@ -34,7 +34,8 @@ class PriceInformation extends StatelessWidget {
           ),
         ),
         16.verticalSpace,
-        // TitleAndPrice(//precio delivery se va , sale como precio 05-08
+        // TitleAndPrice(
+        //   //precio delivery se va , sale como precio 05-08
         //   title: AppHelpers.getTranslation(
         //       AppLocalizations.of(context)!.delivery_price),
         //   rightTitle: AppHelpers.numberFormat(

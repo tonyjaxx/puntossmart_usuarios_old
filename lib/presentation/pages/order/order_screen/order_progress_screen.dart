@@ -179,7 +179,7 @@ class _OrderProgressPageState extends ConsumerState<OrderProgressPage> {
               //   latLng: LatLng(state.orderData?.shop?.location?.latitude ?? 0,
               //       state.orderData?.shop?.location?.longitude ?? 0),
               // ),
-              24.verticalSpace,
+              // 24.verticalSpace,
               TitleAndIcon(
                 title: AppHelpers.getTranslation(
                     AppLocalizations.of(context)!.composition_order),
