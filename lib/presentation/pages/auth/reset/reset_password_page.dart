@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:puntossmart/game/const/colors.dart';
 import 'package:puntossmart/infrastructure/models/data/user.dart';
 import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/local_storage.dart';
@@ -53,7 +54,7 @@ class ResetPasswordPage extends ConsumerWidget {
                   topLeft: Radius.circular(16.r),
                   topRight: Radius.circular(16.r),
                 )),
-            width: double.infinity,
+            width: double.infinity, //tamaño de la caja
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: SingleChildScrollView(

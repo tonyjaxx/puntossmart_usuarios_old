@@ -15,6 +15,7 @@ import 'package:puntossmart/presentation/theme/theme.dart';
 import '../../../../../../application/payment_methods/payment_notifier.dart';
 import '../../../../../infrastructure/services/local_storage.dart';
 import '../../../../components/select_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PaymentMethods extends ConsumerStatefulWidget {
   final ValueChanged<PaymentData>? payLater;
@@ -76,7 +77,7 @@ class _PaymentMethodsState extends ConsumerState<PaymentMethods> {
                           14.verticalSpace,
                           TitleAndIcon(
                             title: AppHelpers.getTranslation(
-                                TrKeys.paymentMethods),
+                                AppLocalizations.of(context)!.payment_methods),
                           ),
                           24.verticalSpace,
                           ((AppHelpers.getPaymentType() == "admin")
@@ -121,7 +122,8 @@ class _PaymentMethodsState extends ConsumerState<PaymentMethods> {
                                         bottom: 32.h, left: 24.w, right: 24.w),
                                     child: Text(
                                       AppHelpers.getTranslation(
-                                          TrKeys.paymentTypeIsNotAdded),
+                                          AppLocalizations.of(context)!
+                                              .payment_type_is_not_added),
                                       style: AppStyle.interSemi(
                                         size: 16,
                                         color: AppStyle.textGrey,
@@ -134,7 +136,8 @@ class _PaymentMethodsState extends ConsumerState<PaymentMethods> {
                             Padding(
                               padding: EdgeInsets.only(bottom: 32.r),
                               child: CustomButton(
-                                  title: AppHelpers.getTranslation(TrKeys.pay),
+                                  title: AppHelpers.getTranslation(
+                                      AppLocalizations.of(context)!.pay),
                                   onPressed: () {
                                     context.popRoute();
                                     widget.payLater?.call(PaymentData(

@@ -9,7 +9,7 @@ import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/components/text_fields/outline_bordered_text_field.dart';
 import 'package:puntossmart/presentation/components/title_icon.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../../application/promo_code/promo_code_notifier.dart';
 import '../../../../../../application/promo_code/promo_code_provider.dart';
 import '../../../../../application/shop_order/shop_order_provider.dart';
@@ -86,9 +86,11 @@ class _PromoCodeState extends ConsumerState<PromoCodeScreen> {
                   ),
                   14.verticalSpace,
                   TitleAndIcon(
-                      title: AppHelpers.getTranslation(TrKeys.addPromoCode),
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.add_promo_code),
                       paddingHorizontalSize: 0,
-                      rightTitle: AppHelpers.getTranslation(TrKeys.clear),
+                      rightTitle: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.clear),
                       rightTitleColor: AppStyle.red,
                       onRightTap: () {
                         promoCodeController.clear();
@@ -96,7 +98,8 @@ class _PromoCodeState extends ConsumerState<PromoCodeScreen> {
                   24.verticalSpace,
                   OutlinedBorderTextField(
                     textController: promoCodeController,
-                    label: AppHelpers.getTranslation(TrKeys.promoCode)
+                    label: AppHelpers.getTranslation(
+                            AppLocalizations.of(context)!.promo_code)
                         .toUpperCase(),
                     onChanged: (s) {
                       _delayed.run(() {
@@ -131,7 +134,8 @@ class _PromoCodeState extends ConsumerState<PromoCodeScreen> {
                           : AppStyle.borderColor,
                       textColor:
                           state.isActive ? AppStyle.black : AppStyle.textGrey,
-                      title: AppHelpers.getTranslation(TrKeys.save),
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.btn_save),
                       onPressed: () {
                         if (state.isActive) {
                           ref

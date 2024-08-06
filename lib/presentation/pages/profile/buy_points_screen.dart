@@ -265,7 +265,7 @@ class _BuyPointsScreenState extends State<BuyPointsScreen> {
                     ),
                     Text(
                       packageName,
-                      style: GoogleFonts.bungee(
+                      style: GoogleFonts.inter(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.0,
                         color: AppStyle.black,

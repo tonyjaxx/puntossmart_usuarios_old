@@ -9,7 +9,7 @@ import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/pages/order/order_check/widgets/refund_screen.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../application/order/order_provider.dart';
 
 class OrderButton extends StatelessWidget {
@@ -82,7 +82,8 @@ class OrderButton extends StatelessWidget {
             isLoading: isLoading,
             background: AppStyle.black,
             textColor: AppStyle.white,
-            title: AppHelpers.getTranslation(TrKeys.callCenterRestaurant),
+            title: AppHelpers.getTranslation(
+                AppLocalizations.of(context)!.call_center_restaurant),
             onPressed: callShop,
           );
         case OrderStatus.ready:
@@ -90,7 +91,8 @@ class OrderButton extends StatelessWidget {
             isLoading: isLoading,
             background: AppStyle.black,
             textColor: AppStyle.white,
-            title: AppHelpers.getTranslation(TrKeys.callCenterRestaurant),
+            title: AppHelpers.getTranslation(
+                AppLocalizations.of(context)!.call_center_restaurant),
             onPressed: callShop,
           );
         case OrderStatus.delivered:
@@ -155,7 +157,7 @@ class OrderButton extends StatelessWidget {
                   : AppStyle.textGrey)
               : AppStyle.black,
           title:
-              "${AppHelpers.getTranslation(TrKeys.continueToPayment)} — ${AppHelpers.numberFormat(number: ref.watch(orderProvider).calculateData?.totalPrice)}",
+              "${AppHelpers.getTranslation(AppLocalizations.of(context)!.continue_to_payment)} — ${AppHelpers.numberFormat(number: ref.watch(orderProvider).calculateData?.totalPrice)}",
           onPressed: createOrder,
         );
       });

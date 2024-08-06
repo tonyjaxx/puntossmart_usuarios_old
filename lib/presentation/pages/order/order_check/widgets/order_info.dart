@@ -6,6 +6,7 @@ import 'package:puntossmart/application/order/order_provider.dart';
 import 'package:puntossmart/infrastructure/services/app_helpers.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/theme/theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OrderInfo extends StatelessWidget {
   const OrderInfo({super.key});
@@ -62,7 +63,8 @@ class OrderInfo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppHelpers.getTranslation(TrKeys.deliveryAddress),
+                  AppHelpers.getTranslation(AppLocalizations.of(context)!
+                      .delivery_address), //orden pedido en espera 05-08 knjt
                   style: AppStyle.interRegular(
                     size: 14,
                     color: AppStyle.textGrey,

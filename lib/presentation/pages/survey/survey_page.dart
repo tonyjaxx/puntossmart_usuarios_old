@@ -8,6 +8,7 @@ import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/buttons/custom_button.dart';
 import 'package:puntossmart/presentation/pages/survey/create_new_survey_screen.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SurveyPage extends StatefulWidget {
   const SurveyPage({super.key});
@@ -62,8 +63,12 @@ class _SurveyPageState extends State<SurveyPage> {
               indicatorWeight: 3,
               indicatorColor: AppStyle.brandGreen,
               tabs: [
-                Tab(text: AppHelpers.getTranslation(TrKeys.statistics)),
-                Tab(text: AppHelpers.getTranslation(TrKeys.surveys)),
+                Tab(
+                    text: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.statistics)),
+                Tab(
+                    text: AppHelpers.getTranslation(
+                        AppLocalizations.of(context)!.surveys)),
               ],
             ),
             actions: [

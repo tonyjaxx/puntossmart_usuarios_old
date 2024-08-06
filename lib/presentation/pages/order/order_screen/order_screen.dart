@@ -202,7 +202,8 @@ class _OrderPageState extends ConsumerState<OrderPage>
                         FlutterRemix.gamepad_fill,
                         color: AppStyle.black,
                       ),
-                      title: AppHelpers.getTranslation(TrKeys.wantToPlayGame),
+                      title: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.want_to_play_game),
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
@@ -242,34 +243,34 @@ class _OrderPageState extends ConsumerState<OrderPage>
               child: Column(
                 children: [
                   16.verticalSpace,
-                  state.orderData != null
-                      ? OrderMap(
-                          isLoading: state.isMapLoading,
-                          polylineCoordinates: state.polylineCoordinates,
-                          markers: Set<Marker>.of(state.markers.values),
-                          latLng: LatLng(
-                              state.orderData?.shop?.location?.latitude ?? 0,
-                              state.orderData?.shop?.location?.longitude ?? 0),
-                        )
-                      : OrderType(
-                          sendUser: ref.watch(orderProvider).sendOtherUser,
-                          shopId: state.shopData?.id ?? 0,
-                          tabController: _tabController,
-                          onChange: (s) => event.changeActive(s),
-                          getLocation: () {
-                            getAddress();
-                            event.getCalculate(
-                              isLoading: false,
-                              context: context,
-                              cartId: ref.read(shopOrderProvider).cart?.id ?? 0,
-                              long: long,
-                              lat: lat,
-                              type: _tabController.index == 0
-                                  ? DeliveryTypeEnum.delivery
-                                  : DeliveryTypeEnum.pickup,
-                            );
-                          },
-                        ),
+                  // state.orderData != null
+                  //     ? OrderMap(
+                  //         isLoading: state.isMapLoading,
+                  //         polylineCoordinates: state.polylineCoordinates,
+                  //         markers: Set<Marker>.of(state.markers.values),
+                  //         latLng: LatLng(
+                  //             state.orderData?.shop?.location?.latitude ?? 0,
+                  //             state.orderData?.shop?.location?.longitude ?? 0),
+                  //       )
+                  //     : OrderType(
+                  //         sendUser: ref.watch(orderProvider).sendOtherUser,
+                  //         shopId: state.shopData?.id ?? 0,
+                  //         tabController: _tabController,
+                  //         onChange: (s) => event.changeActive(s),
+                  //         getLocation: () {
+                  //           getAddress();
+                  //           event.getCalculate(
+                  //             isLoading: false,
+                  //             context: context,
+                  //             cartId: ref.read(shopOrderProvider).cart?.id ?? 0,
+                  //             long: long,
+                  //             lat: lat,
+                  //             type: _tabController.index == 0
+                  //                 ? DeliveryTypeEnum.delivery
+                  //                 : DeliveryTypeEnum.pickup,
+                  //           );
+                  //         },
+                  //       ),
                   Stack(
                     children: [
                       OrderCarts(
@@ -305,7 +306,8 @@ class _OrderPageState extends ConsumerState<OrderPage>
         l.Lottie.asset('assets/lottie/girl_empty.json'),
         24.verticalSpace,
         Text(
-          AppHelpers.getTranslation(AppLocalizations.of(context)!.cart_is_empty/*TrKeys.cartIsEmpty*/),
+          AppHelpers.getTranslation(AppLocalizations.of(context)!
+              .cart_is_empty /*TrKeys.cartIsEmpty*/),
           style: AppStyle.interSemi(size: 18.sp),
         ),
       ],

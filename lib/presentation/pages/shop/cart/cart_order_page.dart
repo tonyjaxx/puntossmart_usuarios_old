@@ -268,15 +268,15 @@ class _ShopOrderState extends ConsumerState<CartOrderPage> {
             ),
             child: Column(
               children: [
-                ShopOrderDescription(
-                  price: ref.watch(shopProvider).shopData?.deliveryRange ?? 0,
-                  svgName: "assets/svgs/delivery.svg",
-                  title: AppHelpers.getTranslation(
-                      AppLocalizations.of(context)!.delivery_price),
-                  description: AppHelpers.getTranslation(
-                      AppLocalizations.of(context)!.start_price),
-                ),
-                16.verticalSpace,
+                // ShopOrderDescription(
+                //   price: ref.watch(shopProvider).shopData?.deliveryRange ?? 0,
+                //   svgName: "assets/svgs/delivery.svg",
+                //   title: AppHelpers.getTranslation(
+                //       AppLocalizations.of(context)!.delivery_price),
+                //   description: AppHelpers.getTranslation(
+                //       AppLocalizations.of(context)!.start_price),
+                // ),
+                // 16.verticalSpace,
                 Divider(
                   color: AppStyle.textGrey.withOpacity(0.1),
                 ),

@@ -12,7 +12,7 @@ import 'package:puntossmart/infrastructure/services/local_storage.dart';
 import 'package:puntossmart/infrastructure/services/tr_keys.dart';
 import 'package:puntossmart/presentation/components/custom_checkbox.dart';
 import 'package:puntossmart/presentation/components/text_fields/outline_bordered_text_field.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:puntossmart/presentation/pages/profile/phone_verify.dart';
 import 'package:puntossmart/presentation/routes/app_router.dart';

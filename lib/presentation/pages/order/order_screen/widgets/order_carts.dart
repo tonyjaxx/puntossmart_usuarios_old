@@ -12,6 +12,7 @@ import 'package:puntossmart/presentation/components/title_icon.dart';
 import 'package:puntossmart/presentation/pages/shop/cart/widgets/cart_clear_dialog.dart';
 import 'package:puntossmart/presentation/pages/shop/cart/widgets/cart_order_item.dart';
 import 'package:puntossmart/presentation/theme/app_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OrderCarts extends StatefulWidget {
   final double lat;
@@ -145,11 +146,14 @@ class _OrderCartsState extends State<OrderCarts> {
                     24.verticalSpace,
                     TitleAndIcon(
                       title: state.orderData != null
-                          ? AppHelpers.getTranslation(TrKeys.compositionOrder)
-                          : AppHelpers.getTranslation(TrKeys.yourOrder),
+                          ? AppHelpers.getTranslation(
+                              AppLocalizations.of(context)!.composition_order)
+                          : AppHelpers.getTranslation(
+                              AppLocalizations.of(context)!.your_order),
                       rightTitleColor: AppStyle.red,
                       rightTitle: state.orderData == null
-                          ? AppHelpers.getTranslation(TrKeys.clear)
+                          ? AppHelpers.getTranslation(
+                              AppLocalizations.of(context)!.clear)
                           : null,
                       onRightTap: state.orderData == null
                           ? () {

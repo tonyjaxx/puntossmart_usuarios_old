@@ -111,10 +111,13 @@ class _ViewMapModalState extends ConsumerState<ViewMapModal> {
               children: [
                 OutlinedBorderTextField(
                   textController: office,
-                  label: AppHelpers.getTranslation(TrKeys.title).toUpperCase(),
+                  label: AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.title)
+                      .toUpperCase(),
                   validation: (s) {
                     if (s?.isEmpty ?? true) {
-                      return AppHelpers.getTranslation(TrKeys.canNotBeEmpty);
+                      return AppHelpers.getTranslation(
+                          AppLocalizations.of(context)!.can_not_be_empty);
                     } else {
                       return null;
                     }
@@ -126,7 +129,8 @@ class _ViewMapModalState extends ConsumerState<ViewMapModal> {
                     Expanded(
                       child: OutlinedBorderTextField(
                         textController: house,
-                        label: AppHelpers.getTranslation(TrKeys.house)
+                        label: AppHelpers.getTranslation(
+                                AppLocalizations.of(context)!.house)
                             .toUpperCase(),
                       ),
                     ),
@@ -134,7 +138,8 @@ class _ViewMapModalState extends ConsumerState<ViewMapModal> {
                     Expanded(
                       child: OutlinedBorderTextField(
                         textController: floor,
-                        label: AppHelpers.getTranslation(TrKeys.floor)
+                        label: AppHelpers.getTranslation(
+                                AppLocalizations.of(context)!.floor)
                             .toUpperCase(),
                       ),
                     ),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_remix/flutter_remix.dart';
@@ -115,7 +114,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                                       height: 15,
                                     ),
                                     Text(
-                                      "Exit?",
+                                      "¿Salir?",
                                       style: AppStyle.interBold(
                                           color: AppStyle.red),
                                     ),
@@ -123,7 +122,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                                       height: 15,
                                     ),
                                     Text(
-                                      "Are you sure you want to exit without reward?",
+                                      "¿Estás seguro de que deseas salir sin recompensa?",
                                       style: AppStyle.interRegular(),
                                       textAlign: TextAlign.center,
                                     ),
@@ -149,7 +148,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                                           child: CustomButton(
                                             background: AppStyle.red,
                                             textColor: AppStyle.white,
-                                            title: "Yes, Exit",
+                                            title: "Sí, Salir",
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                               Navigator.of(context).pop();
