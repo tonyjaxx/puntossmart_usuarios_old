@@ -171,6 +171,11 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
         final response = await _userRepository.getReferralDetails();
         response.when(
           success: (data) async {
+            debugPrint('===> ##################### INICIO #############');
+            debugPrint("print data: $data");
+
+            debugPrint('===> ##################### FIN #############');
+
             if (refreshController == null) {
               state =
                   state.copyWith(isReferralLoading: false, referralData: data);

@@ -24,6 +24,10 @@ class UserRepository implements UserRepositoryFacade {
       final client = inject<HttpService>().client(requireAuth: true);
       final response = await client.get('/api/v1/dashboard/user/profile/show',
           queryParameters: data);
+      debugPrint('===> ##################### INICIO #############');
+      debugPrint("print data: $response.data");
+
+      debugPrint('===> ##################### FIN #############');
       return ApiResult.success(
         data: ProfileResponse.fromJson(response.data),
       );

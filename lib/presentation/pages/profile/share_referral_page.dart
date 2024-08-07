@@ -83,13 +83,14 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                   : Padding(
                       padding: EdgeInsets.all(16.r),
                       child: SingleChildScrollView(
+                        physics: const AlwaysScrollableScrollPhysics(),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
                               height: 200.h,
                               width: double.infinity,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
                                     color: AppStyle.textGrey,
@@ -253,8 +254,8 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                               ),
                             ),
                             16.verticalSpace,
-                            SizedBox(
-                              height: 400.h, // Altura máxima para el ListView
+                            // Altura máxima para el ListView
+                            SingleChildScrollView(
                               child: Expanded(
                                 child: ListView.builder(
                                   shrinkWrap: true,
@@ -322,6 +323,7 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                                 ),
                               ),
                             ),
+
                             const SizedBox(
                               height: 50,
                             )
