@@ -16,7 +16,7 @@ class ShopDescriptionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //height: 54 + 48.r,
-      height: 64 + 58.r,
+      height: 54 + 48.r,
       decoration: BoxDecoration(
           color: AppStyle.bgGrey,
           borderRadius: BorderRadius.all(Radius.circular(10.r))),
@@ -34,7 +34,8 @@ class ShopDescriptionItem extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: (MediaQuery.sizeOf(context).width - 132.h) / 3,
+            width: MediaQuery.of(context).size.width *
+                0.5, //(MediaQuery.sizeOf(context).width - 132.h) / 3,
             child: Text(
               description,
               style: AppStyle.interSemi(

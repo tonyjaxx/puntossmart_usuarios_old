@@ -20,6 +20,7 @@ import 'package:intl/intl.dart' as intl;
 import '../../../infrastructure/services/local_storage.dart';
 import '../../components/app_bars/common_app_bar.dart';
 import '../../components/buttons/pop_button.dart';
+import '../../components/text_fields/outline_bordered_text_field.dart';
 import '../../theme/app_style.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -44,12 +45,12 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
     super.initState();
   }
 
-  final List<Map<String, dynamic>> data = [
-    {'date': '07/08/2020 04:00 PM', 'name': 'Bryan Rafael Andia', 'points': 10},
-    {'date': '01/08/2020 04:30 PM', 'name': 'Nicole Karen', 'points': 40},
-    {'date': '02/08/2020 05:00 PM', 'name': 'Piero ', 'points': 60},
-    {'date': '06/08/2020 04:00 PM', 'name': 'Tony Agustin', 'points': 70},
-  ];
+  // final List<Map<String, dynamic>> data = [
+  //   {'date': '07/08/2020 04:00 PM', 'name': 'Bryan Rafael Andia', 'points': 10},
+  //   {'date': '01/08/2020 04:30 PM', 'name': 'Nicole Karen', 'points': 40},
+  //   {'date': '02/08/2020 05:00 PM', 'name': 'Piero ', 'points': 60},
+  //   {'date': '06/08/2020 04:00 PM', 'name': 'Tony Agustin', 'points': 70},
+  // ];
 
   @override
   void dispose() {
@@ -60,6 +61,8 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(profileProvider);
+    int cantidad_lista = (state.userData?.profileData?.length ?? 0);
+    int cantidad_puntos = (cantidad_lista * 50);
 
     return Directionality(
       textDirection: isLtr ? TextDirection.ltr : TextDirection.rtl,
@@ -180,8 +183,9 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                                               .copy_code));
                                 }),
                             16.verticalSpace,
+                            // Saldo de referido
                             Container(
-                              height: 74.r,
+                              height: 180.r,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.r),
                                 border: Border.all(color: AppStyle.black),
@@ -189,38 +193,110 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                               alignment: Alignment.center,
                               child: Padding(
                                 padding: REdgeInsets.symmetric(horizontal: 24),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                child: Column(
                                   children: [
-                                    Icon(
-                                      FlutterRemix.coins_fill,
-                                      size: 45.r,
-                                      color: AppStyle.black,
-                                    ),
-                                    10.horizontalSpace,
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
+                                    20.verticalSpace,
+
+                                    Row(
                                       children: [
-                                        Text(
-                                          AppHelpers.getTranslation(
-                                              AppLocalizations.of(context)!
-                                                  .balance),
-                                          style: AppStyle.interNormal(
-                                            size: 14.sp,
-                                            color: AppStyle.black,
-                                            letterSpacing: -0.3,
+                                        Expanded(
+                                          child: OutlinedBorderTextField(
+                                            label: "Ingrese número de Referido",
                                           ),
+                                          /*
+                                          TextField(
+                                            decoration: InputDecoration(
+                                              border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10.r),
+                                                borderSide: BorderSide(
+                                                    color: AppStyle.black),
+                                              ),
+                                              hintText: 'Número de referido',
+                                            ),
+                                          ),*/
                                         ),
+                                        10.horizontalSpace,
+                                        Container(
+                                          width: 48.0, // Ancho del botón
+                                          height: 48.0, // Alto del botón
+                                          decoration: BoxDecoration(
+                                            color: AppStyle
+                                                .brandGreen, // Color de fondo
+                                            borderRadius: BorderRadius.circular(
+                                                8.0), // Bordes redondeados (opcional)
+                                          ),
+                                          child: IconButton(
+                                            onPressed: () {
+                                              // Acción del botón
+                                            },
+                                            icon: Icon(Icons.send),
+                                            iconSize: 24.0, // Tamaño del icono
+                                            color:
+                                                Colors.white, // Color del icono
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    25.verticalSpace,
+                                    //const Spacer(),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          FlutterRemix.coins_fill,
+                                          size: 45.r,
+                                          color: AppStyle.black,
+                                        ),
+                                        10.horizontalSpace,
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              AppHelpers.getTranslation(
+                                                  AppLocalizations.of(context)!
+                                                      .balance),
+                                              style: AppStyle.interNormal(
+                                                size: 14.sp,
+                                                color: AppStyle.black,
+                                                letterSpacing: -0.3,
+                                              ),
+                                            ),
+                                            Text(
+                                              /*AppHelpers.numberFormat(
+                                                  number: (state.userData
+                                                              ?.referralFromPrice ??
+                                                          0) -
+                                                      (state.userData
+                                                              ?.referralFromWithdrawPrice ??
+                                                          0))*/
+                                              cantidad_puntos.toString(),
+                                              style: AppStyle.interSemi(
+                                                size: 18.sp,
+                                                color: AppStyle.black,
+                                                letterSpacing: -0.3,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const Spacer(),
+                                        Container(
+                                          width: 1.r,
+                                          height: 46.r,
+                                          color: AppStyle.black,
+                                        ),
+                                        const Spacer(),
                                         Text(
-                                          AppHelpers.numberFormat(
-                                              number: (state.userData
-                                                          ?.referralFromPrice ??
+                                          /*((state.userData?.referralFromPrice ??
                                                       0) -
                                                   (state.userData
                                                           ?.referralFromWithdrawPrice ??
-                                                      0)),
+                                                      0))
+                                              .toString()*/
+                                          cantidad_lista.toString(),
                                           style: AppStyle.interSemi(
                                             size: 18.sp,
                                             color: AppStyle.black,
@@ -229,32 +305,13 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                                         ),
                                       ],
                                     ),
-                                    const Spacer(),
-                                    Container(
-                                      width: 1.r,
-                                      height: 46.r,
-                                      color: AppStyle.black,
-                                    ),
-                                    const Spacer(),
-                                    Text(
-                                      ((state.userData?.referralFromPrice ??
-                                                  0) -
-                                              (state.userData
-                                                      ?.referralFromWithdrawPrice ??
-                                                  0))
-                                          .toString(),
-                                      style: AppStyle.interSemi(
-                                        size: 18.sp,
-                                        color: AppStyle.black,
-                                        letterSpacing: -0.3,
-                                      ),
-                                    ),
                                   ],
                                 ),
                               ),
                             ),
                             16.verticalSpace,
                             // Altura máxima para el ListView
+                            // Listado de usuarios
                             SingleChildScrollView(
                               child: ListView.builder(
                                 shrinkWrap: true,
@@ -263,6 +320,7 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                                 itemBuilder: (context, index) {
                                   final item =
                                       state.userData?.profileData![index];
+                                  debugPrint("usuarios $item");
 
                                   return Container(
                                     margin: EdgeInsets.only(bottom: 16.h),
@@ -279,14 +337,15 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                                             // contentPadding:
                                             //     EdgeInsets.all(16.r),
                                             title: Text(
-                                              'hol',
+                                              // 'asd',
+                                              item!.firstname.toString(),
                                               style: TextStyle(
                                                 fontSize: 12.sp,
                                                 color: Colors.grey,
                                               ),
                                             ),
                                             subtitle: Text(
-                                              item!.firstname!,
+                                              item!.firstname.toString(),
                                               style: TextStyle(
                                                 fontSize: 16.sp,
                                                 color: Colors.black,

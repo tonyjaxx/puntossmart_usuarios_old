@@ -129,7 +129,8 @@ class AppHelpers {
     return showTopSnackBar(
         Overlay.of(context),
         CustomSnackBar.error(
-          message: "$text. Please check your credentials and try again",
+          message:
+              "$text. Por favor, inténtelo nuevamente", //Please check your credentials and try again
         ),
         animationDuration: const Duration(milliseconds: 700),
         reverseAnimationDuration: const Duration(milliseconds: 700),

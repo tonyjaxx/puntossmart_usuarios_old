@@ -126,8 +126,7 @@ class ShopPageAvatar extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: (800 / MediaQuery.of(context).size.height) * 100,
+                  Expanded(
                     child: ShopDescriptionItem(
                       title: AppHelpers.getTranslation(
                           AppLocalizations.of(context)!.working_hours),
@@ -135,19 +134,10 @@ class ShopPageAvatar extends StatelessWidget {
                       icon: const Icon(FlutterRemix.time_fill),
                     ),
                   ),
-                  Container(
-                    width:
-                        (880 / MediaQuery.of(context).size.height) * 100, //120
-                    child: ShopDescriptionItem(
-                      title: AppHelpers.getTranslation(
-                          AppLocalizations.of(context)!.delivery_time),
-                      description:
-                          "${shop.deliveryTime?.from ?? 0} - ${shop.deliveryTime?.to ?? 0} ${AppHelpers.getTranslation(shop.deliveryTime?.type ?? "min")}",
-                      icon: SvgPicture.asset("assets/svgs/delivery.svg"),
-                    ),
+                  const SizedBox(
+                    width: 15,
                   ),
-                  Container(
-                    width: (880 / MediaQuery.of(context).size.height) * 100,
+                  Expanded(
                     child: ShopDescriptionItem(
                       title: AppHelpers.getTranslation(
                           AppLocalizations.of(context)!.delivery_price),
@@ -162,6 +152,17 @@ class ShopPageAvatar extends StatelessWidget {
                   ),
                 ],
               ),
+              // Container(
+              //   width:
+              //       (880 / MediaQuery.of(context).size.height) * 100, //120
+              //   child: ShopDescriptionItem(
+              //     title: AppHelpers.getTranslation(
+              //         AppLocalizations.of(context)!.delivery_time),
+              //     description:
+              //         "${shop.deliveryTime?.from ?? 0} - ${shop.deliveryTime?.to ?? 0} ${AppHelpers.getTranslation(shop.deliveryTime?.type ?? "min")}",
+              //     icon: SvgPicture.asset("assets/svgs/delivery.svg"),
+              //   ),
+              // ),
               AppHelpers.getTranslation(AppLocalizations.of(context)!.close) ==
                       workTime
                   ? Padding(
