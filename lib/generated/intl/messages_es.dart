@@ -471,6 +471,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "promotions": MessageLookupByLibrary.simpleMessage("Promociones Smart"),
         "prueba_t": MessageLookupByLibrary.simpleMessage("hola"),
         "puntos_smart": MessageLookupByLibrary.simpleMessage("PUNTOS SMART"),
+        "puntos_smart_1": MessageLookupByLibrary.simpleMessage("PUNTOS\nSMART"),
         "push_notification":
             MessageLookupByLibrary.simpleMessage("Notificación Push"),
         "qr_code": MessageLookupByLibrary.simpleMessage("Mi QR Smart"),
@@ -516,7 +517,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ubicaciones Guardadas"),
         "saved_stores":
             MessageLookupByLibrary.simpleMessage("Tiendas Guardadas"),
-        "scaner_qr": MessageLookupByLibrary.simpleMessage("Escanea tu QR"),
+        "scaner_qr":
+            MessageLookupByLibrary.simpleMessage("Escanea tu\nQR SMART"),
         "score": MessageLookupByLibrary.simpleMessage("Puntuación"),
         "search": MessageLookupByLibrary.simpleMessage("Buscar"),
         "search_restaurant_and_products": MessageLookupByLibrary.simpleMessage(
@@ -563,7 +565,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Regístrate para Entregar"),
         "sing_up_to_deliver":
             MessageLookupByLibrary.simpleMessage("Regístrate para entregar"),
-        "skip": MessageLookupByLibrary.simpleMessage("Saltar"),
+        "skip": MessageLookupByLibrary.simpleMessage("Omitir"),
         "sm": MessageLookupByLibrary.simpleMessage("SM"),
         "something_went_wrong_with_the_server":
             MessageLookupByLibrary.simpleMessage(

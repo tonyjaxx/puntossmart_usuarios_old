@@ -123,10 +123,19 @@ class QRCodeScreen extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                "Escanear QR Smart",
+                "Escanear",
                 style: GoogleFonts.bungee(
                   fontWeight: FontWeight.w700,
-                  fontSize: 25.0,
+                  fontSize: 30.0,
+                  color: AppStyle.newThemeColor,
+                  letterSpacing: -0.4,
+                ),
+              ),
+              Text(
+                "QR SMART",
+                style: GoogleFonts.bungee(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 40.0,
                   color: AppStyle.newThemeColor,
                   letterSpacing: -0.4,
                 ),
@@ -135,49 +144,67 @@ class QRCodeScreen extends StatelessWidget {
                 height: 20,
               ),
               Container(
-                //alignment: Alignment.center,
-                //padding: const EdgeInsets.only(right: 8.0),
                 decoration: BoxDecoration(
-                  color: AppStyle.verticalDivider,
+                  color: AppStyle.white,
                   borderRadius: BorderRadius.circular(
-                      15.0), // Ajusta el valor según sea necesario
-                ),
-                height: MediaQuery.sizeOf(context).width - 260.w,
-                width: MediaQuery.sizeOf(context).width - 260.w,
-                //color: AppStyle.addProductSearchedToBasket,
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const ScanQrCodeScreen()));
-                  },
-                  icon: const FittedBox(
-                    //alignment: Alignment.center,
-                    child: Icon(
-                      FlutterRemix.qr_scan_2_line,
-                      color: AppStyle.newThemeColor,
-                      size: 150,
+                      45.0), // Ajusta el valor según sea necesario
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black
+                          .withOpacity(0.2), // Color de la sombra con opacidad
+                      spreadRadius: 3, // Radio de propagación de la sombra
+                      blurRadius: 5, // Radio de desenfoque de la sombra
+                      offset: const Offset(
+                          0, 3), // Desplazamiento de la sombra (x, y)
                     ),
-                  ),
+                  ],
+                ),
+                height: MediaQuery.sizeOf(context).width - 310.w, // ||
+                width: MediaQuery.sizeOf(context).width - 210.w, //---
+                // child: IconButton(
+                //   onPressed: () {
+                //     Navigator.of(context).push(MaterialPageRoute(
+                //         builder: (context) => const ScanQrCodeScreen()));
+                //   },
+                //   icon: const FittedBox(
+                //     child: Icon(
+                //       FlutterRemix.qr_scan_2_line,
+                //       color: AppStyle.newThemeColor,
+                //       size: 150,
+                //     ),
+                //   ),
+
+                // ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const ScanQrCodeScreen()));
+                      },
+                      icon: const FittedBox(
+                        child: Icon(
+                          FlutterRemix.qr_scan_2_line,
+                          color: AppStyle.newThemeColor,
+                          size: 150,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                        width: 8.0), // Espacio entre el icono y el texto
+                    Text(
+                      "SCAN",
+                      style: GoogleFonts.bungee(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 25.0,
+                        color: AppStyle.newThemeColor,
+                        letterSpacing: -0.4,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              // ElevatedButton.icon(
-              //   onPressed: () => _shareQrCode(uuid),
-              //   icon: const Icon(
-              //     FlutterRemix.share_line,
-              //     color: AppStyle.black,
-              //   ),
-              //   label: Text(
-              //     'Share QR Code',
-              //     style: GoogleFonts.inter(
-              //       fontSize: 16.0,
-              //       color: AppStyle.black,
-              //       letterSpacing: -0.4,
-              //     ),
-              //   ),
-              //   style: ElevatedButton.styleFrom(
-              //     backgroundColor: AppStyle.brandGreen,
-              //   ),
-              // ),
             ],
           ),
         ),

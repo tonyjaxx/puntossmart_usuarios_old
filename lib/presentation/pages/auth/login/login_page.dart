@@ -122,7 +122,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                        "assets/images/bg.png",
+                        "assets/images/bg_ps.png",
                       ),
                       fit: BoxFit.fill,
                     ),
@@ -135,15 +135,15 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         color: AppStyle.dontHaveAnAccBackDark,
                       )
                     : BoxDecoration(
-                        gradient: LinearGradient(
+                        /*gradient: LinearGradient(
                           colors: [
                             Colors.grey.shade200.withOpacity(0.7),
                             Colors.black.withOpacity(0.8),
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
+                        ),*/
                         ),
-                      ),
                 child: SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
@@ -194,7 +194,18 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             Text(
                               //"Welcome To",
                               AppLocalizations.of(context)!.auth_login_welcome,
-                              style: AppStyle.interSemi(size: 32),
+                              style: AppStyle.interSemi(size: 28).copyWith(
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                shadows: [
+                                  const Shadow(
+                                    offset: Offset(2.0,
+                                        2.0), // Desplazamiento de la sombra
+                                    blurRadius: 3.0, // Radio de desenfoque
+                                    color: Color.fromARGB(
+                                        128, 0, 0, 0), // Color de la sombra
+                                  ),
+                                ],
+                              ),
                             ),
                             const SizedBox(height: 10),
                             Text(
@@ -203,15 +214,37 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                               //   size: 28,
                               //   color: AppStyle.brandGreen,
                               // ),
-                              AppLocalizations.of(context)!.puntos_smart,
-                              style: AppStyle.bungee(size: 34),
+                              AppLocalizations.of(context)!.puntos_smart_1,
+                              style: AppStyle.bungee(size: 45).copyWith(
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                shadows: [
+                                  const Shadow(
+                                    offset: Offset(2.0,
+                                        2.0), // Desplazamiento de la sombra
+                                    blurRadius: 3.0, // Radio de desenfoque
+                                    color: Color.fromARGB(
+                                        128, 0, 0, 0), // Color de la sombra
+                                  ),
+                                ],
+                              ),
                             ),
                             const SizedBox(height: 10),
                             Text(
                               //"The Largest Points & Discounts\nNetwork in Peru.",
                               AppLocalizations.of(context)!
                                   .auth_login_description,
-                              style: AppStyle.interRegular(),
+                              style: AppStyle.interRegular().copyWith(
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                shadows: [
+                                  const Shadow(
+                                    offset: Offset(2.0,
+                                        2.0), // Desplazamiento de la sombra
+                                    blurRadius: 3.0, // Radio de desenfoque
+                                    color: Color.fromARGB(
+                                        128, 0, 0, 0), // Color de la sombra
+                                  ),
+                                ],
+                              ),
                             )
                           ],
                         ),

@@ -256,71 +256,64 @@ class _ShareReferralPageState extends ConsumerState<ShareReferralPage> {
                             16.verticalSpace,
                             // Altura máxima para el ListView
                             SingleChildScrollView(
-                              child: Expanded(
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
-                                  itemCount: data.length,
-                                  itemBuilder: (context, index) {
-                                    final item = data[index];
-                                    return Container(
-                                      margin: EdgeInsets.only(bottom: 16.h),
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(12.r),
-                                        color: Colors.white,
-                                      ),
-                                      alignment: Alignment.topLeft,
-                                      child: SingleChildScrollView(
-                                        scrollDirection: Axis.vertical,
-                                        child: Column(
-                                          children: [
-                                            ListTile(
-                                              // contentPadding:
-                                              //     EdgeInsets.all(16.r),
-                                              title: Text(
-                                                intl.DateFormat(
-                                                        "dd/MM/yyyy h:mm a")
-                                                    .format(
-                                                  DateTime.tryParse(
-                                                              item['date']!)
-                                                          ?.toLocal() ??
-                                                      DateTime.now(),
-                                                ),
-                                                style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  color: Colors.grey,
-                                                ),
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: state.userData?.profileData!.length,
+                                itemBuilder: (context, index) {
+                                  final item =
+                                      state.userData?.profileData![index];
+
+                                  return Container(
+                                    margin: EdgeInsets.only(bottom: 16.h),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12.r),
+                                      color: Colors.white,
+                                    ),
+                                    alignment: Alignment.topLeft,
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.vertical,
+                                      child: Column(
+                                        children: [
+                                          ListTile(
+                                            // contentPadding:
+                                            //     EdgeInsets.all(16.r),
+                                            title: Text(
+                                              'hol',
+                                              style: TextStyle(
+                                                fontSize: 12.sp,
+                                                color: Colors.grey,
                                               ),
-                                              subtitle: Text(
-                                                item['name']!,
-                                                style: TextStyle(
-                                                  fontSize: 16.sp,
-                                                  color: Colors.black,
-                                                ),
+                                            ),
+                                            subtitle: Text(
+                                              item!.firstname!,
+                                              style: TextStyle(
+                                                fontSize: 16.sp,
+                                                color: Colors.black,
                                               ),
-                                              trailing: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Text(
-                                                    '+${item['points']} Puntos',
-                                                    style: TextStyle(
-                                                      color: Colors.green,
-                                                      fontSize: 16.sp,
-                                                    ),
+                                            ),
+                                            trailing: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Text(
+                                                  //'+${item['points']} Puntos',
+                                                  '50 points',
+                                                  style: TextStyle(
+                                                    color: Colors.green,
+                                                    fontSize: 16.sp,
                                                   ),
-                                                  SizedBox(
-                                                      width: 8
-                                                          .r), // Ajusta el tamaño del espacio entre el texto y el 'hola'
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
+                                                ),
+                                                SizedBox(
+                                                    width: 8
+                                                        .r), // Ajusta el tamaño del espacio entre el texto y el 'hola'
+                                              ],
+                                            ),
+                                          )
+                                        ],
                                       ),
-                                    );
-                                  },
-                                ),
+                                    ),
+                                  );
+                                },
                               ),
                             ),
 

@@ -1,7 +1,7 @@
 {
- 
+    "puntos_smart_1": "PUNTOS\nSMART",
     "puntos_smart": "PUNTOS SMART",
-    "skip": "Saltar",
+    "skip": "Omitir",
     "auth_login_welcome": "Bienvenido a",
     "auth_login_description": "La red de puntos y descuentos \nmás grande del Perú",
     "auth_login_1": "Iniciar Sesión",
@@ -103,7 +103,7 @@
     "send_recive_point":"Envia y Recibe Puntos",
     "with_qr":"Solo con tu QR Smart",
     "send_now":"Enviar ahora",
-    "scaner_qr":"Escanea tu QR",
+    "scaner_qr":"Escanea tu\nQR SMART",
     "surveys": "Encuestas Smart",
     "promotions": "Promociones Smart",
     "select_address": "Seleccionar dirección",

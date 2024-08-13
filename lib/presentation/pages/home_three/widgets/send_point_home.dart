@@ -56,16 +56,22 @@ class SendPointHome extends StatelessWidget {
                     padding: REdgeInsets.all(20),
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        color: AppStyle.brandGreen,
+                        image: const DecorationImage(
+                          image: AssetImage(
+                              'assets/images/bg_puntos.png'), // Ruta de tu imagen
+                          fit: BoxFit
+                              .cover, // Ajusta la imagen para cubrir todo el contenedor
+                        ),
+                        //color: AppStyle.brandGreen,
                         borderRadius: BorderRadius.circular(16.r)),
                   ),
                   Positioned(
                       right: 10.r,
                       bottom: 20.r,
                       child: Image.asset(
-                        "assets/images/puntos_enviar.png",
-                        height: 155.r,
-                        width: 161.r,
+                        "assets/images/scanqr.png",
+                        height: 150.r,
+                        width: 150.r,
                       )),
                   Positioned(
                       left: 16.r,
@@ -98,14 +104,21 @@ class SendPointHome extends StatelessWidget {
                                   width: 32.r,
                                   height: double.infinity,
                                   decoration: const BoxDecoration(
-                                    color: AppStyle.brandGreen,
+                                    //color: AppStyle.brandGreen,
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Icon(
+                                  child: Image.asset(
+                                    'assets/images/click.png',
+                                    width: 20.r,
+                                    height: 20.r,
+                                    fit: BoxFit
+                                        .contain, // Ajusta la imagen para que se contenga dentro de las dimensiones especificadas
+                                  ),
+                                  /*Icon(
                                     FlutterRemix.twenty_four_hours_fill,
                                     color: AppStyle.white,
                                     size: 20.r,
-                                  ),
+                                  ),*/
                                 ),
                                 6.horizontalSpace,
                                 Expanded(

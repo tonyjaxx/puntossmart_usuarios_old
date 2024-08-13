@@ -471,6 +471,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "promotions": MessageLookupByLibrary.simpleMessage("Promociones Smart"),
         "prueba_t": MessageLookupByLibrary.simpleMessage("hola"),
         "puntos_smart": MessageLookupByLibrary.simpleMessage("PUNTOS SMART"),
+        "puntos_smart_1": MessageLookupByLibrary.simpleMessage("PUNTOS\nSMART"),
         "push_notification":
             MessageLookupByLibrary.simpleMessage("Notificación Push"),
         "qr_code": MessageLookupByLibrary.simpleMessage("Mi QR Smart"),

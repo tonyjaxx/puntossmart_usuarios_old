@@ -29,6 +29,7 @@ class ProfileData {
     List<NotificationsModel>? notifications,
     ShopData? shop,
     Wallet? wallet,
+    List<ProfileData>? profileData,
   }) {
     _notifications = notifications;
     _id = id;
@@ -52,6 +53,7 @@ class ProfileData {
     _addresses = addresses;
     _shop = shop;
     _wallet = wallet;
+    _profileData = profileData;
   }
 
   ProfileData.fromJson(dynamic json) {
@@ -89,6 +91,10 @@ class ProfileData {
     }
     _shop = json['shop'] != null ? ShopData.fromJson(json['shop']) : null;
     _wallet = json['wallet'] != null ? Wallet.fromJson(json['wallet']) : null;
+    _profileData = json['list_referral'] != null
+        ? List<ProfileData>.from(
+            json['list_referral'].map((item) => ProfileData.fromJson(item)))
+        : null;
   }
 
   int? _id;
@@ -114,6 +120,7 @@ class ProfileData {
   List<NotificationsModel>? _notifications;
   ShopData? _shop;
   Wallet? _wallet;
+  List<ProfileData>? _profileData;
 
   ProfileData copyWith({
     int? id,
@@ -134,6 +141,7 @@ class ProfileData {
     List<AddressNewModel>? addresses,
     ShopData? shop,
     Wallet? wallet,
+    List<ProfileData>? profileData,
   }) =>
       ProfileData(
         id: id ?? _id,
@@ -154,6 +162,7 @@ class ProfileData {
         addresses: addresses ?? _addresses,
         shop: shop ?? _shop,
         wallet: wallet ?? _wallet,
+        profileData: profileData ?? _profileData,
       );
 
   int? get id => _id;
@@ -202,6 +211,8 @@ class ProfileData {
 
   Wallet? get wallet => _wallet;
 
+  List<ProfileData>? get profileData => _profileData;
+
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = _id;
@@ -236,6 +247,10 @@ class ProfileData {
     }
     if (_wallet != null) {
       map['wallet'] = _wallet?.toJson();
+    }
+    if (_profileData != null) {
+      map['list_referral'] =
+          _profileData?.map((profile) => profile.toJson()).toList();
     }
     return map;
   }

@@ -53,16 +53,23 @@ class DoorThree extends StatelessWidget {
                     padding: REdgeInsets.all(20),
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        color: AppStyle.doorColor,
+                        //color: AppStyle.doorColor,
+                        image: const DecorationImage(
+                          image: AssetImage(
+                              'assets/images/bg_cupones.png'), // Ruta de tu imagen
+                          fit: BoxFit
+                              .cover, // Ajusta la imagen para cubrir todo el contenedor
+                        ),
                         borderRadius: BorderRadius.circular(16.r)),
                   ),
                   Positioned(
                       right: 16.r,
-                      bottom: 30.r,
+                      bottom: 10.r,
                       child: Image.asset(
-                        "assets/images/door_to_door_3.png",
-                        height: 105.r,
-                        width: 121.r,
+                        "assets/images/descuento.png",
+                        height: 160.r,
+                        width: 160.r,
+                        fit: BoxFit.contain,
                       )),
                   Positioned(
                       left: 16.r,
@@ -95,14 +102,21 @@ class DoorThree extends StatelessWidget {
                                   width: 32.r,
                                   height: double.infinity,
                                   decoration: const BoxDecoration(
-                                    color: AppStyle.doorColor,
+                                    color: AppStyle.white,
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Icon(
+                                  child: Image.asset(
+                                    'assets/images/click.png',
+                                    width: 20.r,
+                                    height: 20.r,
+                                    fit: BoxFit
+                                        .contain, // Ajusta la imagen para que se contenga dentro de las dimensiones especificadas
+                                  ),
+                                  /*Icon(
                                     FlutterRemix.twenty_four_hours_fill,
                                     color: AppStyle.white,
                                     size: 20.r,
-                                  ),
+                                  ),*/
                                 ),
                                 6.horizontalSpace,
                                 Expanded(

@@ -50,6 +50,16 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `PUNTOS\nSMART`
+  String get puntos_smart_1 {
+    return Intl.message(
+      'PUNTOS\nSMART',
+      name: 'puntos_smart_1',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `PUNTOS SMART`
   String get puntos_smart {
     return Intl.message(
@@ -60,10 +70,10 @@ class S {
     );
   }
 
-  /// `Saltar`
+  /// `Omitir`
   String get skip {
     return Intl.message(
-      'Saltar',
+      'Omitir',
       name: 'skip',
       desc: '',
       args: [],
@@ -940,10 +950,10 @@ class S {
     );
   }
 
-  /// `Escanea tu QR`
+  /// `Escanea tu\nQR SMART`
   String get scaner_qr {
     return Intl.message(
-      'Escanea tu QR',
+      'Escanea tu\nQR SMART',
       name: 'scaner_qr',
       desc: '',
       args: [],
